@@ -1,5 +1,5 @@
 """
-Entrypoint module, in case you use `python -mbirdbrain_python_library`.
+Entrypoint module, in case you use `python -mbirdbrain_python_library_2`.
 
 
 Why does this file exist, and why __main__? For more info, read:
@@ -10,7 +10,7 @@ Why does this file exist, and why __main__? For more info, read:
 """
 import sys
 
-from birdbrain_python_library.cli import main
+from birdbrain_python_library_2.cli import main
 
 if __name__ == "__main__":
     sys.exit(main())

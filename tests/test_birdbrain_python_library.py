@@ -1,5 +1,5 @@
 
-from birdbrain_python_library.cli import main
+from birdbrain_python_library_2.cli import main
 
 
 def test_main():

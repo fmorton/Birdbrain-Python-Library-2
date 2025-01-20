@@ -81,7 +81,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'birdbrain-python-library-2 = birdbrain_python_library.cli:main',
+            'birdbrain-python-library-2 = birdbrain_python_library_2.cli:main',
         ]
     },
 )

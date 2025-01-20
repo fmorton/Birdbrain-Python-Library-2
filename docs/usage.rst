@@ -4,4 +4,4 @@ Usage
 
 To use BirdBrain-Python-Library in a project::
 
-	import birdbrain_python_library
+	import birdbrain_python_library_2

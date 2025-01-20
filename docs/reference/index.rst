@@ -4,4 +4,4 @@ Reference
 .. toctree::
     :glob:
 
-    birdbrain_python_library*
+    birdbrain_python_library_2*
