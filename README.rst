@@ -52,6 +52,8 @@ Overview
 
 Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2
 
+Rewrite inspired by https://github.com/BirdBrainTechnologies/BirdBrain-Python-Library
+
 * Free software: GNU Lesser General Public License v3 (LGPLv3)
 
 Installation
