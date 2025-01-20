@@ -50,7 +50,7 @@ Overview
 
 .. end-badges
 
-Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2
+Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2
 
 Rewrite inspired by https://github.com/BirdBrainTechnologies/BirdBrain-Python-Library
 
