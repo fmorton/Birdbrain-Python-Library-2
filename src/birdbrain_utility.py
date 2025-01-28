@@ -2,6 +2,13 @@ from collections.abc import Iterable
 
 class BirdbrainUtility:
     @classmethod
+    def is_none_or_empty(self, s):
+        if s is None or s == "":
+            return True
+        else:
+            return False
+
+    @classmethod
     def flatten_string(self, original_list, divider = "/"):
         original_list = [item for item in original_list]
         s = ""
