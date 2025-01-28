@@ -3,9 +3,10 @@ import time
 
 import urllib.request
 
+from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 
-class Microbit:
+class Microbit(BirdbrainDevice):
     """Microbit Class includes the control of the outputs and inputs
     present on the micro:bit."""
 

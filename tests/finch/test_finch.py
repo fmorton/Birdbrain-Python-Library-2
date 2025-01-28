@@ -7,7 +7,7 @@ def test_no_device():
 
 
 def test_break():
-    finch = Finch('A')
+    finch = Finch('B')
 
     for i in range(0, 10):
         finch.setBeak(100, 100, 100)

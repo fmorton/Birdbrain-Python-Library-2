@@ -13,8 +13,10 @@ class Hummingbird(Microbit):
     # -------------------------------------------------------------------------
     # UTILITY FUNCTIONS
     # -------------------------------------------------------------------------
-    def __init__(self, device='A'):
+    def __init__(self, device = 'A'):
         """Class initializer. Specify device letter A, B or C."""
+        ##DEBUG....new
+        self.device = Hummingbird.connect(device)
 
         # Check if the length of the array to form a symbol is greater than 25"""
         if ('ABC'.find(device) != -1):
