@@ -48,12 +48,12 @@ class BirdbrainRequest:
         return(not self.is_connected(device))
 
     @classmethod
-    def disconnect(self, device):
-        self.request_status(self.response('hummingbird', 'out', 'stopall', device))
+    def stop_all(self, device):
+        return(self.request_status(self.response('hummingbird', 'out', 'stopall', device)))
 
     @classmethod
     def request_status(self, status):
-     if BirdbrainRequest.BIRDBRAIN_TEST: print("Test: request status is #{status.inspect}")
+     if BirdbrainRequest.BIRDBRAIN_TEST: print("Test: request status is", status)
 
      if status is None: return None
 

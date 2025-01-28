@@ -33,13 +33,16 @@ def test_response_no_connection():
 
     assert e.value.message == "Error: The device is not connected"
 
-def test_disconnect():
-    response = BirdbrainRequest.disconnect("A")
+def test_request_status():
+    assert BirdbrainRequest.request_status("all stopped")
 
-    assert response == 'all stopped'
+def test_stop_all():
+    response = BirdbrainRequest.stop_all("A")
+
+    assert response
 
 def test_disconnect():
     with pytest.raises(BirdbrainException) as e:
-        BirdbrainRequest.disconnect("C")
+        BirdbrainRequest.stop_all("C")
 
     assert e.value.message == "Error: The device is not connected"

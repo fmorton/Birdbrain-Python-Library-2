@@ -12,10 +12,10 @@ class BirdbrainDevice:
 
     @classmethod
     def connect(self, device = "A", raise_exception_if_no_connection = False):
+        device_object = BirdbrainDevice(device)
+
         if device is None: raise BirdbrainException("Missing device name")
         if (not device in BirdbrainDevice.VALID_DEVICES): raise BirdbrainException("Invalid device name: " + device)
-
-        device_object = BirdbrainDevice(device)
 
         device_object.connect_device()
 
