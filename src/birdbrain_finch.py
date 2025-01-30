@@ -4,9 +4,9 @@ import time
 import urllib.request
 
 from birdbrain_exception import BirdbrainException
-from birdbrain_microbit import Microbit
+from birdbrain_microbit import BirdbrainMicrobit
 
-class Finch(Microbit):
+class Finch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""

@@ -1,4 +1,30 @@
+from birdbrain_exception import BirdbrainException
+from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_state import BirdbrainState
+
+import pytest
+
+def test_connect_device_name_as_none():
+    with pytest.raises(BirdbrainException) as e:
+        microbit = BirdbrainMicrobit.connect(None)
+    assert e.value.message == "Missing device name"
+
+def test_connect_bad_device_name():
+    with pytest.raises(BirdbrainException) as e:
+        microbit = BirdbrainMicrobit.connect('D')
+    assert e.value.message == "Invalid device name: D"
+
+def test_connect_valid_device_name():
+    microbit = BirdbrainMicrobit.connect("A")
+
+    assert microbit.device == "A"
+
+def test_is():
+    microbit = BirdbrainMicrobit.connect("A")
+
+    assert not microbit.is_microbit()
+    assert microbit.is_hummingbird()
+    assert not microbit.is_finch()
 
 def test_state():
     state = BirdbrainState()

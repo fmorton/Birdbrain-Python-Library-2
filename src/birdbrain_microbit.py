@@ -6,7 +6,7 @@ import urllib.request
 from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 
-class Microbit(BirdbrainDevice):
+class BirdbrainMicrobit(BirdbrainDevice):
     """Microbit Class includes the control of the outputs and inputs
     present on the micro:bit."""
 

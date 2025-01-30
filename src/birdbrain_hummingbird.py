@@ -4,9 +4,9 @@ import time
 import urllib.request
 
 from birdbrain_exception import BirdbrainException
-from birdbrain_microbit import Microbit
+from birdbrain_microbit import BirdbrainMicrobit
 
-class Hummingbird(Microbit):
+class BirdbrainHummingbird(BirdbrainMicrobit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
         present on the Hummingbird Bit."""
 
@@ -15,7 +15,7 @@ class Hummingbird(Microbit):
     # -------------------------------------------------------------------------
     def __init__(self, device = 'A'):
         """Class initializer. Specify device letter A, B or C."""
-        self.device = Hummingbird.connect(device)
+        self.device = BirdbrainHummingbird.connect(device)
 
         if not self.is_hummingbird():
             raise BirdbrainException("Error: Device " + device + " is not a Hummingbird")
@@ -226,7 +226,7 @@ class Hummingbird(Microbit):
     # Hummingbird Aliases
     dial = getDial
     distance = getDistance
-    is_hummingbird = isHummingbird
+    #is_hummingbird = isHummingbird
     is_port_valid = isPortValid
     led = setLED
     light = getLight

@@ -27,26 +27,25 @@ class BirdbrainDevice:
 
         return device_object
 
+    def is_device(self, operator):
+        response = BirdbrainRequest.response("hummingbird", "in", operator, "static", self.device)
+
+        return (response == 'true')
+
+    def is_microbit(self):
+        """Determine if the device is a Microbit"""
+
+        return self.is_device("isMicrobit")
+
     def is_hummingbird(self):
         """Determine if the device is a hummingbird."""
 
-        response = BirdbrainRequest.response("hummingbird", "in", "isHummingbird", "static" + self.device)
-
-        # old versions of bluebird connector don't support this request
-        if response != "true": return True
-
-        # try to read sensor 4. the value will be 255 for a micro:bit (there is no sensor 4)
-        # and some other value for the hummingbird
-        response = BirdbrainRequest.response("hummingbird", "in", "sensor", "4", self.device)
-
-        return response != "255"
+        return self.is_device("isHummingbird")
 
     def is_finch(self):
         """Determine if the device is a Finch"""
 
-        response = BirdbrainRequest.response("hummingbird", "in", "isFinch", "static", self.device)
-
-        return (response == 'true')
+        return self.is_device("isFinch")
 
     def remap_device(device):
         return device
