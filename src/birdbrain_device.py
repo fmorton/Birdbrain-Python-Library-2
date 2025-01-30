@@ -34,7 +34,7 @@ class BirdbrainDevice:
 
         return device_object
 
-    def is_device(self, operator):
+    def __is_device(self, operator):
         response = BirdbrainRequest.response("hummingbird", "in", operator, "static", self.device)
 
         return (response == 'true')
@@ -42,17 +42,17 @@ class BirdbrainDevice:
     def is_microbit(self):
         """Determine if the device is a Microbit"""
 
-        return self.is_device("isMicrobit")
+        return self.__is_device("isMicrobit")
 
     def is_hummingbird(self):
         """Determine if the device is a hummingbird."""
 
-        return self.is_device("isHummingbird")
+        return self.__is_device("isHummingbird")
 
     def is_finch(self):
         """Determine if the device is a Finch"""
 
-        return self.is_device("isFinch")
+        return self.__is_device("isFinch")
 
     def remap_device(device):
         return device
