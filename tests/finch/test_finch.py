@@ -8,6 +8,7 @@ from BirdBrain import BirdbrainFinch
 #def test_is():
 #    finch = BirdbrainFinch.connect("B")
 #
+#    assert finch.is_connected()
 #    assert not finch.is_microbit()
 #    assert finch.is_hummingbird()
 #    assert not finch.is_finch()

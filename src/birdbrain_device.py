@@ -34,6 +34,11 @@ class BirdbrainDevice:
 
         return device_object
 
+    def is_connected(self):
+        """Determine if the device is connected"""
+
+        return self.connected
+
     def __is_device(self, operator):
         response = BirdbrainRequest.response("hummingbird", "in", operator, "static", self.device)
 

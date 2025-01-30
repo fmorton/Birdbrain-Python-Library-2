@@ -21,11 +21,12 @@ def test_connect_valid_device_name():
     assert hummingbird.device == "A"
 
 def test_is():
-    microbit = BirdbrainMicrobit.connect("A")
+    hummingbird = BirdbrainHummingbird.connect("A")
 
-    assert not microbit.is_microbit()
-    assert microbit.is_hummingbird()
-    assert not microbit.is_finch()
+    assert hummingbird.is_connected()
+    assert not hummingbird.is_microbit()
+    assert hummingbird.is_hummingbird()
+    assert not hummingbird.is_finch()
 
 #def test_blink():
 #    bird = BirdbrainHummingbird('A')
