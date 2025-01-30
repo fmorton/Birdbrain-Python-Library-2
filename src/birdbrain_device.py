@@ -6,6 +6,13 @@ from birdbrain_state import BirdbrainState
 class BirdbrainDevice:
     VALID_DEVICES = "ABC"
 
+    # Test requests to find the devices connected
+    base_request_out = "http://127.0.0.1:30061/hummingbird/out"
+    base_request_in = "http://127.0.0.1:30061/hummingbird/in"
+    stopall = "http://127.0.0.1:30061/hummingbird/out/stopall"
+
+    symbolvalue = None
+
     def __init__(self, device="A"):
         self.state = BirdbrainState()
         self.device = BirdbrainDevice.remap_device(device)

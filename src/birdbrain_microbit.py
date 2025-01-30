@@ -7,17 +7,7 @@ from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 
 class BirdbrainMicrobit(BirdbrainDevice):
-    """Microbit Class includes the control of the outputs and inputs
-    present on the micro:bit."""
-
-    # Test requests to find the devices connected
-    base_request_out = "http://127.0.0.1:30061/hummingbird/out"
-    base_request_in = "http://127.0.0.1:30061/hummingbird/in"
-    stopall = "http://127.0.0.1:30061/hummingbird/out/stopall"
-
-    symbolvalue = None
-
-    def __init__(self, device='A'):
+    def __init__(self, device = 'A'):
         self.device = BirdbrainMicrobit.connect(device)
 
         if not self.is_microbit():
