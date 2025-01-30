@@ -20,14 +20,6 @@ class BirdbrainFinch(BirdbrainMicrobit):
             raise BirdbrainException("Error: Device " + device + " is not a Finch")
 
     # Finch Utility Functions
-    def __exit(self, msg):
-        """Print error, shutdown robot, and exit python"""
-
-        print(msg)
-        self.stopAll()
-        sys.exit()
-
-
     @staticmethod
     def __calculate_RGB(r_intensity, g_intensity, b_intensity):
         """Utility function to covert RGB LED from 0-100 to 0-255"""
