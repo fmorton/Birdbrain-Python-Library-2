@@ -10,9 +10,6 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
         present on the Hummingbird Bit."""
 
-    # -------------------------------------------------------------------------
-    # UTILITY FUNCTIONS
-    # -------------------------------------------------------------------------
     def __init__(self, device = 'A'):
         """Class initializer. Specify device letter A, B or C."""
         self.device = BirdbrainHummingbird.connect(device)
@@ -190,38 +187,10 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     # SEND HTTP REQUESTS
     # -------------------------------------------------------------------------
     def send_httprequest_in(self, peri, port):
-        """Send HTTP requests for Hummingbird bit inputs."""
-
-        # Combine different strings to form an HTTP request
-        http_request = self.base_request_in + "/" + peri + "/" + str(port) + "/" + str(self.device_s_no)
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-        response = response_request.read().decode('utf-8')
-        if (response == "Not Connected"):
-            print(NO_CONNECTION)
-            sys.exit()
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return int(response)
+        pass
 
     def send_httprequest(self, peri, port, value):
-        """Send HTTP request for Hummingbird bit output"""
-
-        # Combine different strings to form an HTTP request
-        http_request = self.base_request_out + "/" + peri + "/" + str(port) + "/" + str(value) + "/" + str(self.device_s_no)
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-        if (response_request.read() == b'200'):
-            response = 1
-        else:
-            response = 0
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return response
+        pass
 
     # Hummingbird Aliases
     dial = getDial

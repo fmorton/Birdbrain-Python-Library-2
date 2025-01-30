@@ -23,7 +23,7 @@ import urllib.request
 
 from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_finch import Finch
+from birdbrain_finch import BirdbrainFinch
 
 # --------------------------------------------------------------
 # Constants

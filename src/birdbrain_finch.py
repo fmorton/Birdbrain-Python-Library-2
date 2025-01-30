@@ -6,7 +6,7 @@ import urllib.request
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
 
-class Finch(BirdbrainMicrobit):
+class BirdbrainFinch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
@@ -14,19 +14,10 @@ class Finch(BirdbrainMicrobit):
     def __init__(self, device='A'):
         """Class initializer. """
 
-        if ('ABC'.find(device) != -1):  # check for valid device letter
-            self.device_s_no = device
+        self.device = BirdbrainFinch.connect(device)
 
-            if not self.isConnectionValid():
-                self.__exit("Error: Invalid Connection")
-
-            if not self.__isFinch():
-                self.__exit("Error: Device " + str(self.device_s_no) + " is not a Finch")
-
-            self.symbolvalue = [0]*25
-
-        else:
-            self.__exit("Error: Device must be A, B, or C.")
+        if not self.is_finch():
+            raise BirdbrainException("Error: Device " + device + " is not a Finch")
 
     # Finch Utility Functions
     def __exit(self, msg):
@@ -72,51 +63,13 @@ class Finch(BirdbrainMicrobit):
             return None
 
     def __send_httprequest_in(self, peri, port):
-        """Send HTTP requests for Finch inputs.
-        Combine strings to form a HTTP input request.
-        Send the request and return the result as a string."""
-
-        http_request = self.base_request_in + "/" + peri + "/" + str(port) + "/" + str(self.device_s_no)
-        response = self._send_httprequest(http_request)
-        return response
+        pass
 
     def __send_httprequest_out(self, arg1, arg2, arg3):
-        """Send HTTP request for Finch output.
-        Combine strings to form a HTTP output request.
-        Send the request and return 1 if successful, 0 otherwise."""
-
-        requestString = "/" + arg1 + "/"
-        if not (arg2 is None):
-            requestString = requestString + str(arg2) + "/"
-        if not (arg3 is None):
-            requestString = requestString + str(arg3) + "/"
-
-        http_request = self.base_request_out + requestString + str(self.device_s_no)
-        response = self._send_httprequest(http_request)
-
-        if (response == "200"):
-            return 1
-        else:
-            return 0
+        pass
 
     def __send_httprequest_move(self, arg1, arg2, arg3, arg4):
-        """Send HTTP request to move the Finch.
-        Combine strings to form a HTTP output request.
-        Send the request and return 1 if successful, 0 otherwise."""
-
-        requestString = "/" + arg1 + "/" + str(self.device_s_no) + "/" + str(arg2) + "/"
-        if not (arg3 is None):
-            requestString = requestString + str(arg3) + "/"
-        if not (arg4 is None):
-            requestString = requestString + str(arg4) + "/"
-
-        http_request = self.base_request_out + requestString
-        response = self._send_httprequest(http_request)
-
-        if (response == "200"):
-            return 1
-        else:
-            return 0
+        pass
 
     # Finch Output
     def __setTriLED(self, port, redIntensity, greenIntensity, blueIntensity):

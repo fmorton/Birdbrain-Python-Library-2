@@ -17,64 +17,11 @@ class BirdbrainMicrobit(BirdbrainDevice):
 
     symbolvalue = None
 
-    # ---------------------------------------------------------------------------------
-    # UTILITY FUNCTIONS
-    # ---------------------------------------------------------------------------------
     def __init__(self, device='A'):
-        """Called when the class is initialized."""
+        self.device = BirdbrainMicrobit.connect(device)
 
-        # Check if the letter of the device is valid, exit otherwise
-        if ('ABC'.find(device) != -1):
-            self.device_s_no = device
-            # Check if the device is connected and if it is a micro:bit
-            if not self.isConnectionValid():
-                self.stopAll()
-                sys.exit()
-
-            if not self.isMicrobit():        # it isn't a micro:bit
-                print("Error: Device " + str(self.device_s_no) + " is not a micro:bit")
-                self.stopAll()
-                sys.exit()
-            self.symbolvalue = [0]*25
-        else:
-            print("Error: Device must be A, B, or C.")
-            self.stopAll()
-            sys.exit()
-
-    def isConnectionValid(self):
-        """This function tests a connection by attempting to read whether or
-        not the micro:bit is shaking. Return true if the connection is good
-        and false otherwise."""
-
-        http_request = self.base_request_in + "/" + "orientation" + "/" + "Shake" + "/" + str(self.device_s_no)
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            return False
-        response = response_request.read().decode('utf-8')
-
-        if (response == "Not Connected"):
-            print("Error: Device " + str(self.device_s_no) + " is not connected")
-            return False
-        return True
-
-    def isMicrobit(self):
-        """This function determines whether or not the device is a micro:bit."""
-
-        http_request = self.base_request_in + "/isMicrobit/static/" + str(self.device_s_no)
-        response = self._send_httprequest(http_request)
-
-        # Old versions of BlueBird Connector don't support this request
-        if (response != ""):
-            return (response == 'true')
-        else:
-            # Try to read sensor 4. The value will be 255 for a micro:bit (there is no sensor 4)
-            # And some other value for the Hummingbird
-            http_request = self.base_request_in + "/" + "sensor" + "/4/" + str(self.device_s_no)
-            response = self._send_httprequest(http_request)
-
-            return (response == "255")
+        if not self.is_microbit():
+            raise BirdbrainException("Error: Device " + device + " is not a Microbit")
 
     def clampParametersToBounds(self, input, inputMin, inputMax):
         """This function checks whether an input parameter is within the
@@ -328,40 +275,10 @@ class BirdbrainMicrobit(BirdbrainDevice):
     # SEND HTTP REQUESTS
     # -------------------------------------------------------------------------
     def _send_httprequest(self, http_request):
-        """Send an HTTP request and return the result."""
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-
-        response = response_request.read().decode('utf-8')
-        if (response == "Not Connected"):
-            print(NO_CONNECTION)
-            sys.exit()
-
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return response
+        pass
 
     def send_httprequest_micro(self, peri, value):
-        """Utility function to arrange and send the http request for microbit output functions."""
-
-        # Print command
-        if (peri == "print"):
-            http_request = self.base_request_out + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-        elif (peri == "symbol"):
-            http_request = self.base_request_out + "/" + peri + "/" + str(self.device_s_no) + "/" + str(value)
-        try:
-            response_request = urllib.request.urlopen(http_request)
-            if (response_request.read() == b'200'):
-                response = 1
-            else:
-                response = 0
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return response
+        pass
 
     def send_httprequest_micro_in(self, peri, value):
         """Utility function to arrange and send the http request for microbit input functions."""
@@ -404,29 +321,14 @@ class BirdbrainMicrobit(BirdbrainDevice):
         return response
 
     def send_httprequest_stopAll(self):
-        """Send HTTP request for hummingbird bit output."""
-
-        # Combine diffrenet strings to form a HTTP request
-        http_request = self.stopall + "/" + str(self.device_s_no)
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-        if (response_request.read() == b'200'):
-            response = 1
-        else:
-            response = 0
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return response
+        pass
 
     # Microbit Aliases
     acceleration = getAcceleration
     button = getButton
     compass = getCompass
     display = setDisplay
-    is_connection_valid = isConnectionValid
-    is_microbit = isMicrobit
+    #is_microbit = isMicrobit
     is_shaking = isShaking
     magnetometer = getMagnetometer
     orientation = getOrientation

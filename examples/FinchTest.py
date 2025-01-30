@@ -1,6 +1,6 @@
 import time
 
-from BirdBrain import Finch
+from BirdBrain import BirdbrainFinch
 
 myFinch = Finch('A')
 
