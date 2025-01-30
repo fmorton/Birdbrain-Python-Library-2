@@ -77,3 +77,43 @@ class BirdbrainRequest:
      if status == 'invalid orientation': return(False)
 
      return(None)
+
+    @classmethod
+    def xyz_response(self, device, sensor):
+        x = self.response('hummingbird', 'in', sensor, 'X', device)
+
+        y = self.response('hummingbird', 'in', sensor, 'Y', device)
+        z = self.response('hummingbird', 'in', sensor, 'Z', device)
+
+        return [float(x), float(y), float(z)]
+
+#    @classmethod
+#    def calculate_angle(self, intensity):
+#        return intensity * 255 / 180
+#
+#    @classmethod
+#    def calculate_intensity(self, intensity):
+#        return intensity * 255 / 100
+#
+#    @classmethod
+#    def calculate_speed(self, speed):
+#        return 255 if speed.between?(-10, 10)
+#
+#        # QUESTION: why this calculation instead of normal mapping to 0..255 (and 255 means stop)
+#        return ((speed * 23 / 100) + 122)
+#
+#    @classmethod
+#    def calculate_left_or_right(self, direction):
+#        if direction == BirdbrainDevice.LEFT: return 'Left'
+#        if direction == BirdbrainDevice.RIGHT: return 'Right'
+#
+#        return false
+#
+#    @classmethod
+#    def bounds(self, input, input_min, input_max, pass_through_input = None):
+#        return input if !pass_through_input.None? && (input == pass_through_input)
+#
+#        return input_min if input < input_min
+#        return input_max if input > input_max
+#
+#        return input
