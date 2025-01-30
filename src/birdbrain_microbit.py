@@ -50,7 +50,6 @@ class Microbit(BirdbrainDevice):
         try:
             response_request = urllib.request.urlopen(http_request)
         except (ConnectionError, urllib.error.URLError):
-            print("DEBUG: caught the connection valid exception")
             print(CONNECTION_SERVER_CLOSED)
             return False
         response = response_request.read().decode('utf-8')

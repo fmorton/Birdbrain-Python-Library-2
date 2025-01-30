@@ -41,3 +41,13 @@ def test_connect_to_disconnected_device_with_exception():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainDevice.connect("C", True)
     assert e.value.message == "No connection: C"
+
+def test_is_hummingbird():
+    hummingbird = BirdbrainDevice.connect("A")
+
+    assert hummingbird.is_hummingbird
+
+def test_is_finch():
+    hummingbird = BirdbrainDevice.connect("A")
+
+    assert not hummingbird.is_finch()

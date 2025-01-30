@@ -36,13 +36,6 @@ class Finch(Microbit):
         self.stopAll()
         sys.exit()
 
-    def __isFinch(self):
-        """Determine whether or not the device is a Finch"""
-
-        http_request = self.base_request_in + "/isFinch/static/" + str(self.device_s_no)
-        response = self._send_httprequest(http_request)
-
-        return (response == 'true')
 
     @staticmethod
     def __calculate_RGB(r_intensity, g_intensity, b_intensity):

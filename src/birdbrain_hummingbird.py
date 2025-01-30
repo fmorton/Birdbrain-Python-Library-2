@@ -15,41 +15,10 @@ class Hummingbird(Microbit):
     # -------------------------------------------------------------------------
     def __init__(self, device = 'A'):
         """Class initializer. Specify device letter A, B or C."""
-        ##DEBUG....new
         self.device = Hummingbird.connect(device)
 
-        # Check if the length of the array to form a symbol is greater than 25"""
-        if ('ABC'.find(device) != -1):
-            self.device_s_no = device
-            # Check if device is connected and is a hummingbird
-            if not self.isConnectionValid():
-                self.stopAll()
-                sys.exit()
-            if not self.isHummingbird():
-                print("Error: Device " + str(self.device_s_no) + " is not a Hummingbird")
-                self.stopAll()
-                sys.exit()
-            self.symbolvalue = [0]*25
-        else:
-            self.stopAll()
-            sys.exit()
-
-    def isHummingbird(self):
-        """This function determines whether or not the device is a Hummingbird."""
-
-        http_request = self.base_request_in + "/isHummingbird/static/" + str(self.device_s_no)
-        response = self._send_httprequest(http_request)
-
-        # Old versions of BlueBird Connector don't support this request
-        if (response != ""):
-            return (response == 'true')
-        else:
-            # Try to read sensor 4. The value will be 255 for a micro:bit (there is no sensor 4)
-            # And some other value for the Hummingbird
-            http_request = self.base_request_in + "/" + "sensor" + "/4/" + str(self.device_s_no)
-            response = self._send_httprequest(http_request)
-
-            return (response != "255")
+        if not self.is_hummingbird():
+            raise BirdbrainException("Error: Device " + device + " is not a Hummingbird")
 
     def isPortValid(self, port, portMax):
         """This function checks whether a port is within the given bounds.
