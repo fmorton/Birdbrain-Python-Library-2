@@ -56,3 +56,15 @@ def test_xyz_response():
 
     assert isinstance(xyz, list)
     assert len(xyz) == 3
+
+def test_bounds():
+    assert BirdbrainRequest.bounds(10, 0, 100) == 10
+    assert BirdbrainRequest.bounds(10, -100, 100) == 10
+    assert BirdbrainRequest.bounds(-10, -100, 100) == -10
+    assert BirdbrainRequest.bounds(-100, -100, 100) == -100
+    assert BirdbrainRequest.bounds(100, -100, 100) == 100
+
+    assert BirdbrainRequest.bounds(101, -100, 100) == 100
+    assert BirdbrainRequest.bounds(-101, -100, 100) == -100
+    assert BirdbrainRequest.bounds(999999, -100, 100) == 100
+    assert BirdbrainRequest.bounds(-999999, -100, 100) == -100

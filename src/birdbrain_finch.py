@@ -11,10 +11,10 @@ class BirdbrainFinch(BirdbrainMicrobit):
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
 
-    def __init__(self, device='A'):
+    def __init__(self, device='A', raise_exception_if_no_connection = True):
         """Class initializer. """
 
-        self.device = BirdbrainFinch.connect(device)
+        self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
         if not self.is_finch():
             raise BirdbrainException("Error: Device " + device + " is not a Finch")

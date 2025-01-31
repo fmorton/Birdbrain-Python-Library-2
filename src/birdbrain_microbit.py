@@ -7,8 +7,8 @@ from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 
 class BirdbrainMicrobit(BirdbrainDevice):
-    def __init__(self, device = 'A'):
-        self.device = BirdbrainMicrobit.connect(device)
+    def __init__(self, device = 'A', raise_exception_if_no_connection = True):
+        self.device_object = BirdbrainMicrobit.connect(device, raise_exception_if_no_connection)
 
         if not self.is_microbit():
             raise BirdbrainException("Error: Device " + device + " is not a Microbit")

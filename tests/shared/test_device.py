@@ -26,10 +26,9 @@ def test_connect():
     assert hummingbird.device == 'A'
 
 def test_connect_to_disconnected_device():
-    hummingbird = BirdbrainDevice.connect("C")
-
-    assert not hummingbird.connected
-    assert hummingbird.device == 'C'
+    with pytest.raises(BirdbrainException) as e:
+        hummingbird = BirdbrainDevice.connect("C", True)
+    assert e.value.message == "No connection: C"
 
 def test_connect_to_disconnected_device_no_exception():
     hummingbird = BirdbrainDevice.connect("C", False)

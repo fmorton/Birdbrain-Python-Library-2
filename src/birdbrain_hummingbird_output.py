@@ -5,26 +5,17 @@ import urllib.request
 
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
+from birdbrain_request import BirdbrainRequest
 
 class BirdbrainHummingbirdOutput(BirdbrainRequest):
-    # -------------------------------------------------------------------------
-    # HUMMINGBIRD BIT OUTPUT
-    # -------------------------------------------------------------------------
-    def setLED(self, port, intensity):
-        """Set LED  of a certain port requested to a valid intensity."""
+    @classmethod
+    def led(self, device, port, intensity):
+        """Set led  of a certain port requested to a valid intensity."""
+        calculated_intensity = BirdbrainRequest.bounds(BirdbrainRequest.calculate_intensity(intensity), 0, 255)
 
-        # Early return if we can't execute the command because the port is invalid
-        if not self.isPortValid(port, 3):
-            return
+        response = BirdbrainRequest.response('hummingbird', 'out', 'led', str(port), calculated_intensity, device)
 
-        # Check the intensity value lies with in the range of LED limits
-        intensity = self.clampParametersToBounds(intensity, 0, 100)
-
-        # Change the range from 0-100 to 0-255
-        intensity_c = self.calculate_LED(intensity)
-        # Send HTTP request
-        response = self.send_httprequest("led", port, intensity_c)
-        return response
+        return BirdbrainRequest.request_status(response)
 
     def setTriLED(self, port, redIntensity, greenIntensity, blueIntensity):
         """Set TriLED  of a certain port requested to a valid intensity."""

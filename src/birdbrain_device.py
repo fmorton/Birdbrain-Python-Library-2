@@ -13,14 +13,18 @@ class BirdbrainDevice:
 
     symbolvalue = None
 
-    def __init__(self, device="A"):
+    def __init__(self, device="A", raise_exception_if_no_connection = True):
         self.state = BirdbrainState()
         self.device = BirdbrainDevice.remap_device(device)
         self.connected = False
 
     @classmethod
-    def connect(self, device = "A", raise_exception_if_no_connection = False):
+    def connect(self, device = "A", raise_exception_if_no_connection = True):
         device_object = BirdbrainDevice(device)
+
+        self.state = BirdbrainState()
+        self.device = device_object.device
+        self.connected = device_object.connected
 
         if device is None:
             raise BirdbrainException("Missing device name")
@@ -51,7 +55,6 @@ class BirdbrainDevice:
 
     def is_hummingbird(self):
         """Determine if the device is a hummingbird."""
-
         return self.__is_device("isHummingbird")
 
     def is_finch(self):

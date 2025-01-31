@@ -4,18 +4,23 @@ import time
 import urllib.request
 
 from birdbrain_exception import BirdbrainException
+from birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
 from birdbrain_microbit import BirdbrainMicrobit
 
 class BirdbrainHummingbird(BirdbrainMicrobit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
         present on the Hummingbird Bit."""
 
-    def __init__(self, device = 'A'):
+    def __init__(self, device = 'A', raise_exception_if_no_connection = True):
         """Class initializer. Specify device letter A, B or C."""
-        self.device = BirdbrainHummingbird.connect(device)
+        device_object = BirdbrainHummingbird.connect(device, raise_exception_if_no_connection)
 
         if not self.is_hummingbird():
             raise BirdbrainException("Error: Device " + device + " is not a Hummingbird")
+
+    def led(self, port, intensity):
+        BirdbrainHummingbirdOutput.led(self.device, port, intensity)
+        ####DEBUG###BirdbrainHummingbirdOutput.led(device, port, intensity) if connected_and_valid?(port, VALID_LED_PORTS)
 
     def isPortValid(self, port, portMax):
         """This function checks whether a port is within the given bounds.

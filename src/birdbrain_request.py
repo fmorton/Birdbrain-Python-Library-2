@@ -87,14 +87,14 @@ class BirdbrainRequest:
 
         return [float(x), float(y), float(z)]
 
-#    @classmethod
-#    def calculate_angle(self, intensity):
-#        return intensity * 255 / 180
-#
-#    @classmethod
-#    def calculate_intensity(self, intensity):
-#        return intensity * 255 / 100
-#
+    @classmethod
+    def calculate_angle(self, intensity):
+        return int(intensity * 255 / 180)
+
+    @classmethod
+    def calculate_intensity(self, intensity):
+        return int(intensity * 255 / 100)
+
 #    @classmethod
 #    def calculate_speed(self, speed):
 #        return 255 if speed.between?(-10, 10)
@@ -108,12 +108,12 @@ class BirdbrainRequest:
 #        if direction == BirdbrainDevice.RIGHT: return 'Right'
 #
 #        return false
-#
-#    @classmethod
-#    def bounds(self, input, input_min, input_max, pass_through_input = None):
-#        return input if !pass_through_input.None? && (input == pass_through_input)
-#
-#        return input_min if input < input_min
-#        return input_max if input > input_max
-#
-#        return input
+
+    @classmethod
+    def bounds(self, input, input_min, input_max, pass_through_input = None):
+        if pass_through_input is not None and (input == pass_through_input): return input
+
+        if input < input_min: return input_min
+        if input > input_max: return input_max
+
+        return input
