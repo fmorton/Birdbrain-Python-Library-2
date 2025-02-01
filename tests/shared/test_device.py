@@ -50,19 +50,3 @@ def test_is_finch():
     hummingbird = BirdbrainDevice.connect("A")
 
     assert not hummingbird.is_finch()
-
-#DEBUGdef test_is_valid():
-#    hummingbird = BirdbrainDevice.connect("A")
-#    assert hummingbird.is_valid(1, "123")
-#    assert hummingbird.is_valid("1", "123")
-#    assert not hummingbird.is_valid(4, "123")
-#    assert not hummingbird.is_valid("4", "123")
-#    assert not hummingbird.is_valid(None, "123")
-#
-#def test_is_connected_and_valid():
-#    hummingbird = BirdbrainDevice.connect("A")
-#    assert hummingbird.is_connected_and_valid(1, "123")
-#    assert hummingbird.is_connected_and_valid("1", "123")
-#    assert not hummingbird.is_connected_and_valid(4, "123")
-#    assert not hummingbird.is_connected_and_valid("4", "123")
-#    assert not hummingbird.is_connected_and_valid(None, "123")
