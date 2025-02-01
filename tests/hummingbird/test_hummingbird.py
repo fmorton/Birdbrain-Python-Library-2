@@ -53,5 +53,6 @@ def test_led_alias():
 def test_led_no_connection():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird('C')
-        #hummingbird.led(1, 100)
+
+        hummingbird.led(1, 100)
     assert e.value.message == "No connection: C"
