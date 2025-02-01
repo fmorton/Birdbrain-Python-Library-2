@@ -23,7 +23,7 @@ def test_connect_valid_device_name():
 def test_is():
     hummingbird = BirdbrainHummingbird("A")
 
-    hummingbird.is_connected()
+    assert hummingbird.is_connected()
     assert not hummingbird.is_microbit()
     assert hummingbird.is_hummingbird()
     assert not hummingbird.is_finch()
@@ -31,18 +31,27 @@ def test_is():
 def test_led():
     hummingbird = BirdbrainHummingbird("A")
 
-    hummingbird.led(1, 50)
-    time.sleep(0.5)
+    assert hummingbird.led(1, 100)
+    time.sleep(0.25)
+
+    assert hummingbird.led(1, 0)
+    time.sleep(0.25)
+
+    assert hummingbird.led(1, 50)
+    time.sleep(0.25)
 
     hummingbird.led(1, 0)
 
-#def test_blink():
-#    bird = BirdbrainHummingbird('A')
-#
-#    for i in range(0, 2):
-#        bird.setLED(1, 100)
-#        time.sleep(0.1)
-#        bird.setLED(1, 0)
-#        time.sleep(0.1)
-#
-#    bird.stopAll()
+def test_led_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    assert hummingbird.setLED(1, 100)
+    time.sleep(0.25)
+
+    assert hummingbird.setLED(1, 0)
+
+def test_led_no_connection():
+    with pytest.raises(BirdbrainException) as e:
+        hummingbird = BirdbrainHummingbird('C')
+        #hummingbird.led(1, 100)
+    assert e.value.message == "No connection: C"

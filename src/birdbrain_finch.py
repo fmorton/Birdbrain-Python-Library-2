@@ -1,8 +1,9 @@
-import sys
-import time
+#import sys
+#import time
 
-import urllib.request
+#import urllib.request
 
+from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
 
@@ -10,9 +11,29 @@ class BirdbrainFinch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
+    FORWARD = 'F'
+    BACKWARD = 'B'
+    LEFT = BirdbrainDevice.LEFT
+    RIGHT = BirdbrainDevice.RIGHT
+    MOVE_START_WAIT_SECONDS = 0.15
+    MOVE_TIMEOUT_SECONDS = 60.0
+    VALID_LED_PORTS = '123'
+    VALID_TAIL_PORTS = '1234all'
+    VALID_TRILED_PORTS = '1234'
+    VALID_SENSOR_PORTS = '123'
+    VALID_SERVO_PORTS = '1234'
+    VALID_MOVE_DIRECTION = 'FB'
+    VALID_TURN_DIRECTION = 'LR'
+
+    #attr_accessor :move_start_wait_seconds
+    #attr_accessor :move_start_time
+    #attr_accessor :move_timeout_seconds
 
     def __init__(self, device='A', raise_exception_if_no_connection = True):
         """Class initializer. """
+        self.move_start_wait_seconds = MOVE_START_WAIT_SECONDS # seconds to allow finch to start moving
+        self.move_timeout_seconds = MOVE_TIMEOUT_SECONDS # maximum number of seconds to wait for finch moving
+        self.move_start_time = 0 # after move records how long it took the startup to complete for tuning
 
         self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
@@ -20,48 +41,39 @@ class BirdbrainFinch(BirdbrainMicrobit):
             raise BirdbrainException("Error: Device " + device + " is not a Finch")
 
     # Finch Utility Functions
-    @staticmethod
-    def __calculate_RGB(r_intensity, g_intensity, b_intensity):
-        """Utility function to covert RGB LED from 0-100 to 0-255"""
+    #@staticmethod
+    #def __calculate_RGB(r_intensity, g_intensity, b_intensity):
+    #    """Utility function to covert RGB LED from 0-100 to 0-255"""
 
-        r_intensity_c = int((r_intensity * 255) / 100)
-        g_intensity_c = int((g_intensity * 255) / 100)
-        b_intensity_c = int((b_intensity * 255) / 100)
+    #    r_intensity_c = int((r_intensity * 255) / 100)
+    #    g_intensity_c = int((g_intensity * 255) / 100)
+    #    b_intensity_c = int((b_intensity * 255) / 100)
 
-        return (r_intensity_c, g_intensity_c, b_intensity_c)
+    #    return (r_intensity_c, g_intensity_c, b_intensity_c)
 
-    @staticmethod
-    def __formatRightLeft(direction):
-        """Utility function to format a selection of right or left for a backend request."""
+    #@staticmethod
+    #def __formatRightLeft(direction):
+    #    """Utility function to format a selection of right or left for a backend request."""
 
-        if direction == "R" or direction == "r" or direction == "Right" or direction == "right":
-            return "Right"
-        elif direction == "L" or direction == "l" or direction == "Left" or direction == "left":
-            return "Left"
-        else:
-            print("Error: Please specify either 'R' or 'L' direction.")
-            return None
+    #    if direction == "R" or direction == "r" or direction == "Right" or direction == "right":
+    #        return "Right"
+    #    elif direction == "L" or direction == "l" or direction == "Left" or direction == "left":
+    #        return "Left"
+    #    else:
+    #        print("Error: Please specify either 'R' or 'L' direction.")
+    #        return None
 
-    @staticmethod
-    def __formatForwardBackward(direction):
-        """Utility function to format a selection of forward or backward for a backend request."""
+    #@staticmethod
+    #def __formatForwardBackward(direction):
+    #    """Utility function to format a selection of forward or backward for a backend request."""
 
-        if direction == "F" or direction == "f" or direction == "Forward" or direction == "forward":
-            return "Forward"
-        elif direction == "B" or direction == "b" or direction == "Backward" or direction == "backward":
-            return "Backward"
-        else:
-            print("Error: Please specify either 'F' or 'B' direction.")
-            return None
-
-    def __send_httprequest_in(self, peri, port):
-        pass
-
-    def __send_httprequest_out(self, arg1, arg2, arg3):
-        pass
-
-    def __send_httprequest_move(self, arg1, arg2, arg3, arg4):
-        pass
+    #    if direction == "F" or direction == "f" or direction == "Forward" or direction == "forward":
+    #        return "Forward"
+    #    elif direction == "B" or direction == "b" or direction == "Backward" or direction == "backward":
+    #        return "Backward"
+    #    else:
+    #        print("Error: Please specify either 'F' or 'B' direction.")
+    #        return None
 
     # Finch Aliases
     #acceleration = getAcceleration
@@ -78,5 +90,3 @@ class BirdbrainFinch(BirdbrainMicrobit):
     #reset_encoders = resetEncoders
     #tail = setTail
     #turn = setTurn
-
-    # END class Finch

@@ -2,18 +2,13 @@ from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
 
-
 class BirdbrainDevice:
-    VALID_DEVICES = "ABC"
+    DEFAULT_DEVICE = 'A'
+    LEFT = 'L'
+    RIGHT = 'R'
+    VALID_DEVICES = 'ABC'
 
-    # Test requests to find the devices connected
-    base_request_out = "http://127.0.0.1:30061/hummingbird/out"
-    base_request_in = "http://127.0.0.1:30061/hummingbird/in"
-    stopall = "http://127.0.0.1:30061/hummingbird/out/stopall"
-
-    symbolvalue = None
-
-    def __init__(self, device="A", raise_exception_if_no_connection = True):
+    def __init__(self, device = "A", raise_exception_if_no_connection = True):
         self.state = BirdbrainState()
         self.device = BirdbrainDevice.remap_device(device)
         self.connected = False
@@ -22,7 +17,7 @@ class BirdbrainDevice:
     def connect(self, device = "A", raise_exception_if_no_connection = True):
         device_object = BirdbrainDevice(device)
 
-        self.state = BirdbrainState()
+        self.state = device_object.state
         self.device = device_object.device
         self.connected = device_object.connected
 
@@ -31,7 +26,7 @@ class BirdbrainDevice:
         if not device in BirdbrainDevice.VALID_DEVICES:
             raise BirdbrainException("Invalid device name: " + device)
 
-        device_object.connect_device()
+        self.connected = device_object.connect_device()
 
         if raise_exception_if_no_connection and not device_object.connected:
             raise BirdbrainException("No connection: " + device)
@@ -62,8 +57,18 @@ class BirdbrainDevice:
 
         return self.__is_device("isFinch")
 
+    def is_valid(self, validate, valid_range):
+        if validate is None: return False
+
+        return str(validate) in valid_range
+
+    def is_connected_and_valid(self, validate, valid_range):
+        return self.is_valid(validate, valid_range) and self.is_connected()
+
     def remap_device(device):
         return device
 
     def connect_device(self):
         self.connected = BirdbrainRequest.is_connected(self.device)
+
+        return self.connected

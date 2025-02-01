@@ -5,7 +5,7 @@ import time
 import urllib.request
 
 class BirdbrainRequest:
-    BIRDBRAIN_TEST = True
+    BIRDBRAIN_TEST = False
 
     @classmethod
     def uri(self, *args):

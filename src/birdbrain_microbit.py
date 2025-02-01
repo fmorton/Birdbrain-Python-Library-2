@@ -39,69 +39,62 @@ class BirdbrainMicrobit(BirdbrainDevice):
         new_str = new_str[:len(new_str)-1]
         return new_str
 
-    @staticmethod
-    def __constrainToInt(number):
-        """Utility function to ensure number is an integer. Will round and cast to int
-        (with warning) if necessary."""
-
-        if not isinstance(number, int):
-            oldNumber = number
-            number = int(round(number))
-            print("Warning: Parameter must be an integer. Using " + str(number) + " instead of " + str(oldNumber) + ".")
-
-        return number
+    #@staticmethod
+    #def __constrainToInt(number):
+    #    """Utility function to ensure number is an integer. Will round and cast to int
+    #    (with warning) if necessary."""
+    #    if not isinstance(number, int):
+    #        oldNumber = number
+    #        number = int(round(number))
+    #        print("Warning: Parameter must be an integer. Using " + str(number) + " instead of " + str(oldNumber) + ".")
+    #    return number
 
     # -------------------------------------------------------------------------
     # SEND HTTP REQUESTS
     # -------------------------------------------------------------------------
-    def _send_httprequest(self, http_request):
-        pass
+    #def _send_httprequest(self, http_request):
+    #    pass
 
-    def send_httprequest_micro(self, peri, value):
-        pass
+    #def send_httprequest_micro(self, peri, value):
+    #    pass
 
-    def send_httprequest_micro_in(self, peri, value):
-        """Utility function to arrange and send the http request for microbit input functions."""
-
-        if (peri == "Accelerometer"):
-            http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-        elif (peri == "Compass"):
-            http_request = self.base_request_in + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Magnetometer"):
-            http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-        elif (peri == "button"):
-            http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-        elif (peri == "Shake"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Screen%20Up"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Screen%20Down"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Tilt%20Right"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Tilt%20Left"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Logo%20Up"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        elif (peri == "Logo%20Down"):
-            http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-        else:
-            http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-
-        try:
-            response_request = urllib.request.urlopen(http_request)
-        except (ConnectionError, urllib.error.URLError):
-            print(CONNECTION_SERVER_CLOSED)
-            sys.exit()
-        response = response_request.read().decode('utf-8')
-        if (response == "Not Connected"):
-            print(NO_CONNECTION)
-            sys.exit()
-        time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
-        return response
-
-    def send_httprequest_stopAll(self):
-        pass
+    #def send_httprequest_micro_in(self, peri, value):
+    #    """Utility function to arrange and send the http request for microbit input functions."""
+    #    if (peri == "Accelerometer"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "Compass"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Magnetometer"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "button"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "Shake"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Screen%20Up"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Screen%20Down"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Tilt%20Right"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Tilt%20Left"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Logo%20Up"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Logo%20Down"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    else:
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    try:
+    #        response_request = urllib.request.urlopen(http_request)
+    #    except (ConnectionError, urllib.error.URLError):
+    #        print(CONNECTION_SERVER_CLOSED)
+    #        sys.exit()
+    #    response = response_request.read().decode('utf-8')
+    #    if (response == "Not Connected"):
+    #        print(NO_CONNECTION)
+    #        sys.exit()
+    #    time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
+    #    return response
 
     # Microbit Aliases
     #acceleration = getAcceleration
@@ -117,6 +110,3 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #sound = getSound
     #stop_all = stopAll
     #temperature = getTemperature
-
-    # END class Microbit
-
