@@ -25,16 +25,8 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     def tri_led(self, port, r_int, g_int, b_int):
         return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_int, g_int, b_int)
 
-    #def calculate_servo_r(self, servo_value):
-    #    """Utility function to covert Servo from -100 - 100 to 0-255."""
-    #
-    #    # If the values are above the limits fix the instensity to maximum value,
-    #    # if less than the minimum value fix the intensity to minimum value
-    #    if ((servo_value > -10) and (servo_value < 10)):
-    #        servo_value_c = 255
-    #    else:
-    #        servo_value_c = int((servo_value * 23 / 100) + 122)
-    #    return servo_value_c
+    def position_servo(self, port, angle):
+        return BirdbrainHummingbirdOutput.position_servo(self.device, port, angle)
 
     # Hummingbird Aliases
     #dial = getDial
@@ -42,7 +34,7 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     #is_hummingbird = isHummingbird
     setLED = led
     #light = getLight
-    #position_servo = setPositionServo
+    setPositionServo = position_servo
     #rotation_servo = setRotationServo
     #sensor = getSensor
     #sound = getSound

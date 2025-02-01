@@ -60,3 +60,12 @@ def test_tri_led_with_alias():
 
     assert hummingbird.tri_led(1, 0, "0", "0")
     time.sleep(0.25)
+
+def test_position_servo_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    assert hummingbird.position_servo(1, 50)
+    time.sleep(1)
+
+    assert hummingbird.setPositionServo(1, "130")
+    time.sleep(1)

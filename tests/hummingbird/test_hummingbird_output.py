@@ -14,10 +14,19 @@ def test_led():
 
     BirdbrainHummingbirdOutput.led(hummingbird.device, 1, "0")
 
-def test_triled():
+def test_tri_led():
     hummingbird = BirdbrainHummingbird("A")
 
     BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 50, "50", 0)
     time.sleep(0.25)
 
     BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0)
+
+def test_position_servo():
+    hummingbird = BirdbrainHummingbird("A")
+
+    BirdbrainHummingbirdOutput.position_servo(hummingbird.device, 1, 20)
+    time.sleep(0.5)
+
+    BirdbrainHummingbirdOutput.position_servo(hummingbird.device, 1, 160)
+    time.sleep(0.5)
