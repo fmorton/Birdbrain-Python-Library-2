@@ -24,28 +24,3 @@ import urllib.request
 from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_finch import BirdbrainFinch
-
-# --------------------------------------------------------------
-# Constants
-
-CHAR_FLASH_TIME = 0.3  # Character Flash time
-
-# Error strings
-CONNECTION_SERVER_CLOSED = "Error: Request to device failed"
-NO_CONNECTION = "Error: The device is not connected"
-
-# Calculations after receveing the raw values for Hummingbird
-DISTANCE_FACTOR = 117/100
-SOUND_FACTOR = 200/255
-DIAL_FACTOR = 100/230
-LIGHT_FACTOR = 100/255
-VOLTAGE_FACTOR = 3.3/255
-
-# Scaling factors for Finch
-BATTERY_FACTOR = 0.0406
-
-TEMPO = 60
-
-
-
-

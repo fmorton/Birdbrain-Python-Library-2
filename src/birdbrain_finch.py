@@ -11,20 +11,6 @@ class BirdbrainFinch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
-    FORWARD = 'F'
-    BACKWARD = 'B'
-    LEFT = BirdbrainDevice.LEFT
-    RIGHT = BirdbrainDevice.RIGHT
-    MOVE_START_WAIT_SECONDS = 0.15
-    MOVE_TIMEOUT_SECONDS = 60.0
-    VALID_LED_PORTS = '123'
-    VALID_TAIL_PORTS = '1234all'
-    VALID_TRILED_PORTS = '1234'
-    VALID_SENSOR_PORTS = '123'
-    VALID_SERVO_PORTS = '1234'
-    VALID_MOVE_DIRECTION = 'FB'
-    VALID_TURN_DIRECTION = 'LR'
-
     #attr_accessor :move_start_wait_seconds
     #attr_accessor :move_start_time
     #attr_accessor :move_timeout_seconds

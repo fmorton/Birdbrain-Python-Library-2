@@ -1,3 +1,4 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_utility import BirdbrainUtility
 
@@ -5,8 +6,6 @@ import time
 import urllib.request
 
 class BirdbrainRequest:
-    BIRDBRAIN_TEST = False
-
     @classmethod
     def uri(self, *args):
         return("http://127.0.0.1:30061/" + BirdbrainUtility.flatten_string(args[0]))
@@ -20,7 +19,7 @@ class BirdbrainRequest:
         if "false" in args: return False
 
         try:
-            if BirdbrainRequest.BIRDBRAIN_TEST: print("Test:", self.uri(args))
+            if BirdbrainConstant.BIRDBRAIN_TEST: print("Test:", self.uri(args))
 
             response_request = urllib.request.urlopen(self.uri(args))
         except (ConnectionError, urllib.error.URLError):
@@ -53,7 +52,7 @@ class BirdbrainRequest:
 
     @classmethod
     def request_status(self, status):
-     if BirdbrainRequest.BIRDBRAIN_TEST: print("Test: request status is", status)
+     if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: request status is", status)
 
      if status is None: return None
 
@@ -104,8 +103,8 @@ class BirdbrainRequest:
 #
 #    @classmethod
 #    def calculate_left_or_right(self, direction):
-#        if direction == BirdbrainDevice.LEFT: return 'Left'
-#        if direction == BirdbrainDevice.RIGHT: return 'Right'
+#        if direction == BirdbrainConstant.LEFT: return 'Left'
+#        if direction == BirdbrainConstant.RIGHT: return 'Right'
 #
 #        return false
 

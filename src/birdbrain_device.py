@@ -1,13 +1,9 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
 
 class BirdbrainDevice:
-    DEFAULT_DEVICE = 'A'
-    LEFT = 'L'
-    RIGHT = 'R'
-    VALID_DEVICES = 'ABC'
-
     def __init__(self, device = "A", raise_exception_if_no_connection = True):
         self.state = BirdbrainState()
         self.device = BirdbrainDevice.remap_device(device)
@@ -23,7 +19,7 @@ class BirdbrainDevice:
 
         if device is None:
             raise BirdbrainException("Missing device name")
-        if not device in BirdbrainDevice.VALID_DEVICES:
+        if not device in BirdbrainConstant.VALID_DEVICES:
             raise BirdbrainException("Invalid device name: " + device)
 
         self.connected = device_object.connect_device()

@@ -3,6 +3,7 @@ import time
 
 import urllib.request
 
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
 from birdbrain_microbit import BirdbrainMicrobit
@@ -10,7 +11,6 @@ from birdbrain_microbit import BirdbrainMicrobit
 class BirdbrainHummingbird(BirdbrainMicrobit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
         present on the Hummingbird Bit."""
-    VALID_LED_PORTS = '123'
 
     def __init__(self, device = 'A', raise_exception_if_no_connection = True):
         """Class initializer. Specify device letter A, B or C."""
@@ -20,11 +20,11 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
             raise BirdbrainException("Error: Device " + device + " is not a Hummingbird")
 
     def led(self, port, intensity):
-        if self.is_connected_and_valid(port, self.VALID_LED_PORTS):
+        if self.is_connected_and_valid(port, BirdbrainConstant.VALID_LED_PORTS):
             return BirdbrainHummingbirdOutput.led(self.device, port, intensity)
 
     def tri_led(self, port, r_intensity, g_intensity, b_intensity):
-        if self.is_connected_and_valid(port, self.VALID_LED_PORTS):
+        if self.is_connected_and_valid(port, BirdbrainConstant.VALID_LED_PORTS):
             return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_intensity, g_intensity, b_intensity)
 
     #def calculate_servo_r(self, servo_value):
