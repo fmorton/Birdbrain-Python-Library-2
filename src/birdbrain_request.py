@@ -89,11 +89,11 @@ class BirdbrainRequest:
 
     @classmethod
     def calculate_angle(self, intensity):
-        return int(intensity * 255 / 180)
+        return int(int(intensity) * 255 / 180)
 
     @classmethod
     def calculate_intensity(self, intensity):
-        return int(intensity * 255 / 100)
+        return int(int(intensity) * 255 / 100)
 
 #    @classmethod
 #    def calculate_speed(self, speed):
@@ -111,9 +111,9 @@ class BirdbrainRequest:
 
     @classmethod
     def bounds(self, input, input_min, input_max, pass_through_input = None):
-        if pass_through_input is not None and (input == pass_through_input): return input
+        #if pass_through_input is not None and (input == pass_through_input): return int(input)
 
-        if input < input_min: return input_min
-        if input > input_max: return input_max
+        if int(input) < int(input_min): return int(input_min)
+        if int(input) > int(input_max): return int(input_max)
 
-        return input
+        return int(input)

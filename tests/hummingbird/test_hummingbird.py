@@ -28,7 +28,7 @@ def test_is():
     assert hummingbird.is_hummingbird()
     assert not hummingbird.is_finch()
 
-def test_led():
+def test_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.led(1, 100)
@@ -40,15 +40,7 @@ def test_led():
     assert hummingbird.led(1, 50)
     time.sleep(0.25)
 
-    hummingbird.led(1, 0)
-
-def test_led_alias():
-    hummingbird = BirdbrainHummingbird("A")
-
-    assert hummingbird.setLED(1, 100)
-    time.sleep(0.25)
-
-    assert hummingbird.setLED(1, 0)
+    hummingbird.setLED(1, 0)
 
 def test_led_no_connection():
     with pytest.raises(BirdbrainException) as e:
@@ -56,3 +48,15 @@ def test_led_no_connection():
 
         hummingbird.led(1, 100)
     assert e.value.message == "No connection: C"
+
+def test_tri_led_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    assert hummingbird.tri_led(1, 50, "50", 0)
+    time.sleep(0.25)
+
+    assert hummingbird.setTriLED(1, 100, "0", "0")
+    time.sleep(0.25)
+
+    assert hummingbird.tri_led(1, 0, "0", "0")
+    time.sleep(0.25)

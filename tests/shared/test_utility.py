@@ -14,4 +14,3 @@ def test_is_none_or_empty():
     assert BirdbrainUtility.is_none_or_empty(None)
     assert BirdbrainUtility.is_none_or_empty('')
     assert not BirdbrainUtility.is_none_or_empty('something')
-

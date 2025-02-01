@@ -68,3 +68,14 @@ def test_bounds():
     assert BirdbrainRequest.bounds(-101, -100, 100) == -100
     assert BirdbrainRequest.bounds(999999, -100, 100) == 100
     assert BirdbrainRequest.bounds(-999999, -100, 100) == -100
+
+    assert BirdbrainRequest.bounds(str(10), str(0), str(100)) == 10
+    assert BirdbrainRequest.bounds(str(10), str(-100), str(100)) == 10
+    assert BirdbrainRequest.bounds(str(-10), str(-100), str(100)) == -10
+    assert BirdbrainRequest.bounds(str(-100), str(-100), str(100)) == -100
+    assert BirdbrainRequest.bounds(str(100), str(-100), str(100)) == 100
+
+    assert BirdbrainRequest.bounds(str(101), str(-100), str(100)) == 100
+    assert BirdbrainRequest.bounds(str(-101), str(-100), str(100)) == -100
+    assert BirdbrainRequest.bounds(str(999999), str(-100), str(100)) == 100
+    assert BirdbrainRequest.bounds(str(-999999), str(-100), str(100)) == -100

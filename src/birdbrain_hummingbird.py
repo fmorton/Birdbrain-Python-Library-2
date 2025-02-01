@@ -23,6 +23,10 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
         if self.is_connected_and_valid(port, self.VALID_LED_PORTS):
             return BirdbrainHummingbirdOutput.led(self.device, port, intensity)
 
+    def tri_led(self, port, r_intensity, g_intensity, b_intensity):
+        if self.is_connected_and_valid(port, self.VALID_LED_PORTS):
+            return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_intensity, g_intensity, b_intensity)
+
     #def calculate_servo_r(self, servo_value):
     #    """Utility function to covert Servo from -100 - 100 to 0-255."""
     #
@@ -47,6 +51,6 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     #sound = getSound
     # stop_all = stopAll
     # temperature = getTemperature
-    #tri_led = setTriLED
+    setTriLED = tri_led
     #voltage = getVoltage
 
