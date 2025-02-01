@@ -25,7 +25,10 @@ def test_response_with_false_arg():
     assert not BirdbrainRequest.response("1", "false", "2")
 
 def test_response():
-    response = BirdbrainRequest.response("hummingbird", "in", "orientation", "Shake", "A")
+    assert BirdbrainRequest.response("hummingbird", "in", "orientation", "Shake", "A")
+
+def test_response_status():
+    assert not BirdbrainRequest.response_status("hummingbird", "in", "orientation", "Shake", "A")
 
 def test_response_no_connection():
     with pytest.raises(BirdbrainException) as e:
@@ -79,3 +82,16 @@ def test_bounds():
     assert BirdbrainRequest.bounds(str(-101), str(-100), str(100)) == -100
     assert BirdbrainRequest.bounds(str(999999), str(-100), str(100)) == 100
     assert BirdbrainRequest.bounds(str(-999999), str(-100), str(100)) == -100
+
+def test_validate_port():
+    assert BirdbrainRequest.validate_port(1)
+    assert BirdbrainRequest.validate_port(2)
+    assert BirdbrainRequest.validate_port(3)
+    assert BirdbrainRequest.validate_port("1")
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainRequest.validate_port(4)
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainRequest.validate_port(-1)
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainRequest.validate_port("4")

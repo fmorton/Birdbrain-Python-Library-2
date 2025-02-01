@@ -34,6 +34,10 @@ class BirdbrainRequest:
         return response
 
     @classmethod
+    def response_status(self, *args):
+        return BirdbrainRequest.request_status(BirdbrainRequest.response(args))
+
+    @classmethod
     def is_connected(self, device):
         try:
             response = self.response('hummingbird', 'in', 'orientation', 'Shake', device)
@@ -107,6 +111,16 @@ class BirdbrainRequest:
 #        if direction == BirdbrainConstant.RIGHT: return 'Right'
 #
 #        return false
+
+    @classmethod
+    def validate(self, validate, valid_range, validate_message):
+        if not str(validate) in valid_range: raise BirdbrainException(validate_message)
+
+        return True
+
+    @classmethod
+    def validate_port(self, port):
+        return BirdbrainRequest.validate(port, BirdbrainConstant.VALID_LED_PORTS, f"Port {str(port)} out of range.")
 
     @classmethod
     def bounds(self, input, input_min, input_max, pass_through_input = None):

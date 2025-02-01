@@ -53,14 +53,6 @@ class BirdbrainDevice:
 
         return self.__is_device("isFinch")
 
-    def is_valid(self, validate, valid_range):
-        if validate is None: return False
-
-        return str(validate) in valid_range
-
-    def is_connected_and_valid(self, validate, valid_range):
-        return self.is_valid(validate, valid_range) and self.is_connected()
-
     def remap_device(device):
         return device
 

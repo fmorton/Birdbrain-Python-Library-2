@@ -17,15 +17,13 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
         device_object = BirdbrainHummingbird.connect(device, raise_exception_if_no_connection)
 
         if not self.is_hummingbird():
-            raise BirdbrainException("Error: Device " + device + " is not a Hummingbird")
+            raise BirdbrainException("Device " + device + " is not a Hummingbird")
 
     def led(self, port, intensity):
-        if self.is_connected_and_valid(port, BirdbrainConstant.VALID_LED_PORTS):
-            return BirdbrainHummingbirdOutput.led(self.device, port, intensity)
+        return BirdbrainHummingbirdOutput.led(self.device, port, intensity)
 
-    def tri_led(self, port, r_intensity, g_intensity, b_intensity):
-        if self.is_connected_and_valid(port, BirdbrainConstant.VALID_LED_PORTS):
-            return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_intensity, g_intensity, b_intensity)
+    def tri_led(self, port, r_int, g_int, b_int):
+        return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_int, g_int, b_int)
 
     #def calculate_servo_r(self, servo_value):
     #    """Utility function to covert Servo from -100 - 100 to 0-255."""
@@ -42,7 +40,6 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     #dial = getDial
     #distance = getDistance
     #is_hummingbird = isHummingbird
-    #is_port_valid = isPortValid
     setLED = led
     #light = getLight
     #position_servo = setPositionServo
