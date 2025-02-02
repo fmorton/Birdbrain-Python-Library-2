@@ -39,19 +39,10 @@ class BirdbrainHummingbirdOutput(BirdbrainRequest):
         return BirdbrainRequest.response_status('hummingbird', 'out', 'servo', port, calculated_angle, device)
 
     @classmethod
-    def setRotationServo(self, port, speed):
+    def rotation_servo(self, device, port, speed):
         """Set Rotation servo of a certain port requested to a valid speed."""
+        BirdbrainRequest.validate_port(port)
 
-        # Early return if we can't execute the command because the port is invalid
-        if not self.isPortValid(port, 4):
-            return
+        calculated_speed = BirdbrainRequest.calculate_speed(BirdbrainRequest.bounds(int(speed), -100, 100))
 
-        # Check the speed lies within servo limits
-        speed = self.clampParametersToBounds(speed, -100, 100)
-
-        speed_c = self.calculate_servo_r(speed)
-        # Send HTTP request
-        response = self.send_httprequest("rotation", port, speed_c)
-        return response
-
-
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'rotation', port, calculated_speed, device)

@@ -28,6 +28,9 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     def position_servo(self, port, angle):
         return BirdbrainHummingbirdOutput.position_servo(self.device, port, angle)
 
+    def rotation_servo(self, port, speed):
+        return BirdbrainHummingbirdOutput.rotation_servo(self.device, port, speed)
+
     # Hummingbird Aliases
     #dial = getDial
     #distance = getDistance
@@ -35,7 +38,7 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     setLED = led
     #light = getLight
     setPositionServo = position_servo
-    #rotation_servo = setRotationServo
+    setRotationServo = rotation_servo
     #sensor = getSensor
     #sound = getSound
     # stop_all = stopAll

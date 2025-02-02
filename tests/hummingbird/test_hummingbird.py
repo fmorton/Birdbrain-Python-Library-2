@@ -69,3 +69,20 @@ def test_position_servo_with_alias():
 
     assert hummingbird.setPositionServo(1, "130")
     time.sleep(1)
+
+def test_rotation_servo_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    assert hummingbird.rotation_servo(2, 50)
+    time.sleep(1)
+
+    assert hummingbird.setRotationServo(2, "-50")
+    time.sleep(1)
+
+    assert hummingbird.rotation_servo(2, 100)
+    time.sleep(1)
+
+    assert hummingbird.setRotationServo(2, -100)
+    time.sleep(1)
+
+    assert hummingbird.setRotationServo(2, 0)

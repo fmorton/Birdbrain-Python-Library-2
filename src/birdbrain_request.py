@@ -98,13 +98,18 @@ class BirdbrainRequest:
     def calculate_intensity(self, intensity):
         return int(int(intensity) * 255 / 100)
 
-#    @classmethod
-#    def calculate_speed(self, speed):
-#        return 255 if speed.between?(-10, 10)
-#
-#        # QUESTION: why this calculation instead of normal mapping to 0..255 (and 255 means stop)
-#        return ((speed * 23 / 100) + 122)
-#
+    @classmethod
+    def calculate_speed(self, speed):
+        if int(speed) in range(-10, 10): return 255
+
+        # QUESTION: why this calculation instead of normal mapping to 0..255 (and 255 means stop)
+        # return ((int(speed) * 23 / 100) + 122)
+
+        if int(speed) < 0:
+            return int(119 - (-int(speed) / 100 * 45))
+        else:
+            return int((int(speed) / 100 * 25) + 121)
+
 #    @classmethod
 #    def calculate_left_or_right(self, direction):
 #        if direction == BirdbrainConstant.LEFT: return 'Left'

@@ -83,6 +83,17 @@ def test_bounds():
     assert BirdbrainRequest.bounds(str(999999), str(-100), str(100)) == 100
     assert BirdbrainRequest.bounds(str(-999999), str(-100), str(100)) == -100
 
+def test_calculate_speed():
+    assert BirdbrainRequest.calculate_speed(0) == 255
+    assert BirdbrainRequest.calculate_speed(9) == 255
+    assert BirdbrainRequest.calculate_speed(100) == 146.0
+    assert BirdbrainRequest.calculate_speed(-100) == 74.0
+
+    assert BirdbrainRequest.calculate_speed("0") == 255
+    assert BirdbrainRequest.calculate_speed("9") == 255
+    assert BirdbrainRequest.calculate_speed("100") == 146.0
+    assert BirdbrainRequest.calculate_speed("-100") == 74.0
+
 def test_validate_port():
     assert BirdbrainRequest.validate_port(1)
     assert BirdbrainRequest.validate_port(2)
