@@ -1,5 +1,3 @@
-from collections.abc import Iterable
-
 class BirdbrainUtility:
     @classmethod
     def is_none_or_empty(self, s):

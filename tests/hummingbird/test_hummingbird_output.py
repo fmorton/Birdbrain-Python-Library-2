@@ -35,9 +35,9 @@ def test_rotation_servo():
     hummingbird = BirdbrainHummingbird("A")
 
     BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, 2, 25)
-    time.sleep(1)
+    time.sleep(0.25)
 
     BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, "2", "-25")
-    time.sleep(1)
+    time.sleep(0.25)
 
     BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, 2, 0)

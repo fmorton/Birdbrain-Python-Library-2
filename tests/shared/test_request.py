@@ -1,6 +1,5 @@
 from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
-from birdbrain_utility import BirdbrainUtility
 
 import pytest
 

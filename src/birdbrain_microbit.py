@@ -1,10 +1,4 @@
-import sys
-import time
-
-import urllib.request
-
 from birdbrain_device import BirdbrainDevice
-from birdbrain_exception import BirdbrainException
 
 class BirdbrainMicrobit(BirdbrainDevice):
     def __init__(self, device = 'A', raise_exception_if_no_connection = True):

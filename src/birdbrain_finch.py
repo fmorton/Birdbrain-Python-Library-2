@@ -1,10 +1,3 @@
-#import sys
-#import time
-
-#import urllib.request
-
-from birdbrain_device import BirdbrainDevice
-from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
 
 class BirdbrainFinch(BirdbrainMicrobit):
