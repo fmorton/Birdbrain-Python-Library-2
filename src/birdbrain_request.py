@@ -126,7 +126,6 @@ class BirdbrainRequest:
     def validate_port(self, port, valid_range, allow_all = False):
         if allow_all and str(port) == 'all': return True
 
-        ####return BirdbrainRequest.validate(port, BirdbrainConstant.VALID_LED_PORTS, f"Port {str(port)} out of range.")
         return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
 
     @classmethod
