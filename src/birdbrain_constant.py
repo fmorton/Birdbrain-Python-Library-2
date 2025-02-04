@@ -1,21 +1,21 @@
 class BirdbrainConstant:
     BACKWARD = 'B'
-    BIRDBRAIN_TEST = False
+    BIRDBRAIN_TEST = True
     DEFAULT_DEVICE = 'A'
     FORWARD = 'F'
     LEFT = 'L'
     MOVE_START_WAIT_SECONDS = 0.15
     MOVE_TIMEOUT_SECONDS = 60.0
     RIGHT = 'R'
+    VALID_BEAK_PORTS = '1'
     VALID_DEVICES = 'ABC'
     VALID_LED_PORTS = '123'
     VALID_MOVE_DIRECTION = 'FB'
     VALID_SENSOR_PORTS = '123'
     VALID_SERVO_PORTS = '1234'
-    VALID_TAIL_PORTS = '1234all'
-    VALID_TRILED_PORTS = '1234'
+    VALID_TAIL_PORTS = '2345all'
+    VALID_TRI_LED_PORTS = '1234'
     VALID_TURN_DIRECTION = 'LR'
-
 
     #DEBUG: TBD if these are needed
     #CHAR_FLASH_TIME = 0.3  # Character Flash time

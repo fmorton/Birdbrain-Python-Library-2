@@ -84,7 +84,6 @@ class BirdbrainRequest:
     @classmethod
     def xyz_response(self, device, sensor):
         x = self.response('hummingbird', 'in', sensor, 'X', device)
-
         y = self.response('hummingbird', 'in', sensor, 'Y', device)
         z = self.response('hummingbird', 'in', sensor, 'Z', device)
 
@@ -96,7 +95,7 @@ class BirdbrainRequest:
 
     @classmethod
     def calculate_intensity(self, intensity):
-        return int(int(intensity) * 255 / 100)
+        return int(int(self.bounds(intensity, 0, 100)) * 255 / 100)
 
     @classmethod
     def calculate_speed(self, speed):
@@ -124,8 +123,11 @@ class BirdbrainRequest:
         return True
 
     @classmethod
-    def validate_port(self, port):
-        return BirdbrainRequest.validate(port, BirdbrainConstant.VALID_LED_PORTS, f"Port {str(port)} out of range.")
+    def validate_port(self, port, valid_range, allow_all = False):
+        if allow_all and str(port) == 'all': return True
+
+        ####return BirdbrainRequest.validate(port, BirdbrainConstant.VALID_LED_PORTS, f"Port {str(port)} out of range.")
+        return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
 
     @classmethod
     def bounds(self, input, input_min, input_max, pass_through_input = None):
@@ -135,3 +137,14 @@ class BirdbrainRequest:
         if int(input) > int(input_max): return int(input_max)
 
         return int(input)
+
+    @classmethod
+    def tri_led_response(self, device, port, r_intensity, g_intensity, b_intensity, valid_range, allow_all = False):
+        """Set TriLED  of a certain port requested to a valid intensity."""
+        self.validate_port(port, valid_range, allow_all)
+
+        calc_r = BirdbrainRequest.calculate_intensity(r_intensity)
+        calc_g = BirdbrainRequest.calculate_intensity(g_intensity)
+        calc_b = BirdbrainRequest.calculate_intensity(b_intensity)
+
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'triled', port, calc_r, calc_g, calc_b, device)

@@ -1,6 +1,7 @@
 import pytest
 import time
 
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
 from BirdBrain import BirdbrainHummingbird
@@ -52,13 +53,13 @@ def test_led_no_connection():
 def test_tri_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
-    assert hummingbird.tri_led(1, 50, "50", 0)
+    assert hummingbird.tri_led(1, 50, "50", 0, BirdbrainConstant.VALID_TRI_LED_PORTS)
     time.sleep(0.25)
 
-    assert hummingbird.setTriLED(1, 100, "0", "0")
+    assert hummingbird.setTriLED(1, 100, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
     time.sleep(0.25)
 
-    assert hummingbird.tri_led(1, 0, "0", "0")
+    assert hummingbird.tri_led(1, 0, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
     time.sleep(0.25)
 
 def test_position_servo_with_alias():

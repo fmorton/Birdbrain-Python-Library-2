@@ -1,3 +1,4 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 
@@ -94,14 +95,14 @@ def test_calculate_speed():
     assert BirdbrainRequest.calculate_speed("-100") == 74.0
 
 def test_validate_port():
-    assert BirdbrainRequest.validate_port(1)
-    assert BirdbrainRequest.validate_port(2)
-    assert BirdbrainRequest.validate_port(3)
-    assert BirdbrainRequest.validate_port("1")
+    assert BirdbrainRequest.validate_port(1, BirdbrainConstant.VALID_LED_PORTS)
+    assert BirdbrainRequest.validate_port(2, BirdbrainConstant.VALID_LED_PORTS)
+    assert BirdbrainRequest.validate_port(3, BirdbrainConstant.VALID_LED_PORTS)
+    assert BirdbrainRequest.validate_port("1", BirdbrainConstant.VALID_LED_PORTS)
 
     with pytest.raises(BirdbrainException) as e:
-        BirdbrainRequest.validate_port(4)
+        BirdbrainRequest.validate_port(4, BirdbrainConstant.VALID_LED_PORTS)
     with pytest.raises(BirdbrainException) as e:
-        BirdbrainRequest.validate_port(-1)
+        BirdbrainRequest.validate_port(-1, BirdbrainConstant.VALID_LED_PORTS)
     with pytest.raises(BirdbrainException) as e:
-        BirdbrainRequest.validate_port("4")
+        BirdbrainRequest.validate_port("4", BirdbrainConstant.VALID_LED_PORTS)

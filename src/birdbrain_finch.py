@@ -1,3 +1,5 @@
+from birdbrain_constant import BirdbrainConstant
+from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_microbit import BirdbrainMicrobit
 
 class BirdbrainFinch(BirdbrainMicrobit):
@@ -10,14 +12,20 @@ class BirdbrainFinch(BirdbrainMicrobit):
 
     def __init__(self, device='A', raise_exception_if_no_connection = True):
         """Class initializer. """
-        self.move_start_wait_seconds = MOVE_START_WAIT_SECONDS # seconds to allow finch to start moving
-        self.move_timeout_seconds = MOVE_TIMEOUT_SECONDS # maximum number of seconds to wait for finch moving
+        self.move_start_wait_seconds = BirdbrainConstant.MOVE_START_WAIT_SECONDS # seconds to allow finch to start moving
+        self.move_timeout_seconds = BirdbrainConstant.MOVE_TIMEOUT_SECONDS # maximum number of seconds to wait for finch moving
         self.move_start_time = 0 # after move records how long it took the startup to complete for tuning
 
         self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
         if not self.is_finch():
             raise BirdbrainException("Error: Device " + device + " is not a Finch")
+
+    def beak(self, r_intensity, g_intensity, b_intensity):
+        return BirdbrainFinchOutput.beak(self.device, r_intensity, g_intensity, b_intensity)
+
+    def tail(self, port, r_intensity, g_intensity, b_intensity):
+        return BirdbrainFinchOutput.tail(self.device, port, r_intensity, g_intensity, b_intensity)
 
     # Finch Utility Functions
     #@staticmethod
@@ -56,7 +64,7 @@ class BirdbrainFinch(BirdbrainMicrobit):
 
     # Finch Aliases
     #acceleration = getAcceleration
-    #beak = setBeak
+    setBeak = beak
     #compass = getCompass
     #distance = getDistance
     #encoder = getEncoder
@@ -67,5 +75,5 @@ class BirdbrainFinch(BirdbrainMicrobit):
     #move = setMove
     #orientation = getOrientation
     #reset_encoders = resetEncoders
-    #tail = setTail
+    setTail = tail
     #turn = setTurn

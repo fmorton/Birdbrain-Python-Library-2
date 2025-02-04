@@ -1,44 +1,21 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainFinchOutput(BirdbrainRequest):
-    # Finch Output
-    def __setTriLED(self, port, redIntensity, greenIntensity, blueIntensity):
-        """Set TriLED(s) on the Finch.
-        Port 1 is the beak. Ports 2 to 5 are tail. Specify port "all" to set the whole tail."""
-
-        # Early return if we can't execute the command because the port is invalid
-        if ((not port == "all") and ((port < 1) or (port > 5))):
-            return 0
-
-        # Check the intensity value lies with in the range of RGB LED limits
-        red = self.clampParametersToBounds(redIntensity, 0, 100)
-        green = self.clampParametersToBounds(greenIntensity, 0, 100)
-        blue = self.clampParametersToBounds(blueIntensity, 0, 100)
-
-        # Change the range from 0-100 to 0-255
-        (red_c, green_c, blue_c) = self.__calculate_RGB(red, green, blue)
-
-        # Send HTTP request
-        intensityString = str(red_c) + "/" + str(green_c) + "/" + str(blue_c)
-        response = self.__send_httprequest_out("triled", port, intensityString)
-        return response
-
-    def setBeak(self, redIntensity, greenIntensity, blueIntensity):
+    @classmethod
+    def beak(self, device, r_intensity, g_intensity, b_intensity):
         """Set beak to a valid intensity. Each intensity should be an integer from 0 to 100."""
+        return self.tri_led_response(device, 1, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_BEAK_PORTS)
 
-        response = self.__setTriLED(1, redIntensity, greenIntensity, blueIntensity)
-        return response
-
-    def setTail(self, port, redIntensity, greenIntensity, blueIntensity):
+    @classmethod
+    def tail(self, device, port, r_intensity, g_intensity, b_intensity):
         """Set tail to a valid intensity. Port can be specified as 1, 2, 3, 4, or all.
         Each intensity should be an integer from 0 to 100."""
 
-        # Triled port 1 is the beak. Tail starts counting at 2
         if not port == "all":
-            port = port + 1
+            port = int(port) + 1  # tail starts counting at 2
 
-        response = self.__setTriLED(port, redIntensity, greenIntensity, blueIntensity)
-        return response
+        return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_TAIL_PORTS, True)
 
     def __moveFinchAndWait(self, motion, direction, length, speed):
         """Send a command to move the finch and wait until the finch has finished
