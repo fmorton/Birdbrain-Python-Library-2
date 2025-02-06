@@ -19,13 +19,15 @@ class BirdbrainRequest:
         if "false" in args: return False
 
         try:
-            if BirdbrainConstant.BIRDBRAIN_TEST: print("Test:", self.uri(args))
+            if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: URI", self.uri(args))
 
             response_request = urllib.request.urlopen(self.uri(args))
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
             raise(BirdbrainException("Error: Request to device failed"))
 
         response = response_request.read().decode('utf-8').lower()
+
+        if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: response", response)
 
         if (self.is_not_connected_response(response)): raise(BirdbrainException("Error: The device is not connected"))
 

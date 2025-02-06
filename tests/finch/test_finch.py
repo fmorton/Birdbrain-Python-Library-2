@@ -56,3 +56,15 @@ def test_move_with_alias():
 
         assert finch.move("BAD", 4, 20)
     assert e.value.message == "Error: Request to device failed"
+
+def test_is_moving():
+    finch = BirdbrainFinch("B")
+
+    assert finch.move(BirdbrainConstant.FORWARD, 4, 5)
+    assert finch.is_moving()
+
+    finch.stop_all()
+
+    time.sleep(1)
+
+    assert not finch.is_moving()

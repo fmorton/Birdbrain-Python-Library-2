@@ -60,3 +60,6 @@ class BirdbrainDevice:
         self.connected = BirdbrainRequest.is_connected(self.device)
 
         return self.connected
+
+    def stop_all(self):
+        BirdbrainRequest.stop_all(self.device)

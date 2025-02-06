@@ -1,7 +1,20 @@
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainFinchInput(BirdbrainRequest):
-    # Finch Inputs
+    #DEFAULT_FACTOR = 1.0
+    #DEFAULT_MIN_RESPONSE = 0
+    #DEFAULT_MAX_RESPONSE = 100
+    #DEFAULT_TYPE_METHOD = 'to_i'
+    #DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
+    #DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
+    #ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
+    #ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
+    #ORIENTATION_IN_BETWEEN = 'In between'
+
+    @classmethod
+    def is_moving(self, device):
+        return BirdbrainRequest.request_status(BirdbrainRequest.response('hummingbird', 'in', 'finchIsMoving', 'static', device))
+
     def __getSensor(self, sensor, port):
         """Read the value of the specified sensor. Port should be specified as either 'R'
         or 'L'. If the port is not valid, returns -1."""

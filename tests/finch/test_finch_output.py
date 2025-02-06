@@ -34,16 +34,18 @@ def test_tail():
 def test_move():
     finch = BirdbrainFinch("B")
 
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, 4, 20)
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, "4", "20")
+    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, 4, 5)
+    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, "4", "5")
 
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, 4, 20)
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, "4", "20")
+    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, 4, 5)
+    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, "4", "5")
 
     with pytest.raises(BirdbrainException):
-        assert BirdbrainFinchOutput.move(finch.device, "BAD", 4, 20)
+        assert BirdbrainFinchOutput.move(finch.device, "BAD", 4, 5)
         assert e.value.message == "Error: Request to device failed"
 
     with pytest.raises(BirdbrainException) as e:
-        assert BirdbrainFinchOutput.move(finch.device, None, 4, 20)
+        assert BirdbrainFinchOutput.move(finch.device, None, 4, 5)
         assert e.value.message == "Error: Request to device failed"
+
+    finch.stop_all()

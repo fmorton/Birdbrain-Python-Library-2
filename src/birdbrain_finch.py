@@ -1,4 +1,5 @@
 from birdbrain_constant import BirdbrainConstant
+from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_microbit import BirdbrainMicrobit
 
@@ -29,6 +30,10 @@ class BirdbrainFinch(BirdbrainMicrobit):
 
     def move(self, direction, distance, speed):
         return BirdbrainFinchOutput.move(self.device, direction, distance, speed)
+
+    def is_moving(self):
+        return BirdbrainFinchInput.is_moving(self.device)
+
 
     # Finch Utility Functions
     #@staticmethod
