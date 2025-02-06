@@ -1,6 +1,5 @@
 import pytest
 import time
-import warnings
 
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
