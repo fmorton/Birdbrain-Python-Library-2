@@ -22,7 +22,7 @@ class BirdbrainRequest:
             if BirdbrainConstant.BIRDBRAIN_TEST: print("Test:", self.uri(args))
 
             response_request = urllib.request.urlopen(self.uri(args))
-        except (ConnectionError, urllib.error.URLError):
+        except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
             raise(BirdbrainException("Error: Request to device failed"))
 
         response = response_request.read().decode('utf-8').lower()

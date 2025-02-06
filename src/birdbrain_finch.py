@@ -27,6 +27,9 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def tail(self, port, r_intensity, g_intensity, b_intensity):
         return BirdbrainFinchOutput.tail(self.device, port, r_intensity, g_intensity, b_intensity)
 
+    def move(self, direction, distance, speed):
+        return BirdbrainFinchOutput.move(self.device, direction, distance, speed)
+
     # Finch Utility Functions
     #@staticmethod
     #def __calculate_RGB(r_intensity, g_intensity, b_intensity):
@@ -72,7 +75,7 @@ class BirdbrainFinch(BirdbrainMicrobit):
     #line = getLine
     #magnetometer = getMagnetometer
     #motors = setMotors
-    #move = setMove
+    setMove = move
     #orientation = getOrientation
     #reset_encoders = resetEncoders
     setTail = tail

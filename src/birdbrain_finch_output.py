@@ -37,20 +37,19 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         return response
 
-    def setMove(self, direction, distance, speed):
+    @classmethod
+    def move(self, device, direction, distance, speed):
         """Move the Finch forward or backward for a given distance at a given speed.
         Direction should be specified as 'F' or 'B'."""
+        calc_direction = None
 
-        direction = self.__formatForwardBackward(direction)
-        if direction is None:
-            return 0
+        if direction == BirdbrainConstant.FORWARD: calc_direction = 'Forward'
+        if direction == BirdbrainConstant.BACKWARD: calc_direction = 'Backward'
 
-        distance = self.clampParametersToBounds(distance, -10000, 10000)
-        speed = self.clampParametersToBounds(speed, 0, 100)
+        calc_distance = BirdbrainRequest.bounds(distance, -10000, 10000)
+        calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
 
-        response = self.__moveFinchAndWait("move", direction, distance, speed)
-
-        return response
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
 
     def setTurn(self, direction, angle, speed):
         """Turn the Finch right or left to a given angle at a given speed.

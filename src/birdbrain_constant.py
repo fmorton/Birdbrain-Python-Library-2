@@ -1,6 +1,6 @@
 class BirdbrainConstant:
     BACKWARD = 'B'
-    BIRDBRAIN_TEST = True
+    BIRDBRAIN_TEST = False
     DEFAULT_DEVICE = 'A'
     FORWARD = 'F'
     LEFT = 'L'
