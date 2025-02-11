@@ -111,12 +111,12 @@ class BirdbrainRequest:
         else:
             return int((int(speed) / 100 * 25) + 121)
 
-#    @classmethod
-#    def calculate_left_or_right(self, direction):
-#        if direction == BirdbrainConstant.LEFT: return 'Left'
-#        if direction == BirdbrainConstant.RIGHT: return 'Right'
-#
-#        return false
+    @classmethod
+    def calculate_left_or_right(self, direction):
+        if direction == BirdbrainConstant.LEFT: return 'Left'
+        if direction == BirdbrainConstant.RIGHT: return 'Right'
+
+        return None
 
     @classmethod
     def validate(self, validate, valid_range, validate_message):
