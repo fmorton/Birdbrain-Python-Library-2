@@ -1,4 +1,6 @@
 from birdbrain_device import BirdbrainDevice
+from birdbrain_exception import BirdbrainException
+from birdbrain_microbit_output import BirdbrainMicrobitOutput
 
 class BirdbrainMicrobit(BirdbrainDevice):
     def __init__(self, device = 'A', raise_exception_if_no_connection = True):
@@ -7,31 +9,38 @@ class BirdbrainMicrobit(BirdbrainDevice):
         if not self.is_microbit():
             raise BirdbrainException("Error: Device " + device + " is not a Microbit")
 
-    def clampParametersToBounds(self, input, inputMin, inputMax):
-        """This function checks whether an input parameter is within the
-        given bounds. If not, it prints a warning and returns a value of the
-        input parameter that is within the required range. Otherwise, it
-        just returns the initial value."""
+    def microbit_display(self, list):
+        return BirdbrainMicrobitOutput.microbit_display(self.state, self.device, list)
 
-        if ((input < inputMin) or (input > inputMax)):
-            print("Warning: Please choose a parameter between " + str(inputMin) + " and " + str(inputMax))
-            return max(inputMin, min(input, inputMax))
-        else:
-            return input
+        #DEBUG
+        #if not self.is_microbit():
+        #    raise BirdbrainException("Error: Device " + device + " is not a Microbit")
 
-    def process_display(self, value):
-        """Convert a string of 1's and 0's into true and false."""
+    #def clampParametersToBounds(self, input, inputMin, inputMax):
+        #"""This function checks whether an input parameter is within the
+        #given bounds. If not, it prints a warning and returns a value of the
+        #input parameter that is within the required range. Otherwise, it
+        #just returns the initial value."""
 
-        new_str = ""
-        for letter in value:
-            if (letter == 0):
-                new_str += "false/"
-            else:  # All nonzero values become true
-                new_str += "true/"
+        #if ((input < inputMin) or (input > inputMax)):
+        #    print("Warning: Please choose a parameter between " + str(inputMin) + " and " + str(inputMax))
+        #    return max(inputMin, min(input, inputMax))
+        #else:
+        #    return input
+
+    #def process_display(self, value):
+        #"""Convert a string of 1's and 0's into true and false."""
+
+        #new_str = ""
+        #for letter in value:
+        #    if (letter == 0):
+        #        new_str += "false/"
+        #    else:  # All nonzero values become true
+        #        new_str += "true/"
 
         # Remove the last character in a string
-        new_str = new_str[:len(new_str)-1]
-        return new_str
+        #new_str = new_str[:len(new_str)-1]
+        #return new_str
 
     #@staticmethod
     #def __constrainToInt(number):
@@ -94,7 +103,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #acceleration = getAcceleration
     #button = getButton
     #compass = getCompass
-    #display = setDisplay
+    setDisplay = microbit_display
     #is_microbit = isMicrobit
     #is_shaking = isShaking
     #magnetometer = getMagnetometer

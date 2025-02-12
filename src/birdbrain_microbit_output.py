@@ -1,9 +1,32 @@
+from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainMicrobitOutput(BirdbrainRequest):
-    # ---------------------------------------------------------------------
-    # OUTPUTS MICRO BIT
-    # ---------------------------------------------------------------------
+    @classmethod
+    def microbit_display(self, state, device, list):
+        if len(list) != 25: raise BirdbrainException("Error: microbit_display() requires a list of length 25")
+
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'symbol', device, state.microbit_display_map_as_string(list))
+
+    @classmethod
+    def microbit_clear_display(self, state, device):
+        return microbit_display(state, device, BirdbrainState.microbit_empty_display_map())
+
+    @classmethod
+    def microbit_point(self, state, device, x, y, value):
+        index = ((x * 5) + y - 6)
+
+        state.microbit_display_map[index] = value
+
+        return microbit_display(state, device, state.microbit_display_map)
+
+    @classmethod
+    def microbit_print(self, device, message):
+        calc_message = message.gsub(' ', '%20')
+
+        request_status(response_body('hummingbird', 'out', 'print', calc_message, device))
+
+    #####----------------------------------
     def setDisplay(self, LEDlist):
         """Set Display of the LED Array on microbit with the given input LED
         list of 0's and 1's."""

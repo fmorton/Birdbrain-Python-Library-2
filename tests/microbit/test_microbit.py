@@ -1,8 +1,11 @@
 from birdbrain_exception import BirdbrainException
+from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_state import BirdbrainState
 
 import pytest
+import time
+import random
 
 def test_connect_device_name_as_none():
     with pytest.raises(BirdbrainException) as e:
@@ -27,26 +30,22 @@ def test_is():
     assert microbit.is_hummingbird()
     assert not microbit.is_finch()
 
-def test_state():
-    state = BirdbrainState()
+def test_microbit_display_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
 
-    for pixel in state.microbit_display_map:
-        assert pixel == 0
+    assert hummingbird.microbit_display([ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 ])
 
-    assert state.microbit_display_map[0] == 0
-    assert state.microbit_display_map[18] == 0
+    time.sleep(0.5)
 
-    state.set_pixel(1, 1, 1)
-    state.set_pixel(4, 4, 1)
-    
-    assert state.microbit_display_map[0] == 1
-    assert state.microbit_display_map[18] == 1
-    assert state.microbit_display_map[1] == 0
-    assert state.microbit_display_map[19] == 0
+    assert hummingbird.setDisplay([ 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 ])
 
-    s = state.microbit_display_map_as_strings()
+    time.sleep(0.5)
 
-    assert s[0] == "true"
-    assert s[18] == "true"
-    assert s[1] == "false"
-    assert s[19] == "false"
+    hummingbird.stop_all()
+
+def test_microbit_display_wrong_size():
+    with pytest.raises(BirdbrainException) as e:
+        hummingbird = BirdbrainHummingbird("A")
+
+        hummingbird.microbit_display([ 0,1 ])
+    assert e.value.message == "Error: microbit_display() requires a list of length 25"
