@@ -12,9 +12,12 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def microbit_display(self, list):
         return BirdbrainMicrobitOutput.microbit_display(self.state, self.device, list)
 
-        #DEBUG
-        #if not self.is_microbit():
-        #    raise BirdbrainException("Error: Device " + device + " is not a Microbit")
+    def microbit_clear_display(self):
+        return BirdbrainMicrobitOutput.microbit_clear_display(self.state, self.device)
+
+    def microbit_point(self, x, y, value):
+        return BirdbrainMicrobitOutput.microbit_point(self.state, self.device, x, y, value)
+
 
     #def clampParametersToBounds(self, input, inputMin, inputMax):
         #"""This function checks whether an input parameter is within the
@@ -104,12 +107,12 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #button = getButton
     #compass = getCompass
     setDisplay = microbit_display
-    #is_microbit = isMicrobit
+    #isMicrobit = is_microbit
     #is_shaking = isShaking
     #magnetometer = getMagnetometer
     #orientation = getOrientation
     #play_note = playNote
-    #point = setPoint
+    setPoint = microbit_point
     #sound = getSound
     #stop_all = stopAll
     #temperature = getTemperature

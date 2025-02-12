@@ -8,7 +8,6 @@ class BirdbrainState:
     def set_list(self, list):
         self.microbit_display_map = list
 
-    #DEBUG: index calculation may be wrong
     def set_pixel(self, x, y, value):
         self.microbit_display_map[((x * 5) + y - 6)] = value
 

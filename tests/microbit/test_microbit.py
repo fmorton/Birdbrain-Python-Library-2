@@ -35,11 +35,11 @@ def test_microbit_display_with_alias():
 
     assert hummingbird.microbit_display([ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 ])
 
-    time.sleep(0.5)
+    time.sleep(0.25)
 
     assert hummingbird.setDisplay([ 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 ])
 
-    time.sleep(0.5)
+    time.sleep(0.25)
 
     hummingbird.stop_all()
 
@@ -49,3 +49,32 @@ def test_microbit_display_wrong_size():
 
         hummingbird.microbit_display([ 0,1 ])
     assert e.value.message == "Error: microbit_display() requires a list of length 25"
+
+def test_microbit_point_and_microbit_clear_display_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    for i in range(2):
+        assert hummingbird.microbit_point(2, 2, 1)
+        assert hummingbird.microbit_point(2, 4, 1)
+        assert hummingbird.microbit_point(4, 2, 1)
+        assert hummingbird.setPoint(4, 4, 1)
+
+        time.sleep(0.25)
+
+        hummingbird.microbit_clear_display()
+
+def test_microbit_point_true_or_false():
+    hummingbird = BirdbrainHummingbird("A")
+
+    assert hummingbird.microbit_point(3, 3, True)
+
+    time.sleep(0.25)
+
+    assert hummingbird.microbit_point(3, 3, False)
+
+def test_microbit_point_out_of_range():
+    with pytest.raises(BirdbrainException) as e:
+        hummingbird = BirdbrainHummingbird("A")
+
+        assert hummingbird.microbit_point(999, 1, 1)
+    assert e.value.message == "Error: microbit_point out of range"

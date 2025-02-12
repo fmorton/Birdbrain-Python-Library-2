@@ -66,7 +66,7 @@ def test_position_servo_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.position_servo(1, 50)
-    time.sleep(0.5)
+    time.sleep(0.25)
 
     assert hummingbird.setPositionServo(1, "130")
 
