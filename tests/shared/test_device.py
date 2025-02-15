@@ -1,7 +1,7 @@
+import pytest
+
 from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
-
-import pytest
 
 def test_none_device():
     with pytest.raises(BirdbrainException) as e:

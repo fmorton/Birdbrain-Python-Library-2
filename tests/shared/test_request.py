@@ -1,8 +1,8 @@
+import pytest
+
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
-
-import pytest
 
 def test_request_uri():
     uri = BirdbrainRequest.uri(["in", "1", "2", "3", "4", [ "99", 99 ], "something"])
