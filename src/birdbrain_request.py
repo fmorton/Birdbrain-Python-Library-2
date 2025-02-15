@@ -140,6 +140,15 @@ class BirdbrainRequest:
         return int(input)
 
     @classmethod
+    def decimal_bounds(self, input, input_min, input_max, pass_through_input = None):
+        #if pass_through_input is not None and (input == pass_through_input): return int(input)
+
+        if float(input) < float(input_min): return float(input_min)
+        if float(input) > float(input_max): return float(input_max)
+
+        return float(input)
+
+    @classmethod
     def tri_led_response(self, device, port, r_intensity, g_intensity, b_intensity, valid_range, allow_all = False):
         """Set TriLED  of a certain port requested to a valid intensity."""
         self.validate_port(port, valid_range, allow_all)

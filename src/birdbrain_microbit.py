@@ -18,32 +18,14 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def microbit_point(self, x, y, value):
         return BirdbrainMicrobitOutput.microbit_point(self.state, self.device, x, y, value)
 
+    def microbit_print(self, message):
+        return BirdbrainMicrobitOutput.microbit_print(self.state, self.device, message)
 
-    #def clampParametersToBounds(self, input, inputMin, inputMax):
-        #"""This function checks whether an input parameter is within the
-        #given bounds. If not, it prints a warning and returns a value of the
-        #input parameter that is within the required range. Otherwise, it
-        #just returns the initial value."""
+    def microbit_play_note(self, note, beats):
+        return BirdbrainMicrobitOutput.microbit_play_note(self.device, note, beats)
 
-        #if ((input < inputMin) or (input > inputMax)):
-        #    print("Warning: Please choose a parameter between " + str(inputMin) + " and " + str(inputMax))
-        #    return max(inputMin, min(input, inputMax))
-        #else:
-        #    return input
-
-    #def process_display(self, value):
-        #"""Convert a string of 1's and 0's into true and false."""
-
-        #new_str = ""
-        #for letter in value:
-        #    if (letter == 0):
-        #        new_str += "false/"
-        #    else:  # All nonzero values become true
-        #        new_str += "true/"
-
-        # Remove the last character in a string
-        #new_str = new_str[:len(new_str)-1]
-        #return new_str
+    def beep(self):
+        return BirdbrainMicrobitOutput.microbit_play_note(self.device, 80, 0.333)
 
     #def send_httprequest_micro_in(self, peri, value):
     #    """Utility function to arrange and send the http request for microbit input functions."""
@@ -92,7 +74,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #is_shaking = isShaking
     #magnetometer = getMagnetometer
     #orientation = getOrientation
-    #play_note = playNote
+    playNote = microbit_play_note
     setPoint = microbit_point
     #sound = getSound
     #stop_all = stopAll

@@ -63,3 +63,6 @@ def test_microbit_print():
 
     assert BirdbrainMicrobitOutput.microbit_print(state, "A", " ")
     time.sleep(1)
+
+def test_microbit_play_note():
+    assert BirdbrainMicrobitOutput.microbit_play_note("A", 50, 0.25)

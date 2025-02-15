@@ -85,3 +85,16 @@ def test_microbit_print():
     hummingbird.microbit_print("A")
 
     time.sleep(1)
+
+def test_microbit_play_note_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    hummingbird.microbit_play_note(75, 0.5)
+
+    time.sleep(0.25)
+
+    hummingbird.playNote(40, 0.5)
+
+    time.sleep(0.25)
+
+    hummingbird.beep()

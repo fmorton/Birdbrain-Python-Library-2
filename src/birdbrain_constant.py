@@ -1,12 +1,15 @@
 class BirdbrainConstant:
-    BACKWARD = 'B'
     BIRDBRAIN_TEST = False
+
+    BACKWARD = 'B'
+    BEATS_TEMPO = 60
+    BEATS_TEMPO_FACTOR = 1000   # (60000 / TEMPO)
     DEFAULT_DEVICE = 'A'
     FORWARD = 'F'
     LEFT = 'L'
+    MOVE_CHECK_MOVING_DELAY = 0.05
     MOVE_START_WAIT_SECONDS = 0.15
     MOVE_TIMEOUT_SECONDS = 60.0
-    MOVE_CHECK_MOVING_DELAY = 0.05
     RESET_ENCODERS_DELAY = 0.2
     RIGHT = 'R'
     VALID_BEAK_PORTS = '1'
@@ -36,4 +39,3 @@ class BirdbrainConstant:
     # Scaling factors for Finch
     #BATTERY_FACTOR = 0.0406
 
-    #TEMPO = 60
