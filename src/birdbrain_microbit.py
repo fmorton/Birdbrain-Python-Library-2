@@ -99,7 +99,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #    if (response == "Not Connected"):
     #        print(NO_CONNECTION)
     #        sys.exit()
-    #    time.sleep(0.01)        # Hack to prevent http requests from overloading the BlueBird Connector
+    #    time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
     #    return response
 
     # Microbit Aliases

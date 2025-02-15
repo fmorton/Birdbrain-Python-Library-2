@@ -24,17 +24,17 @@ def test_tail_with_alias():
     finch = BirdbrainFinch("B")
 
     assert finch.tail(1, 10, 0, 50)
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.tail(1, "50", 0, "0")
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.tail("2", "50", 0, "0")
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.tail(3, "50", 0, "0")
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.tail(4, "50", 0, "0")
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.tail("all", 100, 0, 100)
-    time.sleep(0.25)
+    time.sleep(0.1)
     assert finch.setTail("all", 0, 0, 0)
 
 def test_move_with_alias():
@@ -68,3 +68,11 @@ def test_is_moving():
     time.sleep(1)
 
     assert not finch.is_moving()
+
+def test_turn_with_alias():
+    finch = BirdbrainFinch("B")
+
+    finch.turn("L", 45, 50)
+    finch.turn("R", 45, 50)
+    finch.turn("L", "45", 50)
+    finch.setTurn("R", 45, "50")

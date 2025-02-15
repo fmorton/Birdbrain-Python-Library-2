@@ -31,7 +31,7 @@ class BirdbrainRequest:
 
         if (self.is_not_connected_response(response)): raise(BirdbrainException("Error: The device is not connected"))
 
-        time.sleep(0.01)  # Hack to prevent http requests from overloading the BlueBird Connector
+        time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
         return response
 

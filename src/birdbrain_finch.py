@@ -13,10 +13,9 @@ class BirdbrainFinch(BirdbrainMicrobit):
 
     def __init__(self, device='A', raise_exception_if_no_connection = True):
         """Class initializer. """
-        self.move_start_wait_seconds = BirdbrainConstant.MOVE_START_WAIT_SECONDS # seconds to allow finch to start moving
-        self.move_timeout_seconds = BirdbrainConstant.MOVE_TIMEOUT_SECONDS # maximum number of seconds to wait for finch moving
-        self.move_start_time = 0 # after move records how long it took the startup to complete for tuning
-
+        #self.move_start_wait_seconds = BirdbrainConstant.MOVE_START_WAIT_SECONDS # seconds to allow finch to start moving
+        #self.move_timeout_seconds = BirdbrainConstant.MOVE_TIMEOUT_SECONDS # maximum number of seconds to wait for finch moving
+        #self.move_start_time = 0 # after move records how long it took the startup to complete for tuning
         self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
         if not self.is_finch():
@@ -31,44 +30,11 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def move(self, direction, distance, speed):
         return BirdbrainFinchOutput.move(self.device, direction, distance, speed)
 
+    def turn(self, direction, angle, speed):
+        return BirdbrainFinchOutput.turn(self.device, direction, angle, speed)
+
     def is_moving(self):
         return BirdbrainFinchInput.is_moving(self.device)
-
-
-    # Finch Utility Functions
-    #@staticmethod
-    #def __calculate_RGB(r_intensity, g_intensity, b_intensity):
-    #    """Utility function to covert RGB LED from 0-100 to 0-255"""
-
-    #    r_intensity_c = int((r_intensity * 255) / 100)
-    #    g_intensity_c = int((g_intensity * 255) / 100)
-    #    b_intensity_c = int((b_intensity * 255) / 100)
-
-    #    return (r_intensity_c, g_intensity_c, b_intensity_c)
-
-    #@staticmethod
-    #def __formatRightLeft(direction):
-    #    """Utility function to format a selection of right or left for a backend request."""
-
-    #    if direction == "R" or direction == "r" or direction == "Right" or direction == "right":
-    #        return "Right"
-    #    elif direction == "L" or direction == "l" or direction == "Left" or direction == "left":
-    #        return "Left"
-    #    else:
-    #        print("Error: Please specify either 'R' or 'L' direction.")
-    #        return None
-
-    #@staticmethod
-    #def __formatForwardBackward(direction):
-    #    """Utility function to format a selection of forward or backward for a backend request."""
-
-    #    if direction == "F" or direction == "f" or direction == "Forward" or direction == "forward":
-    #        return "Forward"
-    #    elif direction == "B" or direction == "b" or direction == "Backward" or direction == "backward":
-    #        return "Backward"
-    #    else:
-    #        print("Error: Please specify either 'F' or 'B' direction.")
-    #        return None
 
     # Finch Aliases
     #acceleration = getAcceleration
@@ -84,4 +50,4 @@ class BirdbrainFinch(BirdbrainMicrobit):
     #orientation = getOrientation
     #reset_encoders = resetEncoders
     setTail = tail
-    #turn = setTurn
+    setTurn = turn

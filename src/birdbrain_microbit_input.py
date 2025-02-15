@@ -121,7 +121,8 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
     def stopAll(self):
         """Stop all device outputs (ie. Servos, LEDs, LED Array, Motors, etc.)."""
 
-        time.sleep(0.1)         # Hack to give stopAll() time to act before the end of a program
+        time.sleep(0.1)  # hack to give stopAll() time to act before the end of a program
+
         response = self.send_httprequest_stopAll()
         self.symbolvalue = [0]*25
         return response

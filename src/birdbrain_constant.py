@@ -6,6 +6,7 @@ class BirdbrainConstant:
     LEFT = 'L'
     MOVE_START_WAIT_SECONDS = 0.15
     MOVE_TIMEOUT_SECONDS = 60.0
+    MOVE_CHECK_MOVING_DELAY = 0.05
     RIGHT = 'R'
     VALID_BEAK_PORTS = '1'
     VALID_DEVICES = 'ABC'

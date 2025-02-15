@@ -5,46 +5,51 @@ from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_finch import BirdbrainFinch
 from birdbrain_finch_output import BirdbrainFinchOutput
+from birdbrain_request import BirdbrainRequest
 
 def test_beak():
-    finch = BirdbrainFinch("B")
-    
-    assert BirdbrainFinchOutput.beak(finch.device, 10, 50, 50)
+    assert BirdbrainFinchOutput.beak("B", 10, 50, 50)
     time.sleep(0.25)
-    assert BirdbrainFinchOutput.beak(finch.device, 0, 0, 0)
+    assert BirdbrainFinchOutput.beak("B", 0, 0, 0)
 
 def test_tail():
-    finch = BirdbrainFinch("B")
-    
-    assert BirdbrainFinchOutput.tail(finch.device, 1, 10, 50, 50)
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, 1, "0", 50, "0")
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, "2", "0", 50, "0")
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, 3, "0", 50, "0")
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, 4, "0", 50, "0")
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, "all", 0, 0, 100)
-    time.sleep(0.25)
-    assert BirdbrainFinchOutput.tail(finch.device, "all", 0, 0, 0)
+    assert BirdbrainFinchOutput.tail("B", 1, 10, 50, 50)
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", 1, "0", 50, "0")
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", "2", "0", 50, "0")
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", 3, "0", 50, "0")
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", 4, "0", 50, "0")
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", "all", 0, 0, 100)
+    time.sleep(0.1)
+    assert BirdbrainFinchOutput.tail("B", "all", 0, 0, 0)
 
 def test_move():
-    finch = BirdbrainFinch("B")
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 4, 5)
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, "4", "5")
 
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, 4, 5)
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.FORWARD, "4", "5")
-
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, 4, 5)
-    assert BirdbrainFinchOutput.move(finch.device, BirdbrainConstant.BACKWARD, "4", "5")
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 4, 5)
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, "4", "5")
 
     with pytest.raises(BirdbrainException):
-        assert BirdbrainFinchOutput.move(finch.device, "BAD", 4, 5)
+        assert BirdbrainFinchOutput.move("B", "BAD", 4, 5)
         assert e.value.message == "Error: Request to device failed"
 
     with pytest.raises(BirdbrainException) as e:
-        assert BirdbrainFinchOutput.move(finch.device, None, 4, 5)
+        assert BirdbrainFinchOutput.move("B", None, 4, 5)
         assert e.value.message == "Error: Request to device failed"
 
-    finch.stop_all()
+    BirdbrainRequest.stop_all("B")
+
+def test_turn():
+    assert BirdbrainFinchOutput.turn("B", "L", 25, 50)
+    assert BirdbrainFinchOutput.turn("B", "R", 25, 50)
+    assert BirdbrainFinchOutput.turn("B", "L", "25", 50)
+    assert BirdbrainFinchOutput.turn("B", "R", 25, "50")
+
+    with pytest.raises(BirdbrainException):
+        assert BirdbrainFinchOutput.turn("B", "BAD", 90, 50)
+        assert e.value.message == "Error: Request to device failed"

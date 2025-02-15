@@ -1,5 +1,8 @@
 from birdbrain_constant import BirdbrainConstant
+from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
+
+import time
 
 class BirdbrainFinchOutput(BirdbrainRequest):
     @classmethod
@@ -17,32 +20,15 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_TAIL_PORTS, True)
 
-    #def __moveFinchAndWait(self, motion, direction, length, speed):
-    #    """Send a command to move the finch and wait until the finch has finished
-    #    its motion to return. Used by setMove and setTurn."""
-
-        #isMoving = self.__send_httprequest_in("finchIsMoving", "static")
-        #wasMoving = isMoving
-        #commandSendTime = time.time()
-        #done = False
-
-        # Send HTTP request
-        #response = self.__send_httprequest_move(motion, direction, length, speed)
-
-        #while (not (done) and not (isMoving == "Not Connected")):
-        #    wasMoving = isMoving
-        #    time.sleep(0.01)
-        #    isMoving = self.__send_httprequest_in("finchIsMoving", "static")
-        #    done = ((time.time() > commandSendTime + 0.5) or (wasMoving == "true")) and (isMoving == "false")
-
-        #return response
-
     @classmethod
-    def wait(device):
-        timeout_time = time.time() + 0.5
+    def wait(self, device):
+        timeout_time = time.time() + BirdbrainConstant.MOVE_TIMEOUT_SECONDS
 
-        while (timeout_time > time.time()) and (self.is_moving(device)):
-            pass
+        time.sleep(BirdbrainConstant.MOVE_START_WAIT_SECONDS)  # hack to give move/turn time to start before waiting
+
+        while (timeout_time > time.time()) and (BirdbrainFinchInput.is_moving(device)):
+            time.sleep(BirdbrainConstant.MOVE_CHECK_MOVING_DELAY)
+
 
     @classmethod
     def move(self, device, direction, distance, speed):
@@ -56,14 +42,16 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         calc_distance = BirdbrainRequest.bounds(distance, -10000, 10000)
         calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
+        response = BirdbrainRequest.response_status('hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
+
+        return response
 
     @classmethod
-    def turn(self, direction, angle, speed):
+    def turn(self, device, direction, angle, speed):
         """Turn the Finch right or left to a given angle at a given speed.
         Direction should be specified as 'R' or 'L'."""
         calc_direction = BirdbrainRequest.calculate_left_or_right(direction)
-        calc_angle = BirdbrainRequest.bounds(distance, 0, 360)
+        calc_angle = BirdbrainRequest.bounds(angle, 0, 360)
         calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
 
         response = BirdbrainRequest.response_status('hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed)
@@ -71,20 +59,6 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         self.wait(device)
 
         return response
-
-        #if direction == BirdbrainConstant.FORWARD: calc_direction = 'Forward'
-        #if direction == BirdbrainConstant.BACKWARD: calc_direction = 'Backward'
-
-       # direction = self.__formatRightLeft(direction)
-    #    if direction is None:
-    #        return 0
-
-        #angle = self.clampParametersToBounds(angle, -360000, 360000)
-        #speed = self.clampParametersToBounds(speed, 0, 100)
-
-        #response = self.__moveFinchAndWait("turn", direction, angle, speed)
-
-        #return response
 
     def setMotors(self, leftSpeed, rightSpeed):
         """Set the speed of each motor individually. Speed should be in
