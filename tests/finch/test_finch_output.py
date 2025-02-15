@@ -66,3 +66,12 @@ def test_motors():
     time.sleep(0.2)
 
     BirdbrainRequest.stop_all("B")
+
+def test_stop():
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 99999, 5, False)
+    time.sleep(0.2)
+    assert BirdbrainFinchOutput.stop("B")
+
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 99999, 5, False)
+    time.sleep(0.2)
+    assert BirdbrainFinchOutput.stop("B")
