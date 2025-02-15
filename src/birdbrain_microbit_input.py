@@ -127,3 +127,40 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         self.symbolvalue = [0]*25
         return response
 
+    #def send_httprequest_micro_in(self, peri, value):
+    #    """Utility function to arrange and send the http request for microbit input functions."""
+    #    if (peri == "Accelerometer"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "Compass"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Magnetometer"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "button"):
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    elif (peri == "Shake"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Screen%20Up"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Screen%20Down"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Tilt%20Right"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Tilt%20Left"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Logo%20Up"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    elif (peri == "Logo%20Down"):
+    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
+    #    else:
+    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
+    #    try:
+    #        response_request = urllib.request.urlopen(http_request)
+    #    except (ConnectionError, urllib.error.URLError):
+    #        print(CONNECTION_SERVER_CLOSED)
+    #        sys.exit()
+    #    response = response_request.read().decode('utf-8')
+    #    if (response == "Not Connected"):
+    #        print(NO_CONNECTION)
+    #        sys.exit()
+    #    time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
+    #    return response
