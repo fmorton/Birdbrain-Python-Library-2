@@ -115,3 +115,16 @@ def test_reset_encoders():
 
     assert finch.reset_encoders()
     assert finch.resetEncoders()
+
+def test_light_with_alias():
+    finch = BirdbrainFinch("B")
+
+    assert (0 <= finch.light("L") <= 100)
+    assert isinstance(finch.getLight("L"), int)
+
+    assert (0 <= finch.light("R") <= 100)
+    assert isinstance(finch.getLight("R"), int)
+
+    with pytest.raises(BirdbrainException) as e:
+        findh.light("BAD")
+    assert e.value.message == "Error: Request to device failed"
