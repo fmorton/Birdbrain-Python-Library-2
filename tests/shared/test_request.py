@@ -60,29 +60,6 @@ def test_xyz_response():
     assert isinstance(xyz, list)
     assert len(xyz) == 3
 
-def test_bounds():
-    assert BirdbrainRequest.bounds(10, 0, 100) == 10
-    assert BirdbrainRequest.bounds(10, -100, 100) == 10
-    assert BirdbrainRequest.bounds(-10, -100, 100) == -10
-    assert BirdbrainRequest.bounds(-100, -100, 100) == -100
-    assert BirdbrainRequest.bounds(100, -100, 100) == 100
-
-    assert BirdbrainRequest.bounds(101, -100, 100) == 100
-    assert BirdbrainRequest.bounds(-101, -100, 100) == -100
-    assert BirdbrainRequest.bounds(999999, -100, 100) == 100
-    assert BirdbrainRequest.bounds(-999999, -100, 100) == -100
-
-    assert BirdbrainRequest.bounds(str(10), str(0), str(100)) == 10
-    assert BirdbrainRequest.bounds(str(10), str(-100), str(100)) == 10
-    assert BirdbrainRequest.bounds(str(-10), str(-100), str(100)) == -10
-    assert BirdbrainRequest.bounds(str(-100), str(-100), str(100)) == -100
-    assert BirdbrainRequest.bounds(str(100), str(-100), str(100)) == 100
-
-    assert BirdbrainRequest.bounds(str(101), str(-100), str(100)) == 100
-    assert BirdbrainRequest.bounds(str(-101), str(-100), str(100)) == -100
-    assert BirdbrainRequest.bounds(str(999999), str(-100), str(100)) == 100
-    assert BirdbrainRequest.bounds(str(-999999), str(-100), str(100)) == -100
-
 def test_calculate_speed():
     assert BirdbrainRequest.calculate_speed(0) == 255
     assert BirdbrainRequest.calculate_speed(9) == 255

@@ -2,6 +2,7 @@ from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
+from birdbrain_utility import BirdbrainUtility
 
 class BirdbrainMicrobitOutput(BirdbrainRequest):
     @classmethod
@@ -43,7 +44,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         note number and should be specified as an integer from 32 to 135. Beats can be
         any number from 0 to 16. One beat corresponds to one second."""
 
-        note = BirdbrainRequest.bounds(note, 32, 135)
-        beats = int(BirdbrainRequest.decimal_bounds(beats, 0, 16) * BirdbrainConstant.BEATS_TEMPO_FACTOR)
+        note = BirdbrainUtility.bounds(note, 32, 135)
+        beats = int(BirdbrainUtility.decimal_bounds(beats, 0, 16) * BirdbrainConstant.BEATS_TEMPO_FACTOR)
 
         return BirdbrainRequest.response_status('hummingbird', 'out', 'playnote', note, beats, device)

@@ -97,7 +97,7 @@ class BirdbrainRequest:
 
     @classmethod
     def calculate_intensity(self, intensity):
-        return int(int(self.bounds(intensity, 0, 100)) * 255 / 100)
+        return int(int(BirdbrainUtility.bounds(intensity, 0, 100)) * 255 / 100)
 
     @classmethod
     def calculate_speed(self, speed):
@@ -129,24 +129,6 @@ class BirdbrainRequest:
         if allow_all and str(port) == 'all': return True
 
         return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
-
-    @classmethod
-    def bounds(self, input, input_min, input_max, pass_through_input = None):
-        #if pass_through_input is not None and (input == pass_through_input): return int(input)
-
-        if int(input) < int(input_min): return int(input_min)
-        if int(input) > int(input_max): return int(input_max)
-
-        return int(input)
-
-    @classmethod
-    def decimal_bounds(self, input, input_min, input_max, pass_through_input = None):
-        #if pass_through_input is not None and (input == pass_through_input): return int(input)
-
-        if float(input) < float(input_min): return float(input_min)
-        if float(input) > float(input_max): return float(input_max)
-
-        return float(input)
 
     @classmethod
     def tri_led_response(self, device, port, r_intensity, g_intensity, b_intensity, valid_range, allow_all = False):

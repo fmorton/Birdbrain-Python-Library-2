@@ -3,6 +3,7 @@ import time
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
+from birdbrain_utility import BirdbrainUtility
 
 class BirdbrainFinchOutput(BirdbrainRequest):
     @classmethod
@@ -29,8 +30,8 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         if direction == BirdbrainConstant.FORWARD: calc_direction = 'Forward'
         if direction == BirdbrainConstant.BACKWARD: calc_direction = 'Backward'
 
-        calc_distance = BirdbrainRequest.bounds(distance, -10000, 10000)
-        calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
+        calc_distance = BirdbrainUtility.bounds(distance, -10000, 10000)
+        calc_speed = BirdbrainUtility.bounds(speed, 0, 100)
 
         return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
 
@@ -39,8 +40,8 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         """Turn the Finch right or left to a given angle at a given speed.
         Direction should be specified as 'R' or 'L'."""
         calc_direction = BirdbrainRequest.calculate_left_or_right(direction)
-        calc_angle = BirdbrainRequest.bounds(angle, 0, 360)
-        calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
+        calc_angle = BirdbrainUtility.bounds(angle, 0, 360)
+        calc_speed = BirdbrainUtility.bounds(speed, 0, 100)
 
         return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed)
 
@@ -58,8 +59,8 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         """Set the speed of each motor individually. Speed should be in
         the range of -100 to 100."""
 
-        left_speed = BirdbrainRequest.bounds(left_speed, -100, 100)
-        right_speed = BirdbrainRequest.bounds(right_speed, -100, 100)
+        left_speed = BirdbrainUtility.bounds(left_speed, -100, 100)
+        right_speed = BirdbrainUtility.bounds(right_speed, -100, 100)
 
         return BirdbrainRequest.response_status('hummingbird', 'out', 'wheels', device, left_speed, right_speed)
 
