@@ -8,7 +8,10 @@ class BirdbrainUtility:
 
     @classmethod
     def flatten_string(self, original_list, divider = "/"):
+        if isinstance(original_list[0], list): original_list = original_list[0]
+
         original_list = [item for item in original_list]
+
         s = ""
         for element in list(original_list):
             if isinstance(element, str):

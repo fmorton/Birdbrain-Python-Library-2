@@ -8,7 +8,7 @@ import urllib.request
 class BirdbrainRequest:
     @classmethod
     def uri(self, *args):
-        return("http://127.0.0.1:30061/" + BirdbrainUtility.flatten_string(args[0]))
+        return("http://127.0.0.1:30061/" + BirdbrainUtility.flatten_string(args))
 
     @classmethod
     def is_not_connected_response(self, response):
@@ -21,7 +21,7 @@ class BirdbrainRequest:
         try:
             if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: URI", self.uri(args))
 
-            response_request = urllib.request.urlopen(self.uri(args))
+            response_request = urllib.request.urlopen(self.uri(*args))
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
             raise(BirdbrainException("Error: Request to device failed"))
 

@@ -32,13 +32,7 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         calc_distance = BirdbrainRequest.bounds(distance, -10000, 10000)
         calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
 
-        response = BirdbrainRequest.response_status('hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
-
-        time.sleep(BirdbrainConstant.MOVE_START_WAIT_SECONDS)  # hack to give move time to start before waiting
-
-        if wait_to_finish_movement: self.wait(device)
-
-        return response
+        return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
 
     @classmethod
     def turn(self, device, direction, angle, speed, wait_to_finish_movement = True):
@@ -48,13 +42,16 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         calc_angle = BirdbrainRequest.bounds(angle, 0, 360)
         calc_speed = BirdbrainRequest.bounds(speed, 0, 100)
 
-        response = BirdbrainRequest.response_status('hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed)
+        return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed)
 
-        time.sleep(BirdbrainConstant.MOVE_START_WAIT_SECONDS)  # hack to give turn time to start before waiting
+    @classmethod
+    def wait(self, device):
+        timeout_time = time.time() + BirdbrainConstant.MOVE_TIMEOUT_SECONDS
 
-        if wait_to_finish_movement: self.wait(device)
+        while (timeout_time > time.time()) and (BirdbrainFinchInput.is_moving(device)):
+            time.sleep(BirdbrainConstant.MOVE_CHECK_MOVING_DELAY)
 
-        return response
+        return True
 
     @classmethod
     def motors(self, device, left_speed, right_speed):
@@ -83,10 +80,11 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         return response
 
     @classmethod
-    def wait(self, device):
-        timeout_time = time.time() + BirdbrainConstant.MOVE_TIMEOUT_SECONDS
+    def __move_and_wait(self, device, wait_to_finish_movement, *args):
+        response = BirdbrainRequest.response_status(*args)
 
-        while (timeout_time > time.time()) and (BirdbrainFinchInput.is_moving(device)):
-            time.sleep(BirdbrainConstant.MOVE_CHECK_MOVING_DELAY)
+        time.sleep(BirdbrainConstant.MOVE_START_WAIT_SECONDS)  # hack to give time to start before waiting
 
-        return True
+        if wait_to_finish_movement: self.wait(device)
+
+        return response
