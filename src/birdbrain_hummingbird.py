@@ -24,7 +24,7 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     def rotation_servo(self, port, speed):
         return BirdbrainHummingbirdOutput.rotation_servo(self.device, port, speed)
 
-    # Hummingbird Aliases
+    #  aliases
     #dial = getDial
     #distance = getDistance
     #is_hummingbird = isHummingbird

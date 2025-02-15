@@ -1,9 +1,9 @@
+import time
+import urllib.request
+
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_utility import BirdbrainUtility
-
-import time
-import urllib.request
 
 class BirdbrainRequest:
     @classmethod
@@ -19,7 +19,7 @@ class BirdbrainRequest:
         if "false" in args: return False
 
         try:
-            if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: URI", self.uri(args))
+            if BirdbrainConstant.BIRDBRAIN_TEST: print("Test: URI", self.uri(*args))
 
             response_request = urllib.request.urlopen(self.uri(*args))
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):

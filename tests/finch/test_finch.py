@@ -107,3 +107,9 @@ def test_stop():
     assert finch.move(BirdbrainConstant.BACKWARD, 99999, 5, False)
     time.sleep(0.2)
     assert finch.stop()
+
+def test_reset_encoders():
+    finch = BirdbrainFinch("B")
+
+    assert finch.reset_encoders()
+    assert finch.resetEncoders()

@@ -1,6 +1,6 @@
 import time
 
-from BirdBrain import BirdbrainHummingbird
+from birdbrain_hummingbird import BirdbrainHummingbird
 
 myBird = Hummingbird('A')
 

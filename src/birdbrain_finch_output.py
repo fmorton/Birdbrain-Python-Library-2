@@ -1,8 +1,8 @@
+import time
+
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
-
-import time
 
 class BirdbrainFinchOutput(BirdbrainRequest):
     @classmethod
@@ -63,19 +63,19 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         return BirdbrainRequest.response_status('hummingbird', 'out', 'wheels', device, left_speed, right_speed)
 
-    def stop(self):
+    @classmethod
+    def stop(self, device):
         """Stop the Finch motors."""
 
-        # Send HTTP request
-        response = self.__send_httprequest_out("stopFinch", None, None)
-        return response
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'stopFinch', device)
 
-    def resetEncoders(self):
+    @classmethod
+    def reset_encoders(self, device):
         """Reset both encoder values to 0."""
-        response = self.__send_httprequest_out("resetEncoders", None, None)
 
-        # The finch needs a chance to actually reset
-        time.sleep(0.2)
+        response = BirdbrainRequest.response_status('hummingbird', 'out', 'resetEncoders', device)
+
+        time.sleep(BirdbrainConstant.RESET_ENCODERS_DELAY)  #  finch needs a chance to actually reset
 
         return response
 

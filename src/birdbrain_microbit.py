@@ -45,25 +45,6 @@ class BirdbrainMicrobit(BirdbrainDevice):
         #new_str = new_str[:len(new_str)-1]
         #return new_str
 
-    #@staticmethod
-    #def __constrainToInt(number):
-    #    """Utility function to ensure number is an integer. Will round and cast to int
-    #    (with warning) if necessary."""
-    #    if not isinstance(number, int):
-    #        oldNumber = number
-    #        number = int(round(number))
-    #        print("Warning: Parameter must be an integer. Using " + str(number) + " instead of " + str(oldNumber) + ".")
-    #    return number
-
-    # -------------------------------------------------------------------------
-    # SEND HTTP REQUESTS
-    # -------------------------------------------------------------------------
-    #def _send_httprequest(self, http_request):
-    #    pass
-
-    #def send_httprequest_micro(self, peri, value):
-    #    pass
-
     #def send_httprequest_micro_in(self, peri, value):
     #    """Utility function to arrange and send the http request for microbit input functions."""
     #    if (peri == "Accelerometer"):
@@ -102,7 +83,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     #    time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
     #    return response
 
-    # Microbit Aliases
+    #  aliases
     #acceleration = getAcceleration
     #button = getButton
     #compass = getCompass

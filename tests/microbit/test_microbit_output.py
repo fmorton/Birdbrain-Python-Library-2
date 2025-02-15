@@ -1,12 +1,12 @@
+import pytest
+import time
+
 from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_microbit_output import BirdbrainMicrobitOutput
 from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
-
-import pytest
-import time
 
 def test_microbit_display():
     state = BirdbrainState()
