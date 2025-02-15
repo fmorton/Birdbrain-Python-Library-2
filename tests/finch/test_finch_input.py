@@ -7,9 +7,12 @@ from birdbrain_request import BirdbrainRequest
 import time
 
 def test_is_moving():
-    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 4, 5)
-    time.sleep(0.1)
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 7, 5, False)
     assert BirdbrainFinchInput.is_moving("B")
+
+    BirdbrainFinchOutput.wait("B")
+
+    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 7, 5, True)
 
     assert BirdbrainRequest.stop_all("B")
 

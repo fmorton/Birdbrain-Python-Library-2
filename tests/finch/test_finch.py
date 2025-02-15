@@ -17,7 +17,7 @@ def test_beak_with_alias():
     finch = BirdbrainFinch('B')
 
     finch.beak(100, 50, 50)
-    time.sleep(0.25)
+    time.sleep(0.15)
     finch.setBeak(0, 0, 0)
 
 def test_tail_with_alias():
@@ -60,8 +60,12 @@ def test_move_with_alias():
 def test_is_moving():
     finch = BirdbrainFinch("B")
 
-    assert finch.move(BirdbrainConstant.FORWARD, 4, 5)
+    assert finch.move(BirdbrainConstant.FORWARD, 7, 5, False)
     assert finch.is_moving()
+
+    assert finch.wait("B")
+
+    assert finch.move(BirdbrainConstant.BACKWARD, 7, 5, True)
 
     finch.stop_all()
 

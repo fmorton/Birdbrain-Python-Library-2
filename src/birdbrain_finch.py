@@ -27,11 +27,14 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def tail(self, port, r_intensity, g_intensity, b_intensity):
         return BirdbrainFinchOutput.tail(self.device, port, r_intensity, g_intensity, b_intensity)
 
-    def move(self, direction, distance, speed):
-        return BirdbrainFinchOutput.move(self.device, direction, distance, speed)
+    def move(self, direction, distance, speed, wait_to_finish_movement = True):
+        return BirdbrainFinchOutput.move(self.device, direction, distance, speed, wait_to_finish_movement)
 
-    def turn(self, direction, angle, speed):
-        return BirdbrainFinchOutput.turn(self.device, direction, angle, speed)
+    def turn(self, direction, angle, speed, wait_to_finish_movement = True):
+        return BirdbrainFinchOutput.turn(self.device, direction, angle, speed, wait_to_finish_movement)
+
+    def wait(self, device):
+        return BirdbrainFinchOutput.wait(self.device)
 
     def is_moving(self):
         return BirdbrainFinchInput.is_moving(self.device)

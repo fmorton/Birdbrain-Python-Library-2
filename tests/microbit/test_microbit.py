@@ -35,11 +35,11 @@ def test_microbit_display_with_alias():
 
     assert hummingbird.microbit_display([ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 ])
 
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setDisplay([ 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 ])
 
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     hummingbird.stop_all()
 
@@ -59,7 +59,7 @@ def test_microbit_point_and_microbit_clear_display_with_alias():
         assert hummingbird.microbit_point(4, 2, 1)
         assert hummingbird.setPoint(4, 4, 1)
 
-        time.sleep(0.25)
+        time.sleep(0.15)
 
         hummingbird.microbit_clear_display()
 
@@ -68,7 +68,7 @@ def test_microbit_point_true_or_false():
 
     assert hummingbird.microbit_point(3, 3, True)
 
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.microbit_point(3, 3, False)
 

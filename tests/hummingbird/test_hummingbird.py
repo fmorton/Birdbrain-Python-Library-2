@@ -33,13 +33,13 @@ def test_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.led(1, 100)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.led(1, 0)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.led(1, 50)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     hummingbird.setLED(1, 0)
 
@@ -54,19 +54,19 @@ def test_tri_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.tri_led(1, 50, "50", 0, BirdbrainConstant.VALID_TRI_LED_PORTS)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setTriLED(1, 100, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.tri_led(1, 0, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
 def test_position_servo_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.position_servo(1, 50)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setPositionServo(1, "130")
 
@@ -74,15 +74,15 @@ def test_rotation_servo_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.rotation_servo(2, 50)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setRotationServo(2, "-50")
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.rotation_servo(2, 100)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setRotationServo(2, -100)
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert hummingbird.setRotationServo(2, 0)

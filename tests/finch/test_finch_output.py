@@ -9,7 +9,7 @@ from birdbrain_request import BirdbrainRequest
 
 def test_beak():
     assert BirdbrainFinchOutput.beak("B", 10, 50, 50)
-    time.sleep(0.25)
+    time.sleep(0.15)
     assert BirdbrainFinchOutput.beak("B", 0, 0, 0)
 
 def test_tail():

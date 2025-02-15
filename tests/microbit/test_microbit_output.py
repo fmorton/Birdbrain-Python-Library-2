@@ -13,7 +13,7 @@ def test_microbit_display():
 
     BirdbrainMicrobitOutput.microbit_display(state, "A", [ 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 ])
 
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     BirdbrainRequest.stop_all("A")
 
@@ -35,7 +35,7 @@ def test_microbit_point_and_microbit_clear_display():
         assert BirdbrainMicrobitOutput.microbit_point(state, "A", 5, 1, 1)
         assert BirdbrainMicrobitOutput.microbit_point(state, "A", 5, 5, 1)
 
-        time.sleep(0.25)
+        time.sleep(0.15)
 
         BirdbrainMicrobitOutput.microbit_clear_display(state, "A")
 
@@ -44,7 +44,7 @@ def test_microbit_point_true_or_false():
 
     assert BirdbrainMicrobitOutput.microbit_point(state, "A", 3, 3, True)
 
-    time.sleep(0.25)
+    time.sleep(0.15)
 
     assert BirdbrainMicrobitOutput.microbit_point(state, "A", 3, 3, False)
 
