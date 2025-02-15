@@ -86,14 +86,16 @@ def test_motors_with_alias():
     finch = BirdbrainFinch("B")
 
     assert finch.motors(25, 0)
-    time.sleep(0.25)
-    assert finch.motors(0, 25)
-    time.sleep(0.25)
-
+    time.sleep(0.2)
     assert finch.motors(-25, 0)
-    time.sleep(0.25)
-    assert finch.setMotors("0", "-25")
-    time.sleep(0.25)
+    time.sleep(0.2)
+
+    assert finch.motors(0, -25)
+    time.sleep(0.2)
+    assert finch.motors("0", "25")
+    time.sleep(0.2)
+
+    BirdbrainRequest.stop_all("B")
 
     BirdbrainRequest.stop_all("B")
 

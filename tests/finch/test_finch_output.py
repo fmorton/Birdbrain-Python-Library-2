@@ -57,12 +57,12 @@ def test_turn():
 def test_motors():
     assert BirdbrainFinchOutput.motors("B", 25, 0)
     time.sleep(0.2)
-    assert BirdbrainFinchOutput.motors("B", 0, 25)
-    time.sleep(0.2)
-
     assert BirdbrainFinchOutput.motors("B", -25, 0)
     time.sleep(0.2)
-    assert BirdbrainFinchOutput.motors("B", "0", "-25")
+
+    assert BirdbrainFinchOutput.motors("B", 0, -25)
+    time.sleep(0.2)
+    assert BirdbrainFinchOutput.motors("B", "0", "25")
     time.sleep(0.2)
 
     BirdbrainRequest.stop_all("B")
