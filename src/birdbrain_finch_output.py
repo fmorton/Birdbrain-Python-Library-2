@@ -21,15 +21,6 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_TAIL_PORTS, True)
 
     @classmethod
-    def wait(self, device):
-        timeout_time = time.time() + BirdbrainConstant.MOVE_TIMEOUT_SECONDS
-
-        while (timeout_time > time.time()) and (BirdbrainFinchInput.is_moving(device)):
-            time.sleep(BirdbrainConstant.MOVE_CHECK_MOVING_DELAY)
-
-        return True
-
-    @classmethod
     def move(self, device, direction, distance, speed, wait_to_finish_movement = True):
         """Move the Finch forward or backward for a given distance at a given speed.
         Direction should be specified as 'F' or 'B'."""
@@ -65,16 +56,15 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         return response
 
-    def setMotors(self, leftSpeed, rightSpeed):
+    @classmethod
+    def motors(self, device, left_speed, right_speed):
         """Set the speed of each motor individually. Speed should be in
         the range of -100 to 100."""
 
-        leftSpeed = self.clampParametersToBounds(leftSpeed, -100, 100)
-        rightSpeed = self.clampParametersToBounds(rightSpeed, -100, 100)
+        left_speed = BirdbrainRequest.bounds(left_speed, -100, 100)
+        right_speed = BirdbrainRequest.bounds(right_speed, -100, 100)
 
-        # Send HTTP request
-        response = self.__send_httprequest_move("wheels", leftSpeed, rightSpeed, None)
-        return response
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'wheels', device, left_speed, right_speed)
 
     def stop(self):
         """Stop the Finch motors."""
@@ -91,3 +81,12 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         time.sleep(0.2)
 
         return response
+
+    @classmethod
+    def wait(self, device):
+        timeout_time = time.time() + BirdbrainConstant.MOVE_TIMEOUT_SECONDS
+
+        while (timeout_time > time.time()) and (BirdbrainFinchInput.is_moving(device)):
+            time.sleep(BirdbrainConstant.MOVE_CHECK_MOVING_DELAY)
+
+        return True

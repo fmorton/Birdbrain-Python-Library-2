@@ -1,5 +1,6 @@
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
+from birdbrain_request import BirdbrainRequest
 from BirdBrain import BirdbrainFinch
 
 import pytest
@@ -80,3 +81,18 @@ def test_turn_with_alias():
     finch.turn("R", 45, 50)
     finch.turn("L", "45", 50)
     finch.setTurn("R", 45, "50")
+
+def test_motors_with_alias():
+    finch = BirdbrainFinch("B")
+
+    assert finch.motors(25, 0)
+    time.sleep(0.25)
+    assert finch.motors(0, 25)
+    time.sleep(0.25)
+
+    assert finch.motors(-25, 0)
+    time.sleep(0.25)
+    assert finch.setMotors("0", "-25")
+    time.sleep(0.25)
+
+    BirdbrainRequest.stop_all("B")

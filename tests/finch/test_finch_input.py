@@ -16,7 +16,5 @@ def test_is_moving():
 
     assert BirdbrainRequest.stop_all("B")
 
-    time.sleep(1)
-
     assert not BirdbrainFinchInput.is_moving("B")
 

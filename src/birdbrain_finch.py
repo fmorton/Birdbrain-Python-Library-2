@@ -33,6 +33,9 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def turn(self, direction, angle, speed, wait_to_finish_movement = True):
         return BirdbrainFinchOutput.turn(self.device, direction, angle, speed, wait_to_finish_movement)
 
+    def motors(self, left_speed, right_speed):
+        return BirdbrainFinchOutput.motors(self.device, left_speed, right_speed)
+
     def wait(self, device):
         return BirdbrainFinchOutput.wait(self.device)
 
@@ -48,7 +51,7 @@ class BirdbrainFinch(BirdbrainMicrobit):
     #light = getLight
     #line = getLine
     #magnetometer = getMagnetometer
-    #motors = setMotors
+    setMotors = motors
     setMove = move
     #orientation = getOrientation
     #reset_encoders = resetEncoders

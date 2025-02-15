@@ -53,3 +53,16 @@ def test_turn():
     with pytest.raises(BirdbrainException):
         assert BirdbrainFinchOutput.turn("B", "BAD", 90, 50)
         assert e.value.message == "Error: Request to device failed"
+
+def test_motors():
+    assert BirdbrainFinchOutput.motors("B", 25, 0)
+    time.sleep(0.2)
+    assert BirdbrainFinchOutput.motors("B", 0, 25)
+    time.sleep(0.2)
+
+    assert BirdbrainFinchOutput.motors("B", -25, 0)
+    time.sleep(0.2)
+    assert BirdbrainFinchOutput.motors("B", "0", "-25")
+    time.sleep(0.2)
+
+    BirdbrainRequest.stop_all("B")
