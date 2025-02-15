@@ -54,3 +54,12 @@ def test_microbit_point_out_of_range():
 
         assert BirdbrainMicrobitOutput.microbit_point(state, "A", 999, 1, 1)
     assert e.value.message == "Error: microbit_point out of range"
+
+def test_microbit_print():
+    state = BirdbrainState()
+
+    assert BirdbrainMicrobitOutput.microbit_print(state, "A", "B")
+    time.sleep(1)
+
+    assert BirdbrainMicrobitOutput.microbit_print(state, "A", " ")
+    time.sleep(1)
