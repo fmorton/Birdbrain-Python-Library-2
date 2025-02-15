@@ -6,7 +6,6 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
         present on the Hummingbird Bit."""
 
     def __init__(self, device = 'A', raise_exception_if_no_connection = True):
-        """Class initializer. Specify device letter A, B or C."""
         device_object = BirdbrainHummingbird.connect(device, raise_exception_if_no_connection)
 
         if not self.is_hummingbird():

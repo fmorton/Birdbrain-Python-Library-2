@@ -22,20 +22,9 @@ class BirdbrainConstant:
     VALID_TRI_LED_PORTS = '1234'
     VALID_TURN_DIRECTION = 'LR'
 
-    #DEBUG: TBD if these are needed
-    #CHAR_FLASH_TIME = 0.3  # Character Flash time
-
-    # Error strings
-    #CONNECTION_SERVER_CLOSED = "Error: Request to device failed"
-    #NO_CONNECTION = "Error: The device is not connected"
-
-    # Calculations after receveing the raw values for Hummingbird
-    #DISTANCE_FACTOR = 117/100
-    #SOUND_FACTOR = 200/255
-    #DIAL_FACTOR = 100/230
-    #LIGHT_FACTOR = 100/255
-    #VOLTAGE_FACTOR = 3.3/255
-
-    # Scaling factors for Finch
-    #BATTERY_FACTOR = 0.0406
-
+    DISTANCE_FACTOR = 1.17        # 117/100
+    SOUND_FACTOR = 0.784313725    # 200/255
+    DIAL_FACTOR = 0.434782609     # 100/230
+    LIGHT_FACTOR = 0.392156863    # 100/255
+    VOLTAGE_FACTOR = 0.129411765  # 3.3/255
+    BATTERY_FACTOR = 0.0406

@@ -126,5 +126,14 @@ def test_light_with_alias():
     assert isinstance(finch.getLight("R"), int)
 
     with pytest.raises(BirdbrainException) as e:
-        findh.light("BAD")
+        finch.light("BAD")
     assert e.value.message == "Error: Request to device failed"
+
+def test_distance_with_alias():
+    finch = BirdbrainFinch("B")
+
+    response = finch.distance()
+    response = finch.getDistance()
+
+    assert (0 <= response <= 298)
+    assert isinstance(response, int)

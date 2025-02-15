@@ -9,11 +9,13 @@ class BirdbrainFinch(BirdbrainMicrobit):
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
 
     def __init__(self, device='A', raise_exception_if_no_connection = True):
-        """Class initializer. """
         self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
         if not self.is_finch():
             raise BirdbrainException("Error: Device " + device + " is not a Finch")
+
+    def is_moving(self):
+        return BirdbrainFinchInput.is_moving(self.device)
 
     def beak(self, r_intensity, g_intensity, b_intensity):
         return BirdbrainFinchOutput.beak(self.device, r_intensity, g_intensity, b_intensity)
@@ -39,16 +41,19 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def reset_encoders(self):
         return BirdbrainFinchOutput.reset_encoders(self.device)
 
-    def is_moving(self):
-        return BirdbrainFinchInput.is_moving(self.device)
+    def light(self, side):
+        return BirdbrainFinchInput.light(self.device, side)
+
+    def distance(self):
+        return BirdbrainFinchInput.distance(self.device)
 
     #  aliases
     #acceleration = getAcceleration
     setBeak = beak
     #compass = getCompass
-    #distance = getDistance
+    getDistance = distance
     #encoder = getEncoder
-    #light = getLight
+    getLight = light
     #line = getLine
     #magnetometer = getMagnetometer
     setMotors = motors

@@ -1,12 +1,14 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_request import BirdbrainRequest
+from birdbrain_utility import BirdbrainUtility
 
 class BirdbrainFinchInput(BirdbrainRequest):
-    #DEFAULT_FACTOR = 1.0
-    #DEFAULT_MIN_RESPONSE = 0
-    #DEFAULT_MAX_RESPONSE = 100
-    #DEFAULT_TYPE_METHOD = 'to_i'
-    #DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
-    #DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
+    DEFAULT_FACTOR = 1.0
+    DEFAULT_MIN_RESPONSE = 0.0
+    DEFAULT_MAX_RESPONSE = 100.0
+    DEFAULT_TYPE_METHOD = 'int'
+    DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
+    DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
     #ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
     #ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
     #ORIENTATION_IN_BETWEEN = 'In between'
@@ -15,33 +17,22 @@ class BirdbrainFinchInput(BirdbrainRequest):
     def is_moving(self, device):
         return BirdbrainRequest.request_status(BirdbrainRequest.response('hummingbird', 'in', 'finchIsMoving', 'static', device))
 
-    def __getSensor(self, sensor, port):
-        """Read the value of the specified sensor. Port should be specified as either 'R'
-        or 'L'. If the port is not valid, returns -1."""
-
-        # Early return if we can't execute the command because the port is invalid
-        if ((not sensor == "finchOrientation") and (not port == "Left") and (not port == "Right") and
-                (not ((port == "static") and (sensor == "Distance" or sensor == "finchCompass")))):
-            return -1
-
-        response = self.__send_httprequest_in(sensor, port)
-        return response
-
-    def getLight(self, direction):
+    @classmethod
+    def light(self, device, side):
         """Read the value of the right or left light sensor ('R' or 'L')."""
 
-        direction = self.__formatRightLeft(direction)
-        if direction is None:
-            return 0
+        return self.__sensor(device, 'Light', BirdbrainRequest.calculate_left_or_right(side))
 
-        response = self.__getSensor("Light", direction)
-        return int(response)
-
-    def getDistance(self):
+    @classmethod
+    def distance(self, device):
         """Read the value of the distance sensor"""
 
-        response = self.__getSensor("Distance", "static")
-        return int(response)
+        distance_options = {}
+        distance_options['factor'] = BirdbrainConstant.DISTANCE_FACTOR  # was 0.0919
+        distance_options['min_response'] = self.DEFAULT_UNLIMITED_MIN_RESPONSE
+        distance_options['max_response'] = self.DEFAULT_UNLIMITED_MAX_RESPONSE
+
+        return self.__sensor(device, 'Distance', 'static', distance_options)
 
     def getLine(self, direction):
         """Read the value of the right or left line sensor ('R' or 'L').
@@ -105,3 +96,24 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         # If we are in a state in which none of the above seven states are true
         return "In between"
+
+    @classmethod
+    def __sensor(self, device, sensor, other = None, options = {}):
+        if other is False: return False   # for invalid directions
+
+        factor = options["factor"] if "factor" in options else self.DEFAULT_FACTOR
+        min_response = options["min_response"] if "min_response" in options else self.DEFAULT_MIN_RESPONSE
+        max_response = options["max_response"] if "max_response" in options else self.DEFAULT_MAX_RESPONSE
+        type_method = options["type_method"] if "type_method" in options else self.DEFAULT_TYPE_METHOD
+
+        request = ['hummingbird', 'in', sensor]
+        if other is not None: request.append(other)
+        request.append(device)
+
+        response = (float(BirdbrainRequest.response(request)) * factor)
+
+        response = BirdbrainUtility.decimal_bounds(response, min_response, max_response)
+
+        if type_method == 'int': return int(response)
+
+        return response

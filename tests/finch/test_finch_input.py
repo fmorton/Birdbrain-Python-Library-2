@@ -35,3 +35,8 @@ def test_light():
         BirdbrainFinchInput.light("B", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
+def test_distance():
+    response = BirdbrainFinchInput.distance("B")
+
+    assert (0 <= response <= 298)
+    assert isinstance(response, int)
