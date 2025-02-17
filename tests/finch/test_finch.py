@@ -137,3 +137,16 @@ def test_distance_with_alias():
 
     assert (0 <= response <= 298)
     assert isinstance(response, int)
+
+def test_line_with_alias():
+    finch = BirdbrainFinch("B")
+
+    assert (0 <= finch.line("L") <= 100)
+    assert isinstance(finch.getLine("L"), int)
+
+    assert (0 <= finch.line("R") <= 100)
+    assert isinstance(finch.getLine("R"), int)
+
+    with pytest.raises(BirdbrainException) as e:
+        finch.line("BAD")
+    assert e.value.message == "Error: Request to device failed"

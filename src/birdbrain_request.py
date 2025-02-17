@@ -80,6 +80,7 @@ class BirdbrainRequest:
      if status == 'false': return(False)
      if status == 'not connected': return(False)
      if status == 'invalid orientation': return(False)
+     if status == 'invalid port': return(False)
 
      return(None)
 
@@ -116,7 +117,7 @@ class BirdbrainRequest:
         if direction == BirdbrainConstant.LEFT: return 'Left'
         if direction == BirdbrainConstant.RIGHT: return 'Right'
 
-        return None
+        return 'None'
 
     @classmethod
     def validate(self, validate, valid_range, validate_message):

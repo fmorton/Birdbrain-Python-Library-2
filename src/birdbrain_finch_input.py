@@ -34,17 +34,20 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         return self.__sensor(device, 'Distance', 'static', distance_options)
 
-    def getLine(self, direction):
+    @classmethod
+    def line(self, device, side):
         """Read the value of the right or left line sensor ('R' or 'L').
         Returns brightness as a value 0-100 where a larger number
         represents more reflected light."""
 
-        direction = self.__formatRightLeft(direction)
-        if direction is None:
-            return 0
+        return self.__sensor(device, 'Line', BirdbrainRequest.calculate_left_or_right(side))
 
-        response = self.__getSensor("Line", direction)
-        return int(response)
+        #direction = self.__formatRightLeft(direction)
+        #if direction is None:
+        #    return 0
+
+        #response = self.__getSensor("Line", direction)
+        #return int(response)
 
     def getEncoder(self, direction):
         """Read the value of the right or left encoder ('R' or 'L').

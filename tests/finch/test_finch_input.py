@@ -35,8 +35,31 @@ def test_light():
         BirdbrainFinchInput.light("B", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainFinchInput.light("B", None)
+    assert e.value.message == "Error: Request to device failed"
+
 def test_distance():
     response = BirdbrainFinchInput.distance("B")
 
     assert (0 <= response <= 298)
     assert isinstance(response, int)
+
+def test_line():
+    response = BirdbrainFinchInput.line("B", "L")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
+    response = BirdbrainFinchInput.line("B", "R")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainFinchInput.line("B", "BAD")
+    assert e.value.message == "Error: Request to device failed"
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainFinchInput.line("B", None)
+    assert e.value.message == "Error: Request to device failed"

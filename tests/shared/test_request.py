@@ -74,7 +74,7 @@ def test_calculate_speed():
 def test_calculate_left_or_right():
     assert BirdbrainRequest.calculate_left_or_right('L') == 'Left'
     assert BirdbrainRequest.calculate_left_or_right('R') == 'Right'
-    assert BirdbrainRequest.calculate_left_or_right('BAD') == None
+    assert BirdbrainRequest.calculate_left_or_right('BAD') == 'None'
 
 def test_validate_port():
     assert BirdbrainRequest.validate_port(1, BirdbrainConstant.VALID_LED_PORTS)
