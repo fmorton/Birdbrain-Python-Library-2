@@ -63,3 +63,22 @@ def test_line():
     with pytest.raises(BirdbrainException) as e:
         BirdbrainFinchInput.line("B", None)
     assert e.value.message == "Error: Request to device failed"
+
+def test_encoder_with_alias():
+    response = BirdbrainFinchInput.encoder("B", "L")
+
+    assert (-100.0 <= response <= 100.0)
+    assert isinstance(response, float)
+
+    response = BirdbrainFinchInput.encoder("B", "R")
+
+    assert (-100.0 <= response <= 100.0)
+    assert isinstance(response, float)
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainFinchInput.encoder("B", "BAD")
+    assert e.value.message == "Error: Request to device failed"
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainFinchInput.encoder("B", None)
+    assert e.value.message == "Error: Request to device failed"

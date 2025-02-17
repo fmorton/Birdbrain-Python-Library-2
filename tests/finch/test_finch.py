@@ -150,3 +150,16 @@ def test_line_with_alias():
     with pytest.raises(BirdbrainException) as e:
         finch.line("BAD")
     assert e.value.message == "Error: Request to device failed"
+
+def test_encoder_with_alias():
+    finch = BirdbrainFinch("B")
+
+    assert (-100.0 <= finch.encoder("L") <= 100.0)
+    assert isinstance(finch.getEncoder("L"), float)
+
+    assert (-100.0 <= finch.encoder("R") <= 100.0)
+    assert isinstance(finch.getEncoder("R"), float)
+
+    with pytest.raises(BirdbrainException) as e:
+        finch.encoder("BAD")
+    assert e.value.message == "Error: Request to device failed"

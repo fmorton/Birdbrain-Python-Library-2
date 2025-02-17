@@ -49,17 +49,26 @@ class BirdbrainFinchInput(BirdbrainRequest):
         #response = self.__getSensor("Line", direction)
         #return int(response)
 
-    def getEncoder(self, direction):
+    @classmethod
+    def encoder(self, device, side):
         """Read the value of the right or left encoder ('R' or 'L').
         Values are returned in rotations."""
 
-        direction = self.__formatRightLeft(direction)
-        if direction is None:
-            return 0
+        encoder_options = {}
+        encoder_options['min_response'] = float(self.DEFAULT_UNLIMITED_MIN_RESPONSE)
+        encoder_options['max_response'] = float(self.DEFAULT_UNLIMITED_MAX_RESPONSE)
+        encoder_options['type_method'] = 'float'
 
-        response = self.__getSensor("Encoder", direction)
-        encoder_value = round(float(response), 2)
-        return encoder_value
+        return round(self.__sensor(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
+        #sensor(device, 'Encoder', calculate_left_or_right(direction), encoder_options)
+
+        #direction = self.__formatRightLeft(direction)
+        #if direction is None:
+        #    return 0
+
+        #response = self.__getSensor("Encoder", direction)
+        #encoder_value = round(float(response), 2)
+        #return encoder_value
 
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.

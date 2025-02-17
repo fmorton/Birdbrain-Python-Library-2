@@ -50,12 +50,15 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def line(self, side):
         return BirdbrainFinchInput.line(self.device, side)
 
+    def encoder(self, side):
+        return BirdbrainFinchInput.encoder(self.device, side)
+
     #  aliases
     #acceleration = getAcceleration
     setBeak = beak
     #compass = getCompass
     getDistance = distance
-    #encoder = getEncoder
+    getEncoder = encoder
     getLight = light
     getLine = line
     #magnetometer = getMagnetometer
