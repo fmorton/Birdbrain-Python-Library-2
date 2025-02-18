@@ -85,14 +85,6 @@ class BirdbrainRequest:
      return(None)
 
     @classmethod
-    def xyz_response(self, device, sensor):
-        x = self.response('hummingbird', 'in', sensor, 'X', device)
-        y = self.response('hummingbird', 'in', sensor, 'Y', device)
-        z = self.response('hummingbird', 'in', sensor, 'Z', device)
-
-        return [float(x), float(y), float(z)]
-
-    @classmethod
     def calculate_angle(self, intensity):
         return int(int(intensity) * 255 / 180)
 
@@ -130,6 +122,38 @@ class BirdbrainRequest:
         if allow_all and str(port) == 'all': return True
 
         return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
+
+    @classmethod
+    def sensor(self, device, sensor, other = None, options = {}):
+        if other is False: return False   # for invalid directions
+
+        factor = options["factor"] if "factor" in options else self.DEFAULT_FACTOR
+        min_response = options["min_response"] if "min_response" in options else self.DEFAULT_MIN_RESPONSE
+        max_response = options["max_response"] if "max_response" in options else self.DEFAULT_MAX_RESPONSE
+        type_method = options["type_method"] if "type_method" in options else self.DEFAULT_TYPE_METHOD
+
+        request = ['hummingbird', 'in', sensor]
+        if other is not None: request.append(other)
+        request.append(device)
+
+        response = (float(BirdbrainRequest.response(request)) * factor)
+
+        response = BirdbrainUtility.decimal_bounds(response, min_response, max_response)
+
+        if type_method == 'int': return int(response)
+
+        return response
+
+    @classmethod
+    def xyz_response(self, device, sensor, type_method = 'int'):
+        x = BirdbrainRequest.response('hummingbird', 'in', sensor, 'X', device)
+        y = BirdbrainRequest.response('hummingbird', 'in', sensor, 'Y', device)
+        z = BirdbrainRequest.response('hummingbird', 'in', sensor, 'Z', device)
+
+        if type_method == 'int':
+            return [int(x), int(y), int(z)]
+        else:
+            return [float(x), float(y), float(z)]
 
     @classmethod
     def tri_led_response(self, device, port, r_intensity, g_intensity, b_intensity, valid_range, allow_all = False):

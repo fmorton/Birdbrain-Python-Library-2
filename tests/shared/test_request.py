@@ -55,7 +55,7 @@ def test_xyz_response_no_connection():
         response = BirdbrainRequest.xyz_response("C", "Accelerometer")
 
 def test_xyz_response():
-    xyz = BirdbrainRequest.xyz_response("A", "Accelerometer")
+    xyz = BirdbrainRequest.xyz_response("A", "Accelerometer", "float")
 
     assert isinstance(xyz, list)
     assert len(xyz) == 3

@@ -163,3 +163,17 @@ def test_encoder_with_alias():
     with pytest.raises(BirdbrainException) as e:
         finch.encoder("BAD")
     assert e.value.message == "Error: Request to device failed"
+
+def test_acceleration_with_alias():
+    finch = BirdbrainFinch("B")
+
+    response = finch.acceleration()
+    response = finch.getAcceleration()
+
+    assert (-100.0 <= response[0] <= 100.0)
+    assert (-100.0 <= response[1] <= 100.0)
+    assert (-100.0 <= response[2] <= 100.0)
+
+    assert isinstance(response[0], float)
+    assert isinstance(response[1], float)
+    assert isinstance(response[2], float)
