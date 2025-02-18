@@ -4,6 +4,8 @@ from birdbrain_request import BirdbrainRequest
 from birdbrain_utility import BirdbrainUtility
 
 class BirdbrainFinchInput(BirdbrainRequest):
+    DEFAULT_DEGREES_MIN_RESPONSE = 0
+    DEFAULT_DEGREES_MAX_RESPONSE = 359
     DEFAULT_FACTOR = 1.0
     DEFAULT_MIN_RESPONSE = 0.0
     DEFAULT_MAX_RESPONSE = 100.0
@@ -61,15 +63,6 @@ class BirdbrainFinchInput(BirdbrainRequest):
         encoder_options['type_method'] = 'float'
 
         return round(self.sensor(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
-        #sensor(device, 'Encoder', calculate_left_or_right(direction), encoder_options)
-
-        #direction = self.__formatRightLeft(direction)
-        #if direction is None:
-        #    return 0
-
-        #response = self.__getSensor("Encoder", direction)
-        #encoder_value = round(float(response), 2)
-        #return encoder_value
 
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.
@@ -80,14 +73,21 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         return self.xyz_response(device, "finchAccel", "float")
 
-    def getCompass(self):
+    @classmethod
+    def compass(self, device):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field, relative to the Finch's position."""
 
+        encoder_options = {}
+        encoder_options['min_response'] = self.DEFAULT_DEGREES_MIN_RESPONSE
+        encoder_options['max_response'] = self.DEFAULT_DEGREES_MAX_RESPONSE
+
+        return self.sensor(device, 'finchCompass', 'static', encoder_options)
+
         # Send HTTP request
-        response = self.__getSensor("finchCompass", "static")
-        compass_heading = int(response)
-        return compass_heading
+        #response = self.__getSensor("finchCompass", "static")
+        #compass_heading = int(response)
+        #return compass_heading
 
     def getMagnetometer(self):
         """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""

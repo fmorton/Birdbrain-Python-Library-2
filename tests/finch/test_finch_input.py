@@ -93,3 +93,9 @@ def test_acceleration():
     assert isinstance(response[0], float)
     assert isinstance(response[1], float)
     assert isinstance(response[2], float)
+
+def test_compass():
+    response = BirdbrainFinchInput.compass("B")
+
+    assert (0 <= response <= 359)
+    assert isinstance(response, int)

@@ -177,3 +177,12 @@ def test_acceleration_with_alias():
     assert isinstance(response[0], float)
     assert isinstance(response[1], float)
     assert isinstance(response[2], float)
+
+def test_compass_with_alias():
+    finch = BirdbrainFinch("B")
+
+    response = finch.compass()
+    response = finch.getCompass()
+
+    assert (0 <= response <= 359)
+    assert isinstance(response, int)

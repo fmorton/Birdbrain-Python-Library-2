@@ -56,10 +56,13 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def acceleration(self):
         return BirdbrainFinchInput.acceleration(self.device)
 
+    def compass(self):
+        return BirdbrainFinchInput.compass(self.device)
+
     #  aliases
     getAcceleration = acceleration
     setBeak = beak
-    #compass = getCompass
+    getCompass = compass
     getDistance = distance
     getEncoder = encoder
     getLight = light
