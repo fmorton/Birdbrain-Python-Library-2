@@ -59,6 +59,12 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def compass(self):
         return BirdbrainFinchInput.compass(self.device)
 
+    def magnetometer(self):
+        return BirdbrainFinchInput.magnetometer(self.device)
+
+    def orientation(self):
+        return BirdbrainFinchInput.orientation(self.device)
+
     #  aliases
     getAcceleration = acceleration
     setBeak = beak
@@ -67,10 +73,10 @@ class BirdbrainFinch(BirdbrainMicrobit):
     getEncoder = encoder
     getLight = light
     getLine = line
-    #magnetometer = getMagnetometer
+    getMagnetometer = magnetometer
     setMotors = motors
     setMove = move
-    #orientation = getOrientation
+    getOrientation = orientation
     resetEncoders = reset_encoders
     setTail = tail
     setTurn = turn

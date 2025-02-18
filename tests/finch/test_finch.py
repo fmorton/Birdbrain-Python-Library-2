@@ -4,6 +4,7 @@ import time
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_finch import BirdbrainFinch
+from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
 
 def test_is():
@@ -200,3 +201,15 @@ def test_magnetometer_with_alias():
     assert isinstance(response[0], int)
     assert isinstance(response[1], int)
     assert isinstance(response[2], int)
+
+def test_orientation_with_alias():
+    finch = BirdbrainFinch("B")
+
+    response = finch.orientation()
+    response = finch.getOrientation()
+
+    some_position = False
+    for orientation in BirdbrainFinchInput.ORIENTATION_RESULTS:
+        some_position = some_position or (orientation == response)
+
+    assert some_position

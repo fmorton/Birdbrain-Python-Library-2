@@ -12,9 +12,9 @@ class BirdbrainFinchInput(BirdbrainRequest):
     DEFAULT_TYPE_METHOD = 'int'
     DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
     DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
-    #ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
-    #ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
-    #ORIENTATION_IN_BETWEEN = 'In between'
+    ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
+    ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
+    ORIENTATION_IN_BETWEEN = 'In between'
 
     @classmethod
     def is_moving(self, device):
@@ -84,29 +84,23 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         return self.sensor(device, 'finchCompass', 'static', encoder_options)
 
-        # Send HTTP request
-        #response = self.__getSensor("finchCompass", "static")
-        #compass_heading = int(response)
-        #return compass_heading
-
-    def getMagnetometer(self):
+    @classmethod
+    def magnetometer(self, device):
         """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""
 
-        return self._getXYZvalues("finchMag", True)
+        return self.xyz_response(device, "finchMag")
 
-    def getOrientation(self):
+    @classmethod
+    def orientation(self, device):
         """Return the orentation of the Finch. Options include:
         "Beak up", "Beak down", "Tilt left", "Tilt right", "Level",
         "Upside down", and "In between"."""
 
-        orientations = ["Beak%20Up", "Beak%20Down", "Tilt%20Left", "Tilt%20Right", "Level", "Upside%20Down"]
-        orientation_result = ["Beak up", "Beak down", "Tilt left", "Tilt right", "Level", "Upside down"]
+        # check for orientation of each orientation
+        for index, target_orientation in enumerate(self.ORIENTATIONS):
+            response = self.response("hummingbird", "in", "finchOrientation", target_orientation, device)
 
-        # Check for orientation of each device and if true return that state
-        for targetOrientation in orientations:
-            response = self.__getSensor("finchOrientation", targetOrientation)
-            if (response == "true"):
-                return orientation_result[orientations.index(targetOrientation)]
+            if (response == "true"): return self.ORIENTATION_RESULTS[index]
 
-        # If we are in a state in which none of the above seven states are true
-        return "In between"
+        # if we are in a state in which none of the above seven states are true
+        return self.ORIENTATION_IN_BETWEEN

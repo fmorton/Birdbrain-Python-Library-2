@@ -103,10 +103,19 @@ def test_compass():
 def test_magnetometer():
     response = BirdbrainFinchInput.magnetometer("B")
 
-    assert (-100.0 <= response[0] <= 100.0)
-    assert (-100.0 <= response[1] <= 100.0)
-    assert (-100.0 <= response[2] <= 100.0)
+    assert (-180.0 <= response[0] <= 180.0)
+    assert (-180.0 <= response[1] <= 180.0)
+    assert (-180.0 <= response[2] <= 180.0)
 
     assert isinstance(response[0], int)
     assert isinstance(response[1], int)
     assert isinstance(response[2], int)
+
+def test_orientation():
+    response = BirdbrainFinchInput.orientation("B")
+
+    some_position = False
+    for orientation in BirdbrainFinchInput.ORIENTATION_RESULTS:
+        some_position = some_position or (orientation == response)
+
+    assert some_position
