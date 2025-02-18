@@ -186,3 +186,17 @@ def test_compass_with_alias():
 
     assert (0 <= response <= 359)
     assert isinstance(response, int)
+
+def test_magnetometer_with_alias():
+    finch = BirdbrainFinch("B")
+
+    response = finch.magnetometer()
+    response = finch.getMagnetometer()
+
+    assert (-100 <= response[0] <= 100)
+    assert (-100 <= response[1] <= 100)
+    assert (-100 <= response[2] <= 100)
+
+    assert isinstance(response[0], int)
+    assert isinstance(response[1], int)
+    assert isinstance(response[2], int)

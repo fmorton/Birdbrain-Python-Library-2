@@ -99,3 +99,14 @@ def test_compass():
 
     assert (0 <= response <= 359)
     assert isinstance(response, int)
+
+def test_magnetometer():
+    response = BirdbrainFinchInput.magnetometer("B")
+
+    assert (-100.0 <= response[0] <= 100.0)
+    assert (-100.0 <= response[1] <= 100.0)
+    assert (-100.0 <= response[2] <= 100.0)
+
+    assert isinstance(response[0], int)
+    assert isinstance(response[1], int)
+    assert isinstance(response[2], int)
