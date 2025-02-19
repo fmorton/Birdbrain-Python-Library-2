@@ -1,29 +1,11 @@
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainMicrobitInput(BirdbrainRequest):
-    # -----------------------------------------------------------------------------
-    # INPUTS MICROBIT
-    # -----------------------------------------------------------------------------
-    def _getXYZvalues(self, sensor, intResult):
-        """Return the X, Y, and Z values of the given sensor."""
-
-        dimension = ['X', 'Y', 'Z']
-        values = []
-
-        for i in range(0, 3):
-            # Send HTTP request
-            response = self.send_httprequest_micro_in(sensor, dimension[i])
-            if intResult:
-                values.append(int(response))
-            else:
-                values.append(round(float(response), 3))
-
-        return (values[0], values[1], values[2])
-
-    def getAcceleration(self):
+    @classmethod
+    def acceleration(self, device, sensor = "Accelerometer"):
         """Gives the acceleration of X,Y,Z in m/sec2."""
 
-        return self._getXYZvalues("Accelerometer", False)
+        return self.xyz_response(device, sensor, "float")
 
     def getCompass(self):
         """Returns values 0-359 indicating the orentation of the Earth's

@@ -1,5 +1,6 @@
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_device import BirdbrainDevice
+from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
 from birdbrain_utility import BirdbrainUtility
 
@@ -71,7 +72,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
         """Gives the acceleration of X,Y,Z in m/sec2, relative
         to the Finch's position."""
 
-        return self.xyz_response(device, "finchAccel", "float")
+        return BirdbrainMicrobitInput.acceleration(device, "finchAccel")
 
     @classmethod
     def compass(self, device):

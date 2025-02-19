@@ -27,7 +27,6 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def beep(self):
         return BirdbrainMicrobitOutput.microbit_play_note(self.device, 80, 0.333)
 
-    #  aliases
     #acceleration = getAcceleration
     #button = getButton
     #compass = getCompass

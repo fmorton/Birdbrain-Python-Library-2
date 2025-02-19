@@ -1,5 +1,5 @@
 class BirdbrainConstant:
-    BIRDBRAIN_TEST = False
+    BIRDBRAIN_TEST = True
 
     BACKWARD = 'B'
     BEATS_TEMPO = 60

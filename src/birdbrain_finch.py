@@ -65,7 +65,6 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def orientation(self):
         return BirdbrainFinchInput.orientation(self.device)
 
-    #  aliases
     getAcceleration = acceleration
     setBeak = beak
     getCompass = compass
