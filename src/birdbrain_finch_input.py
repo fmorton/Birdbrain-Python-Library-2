@@ -5,18 +5,6 @@ from birdbrain_request import BirdbrainRequest
 from birdbrain_utility import BirdbrainUtility
 
 class BirdbrainFinchInput(BirdbrainRequest):
-    DEFAULT_DEGREES_MIN_RESPONSE = 0
-    DEFAULT_DEGREES_MAX_RESPONSE = 359
-    DEFAULT_FACTOR = 1.0
-    DEFAULT_MIN_RESPONSE = 0.0
-    DEFAULT_MAX_RESPONSE = 100.0
-    DEFAULT_TYPE_METHOD = 'int'
-    DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
-    DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
-    ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
-    ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
-    ORIENTATION_IN_BETWEEN = 'In between'
-
     @classmethod
     def is_moving(self, device):
         return BirdbrainRequest.request_status(BirdbrainRequest.response('hummingbird', 'in', 'finchIsMoving', 'static', device))
@@ -33,8 +21,8 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         distance_options = {}
         distance_options['factor'] = BirdbrainConstant.DISTANCE_FACTOR  # was 0.0919
-        distance_options['min_response'] = self.DEFAULT_UNLIMITED_MIN_RESPONSE
-        distance_options['max_response'] = self.DEFAULT_UNLIMITED_MAX_RESPONSE
+        distance_options['min_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE
+        distance_options['max_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE
 
         return self.sensor_response(device, 'Distance', 'static', distance_options)
 
@@ -52,8 +40,8 @@ class BirdbrainFinchInput(BirdbrainRequest):
         Values are returned in rotations."""
 
         encoder_options = {}
-        encoder_options['min_response'] = float(self.DEFAULT_UNLIMITED_MIN_RESPONSE)
-        encoder_options['max_response'] = float(self.DEFAULT_UNLIMITED_MAX_RESPONSE)
+        encoder_options['min_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE)
+        encoder_options['max_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE)
         encoder_options['type_method'] = 'float'
 
         return round(self.sensor_response(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
@@ -87,10 +75,10 @@ class BirdbrainFinchInput(BirdbrainRequest):
         "Upside down", and "In between"."""
 
         # check for orientation of each orientation
-        for index, target_orientation in enumerate(self.ORIENTATIONS):
+        for index, target_orientation in enumerate(BirdbrainConstant.ORIENTATIONS):
             response = self.response("hummingbird", "in", "finchOrientation", target_orientation, device)
 
-            if (response == "true"): return self.ORIENTATION_RESULTS[index]
+            if (response == "true"): return BirdbrainConstant.ORIENTATION_RESULTS[index]
 
         # if we are in a state in which none of the above seven states are true
-        return self.ORIENTATION_IN_BETWEEN
+        return BirdbrainConstant.ORIENTATION_IN_BETWEEN

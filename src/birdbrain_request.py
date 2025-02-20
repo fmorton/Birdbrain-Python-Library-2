@@ -127,10 +127,10 @@ class BirdbrainRequest:
     def sensor_response(self, device, sensor, other = None, options = {}):
         if other is False: return False   # for invalid directions
 
-        factor = options["factor"] if "factor" in options else self.DEFAULT_FACTOR
-        min_response = options["min_response"] if "min_response" in options else self.DEFAULT_MIN_RESPONSE
-        max_response = options["max_response"] if "max_response" in options else self.DEFAULT_MAX_RESPONSE
-        type_method = options["type_method"] if "type_method" in options else self.DEFAULT_TYPE_METHOD
+        factor = options["factor"] if "factor" in options else BirdbrainConstant.DEFAULT_FACTOR
+        min_response = options["min_response"] if "min_response" in options else BirdbrainConstant.DEFAULT_MIN_RESPONSE
+        max_response = options["max_response"] if "max_response" in options else BirdbrainConstant.DEFAULT_MAX_RESPONSE
+        type_method = options["type_method"] if "type_method" in options else BirdbrainConstant.DEFAULT_TYPE_METHOD
 
         request = ['hummingbird', 'in', sensor]
         if other is not None: request.append(other)

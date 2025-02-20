@@ -209,7 +209,7 @@ def test_orientation_with_alias():
     response = finch.getOrientation()
 
     some_position = False
-    for orientation in BirdbrainFinchInput.ORIENTATION_RESULTS:
+    for orientation in BirdbrainConstant.ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position
