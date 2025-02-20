@@ -42,24 +42,20 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         response = self.response('hummingbird', 'in', "V2sensor", "Sound", device)
 
-        if response == 'micro:bit v2 required':
-            return 0
-        else:
-            return int(response)
+        if response == 'micro:bit v2 required': return 0
 
-    def getTemperature(self):
+        return int(response)
+
+    @classmethod
+    def temperature(self, device):
         """Return the current temperature as an integer in degrees Celcius.
         Available for V2 micro:bit only."""
 
-        response = self.send_httprequest_micro_in("V2sensor", "Temperature")
+        response = self.response('hummingbird', 'in', "V2sensor", "Temperature", device)
 
-        try:
-            value = int(response)
-        except (ConnectionError, urllib.error.URLError):
-            print("Error in getTemperature: " + response)
-            sys.exit()
+        if response == 'micro:bit v2 required': return 0
 
-        return value
+        return int(response)
 
     def isShaking(self):
         """Return true if the device is shaking, false otherwise."""

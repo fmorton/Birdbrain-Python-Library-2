@@ -43,6 +43,9 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def sound(self):
         return BirdbrainMicrobitInput.sound(self.device)
 
+    def temperature(self):
+        return BirdbrainMicrobitInput.temperature(self.device)
+
     getAcceleration = acceleration
     getButton = button
     getCompass = compass
@@ -55,4 +58,4 @@ class BirdbrainMicrobit(BirdbrainDevice):
     setPoint = microbit_point
     getSound = sound
     #stop_all = stopAll
-    #temperature = getTemperature
+    getTemperature = temperature

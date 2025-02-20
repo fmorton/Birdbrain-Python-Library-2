@@ -49,3 +49,9 @@ def test_sound():
 
     assert (0 <= response <= 100)
     assert isinstance(response, int)
+
+def test_temperature():
+    response = BirdbrainMicrobitInput.temperature("A")
+
+    assert (0 <= response <= 50)
+    assert isinstance(response, int)

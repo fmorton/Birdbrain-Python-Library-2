@@ -52,11 +52,19 @@ def helper_test_sound(device):
 
     assert (0 <= response <= 100)
 
+def helper_test_temperature(device):
+    response = device.temperature()
+    response = device.getTemperature()
+
+    assert (0 <= response <= 50)
+
 def helper_test_shared(device):
     helper_test_acceleration(device)
     helper_test_compass(device)
     helper_test_magnetometer(device)
     helper_test_button(device)
+    helper_test_sound(device)
+    helper_test_temperature(device)
 
 def test_shared():
     helper_test_shared(BirdbrainHummingbird("A"))
