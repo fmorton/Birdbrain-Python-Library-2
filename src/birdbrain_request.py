@@ -124,7 +124,7 @@ class BirdbrainRequest:
         return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
 
     @classmethod
-    def sensor(self, device, sensor, other = None, options = {}):
+    def sensor_response(self, device, sensor, other = None, options = {}):
         if other is False: return False   # for invalid directions
 
         factor = options["factor"] if "factor" in options else self.DEFAULT_FACTOR

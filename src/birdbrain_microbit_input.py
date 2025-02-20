@@ -1,20 +1,37 @@
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainMicrobitInput(BirdbrainRequest):
+    DEFAULT_DEGREES_MIN_RESPONSE = 0
+    DEFAULT_DEGREES_MAX_RESPONSE = 359
+    DEFAULT_FACTOR = 1.0
+    #DEFAULT_MIN_RESPONSE = 0.0
+    #DEFAULT_MAX_RESPONSE = 100.0
+    DEFAULT_TYPE_METHOD = 'int'
+    #DEFAULT_UNLIMITED_MIN_RESPONSE = -1000000
+    #DEFAULT_UNLIMITED_MAX_RESPONSE = 1000000
+    #ORIENTATIONS = ['Beak%20Up', 'Beak%20Down', 'Tilt%20Left', 'Tilt%20Right', 'Level', 'Upside%20Down']
+    #ORIENTATION_RESULTS = ['Beak up', 'Beak down', 'Tilt left', 'Tilt right', 'Level', 'Upside down', 'In between']
+    #ORIENTATION_IN_BETWEEN = 'In between'
+
     @classmethod
     def acceleration(self, device, sensor = "Accelerometer"):
         """Gives the acceleration of X,Y,Z in m/sec2."""
 
         return self.xyz_response(device, sensor, "float")
 
-    def getCompass(self):
+    @classmethod
+    def compass(self, device, sensor = 'Compass'):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field."""
 
-        # Send HTTP request
-        response = self.send_httprequest_micro_in("Compass", None)
-        compass_heading = int(response)
-        return compass_heading
+        encoder_options = {}
+        encoder_options['min_response'] = self.DEFAULT_DEGREES_MIN_RESPONSE
+        encoder_options['max_response'] = self.DEFAULT_DEGREES_MAX_RESPONSE
+
+        sensor_option = None if sensor == 'Compass' else 'static'
+
+        ###return self.sensor_response(device, sensor, 'static', encoder_options)
+        return self.sensor_response(device, sensor, sensor_option, encoder_options)
 
     def getMagnetometer(self):
         """Return the values of X,Y,Z of a magnetommeter."""

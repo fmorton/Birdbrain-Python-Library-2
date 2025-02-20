@@ -25,7 +25,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
     def light(self, device, side):
         """Read the value of the right or left light sensor ('R' or 'L')."""
 
-        return self.sensor(device, 'Light', BirdbrainRequest.calculate_left_or_right(side))
+        return self.sensor_response(device, 'Light', BirdbrainRequest.calculate_left_or_right(side))
 
     @classmethod
     def distance(self, device):
@@ -36,7 +36,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
         distance_options['min_response'] = self.DEFAULT_UNLIMITED_MIN_RESPONSE
         distance_options['max_response'] = self.DEFAULT_UNLIMITED_MAX_RESPONSE
 
-        return self.sensor(device, 'Distance', 'static', distance_options)
+        return self.sensor_response(device, 'Distance', 'static', distance_options)
 
     @classmethod
     def line(self, device, side):
@@ -44,14 +44,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
         Returns brightness as a value 0-100 where a larger number
         represents more reflected light."""
 
-        return self.sensor(device, 'Line', BirdbrainRequest.calculate_left_or_right(side))
-
-        #direction = self.__formatRightLeft(direction)
-        #if direction is None:
-        #    return 0
-
-        #response = self.__getSensor("Line", direction)
-        #return int(response)
+        return self.sensor_response(device, 'Line', BirdbrainRequest.calculate_left_or_right(side))
 
     @classmethod
     def encoder(self, device, side):
@@ -63,7 +56,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
         encoder_options['max_response'] = float(self.DEFAULT_UNLIMITED_MAX_RESPONSE)
         encoder_options['type_method'] = 'float'
 
-        return round(self.sensor(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
+        return round(self.sensor_response(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
 
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.
@@ -79,11 +72,7 @@ class BirdbrainFinchInput(BirdbrainRequest):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field, relative to the Finch's position."""
 
-        encoder_options = {}
-        encoder_options['min_response'] = self.DEFAULT_DEGREES_MIN_RESPONSE
-        encoder_options['max_response'] = self.DEFAULT_DEGREES_MAX_RESPONSE
-
-        return self.sensor(device, 'finchCompass', 'static', encoder_options)
+        return BirdbrainMicrobitInput.compass(device, "finchCompass")
 
     @classmethod
     def magnetometer(self, device):
