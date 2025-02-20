@@ -18,3 +18,14 @@ def test_compass():
 
     assert (0 <= response <= 359)
     assert isinstance(response, int)
+
+def test_magnetometer():
+    response = BirdbrainMicrobitInput.magnetometer("A")
+
+    assert (-180.0 <= response[0] <= 180.0)
+    assert (-180.0 <= response[1] <= 180.0)
+    assert (-180.0 <= response[2] <= 180.0)
+
+    assert isinstance(response[0], int)
+    assert isinstance(response[1], int)
+    assert isinstance(response[2], int)

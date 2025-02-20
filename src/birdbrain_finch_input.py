@@ -46,6 +46,21 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
         return round(self.sensor_response(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
 
+    @classmethod
+    def orientation(self, device):
+        """Return the orentation of the Finch. Options include:
+        "Beak up", "Beak down", "Tilt left", "Tilt right", "Level",
+        "Upside down", and "In between"."""
+
+        # check for orientation of each orientation
+        for index, target_orientation in enumerate(BirdbrainConstant.ORIENTATIONS):
+            response = self.response("hummingbird", "in", "finchOrientation", target_orientation, device)
+
+            if (response == "true"): return BirdbrainConstant.ORIENTATION_RESULTS[index]
+
+        # if we are in a state in which none of the above seven states are true
+        return BirdbrainConstant.ORIENTATION_IN_BETWEEN
+
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.
     @classmethod
@@ -66,19 +81,5 @@ class BirdbrainFinchInput(BirdbrainRequest):
     def magnetometer(self, device):
         """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""
 
-        return self.xyz_response(device, "finchMag")
+        return BirdbrainMicrobitInput.magnetometer(device, "finchMag")
 
-    @classmethod
-    def orientation(self, device):
-        """Return the orentation of the Finch. Options include:
-        "Beak up", "Beak down", "Tilt left", "Tilt right", "Level",
-        "Upside down", and "In between"."""
-
-        # check for orientation of each orientation
-        for index, target_orientation in enumerate(BirdbrainConstant.ORIENTATIONS):
-            response = self.response("hummingbird", "in", "finchOrientation", target_orientation, device)
-
-            if (response == "true"): return BirdbrainConstant.ORIENTATION_RESULTS[index]
-
-        # if we are in a state in which none of the above seven states are true
-        return BirdbrainConstant.ORIENTATION_IN_BETWEEN

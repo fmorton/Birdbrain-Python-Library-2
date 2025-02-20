@@ -19,13 +19,12 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         sensor_option = None if sensor == 'Compass' else 'static'
 
-        ###return self.sensor_response(device, sensor, 'static', encoder_options)
         return self.sensor_response(device, sensor, sensor_option, encoder_options)
 
-    def getMagnetometer(self):
+    @classmethod
+    def magnetometer(self, device, sensor = "Magnetometer"):
         """Return the values of X,Y,Z of a magnetommeter."""
-
-        return self._getXYZvalues("Magnetometer", True)
+        return self.xyz_response(device, sensor, "int")
 
     def getButton(self, button):
         """Return the status of the button asked. Specify button 'A', 'B', or

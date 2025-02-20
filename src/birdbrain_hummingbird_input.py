@@ -1,6 +1,27 @@
+from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
 
 class BirdbrainHummingbirdInput(BirdbrainRequest):
+    @classmethod
+    def acceleration(self, device):
+        """Gives the acceleration of X,Y,Z in m/sec2, relative
+        to the Finch's position."""
+
+        return BirdbrainMicrobitInput.acceleration(device)
+
+    @classmethod
+    def compass(self, device):
+        """Returns values 0-359 indicating the orentation of the Earth's
+        magnetic field, relative to the Finch's position."""
+
+        return BirdbrainMicrobitInput.compass(device)
+
+    @classmethod
+    def magnetometer(self, device):
+        """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""
+
+        return BirdbrainMicrobitInput.magnetometer(device)
+
     # -------------------------------------------------------------------------
     # HUMMINGBIRD BIT INPUT
     # -------------------------------------------------------------------------
