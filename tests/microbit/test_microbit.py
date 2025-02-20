@@ -103,3 +103,9 @@ def test_microbit_play_note_with_alias():
     time.sleep(0.25)
 
     hummingbird.beep()
+
+def test_stop_all():
+    hummingbird = BirdbrainHummingbird("A")
+
+    hummingbird.stop_all()
+    hummingbird.stopAll()

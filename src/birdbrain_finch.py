@@ -1,4 +1,5 @@
 from birdbrain_constant import BirdbrainConstant
+from birdbrain_exception import BirdbrainException
 from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_microbit import BirdbrainMicrobit

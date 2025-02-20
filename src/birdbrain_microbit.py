@@ -2,6 +2,7 @@ from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_microbit_output import BirdbrainMicrobitOutput
+from birdbrain_request import BirdbrainRequest
 
 class BirdbrainMicrobit(BirdbrainDevice):
     def __init__(self, device = 'A', raise_exception_if_no_connection = True):
@@ -52,6 +53,8 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def orientation(self):
         return BirdbrainMicrobitInput.orientation(self.device)
 
+    def stop_all(self):
+        BirdbrainRequest.stop_all(self.device)
 
     getAcceleration = acceleration
     getButton = button
@@ -63,5 +66,5 @@ class BirdbrainMicrobit(BirdbrainDevice):
     playNote = microbit_play_note
     setPoint = microbit_point
     getSound = sound
-    #stop_all = stopAll
+    stopAll = stop_all
     getTemperature = temperature

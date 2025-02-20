@@ -103,3 +103,9 @@ def test_orientation_with_alias():
         some_position = some_position or (orientation == response)
 
     assert some_position
+
+def test_stop_all():
+    hummingbird = BirdbrainHummingbird("A")
+
+    hummingbird.stop_all()
+    hummingbird.stopAll()

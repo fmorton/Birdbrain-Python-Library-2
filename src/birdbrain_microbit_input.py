@@ -68,12 +68,3 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         """Return the orentation of the Microbit. Results found in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS"""
         return self.orientation_response(device, "orientation", BirdbrainConstant.HUMMINGBIRD_ORIENTATIONS, 
             BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS, BirdbrainConstant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN)
-
-    def stopAll(self):
-        """Stop all device outputs (ie. Servos, LEDs, LED Array, Motors, etc.)."""
-
-        time.sleep(0.1)  # hack to give stopAll() time to act before the end of a program
-
-        response = self.send_httprequest_stopAll()
-        self.symbolvalue = [0]*25
-        return response

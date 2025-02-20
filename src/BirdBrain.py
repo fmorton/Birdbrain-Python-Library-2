@@ -19,7 +19,7 @@
 # similarly includes function to control the inputs and outputs
 # of the Finch robot.
 #
-# Revised 2/2025 by Frank Morton @ Base2 Incorporated
+# Revised 3/2025 by Frank Morton @ Base2 Incorporated
 #
 # This file is left for historical reasons and backward
 # compatibility. Originally, all classes were in this single
