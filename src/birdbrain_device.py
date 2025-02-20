@@ -63,3 +63,9 @@ class BirdbrainDevice:
 
     def stop_all(self):
         BirdbrainRequest.stop_all(self.device)
+
+
+    isConnectionValid = is_connected
+    isFinch = is_finch
+    isHummingbird = is_hummingbird
+    isMicrobit = is_microbit

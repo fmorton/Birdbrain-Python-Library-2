@@ -57,17 +57,11 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         return int(response)
 
-    def isShaking(self):
+    @classmethod
+    def is_shaking(self, device):
         """Return true if the device is shaking, false otherwise."""
 
-        # Send HTTP request
-        response = self.send_httprequest_micro_in("Shake", None)
-        if (response == "true"):  # convert to boolean
-            shake = True
-        else:
-            shake = False
-
-        return shake
+        return self.request_status(self.response('hummingbird', 'in', 'orientation', 'Shake', device))
 
     def getOrientation(self):
         """Return the orentation of the micro:bit. Options include:

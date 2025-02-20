@@ -29,6 +29,11 @@ def test_is():
     assert hummingbird.is_hummingbird()
     assert not hummingbird.is_finch()
 
+    assert hummingbird.isConnectionValid()
+    assert not hummingbird.isMicrobit()
+    assert hummingbird.isHummingbird()
+    assert not hummingbird.isFinch()
+
 def test_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 

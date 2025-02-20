@@ -15,6 +15,11 @@ def test_is():
     assert not finch.is_hummingbird()
     assert finch.is_finch()
 
+    assert finch.isConnectionValid()
+    assert not finch.isMicrobit()
+    assert not finch.isHummingbird()
+    assert finch.isFinch()
+
 def test_beak_with_alias():
     finch = BirdbrainFinch('B')
 

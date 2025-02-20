@@ -58,6 +58,12 @@ def helper_test_temperature(device):
 
     assert (0 <= response <= 50)
 
+def helper_test_is_shaking(device):
+    response = device.is_shaking()
+    response = device.isShaking()
+
+    assert not response
+
 def helper_test_shared(device):
     helper_test_acceleration(device)
     helper_test_compass(device)
@@ -65,6 +71,7 @@ def helper_test_shared(device):
     helper_test_button(device)
     helper_test_sound(device)
     helper_test_temperature(device)
+    helper_test_is_shaking(device)
 
 def test_shared():
     helper_test_shared(BirdbrainHummingbird("A"))

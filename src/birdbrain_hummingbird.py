@@ -26,14 +26,12 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
 
     #dial = getDial
     #distance = getDistance
-    #is_hummingbird = isHummingbird
     setLED = led
     #light = getLight
     setPositionServo = position_servo
     setRotationServo = rotation_servo
+    #sound
     #sensor = getSensor
-    #sound = getSound
     # stop_all = stopAll
-    # temperature = getTemperature
     setTriLED = tri_led
     #voltage = getVoltage

@@ -30,6 +30,11 @@ def test_is():
     assert microbit.is_hummingbird()
     assert not microbit.is_finch()
 
+    assert microbit.isConnectionValid()
+    assert not microbit.isMicrobit()
+    assert microbit.isHummingbird()
+    assert not microbit.isFinch()
+
 def test_microbit_display_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
