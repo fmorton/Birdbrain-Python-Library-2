@@ -43,3 +43,9 @@ def test_button():
     with pytest.raises(BirdbrainException) as e:
         BirdbrainMicrobitInput.button("A", "BAD")
     assert e.value.message == "Error: Request to device failed"
+
+def test_sound():
+    response = BirdbrainMicrobitInput.sound("A")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)

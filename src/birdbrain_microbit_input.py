@@ -35,19 +35,17 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         return self.request_status(self.response('hummingbird', 'in', 'button', button.capitalize(), device))
 
-    def getSound(self):
+    @classmethod
+    def sound(self, device):
         """Return the current sound level as an integer between 1 and 100.
         Available for V2 micro:bit only."""
 
-        response = self.send_httprequest_micro_in("V2sensor", "Sound")
+        response = self.response('hummingbird', 'in', "V2sensor", "Sound", device)
 
-        try:
-            value = int(response)
-        except (ConnectionError, urllib.error.URLError):
-            print("Error in getSound: " + response)
-            sys.exit()
-
-        return value
+        if response == 'micro:bit v2 required':
+            return 0
+        else:
+            return int(response)
 
     def getTemperature(self):
         """Return the current temperature as an integer in degrees Celcius.

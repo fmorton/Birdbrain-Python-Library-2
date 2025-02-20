@@ -4,7 +4,7 @@ from birdbrain_exception import BirdbrainException
 from birdbrain_finch import BirdbrainFinch
 from birdbrain_hummingbird import BirdbrainHummingbird
 
-def helper_test_shared(device):
+def helper_test_acceleration(device):
     response = device.acceleration()
     response = device.getAcceleration()
 
@@ -16,14 +16,14 @@ def helper_test_shared(device):
     assert isinstance(response[1], float)
     assert isinstance(response[2], float)
 
-
+def helper_test_compass(device):
     response = device.compass()
     response = device.getCompass()
 
     assert (0 <= response <= 359)
     assert isinstance(response, int)
 
-
+def helper_test_magnetometer(device):
     response = device.magnetometer()
     response = device.getMagnetometer()
 
@@ -35,7 +35,7 @@ def helper_test_shared(device):
     assert isinstance(response[1], int)
     assert isinstance(response[2], int)
 
-
+def helper_test_button(device):
     assert not device.button("A")
     assert not device.button("B")
     assert not device.button("LOGO")
@@ -45,6 +45,18 @@ def helper_test_shared(device):
     with pytest.raises(BirdbrainException) as e:
         device.button("BAD")
     assert e.value.message == "Error: Request to device failed"
+
+def helper_test_sound(device):
+    response = device.sound()
+    response = device.getSound()
+
+    assert (0 <= response <= 100)
+
+def helper_test_shared(device):
+    helper_test_acceleration(device)
+    helper_test_compass(device)
+    helper_test_magnetometer(device)
+    helper_test_button(device)
 
 def test_shared():
     helper_test_shared(BirdbrainHummingbird("A"))
