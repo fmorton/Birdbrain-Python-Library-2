@@ -55,3 +55,8 @@ def test_temperature():
 
     assert (0 <= response <= 50)
     assert isinstance(response, int)
+
+def test_is_shaking():
+    response = BirdbrainMicrobitInput.is_shaking("A")
+
+    assert not response
