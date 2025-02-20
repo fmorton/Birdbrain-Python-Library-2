@@ -1,5 +1,6 @@
 import pytest
 
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 
@@ -60,3 +61,12 @@ def test_is_shaking():
     response = BirdbrainMicrobitInput.is_shaking("A")
 
     assert not response
+
+def test_orientation():
+    response = BirdbrainMicrobitInput.orientation("A")
+
+    some_position = False
+    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+        some_position = some_position or (orientation == response)
+
+    assert some_position

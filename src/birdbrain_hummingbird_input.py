@@ -22,6 +22,12 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
 
         return BirdbrainMicrobitInput.magnetometer(device)
 
+    @classmethod
+    def orientation(self, device):
+        """Return the orentation of the Hummingbird. Results found in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS"""
+
+        return BirdbrainMicrobitInput.orientation(device)
+
     # -------------------------------------------------------------------------
     # HUMMINGBIRD BIT INPUT
     # -------------------------------------------------------------------------

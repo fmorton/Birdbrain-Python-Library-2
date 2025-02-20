@@ -49,6 +49,9 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def is_shaking(self):
         return BirdbrainMicrobitInput.is_shaking(self.device)
 
+    def orientation(self):
+        return BirdbrainMicrobitInput.orientation(self.device)
+
 
     getAcceleration = acceleration
     getButton = button
@@ -56,7 +59,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     setDisplay = microbit_display
     isShaking = is_shaking
     getMagnetometer = magnetometer
-    #orientation = getOrientation
+    getOrientation = orientation
     playNote = microbit_play_note
     setPoint = microbit_point
     getSound = sound

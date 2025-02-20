@@ -48,18 +48,9 @@ class BirdbrainFinchInput(BirdbrainRequest):
 
     @classmethod
     def orientation(self, device):
-        """Return the orentation of the Finch. Options include:
-        "Beak up", "Beak down", "Tilt left", "Tilt right", "Level",
-        "Upside down", and "In between"."""
-
-        # check for orientation of each orientation
-        for index, target_orientation in enumerate(BirdbrainConstant.ORIENTATIONS):
-            response = self.response("hummingbird", "in", "finchOrientation", target_orientation, device)
-
-            if (response == "true"): return BirdbrainConstant.ORIENTATION_RESULTS[index]
-
-        # if we are in a state in which none of the above seven states are true
-        return BirdbrainConstant.ORIENTATION_IN_BETWEEN
+        """Return the orentation of the Finch. Results found in BirdbrainConstant.FINCH_ORIENTATION_RESULTS"""
+        return self.orientation_response(device, "finchOrientation", BirdbrainConstant.FINCH_ORIENTATIONS, 
+            BirdbrainConstant.FINCH_ORIENTATION_RESULTS, BirdbrainConstant.FINCH_ORIENTATION_IN_BETWEEN)
 
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.

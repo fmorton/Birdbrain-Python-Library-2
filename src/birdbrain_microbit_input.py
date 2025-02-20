@@ -63,22 +63,11 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         return self.request_status(self.response('hummingbird', 'in', 'orientation', 'Shake', device))
 
-    def getOrientation(self):
-        """Return the orentation of the micro:bit. Options include:
-        "Screen up", "Screen down", "Tilt left", "Tilt right", "Logo up",
-        "Logo down", and "In between"."""
-
-        orientations = ["Screen%20Up", "Screen%20Down", "Tilt%20Left", "Tilt%20Right", "Logo%20Up", "Logo%20Down"]
-        orientation_result = ["Screen up", "Screen down", "Tilt left", "Tilt right", "Logo up", "Logo down"]
-
-        # Check for orientation of each device and if true return that state
-        for targetOrientation in orientations:
-            response = self.send_httprequest_micro_in(targetOrientation, None)
-            if (response == "true"):
-                return orientation_result[orientations.index(targetOrientation)]
-
-        # If we are in a state in which none of the above seven states are true
-        return "In between"
+    @classmethod
+    def orientation(self, device):
+        """Return the orentation of the Microbit. Results found in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS"""
+        return self.orientation_response(device, "orientation", BirdbrainConstant.HUMMINGBIRD_ORIENTATIONS, 
+            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS, BirdbrainConstant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN)
 
     def stopAll(self):
         """Stop all device outputs (ie. Servos, LEDs, LED Array, Motors, etc.)."""
@@ -88,41 +77,3 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         response = self.send_httprequest_stopAll()
         self.symbolvalue = [0]*25
         return response
-
-    #def send_httprequest_micro_in(self, peri, value):
-    #    """Utility function to arrange and send the http request for microbit input functions."""
-    #    if (peri == "Accelerometer"):
-    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-    #    elif (peri == "Compass"):
-    #        http_request = self.base_request_in + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Magnetometer"):
-    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-    #    elif (peri == "button"):
-    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-    #    elif (peri == "Shake"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Screen%20Up"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Screen%20Down"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Tilt%20Right"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Tilt%20Left"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Logo%20Up"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    elif (peri == "Logo%20Down"):
-    #        http_request = self.base_request_in + "/" + "orientation" + "/" + peri + "/" + str(self.device_s_no)
-    #    else:
-    #        http_request = self.base_request_in + "/" + peri + "/" + str(value) + "/" + str(self.device_s_no)
-    #    try:
-    #        response_request = urllib.request.urlopen(http_request)
-    #    except (ConnectionError, urllib.error.URLError):
-    #        print(CONNECTION_SERVER_CLOSED)
-    #        sys.exit()
-    #    response = response_request.read().decode('utf-8')
-    #    if (response == "Not Connected"):
-    #        print(NO_CONNECTION)
-    #        sys.exit()
-    #    time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
-    #    return response

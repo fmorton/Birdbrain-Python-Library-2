@@ -115,7 +115,7 @@ def test_orientation():
     response = BirdbrainFinchInput.orientation("B")
 
     some_position = False
-    for orientation in BirdbrainConstant.ORIENTATION_RESULTS:
+    for orientation in BirdbrainConstant.FINCH_ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position

@@ -1,6 +1,7 @@
 import pytest
 import time
 
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird_input import BirdbrainHummingbirdInput
 
@@ -32,3 +33,11 @@ def test_magnetometer():
     assert isinstance(response[1], int)
     assert isinstance(response[2], int)
 
+def test_orientation():
+    response = BirdbrainHummingbirdInput.orientation("A")
+
+    some_position = False
+    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+        some_position = some_position or (orientation == response)
+
+    assert some_position

@@ -91,3 +91,15 @@ def test_rotation_servo_with_alias():
     time.sleep(0.15)
 
     assert hummingbird.setRotationServo(2, 0)
+
+def test_orientation_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.orientation()
+    response = hummingbird.getOrientation()
+
+    some_position = False
+    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+        some_position = some_position or (orientation == response)
+
+    assert some_position

@@ -166,3 +166,12 @@ class BirdbrainRequest:
         calc_b = BirdbrainRequest.calculate_intensity(b_intensity)
 
         return BirdbrainRequest.response_status('hummingbird', 'out', 'triled', port, calc_r, calc_g, calc_b, device)
+
+    @classmethod
+    def orientation_response(self, device, sensor, orientations, orientation_results, orientation_in_between):
+        for index, target_orientation in enumerate(orientations):
+            response = self.response("hummingbird", "in", sensor, target_orientation, device)
+
+            if (response == "true"): return orientation_results[index]
+
+        return BirdbrainConstant.orientation_in_between
