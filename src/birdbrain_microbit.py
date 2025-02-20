@@ -1,5 +1,6 @@
 from birdbrain_device import BirdbrainDevice
 from birdbrain_exception import BirdbrainException
+from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_microbit_output import BirdbrainMicrobitOutput
 
 class BirdbrainMicrobit(BirdbrainDevice):
@@ -27,13 +28,25 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def beep(self):
         return BirdbrainMicrobitOutput.microbit_play_note(self.device, 80, 0.333)
 
-    #acceleration = getAcceleration
-    #button = getButton
-    #compass = getCompass
+    def acceleration(self):
+        return BirdbrainMicrobitInput.acceleration(self.device)
+
+    def compass(self):
+        return BirdbrainMicrobitInput.compass(self.device)
+
+    def magnetometer(self):
+        return BirdbrainMicrobitInput.magnetometer(self.device)
+
+    def button(self, button):
+        return BirdbrainMicrobitInput.button(self.device, button)
+
+    getAcceleration = acceleration
+    getButton = button
+    getCompass = compass
     setDisplay = microbit_display
     #isMicrobit = is_microbit
     #is_shaking = isShaking
-    #magnetometer = getMagnetometer
+    getMagnetometer = magnetometer
     #orientation = getOrientation
     playNote = microbit_play_note
     setPoint = microbit_point

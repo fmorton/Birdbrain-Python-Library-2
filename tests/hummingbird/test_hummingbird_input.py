@@ -5,7 +5,6 @@ from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird_input import BirdbrainHummingbirdInput
 
 def test_acceleration():
-    #response = BirdbrainHummingbirdInput.acceleration("A", "Accelerometer")
     response = BirdbrainHummingbirdInput.acceleration("A")
 
     assert (-100.0 <= response[0] <= 100.0)
@@ -17,7 +16,6 @@ def test_acceleration():
     assert isinstance(response[2], float)
 
 def test_compass():
-    #response = BirdbrainHummingbirdInput.compass("A", "Compass")
     response = BirdbrainHummingbirdInput.compass("A")
 
     assert (0 <= response <= 359)

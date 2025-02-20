@@ -24,14 +24,14 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     def rotation_servo(self, port, speed):
         return BirdbrainHummingbirdOutput.rotation_servo(self.device, port, speed)
 
-    def acceleration(self):
-        return BirdbrainMicrobitInput.acceleration(self.device)
+    #def acceleration(self):
+    #    return BirdbrainMicrobitInput.acceleration(self.device)
 
-    def compass(self):
-        return BirdbrainMicrobitInput.compass(self.device)
+    #def compass(self):
+    #    return BirdbrainMicrobitInput.compass(self.device)
 
-    def magnetometer(self):
-        return BirdbrainMicrobitInput.magnetometer(self.device)
+    #def magnetometer(self):
+    #    return BirdbrainMicrobitInput.magnetometer(self.device)
 
     #dial = getDial
     #distance = getDistance
@@ -46,6 +46,3 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     # temperature = getTemperature
     setTriLED = tri_led
     #voltage = getVoltage
-    getAcceleration = acceleration
-    getCompass = compass
-    getMagnetometer = magnetometer

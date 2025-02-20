@@ -1,5 +1,5 @@
 class BirdbrainConstant:
-    BIRDBRAIN_TEST = False
+    BIRDBRAIN_TEST = True
 
     BACKWARD = 'B'
     BEATS_TEMPO = 60
@@ -24,6 +24,7 @@ class BirdbrainConstant:
     RESET_ENCODERS_DELAY = 0.2
     RIGHT = 'R'
     VALID_BEAK_PORTS = '1'
+    VALID_BUTTONS = 'ABLogo'
     VALID_DEVICES = 'ABC'
     VALID_LED_PORTS = '123'
     VALID_MOVE_DIRECTION = 'FB'

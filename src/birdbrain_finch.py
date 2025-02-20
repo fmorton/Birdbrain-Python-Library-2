@@ -2,6 +2,7 @@ from birdbrain_constant import BirdbrainConstant
 from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_microbit import BirdbrainMicrobit
+from birdbrain_microbit_input import BirdbrainMicrobitInput
 
 class BirdbrainFinch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
@@ -53,6 +54,9 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def encoder(self, side):
         return BirdbrainFinchInput.encoder(self.device, side)
 
+    def orientation(self):
+        return BirdbrainFinchInput.orientation(self.device)
+
     def acceleration(self):
         return BirdbrainFinchInput.acceleration(self.device)
 
@@ -61,9 +65,6 @@ class BirdbrainFinch(BirdbrainMicrobit):
 
     def magnetometer(self):
         return BirdbrainFinchInput.magnetometer(self.device)
-
-    def orientation(self):
-        return BirdbrainFinchInput.orientation(self.device)
 
     getAcceleration = acceleration
     setBeak = beak

@@ -1,3 +1,5 @@
+import inspect
+
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_request import BirdbrainRequest
 
@@ -26,27 +28,12 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         """Return the values of X,Y,Z of a magnetommeter."""
         return self.xyz_response(device, sensor, "int")
 
-    def getButton(self, button):
+    @classmethod
+    def button(self, device, button):
         """Return the status of the button asked. Specify button 'A', 'B', or
         'Logo'. Logo available for V2 micro:bit only."""
 
-        button = button.upper()
-        # Check if the button A and button B are represented in a valid manner
-        if ((button != 'A') and (button != 'B') and (button != 'LOGO')):
-            print("Error: Button must be A, B, or Logo.")
-            sys.exit()
-        # Send HTTP request
-        response = self.send_httprequest_micro_in("button", button)
-        # Convert to boolean form
-        if (response == "true"):
-            button_value = True
-        elif (response == "false"):
-            button_value = False
-        else:
-            print("Error in getButton: " + response)
-            sys.exit()
-
-        return button_value
+        return self.request_status(self.response('hummingbird', 'in', 'button', button.capitalize(), device))
 
     def getSound(self):
         """Return the current sound level as an integer between 1 and 100.

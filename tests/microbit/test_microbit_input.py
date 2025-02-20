@@ -1,3 +1,6 @@
+import pytest
+
+from birdbrain_exception import BirdbrainException
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 
 def test_acceleration():
@@ -29,3 +32,14 @@ def test_magnetometer():
     assert isinstance(response[0], int)
     assert isinstance(response[1], int)
     assert isinstance(response[2], int)
+
+def test_button():
+    assert not BirdbrainMicrobitInput.button("A", "A")
+    assert not BirdbrainMicrobitInput.button("A", "B")
+    assert not BirdbrainMicrobitInput.button("A", "LOGO")
+    assert not BirdbrainMicrobitInput.button("A", "Logo")
+    assert not BirdbrainMicrobitInput.button("A", "logo")
+
+    with pytest.raises(BirdbrainException) as e:
+        BirdbrainMicrobitInput.button("A", "BAD")
+    assert e.value.message == "Error: Request to device failed"

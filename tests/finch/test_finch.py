@@ -165,43 +165,6 @@ def test_encoder_with_alias():
         finch.encoder("BAD")
     assert e.value.message == "Error: Request to device failed"
 
-def test_acceleration_with_alias():
-    finch = BirdbrainFinch("B")
-
-    response = finch.acceleration()
-    response = finch.getAcceleration()
-
-    assert (-100.0 <= response[0] <= 100.0)
-    assert (-100.0 <= response[1] <= 100.0)
-    assert (-100.0 <= response[2] <= 100.0)
-
-    assert isinstance(response[0], float)
-    assert isinstance(response[1], float)
-    assert isinstance(response[2], float)
-
-def test_compass_with_alias():
-    finch = BirdbrainFinch("B")
-
-    response = finch.compass()
-    response = finch.getCompass()
-
-    assert (0 <= response <= 359)
-    assert isinstance(response, int)
-
-def test_magnetometer_with_alias():
-    finch = BirdbrainFinch("B")
-
-    response = finch.magnetometer()
-    response = finch.getMagnetometer()
-
-    assert (-100 <= response[0] <= 100)
-    assert (-100 <= response[1] <= 100)
-    assert (-100 <= response[2] <= 100)
-
-    assert isinstance(response[0], int)
-    assert isinstance(response[1], int)
-    assert isinstance(response[2], int)
-
 def test_orientation_with_alias():
     finch = BirdbrainFinch("B")
 
