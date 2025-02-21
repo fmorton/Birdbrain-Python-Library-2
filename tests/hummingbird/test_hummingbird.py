@@ -114,6 +114,16 @@ def test_distance_with_alias():
     assert (0 <= response <= 298)
     assert isinstance(response, int)
 
+def test_dial_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.dial(1)
+    response = hummingbird.getDial(1)
+    response = hummingbird.dial("1")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
 def test_stop_all():
     hummingbird = BirdbrainHummingbird("A")
 

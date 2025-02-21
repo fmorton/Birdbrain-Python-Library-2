@@ -47,3 +47,9 @@ def test_distance():
 
     assert (0 <= response <= 298)
     assert isinstance(response, int)
+
+def test_dial():
+    response = BirdbrainHummingbirdInput.dial("A", 1)
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
