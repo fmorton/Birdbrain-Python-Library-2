@@ -39,12 +39,12 @@ class BirdbrainFinchInput(BirdbrainRequest):
         """Read the value of the right or left encoder ('R' or 'L').
         Values are returned in rotations."""
 
-        encoder_options = {}
-        encoder_options['min_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE)
-        encoder_options['max_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE)
-        encoder_options['type_method'] = 'float'
+        sensor_options = {}
+        sensor_options['min_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE)
+        sensor_options['max_response'] = float(BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE)
+        sensor_options['type_method'] = 'float'
 
-        return round(self.sensor_response(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), encoder_options), 2)
+        return round(self.sensor_response(device, 'Encoder', BirdbrainRequest.calculate_left_or_right(side), sensor_options), 2)
 
     @classmethod
     def orientation(self, device):

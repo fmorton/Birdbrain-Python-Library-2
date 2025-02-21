@@ -48,12 +48,12 @@ def test_sensor():
     assert isinstance(response, float)
 
 def test_light():
-    response = BirdbrainHummingbirdInput.light("A", 3)
+    response = BirdbrainHummingbirdInput.light("A", 1)
     assert (0 <= response <= 100)
     assert isinstance(response, int)
 
 def test_sound():
-    response = BirdbrainHummingbirdInput.sound("A", 3)
+    response = BirdbrainHummingbirdInput.sound("A", 1)
     assert (0 <= response <= 100)
     assert isinstance(response, int)
 
@@ -82,4 +82,5 @@ def test_dial():
 def test_voltage():
     response = BirdbrainHummingbirdInput.voltage("A", 1)
 
+    assert (0.0 <= response <= 3.3)
     assert isinstance(response, float)

@@ -15,13 +15,13 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field."""
 
-        encoder_options = {}
-        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_DEGREES_MIN_RESPONSE
-        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_DEGREES_MAX_RESPONSE
+        sensor_options = {}
+        sensor_options['min_response'] = BirdbrainConstant.DEFAULT_DEGREES_MIN_RESPONSE
+        sensor_options['max_response'] = BirdbrainConstant.DEFAULT_DEGREES_MAX_RESPONSE
 
-        sensor_option = None if sensor == 'Compass' else 'static'
+        compass_option = None if sensor == 'Compass' else 'static'
 
-        return self.sensor_response(device, sensor, sensor_option, encoder_options)
+        return self.sensor_response(device, sensor, compass_option, sensor_options)
 
     @classmethod
     def magnetometer(self, device, sensor = "Magnetometer"):
