@@ -89,9 +89,14 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
 
         return self.sensor_response(device, 'sensor', port, encoder_options)
 
-    def getVoltage(self, port):
+    @classmethod
+    def voltage(self, device, port):
         """Read the value of  the dial attached to a certain port."""
 
-        response = self.getSensor(port)
-        voltage_value = response * VOLTAGE_FACTOR
-        return voltage_value
+        encoder_options = {}
+        encoder_options['factor'] = BirdbrainConstant.VOLTAGE_FACTOR
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE
+        encoder_options['type_method'] = 'float'
+
+        return self.sensor_response(device, 'sensor', port, encoder_options)

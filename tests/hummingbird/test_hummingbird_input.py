@@ -78,3 +78,8 @@ def test_dial():
 
     assert (0 <= response <= 100)
     assert isinstance(response, int)
+
+def test_voltage():
+    response = BirdbrainHummingbirdInput.voltage("A", 1)
+
+    assert isinstance(response, float)

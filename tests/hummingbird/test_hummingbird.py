@@ -108,6 +108,7 @@ def test_sensor():
     hummingbird = BirdbrainHummingbird("A")
 
     response = hummingbird.sensor(1)
+    response = hummingbird.getSensor(1)
 
     assert isinstance(response, float)
 
@@ -166,6 +167,14 @@ def test_dial_with_alias():
 
     assert (0 <= response <= 100)
     assert isinstance(response, int)
+
+def test_voltage_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.voltage(1)
+    response = hummingbird.getVoltage(1)
+
+    assert isinstance(response, float)
 
 def test_stop_all():
     hummingbird = BirdbrainHummingbird("A")
