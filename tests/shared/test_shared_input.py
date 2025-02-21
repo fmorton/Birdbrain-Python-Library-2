@@ -47,8 +47,8 @@ def helper_test_button(device):
     assert e.value.message == "Error: Request to device failed"
 
 def helper_test_sound(device):
-    response = device.sound()
-    response = device.getSound()
+    response = device.sound(3)
+    response = device.getSound(3)
 
     assert (0 <= response <= 100)
 

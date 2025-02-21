@@ -174,4 +174,4 @@ class BirdbrainRequest:
 
             if (response == "true"): return orientation_results[index]
 
-        return BirdbrainConstant.orientation_in_between
+        return orientation_in_between

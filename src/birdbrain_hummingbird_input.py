@@ -50,30 +50,43 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
         #light_value = int(response * LIGHT_FACTOR)
         #return light_value
 
-    def getSound(self, port):
+    @classmethod
+    def sound(self, device, port):
         """Read the value of the sound sensor attached to a certain port."""
 
-        if port == "microbit" or port == "micro:bit" or port == "Microbit":
-            return Microbit.getSound(self)
+        port = str(port).lower()
 
-        response = self.getSensor(port)
-        sound_value = int(response * SOUND_FACTOR)
-        return sound_value
+        if port == "microbit" or port == "micro:bit":
+            return BirdbrainMicrobitInput.sound(device)
+
+        encoder_options = {}
+        encoder_options['factor'] = BirdbrainConstant.SOUND_FACTOR
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_MAX_RESPONSE
+
+        return self.sensor_response(device, 'sensor', port, encoder_options)
 
     @classmethod
     def distance(self, device, port):
         """Read the value of the distance sensor attached to a certain port."""
 
-        return int(self.sensor_response(device, 'sensor', port) * BirdbrainConstant.DISTANCE_FACTOR)
+        encoder_options = {}
+        encoder_options['factor'] = BirdbrainConstant.DISTANCE_FACTOR
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE
 
+        return self.sensor_response(device, 'sensor', port, encoder_options)
+
+    @classmethod
     def dial(self, device, port):
         """Read the value of the dial attached to a certain port."""
-        pass
-        #response = self.getSensor(port)
-        #dial_value = int(response * DIAL_FACTOR)
-        #if (dial_value > 100):
-        #    dial_value = 100
-        #return dial_value
+
+        encoder_options = {}
+        encoder_options['factor'] = BirdbrainConstant.DIAL_FACTOR
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_MAX_RESPONSE
+
+        return self.sensor_response(device, 'sensor', port, encoder_options)
 
     def getVoltage(self, port):
         """Read the value of  the dial attached to a certain port."""

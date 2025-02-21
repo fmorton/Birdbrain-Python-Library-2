@@ -41,7 +41,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def button(self, button):
         return BirdbrainMicrobitInput.button(self.device, button)
 
-    def sound(self):
+    def sound(self, port = None):
         return BirdbrainMicrobitInput.sound(self.device)
 
     def temperature(self):

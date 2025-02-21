@@ -42,6 +42,21 @@ def test_orientation():
 
     assert some_position
 
+def test_sound():
+    response = BirdbrainHummingbirdInput.sound("A", 3)
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
+    with pytest.raises(BirdbrainException) as e:
+        response = BirdbrainHummingbirdInput.sound("A", 4)
+    assert e.value.message == "Error: The device is not connected"
+
+def test_sound_microbit():
+    response = BirdbrainHummingbirdInput.sound("A", "micro:bit")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
 def test_distance():
     response = BirdbrainHummingbirdInput.distance("A", 2)
 
