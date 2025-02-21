@@ -42,6 +42,16 @@ def test_orientation():
 
     assert some_position
 
+def test_sensor():
+    response = BirdbrainHummingbirdInput.sensor("A", 1)
+
+    assert isinstance(response, float)
+
+def test_light():
+    response = BirdbrainHummingbirdInput.light("A", 3)
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
 def test_sound():
     response = BirdbrainHummingbirdInput.sound("A", 3)
     assert (0 <= response <= 100)

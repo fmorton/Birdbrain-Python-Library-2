@@ -29,26 +29,27 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
 
         return BirdbrainMicrobitInput.orientation(device)
 
-    def getSensor(self, port):
-        """Read the value of the sensor attached to a certain port.
-        If the port is not valid, it returns -1."""
+    @classmethod
+    def sensor(self, device, port):
+        """Read the value of the sensor attached to a certain port."""
 
-        # Early return if we can't execute the command because the port is invalid
-        if not self.isPortValid(port, 3):
-            return -1
+        encoder_options = {}
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE
+        encoder_options['type_method'] = 'float'
 
-        response = self.send_httprequest_in("sensor", port)
-        return response
+        return self.sensor_response(device, 'sensor', port, encoder_options)
 
     @classmethod
-    def getLight(self, port):
+    def light(self, device, port):
         """Read the value of the light sensor attached to a certain port."""
-        pass
-        #return self.sensor_response(device, 'Light', BirdbrainRequest.calculate_left_or_right(side))
 
-        #response = self.getSensor(port)
-        #light_value = int(response * LIGHT_FACTOR)
-        #return light_value
+        encoder_options = {}
+        encoder_options['factor'] = BirdbrainConstant.LIGHT_FACTOR
+        encoder_options['min_response'] = BirdbrainConstant.DEFAULT_MIN_RESPONSE
+        encoder_options['max_response'] = BirdbrainConstant.DEFAULT_MAX_RESPONSE
+
+        return self.sensor_response(device, 'sensor', port, encoder_options)
 
     @classmethod
     def sound(self, device, port):

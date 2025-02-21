@@ -104,6 +104,27 @@ def test_orientation_with_alias():
 
     assert some_position
 
+def test_sensor():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.sensor(1)
+
+    assert isinstance(response, float)
+
+def test_light_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.light(3)
+    response = hummingbird.getLight(3)
+    response = hummingbird.light("3")
+
+    assert (0 <= response <= 100)
+    assert isinstance(response, int)
+
+    with pytest.raises(BirdbrainException) as e:
+        response = hummingbird.light(4)
+    assert e.value.message == "Error: The device is not connected"
+
 def test_sound_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
