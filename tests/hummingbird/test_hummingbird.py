@@ -104,6 +104,16 @@ def test_orientation_with_alias():
 
     assert some_position
 
+def test_distance_with_alias():
+    hummingbird = BirdbrainHummingbird("A")
+
+    response = hummingbird.distance(2)
+    response = hummingbird.getDistance(2)
+    response = hummingbird.distance("2")
+
+    assert (0 <= response <= 298)
+    assert isinstance(response, int)
+
 def test_stop_all():
     hummingbird = BirdbrainHummingbird("A")
 

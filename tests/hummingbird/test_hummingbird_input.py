@@ -41,3 +41,9 @@ def test_orientation():
         some_position = some_position or (orientation == response)
 
     assert some_position
+
+def test_distance():
+    response = BirdbrainHummingbirdInput.distance("A", 2)
+
+    assert (0 <= response <= 298)
+    assert isinstance(response, int)

@@ -1,3 +1,4 @@
+from birdbrain_constant import BirdbrainConstant
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
 
@@ -28,9 +29,6 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
 
         return BirdbrainMicrobitInput.orientation(device)
 
-    # -------------------------------------------------------------------------
-    # HUMMINGBIRD BIT INPUT
-    # -------------------------------------------------------------------------
     def getSensor(self, port):
         """Read the value of the sensor attached to a certain port.
         If the port is not valid, it returns -1."""
@@ -42,12 +40,15 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
         response = self.send_httprequest_in("sensor", port)
         return response
 
+    @classmethod
     def getLight(self, port):
         """Read the value of the light sensor attached to a certain port."""
+        pass
+        #return self.sensor_response(device, 'Light', BirdbrainRequest.calculate_left_or_right(side))
 
-        response = self.getSensor(port)
-        light_value = int(response * LIGHT_FACTOR)
-        return light_value
+        #response = self.getSensor(port)
+        #light_value = int(response * LIGHT_FACTOR)
+        #return light_value
 
     def getSound(self, port):
         """Read the value of the sound sensor attached to a certain port."""
@@ -59,21 +60,20 @@ class BirdbrainHummingbirdInput(BirdbrainRequest):
         sound_value = int(response * SOUND_FACTOR)
         return sound_value
 
-    def getDistance(self, port):
+    @classmethod
+    def distance(self, device, port):
         """Read the value of the distance sensor attached to a certain port."""
 
-        response = self.getSensor(port)
-        distance_value = int(response * DISTANCE_FACTOR)
-        return distance_value
+        return int(self.sensor_response(device, 'sensor', port) * BirdbrainConstant.DISTANCE_FACTOR)
 
-    def getDial(self, port):
+    def dial(self, device, port):
         """Read the value of the dial attached to a certain port."""
-
-        response = self.getSensor(port)
-        dial_value = int(response * DIAL_FACTOR)
-        if (dial_value > 100):
-            dial_value = 100
-        return dial_value
+        pass
+        #response = self.getSensor(port)
+        #dial_value = int(response * DIAL_FACTOR)
+        #if (dial_value > 100):
+        #    dial_value = 100
+        #return dial_value
 
     def getVoltage(self, port):
         """Read the value of  the dial attached to a certain port."""
