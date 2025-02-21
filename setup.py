@@ -20,7 +20,7 @@ def read(*names, **kwargs):
 
 setup(
     name='birdbrain-python-library-2',
-    version='0.9.0',
+    version='0.9.1',
     license='LGPL-3.0-only',
     description='Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2',
     long_description='{}\n{}'.format(
@@ -29,7 +29,7 @@ setup(
     ),
     author='Frank Morton',
     author_email='fmorton@base2inc.com',
-    url='https://github.com/fmorton/BirdBrain-Python-Library',
+    url='https://github.com/fmorton/BirdBrain-Python-Library-2',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -59,13 +59,13 @@ setup(
         'Topic :: Utilities',
     ],
     project_urls={
-        #'Documentation': 'https://BirdBrain-Python-Library.readthedocs.io/',
-        #'Changelog': 'https://BirdBrain-Python-Library.readthedocs.io/en/latest/changelog.html',
-        #'Issue Tracker': 'https://github.com/fmorton/BirdBrain-Python-Library/issues',
+        #'Documentation': 'https://BirdBrain-Python-Library-2.readthedocs.io/',
+        #'Changelog': 'https://BirdBrain-Python-Library-2.readthedocs.io/en/latest/changelog.html',
+        #'Issue Tracker': 'https://github.com/fmorton/BirdBrain-Python-Library-2/issues',
         'Hummingbird Docs': 'https://learn.birdbraintechnologies.com/hummingbirdbit/python/library/',
         'Finch Docs': 'https://learn.birdbraintechnologies.com/finch/python/library/',
-        'Source': 'https://github.com/fmorton/BirdBrain-Python-Library',
-        'Issue Tracker': 'https://github.com/fmorton/BirdBrain-Python-Library/issues',
+        'Source': 'https://github.com/fmorton/BirdBrain-Python-Library-2',
+        'Issue Tracker': 'https://github.com/fmorton/BirdBrain-Python-Library-2/issues',
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',

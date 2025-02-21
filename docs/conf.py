@@ -16,17 +16,17 @@ extensions = [
 ]
 source_suffix = '.rst'
 master_doc = 'index'
-project = 'BirdBrain-Python-Library'
+project = 'BirdBrain-Python-Library-2'
 year = '2022'
 author = 'Frank Morton'
 copyright = '{0}, {1}'.format(year, author)
-version = release = '0.9.0'
+version = release = '0.9.1'
 
 pygments_style = 'trac'
 templates_path = ['.']
 extlinks = {
-    'issue': ('https://github.com/fmorton/BirdBrain-Python-Library/issues/%s', 'issue #%s'),
-    'pr': ('https://github.com/fmorton/BirdBrain-Python-Library/pull/%s', 'PR #%s'),
+    'issue': ('https://github.com/fmorton/BirdBrain-Python-Library-2/issues/%s', 'issue #%s'),
+    'pr': ('https://github.com/fmorton/BirdBrain-Python-Library-2/pull/%s', 'PR #%s'),
 }
 # on_rtd is whether we are on readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'

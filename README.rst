@@ -15,21 +15,21 @@ Overview
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
-.. |docs| image:: https://readthedocs.org/projects/BirdBrain-Python-Library/badge/?style=flat
-    :target: https://BirdBrain-Python-Library.readthedocs.io/
+.. |docs| image:: https://readthedocs.org/projects/BirdBrain-Python-Library-2/badge/?style=flat
+    :target: https://BirdBrain-Python-Library-2.readthedocs.io/
     :alt: Documentation Status
 
-.. |github-actions| image:: https://github.com/fmorton/BirdBrain-Python-Library/actions/workflows/github-actions.yml/badge.svg
+.. |github-actions| image:: https://github.com/fmorton/BirdBrain-Python-Library-2/actions/workflows/github-actions.yml/badge.svg
     :alt: GitHub Actions Build Status
-    :target: https://github.com/fmorton/BirdBrain-Python-Library/actions
+    :target: https://github.com/fmorton/BirdBrain-Python-Library-2/actions
 
-.. |requires| image:: https://requires.io/github/fmorton/BirdBrain-Python-Library/requirements.svg?branch=main
+.. |requires| image:: https://requires.io/github/fmorton/BirdBrain-Python-Library-2/requirements.svg?branch=main
     :alt: Requirements Status
-    :target: https://requires.io/github/fmorton/BirdBrain-Python-Library/requirements/?branch=main
+    :target: https://requires.io/github/fmorton/BirdBrain-Python-Library-2/requirements/?branch=main
 
-.. |codecov| image:: https://codecov.io/gh/fmorton/BirdBrain-Python-Library/branch/main/graphs/badge.svg?branch=main
+.. |codecov| image:: https://codecov.io/gh/fmorton/BirdBrain-Python-Library-2/branch/main/graphs/badge.svg?branch=main
     :alt: Coverage Status
-    :target: https://codecov.io/github/fmorton/BirdBrain-Python-Library
+    :target: https://codecov.io/github/fmorton/BirdBrain-Python-Library-2
 
 .. |version| image:: https://img.shields.io/pypi/v/birdbrain-python-library-2.svg
     :alt: PyPI Package latest release
@@ -52,7 +52,7 @@ Overview
 
 Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2
 
-Rewrite inspired by https://github.com/BirdBrainTechnologies/BirdBrain-Python-Library
+Rewrite inspired by https://github.com/BirdBrainTechnologies/BirdBrain-Python-Library-2
 
 * Free software: GNU Lesser General Public License v3 (LGPLv3)
 
@@ -65,7 +65,7 @@ Installation
 
 You can also install the in-development version with::
 
-    pip install https://github.com/fmorton/BirdBrain-Python-Library/archive/main.zip
+    pip install https://github.com/fmorton/BirdBrain-Python-Library-2/archive/main.zip
 
 
 
