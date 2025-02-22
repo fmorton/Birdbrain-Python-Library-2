@@ -35,10 +35,10 @@ def test_is():
     assert microbit.isHummingbird()
     assert not microbit.isFinch()
 
-def test_microbit_display_with_alias():
+def test_display_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
-    assert hummingbird.microbit_display([ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 ])
+    assert hummingbird.display([ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 ])
 
     time.sleep(0.15)
 
@@ -48,53 +48,53 @@ def test_microbit_display_with_alias():
 
     hummingbird.stop_all()
 
-def test_microbit_display_wrong_size():
+def test_display_wrong_size():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird("A")
 
-        hummingbird.microbit_display([ 0,1 ])
-    assert e.value.message == "Error: microbit_display() requires a list of length 25"
+        hummingbird.display([ 0,1 ])
+    assert e.value.message == "Error: display() requires a list of length 25"
 
-def test_microbit_point_and_microbit_clear_display_with_alias():
+def test_point_and_clear_display_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
     for i in range(2):
-        assert hummingbird.microbit_point(2, 2, 1)
-        assert hummingbird.microbit_point(2, 4, 1)
-        assert hummingbird.microbit_point(4, 2, 1)
+        assert hummingbird.point(2, 2, 1)
+        assert hummingbird.point(2, 4, 1)
+        assert hummingbird.point(4, 2, 1)
         assert hummingbird.setPoint(4, 4, 1)
 
         time.sleep(0.15)
 
-        hummingbird.microbit_clear_display()
+        hummingbird.clear_display()
 
-def test_microbit_point_true_or_false():
+def test_point_true_or_false():
     hummingbird = BirdbrainHummingbird("A")
 
-    assert hummingbird.microbit_point(3, 3, True)
+    assert hummingbird.point(3, 3, True)
 
     time.sleep(0.15)
 
-    assert hummingbird.microbit_point(3, 3, False)
+    assert hummingbird.point(3, 3, False)
 
-def test_microbit_point_out_of_range():
+def test_point_out_of_range():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird("A")
 
-        assert hummingbird.microbit_point(999, 1, 1)
-    assert e.value.message == "Error: microbit_point out of range"
+        assert hummingbird.point(999, 1, 1)
+    assert e.value.message == "Error: point out of range"
 
-def test_microbit_print():
+def test_print():
     hummingbird = BirdbrainHummingbird("A")
 
-    hummingbird.microbit_print("A")
+    hummingbird.print("A")
 
     time.sleep(1)
 
-def test_microbit_play_note_with_alias():
+def test_play_note_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
-    hummingbird.microbit_play_note(75, 0.5)
+    hummingbird.play_note(75, 0.5)
 
     time.sleep(0.25)
 
