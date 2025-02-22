@@ -29,3 +29,9 @@
 from birdbrain_finch import BirdbrainFinch
 from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_microbit import BirdbrainMicrobit
+
+class Microbit(BirdbrainMicrobit): pass
+
+class Hummingbird(BirdbrainHummingbird): pass
+
+class Finch(BirdbrainFinch): pass

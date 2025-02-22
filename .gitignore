@@ -75,4 +75,4 @@ docs/_build
 
 .cookiecutterrc
 .bumpversion.cfg
-
+.ruby-version
