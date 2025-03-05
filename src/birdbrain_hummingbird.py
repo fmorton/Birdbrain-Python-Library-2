@@ -17,8 +17,8 @@ class BirdbrainHummingbird(BirdbrainMicrobit):
     def led(self, port, intensity):
         return BirdbrainHummingbirdOutput.led(self.device, port, intensity)
 
-    def tri_led(self, port, r_int, g_int, b_int, valid_range):
-        return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_int, g_int, b_int, valid_range)
+    def tri_led(self, port, r_int, g_int, b_int):
+        return BirdbrainHummingbirdOutput.tri_led(self.device, port, r_int, g_int, b_int)
 
     def position_servo(self, port, angle):
         return BirdbrainHummingbirdOutput.position_servo(self.device, port, angle)

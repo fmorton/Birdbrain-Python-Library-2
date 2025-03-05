@@ -13,9 +13,9 @@ class BirdbrainHummingbirdOutput(BirdbrainRequest):
         return BirdbrainRequest.response_status('hummingbird', 'out', 'led', port, calculated_intensity, device)
 
     @classmethod
-    def tri_led(self, device, port, r_intensity, g_intensity, b_intensity, valid_range):
+    def tri_led(self, device, port, r_intensity, g_intensity, b_intensity):
         """Set TriLED  of a certain port requested to a valid intensity."""
-        return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, valid_range)
+        return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_TRI_LED_PORTS)
 
     @classmethod
     def position_servo(self, device, port, angle):

@@ -27,7 +27,7 @@ hummingbird/test_hummingbird_output.py                                          
 microbit/test_microbit.py                                                                        74      0   100%
 microbit/test_microbit_input.py                                                                  52      0   100%
 microbit/test_microbit_output.py                                                                 46      0   100%
-shared/test_backward_compatibility.py                                                             7      0   100%
+shared/test_backward_compatibility.py                                                             9      0   100%
 shared/test_device.py                                                                            37      0   100%
 shared/test_request.py                                                                           65      0   100%
 shared/test_shared_input.py                                                                      59      0   100%
@@ -35,4 +35,4 @@ shared/test_state.py                                                            
 shared/test_utility.py                                                                           30      0   100%
 test_birdbrain_python_library.py                                                                  3      0   100%
 ---------------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                          1580     17    99%
+TOTAL                                                                                          1582     17    99%

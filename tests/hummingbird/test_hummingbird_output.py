@@ -18,10 +18,10 @@ def test_led():
 def test_tri_led():
     hummingbird = BirdbrainHummingbird("A")
 
-    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 50, "50", 0, BirdbrainConstant.VALID_TRI_LED_PORTS)
+    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 50, "50", 0)
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0, BirdbrainConstant.VALID_TRI_LED_PORTS)
+    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0)
 
 def test_position_servo():
     hummingbird = BirdbrainHummingbird("A")

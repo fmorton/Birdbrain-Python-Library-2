@@ -58,13 +58,13 @@ def test_led_no_connection():
 def test_tri_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
-    assert hummingbird.tri_led(1, 50, "50", 0, BirdbrainConstant.VALID_TRI_LED_PORTS)
+    assert hummingbird.tri_led(1, 50, "50", 0)
     time.sleep(0.15)
 
-    assert hummingbird.setTriLED(1, 100, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
+    assert hummingbird.setTriLED(1, 100, "0", "0")
     time.sleep(0.15)
 
-    assert hummingbird.tri_led(1, 0, "0", "0", BirdbrainConstant.VALID_TRI_LED_PORTS)
+    assert hummingbird.tri_led(1, 0, "0", "0")
     time.sleep(0.15)
 
 def test_position_servo_with_alias():
