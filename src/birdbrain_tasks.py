@@ -6,8 +6,9 @@ class BirdbrainTasks:
         self.task_list = []
         self.results = {}
         
-    def result(self, name):
-        return self.results[name]
+    def result(self, method_name):
+        #return self.results[method_name]
+        return self.results[method_name] if method_name in self.results else None
 
     def create_task(self, method):
         self.method_list.append(method)
@@ -15,13 +16,7 @@ class BirdbrainTasks:
     def run(self):
         asyncio.run(self.runner())
 
-    def wait(self):
-        pass
-
-    async def runner(self):
-        for method in self.method_list:
-            self.task_list.append(asyncio.create_task(method))
-
+    async def wait(self):
         while True:
             running_task_count = 0
 
@@ -36,6 +31,12 @@ class BirdbrainTasks:
             if running_task_count == 0: break
 
             await self.yield_task()
+
+    async def runner(self):
+        for method_name in self.method_list:
+            self.task_list.append(asyncio.create_task(method_name))
+
+        await self.wait()
 
     @classmethod
     async def yield_task(self, yield_time = 0.0):

@@ -24,7 +24,7 @@ async def method_3():
 
         await BirdbrainTasks.yield_task()
 
-def test_tasks():
+def test_tasks_with_wait():
     tasks = BirdbrainTasks()
 
     tasks.create_task(method_1(999))
@@ -36,3 +36,5 @@ def test_tasks():
     assert tasks.result("method_1") == "method_1_return"
     assert tasks.result("method_2") == 2
     assert tasks.result("method_3") is None
+
+    tasks.wait()
