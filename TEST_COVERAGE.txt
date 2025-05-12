@@ -17,6 +17,7 @@ Name                                                                            
 /Users/fmorton/GitHub/BirdBrain-Python-Library-2/src/birdbrain_python_library_2/cli.py            4      0   100%
 /Users/fmorton/GitHub/BirdBrain-Python-Library-2/src/birdbrain_request.py                       124      5    96%   82-86, 177
 /Users/fmorton/GitHub/BirdBrain-Python-Library-2/src/birdbrain_state.py                          17      1    94%   6
+/Users/fmorton/GitHub/BirdBrain-Python-Library-2/src/birdbrain_tasks.py                          30      0   100%
 /Users/fmorton/GitHub/BirdBrain-Python-Library-2/src/birdbrain_utility.py                        29      0   100%
 finch/test_finch.py                                                                             135      1    99%   59
 finch/test_finch_input.py                                                                        84      0   100%
@@ -33,6 +34,7 @@ shared/test_request.py                                                          
 shared/test_shared_input.py                                                                      59      0   100%
 shared/test_state.py                                                                             30      0   100%
 shared/test_utility.py                                                                           30      0   100%
+tasks/test_tasks.py                                                                              25      0   100%
 test_birdbrain_python_library.py                                                                  3      0   100%
 ---------------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                          1582     17    99%
+TOTAL                                                                                          1637     17    99%

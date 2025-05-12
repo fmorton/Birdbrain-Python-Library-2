@@ -36,5 +36,3 @@ def test_tasks_with_wait():
     assert tasks.result("method_1") == "method_1_return"
     assert tasks.result("method_2") == 2
     assert tasks.result("method_3") is None
-
-    tasks.wait()
