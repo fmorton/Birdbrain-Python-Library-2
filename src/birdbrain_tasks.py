@@ -7,7 +7,6 @@ class BirdbrainTasks:
         self.results = {}
         
     def result(self, method_name):
-        #return self.results[method_name]
         return self.results[method_name] if method_name in self.results else None
 
     def create_task(self, method):
