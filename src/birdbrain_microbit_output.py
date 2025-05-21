@@ -33,6 +33,9 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         # clear internal representation of the display since it will be blank when the print ends
         self.clear_display(state, device)
 
+        # if no message specified print as a blank
+        if message is None or len(message) == 0: message = ' '
+
         # need to encode space for uri (used to be %20)
         message = message.replace(' ', '+')
 
