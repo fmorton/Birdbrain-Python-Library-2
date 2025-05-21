@@ -39,7 +39,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         # need to encode space for uri (used to be %20)
         message = message.replace(' ', '+')
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'print', message)
+        return BirdbrainRequest.response_status('hummingbird', 'out', 'print', message, device)
 
     @classmethod
     def play_note(self, device, note, beats):

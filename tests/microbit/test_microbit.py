@@ -26,12 +26,12 @@ def test_is():
     microbit = BirdbrainMicrobit.connect("A")
 
     assert microbit.is_connected()
-    assert not microbit.is_microbit()
+    assert microbit.is_microbit()
     assert microbit.is_hummingbird()
     assert not microbit.is_finch()
 
     assert microbit.isConnectionValid()
-    assert not microbit.isMicrobit()
+    assert microbit.isMicrobit()
     assert microbit.isHummingbird()
     assert not microbit.isFinch()
 

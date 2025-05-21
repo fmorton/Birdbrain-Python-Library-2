@@ -25,12 +25,12 @@ def test_is():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.is_connected()
-    assert not hummingbird.is_microbit()
+    assert hummingbird.is_microbit()
     assert hummingbird.is_hummingbird()
     assert not hummingbird.is_finch()
 
     assert hummingbird.isConnectionValid()
-    assert not hummingbird.isMicrobit()
+    assert hummingbird.isMicrobit()
     assert hummingbird.isHummingbird()
     assert not hummingbird.isFinch()
 

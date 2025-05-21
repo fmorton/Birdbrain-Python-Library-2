@@ -42,7 +42,9 @@ class BirdbrainDevice:
     def is_microbit(self):
         """Determine if the device is a Microbit"""
 
-        return self.__is_device("isMicrobit")
+        # allow hummingbird/finch to be seen as microbit
+        #return self.__is_device("isMicrobit")
+        return True
 
     def is_hummingbird(self):
         """Determine if the device is a hummingbird."""
