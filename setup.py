@@ -20,7 +20,7 @@ def read(*names, **kwargs):
 
 setup(
     name='birdbrain-python-library-2',
-    version='0.9.9',
+    version='0.9.10',
     license='LGPL-3.0-only',
     description='Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2',
     long_description='{}\n{}'.format(
@@ -39,7 +39,6 @@ setup(
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Operating System :: Unix',
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
