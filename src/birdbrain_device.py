@@ -66,6 +66,11 @@ class BirdbrainDevice:
     def stop_all(self):
         BirdbrainRequest.stop_all(self.device)
 
+    def set_cache(self, name, value):
+        return self.state.set(name, value)
+
+    def get_cache(self, name):
+        return self.state.get(name)
 
     isConnectionValid = is_connected
     isFinch = is_finch

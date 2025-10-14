@@ -43,3 +43,21 @@ def test_state_using_true_and_false():
 
     assert s[0] == "false"
     assert s[18] == "true"
+
+def test_cache():
+    state = BirdbrainState()
+
+    assert state.get("something_name") == None
+
+    assert state.set("something_name", "something") == "something"
+    assert state.get("something_name") == "something"
+
+    assert "something_name" in state.cache
+
+    assert state.set("something_name", None) == None
+
+    assert "something_name" not in state.cache
+
+    assert state.get("something_name") == None
+
+    assert state.set("set_not_in_the_cache", None) == None
