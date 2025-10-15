@@ -1,5 +1,5 @@
 [build-system]
-requires = [ "setuptools> = 80.9.0", "wheel" ]
+requires = [ "setuptools>=80.9.0", "wheel" ]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,13 +7,18 @@ name = "birdbrain-python-library-2"
 version = "0.9.12"
 license = "LGPL-3.0-only"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
-authors = [ "Frank Morton", email = "fmorton@base2inc.com" ]
+readme = "README.md"
+authors = [ { name = "Frank Morton", email = "fmorton@base2inc.com" } ]
 url = "https://github.com/fmorton/BirdBrain-Python-Library-2"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: LGPL-3.0-only",
     "Operating System :: OS Independent",
 ]
+
+[project.urls]
+Homepage = "https://github.com/fmorton/BirdBrain-Python-Library-2"
+Issues = "https://github.com/fmorton/BirdBrain-Python-Library-2/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -30,3 +35,6 @@ line-length = 140
 testpaths = ["tests"]
 target-version = ["py37"]
 skip-string-normalization = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
