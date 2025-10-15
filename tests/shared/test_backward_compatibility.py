@@ -5,8 +5,8 @@ from BirdBrain import Finch, Hummingbird
 
 
 def test_instantiating_devices_old_way():
-    finch = BirdbrainFinch('B')
-    hummingbird = BirdbrainHummingbird('A')
+    BirdbrainFinch('B')
+    BirdbrainHummingbird('A')
 
-    finch = Finch('B')
-    hummingbird = Hummingbird('A')
+    Finch('B')
+    Hummingbird('A')

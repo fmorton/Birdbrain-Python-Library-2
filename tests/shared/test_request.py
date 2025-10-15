@@ -41,7 +41,7 @@ def test_response_status():
 
 def test_response_no_connection():
     with pytest.raises(BirdbrainException) as e:
-        response = BirdbrainRequest.response("hummingbird", "in", "orientation", "Shake", "C")
+        BirdbrainRequest.response("hummingbird", "in", "orientation", "Shake", "C")
 
     assert e.value.message == "Error: The device is not connected"
 
@@ -64,8 +64,8 @@ def test_disconnect():
 
 
 def test_xyz_response_no_connection():
-    with pytest.raises(BirdbrainException) as e:
-        response = BirdbrainRequest.xyz_response("C", "Accelerometer")
+    with pytest.raises(BirdbrainException):
+        BirdbrainRequest.xyz_response("C", "Accelerometer")
 
 
 def test_xyz_response():
@@ -99,9 +99,9 @@ def test_validate_port():
     assert BirdbrainRequest.validate_port(3, BirdbrainConstant.VALID_LED_PORTS)
     assert BirdbrainRequest.validate_port("1", BirdbrainConstant.VALID_LED_PORTS)
 
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(BirdbrainException):
         BirdbrainRequest.validate_port(4, BirdbrainConstant.VALID_LED_PORTS)
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(BirdbrainException):
         BirdbrainRequest.validate_port(-1, BirdbrainConstant.VALID_LED_PORTS)
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(BirdbrainException):
         BirdbrainRequest.validate_port("4", BirdbrainConstant.VALID_LED_PORTS)

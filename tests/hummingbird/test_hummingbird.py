@@ -8,13 +8,13 @@ from birdbrain_hummingbird import BirdbrainHummingbird
 
 def test_connect_device_name_as_none():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainHummingbird(None)
+        BirdbrainHummingbird(None)
     assert e.value.message == "Missing device name"
 
 
 def test_connect_bad_device_name():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainHummingbird('D')
+        BirdbrainHummingbird('D')
     assert e.value.message == "Invalid device name: D"
 
 

@@ -25,9 +25,9 @@ def test_state():
     assert s[1] == "false"
     assert s[19] == "false"
 
-    assert (
-        state.display_map_as_string()
-        == "true/false/false/false/false/false/false/false/false/false/false/false/false/false/false/false/false/false/true/false/false/false/false/false/false"
+    assert state.display_map_as_string() == (
+        "true/false/false/false/false/false/false/false/false/false/"
+        "false/false/false/false/false/false/false/false/true/false/false/false/false/false/false"
     )
 
 

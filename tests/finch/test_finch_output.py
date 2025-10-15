@@ -36,7 +36,7 @@ def test_move():
     assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 4, 5)
     assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, "4", "5")
 
-    with pytest.raises(BirdbrainException):
+    with pytest.raises(BirdbrainException) as e:
         assert BirdbrainFinchOutput.move("B", "BAD", 4, 5)
         assert e.value.message == "Error: Request to device failed"
 
@@ -53,7 +53,7 @@ def test_turn():
     assert BirdbrainFinchOutput.turn("B", "L", "25", 50)
     assert BirdbrainFinchOutput.turn("B", "R", 25, "50")
 
-    with pytest.raises(BirdbrainException):
+    with pytest.raises(BirdbrainException) as e:
         assert BirdbrainFinchOutput.turn("B", "BAD", 90, 50)
         assert e.value.message == "Error: Request to device failed"
 

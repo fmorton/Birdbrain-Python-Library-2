@@ -6,13 +6,13 @@ from birdbrain_exception import BirdbrainException
 
 def test_none_device():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainDevice.connect(None)
+        BirdbrainDevice.connect(None)
     assert e.value.message == "Missing device name"
 
 
 def test_bad_device():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainDevice.connect("Z")
+        BirdbrainDevice.connect("Z")
     assert e.value.message == "Invalid device name: Z"
 
 
@@ -38,7 +38,7 @@ def test_connect():
 
 def test_connect_to_disconnected_device():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainDevice.connect("C", True)
+        BirdbrainDevice.connect("C", True)
     assert e.value.message == "No connection: C"
 
 
@@ -51,7 +51,7 @@ def test_connect_to_disconnected_device_no_exception():
 
 def test_connect_to_disconnected_device_with_exception():
     with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainDevice.connect("C", True)
+        BirdbrainDevice.connect("C", True)
     assert e.value.message == "No connection: C"
 
 
