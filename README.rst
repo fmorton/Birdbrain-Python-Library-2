@@ -14,7 +14,6 @@ Overview
         | |codecov|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
 .. |docs| image:: https://readthedocs.org/projects/BirdBrain-Python-Library-2/badge/?style=flat
     :target: https://BirdBrain-Python-Library-2.readthedocs.io/
     :alt: Documentation Status
