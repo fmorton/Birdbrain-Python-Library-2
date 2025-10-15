@@ -2,6 +2,7 @@ from birdbrain_constant import BirdbrainConstant
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
 
+
 class BirdbrainHummingbirdInput(BirdbrainRequest):
     @classmethod
     def acceleration(self, device):

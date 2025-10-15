@@ -6,20 +6,24 @@ from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_microbit import BirdbrainMicrobit
 
+
 def test_connect_device_name_as_none():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird(None)
     assert e.value.message == "Missing device name"
+
 
 def test_connect_bad_device_name():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird('D')
     assert e.value.message == "Invalid device name: D"
 
+
 def test_connect_valid_device_name():
     hummingbird = BirdbrainHummingbird("A")
 
     assert hummingbird.device == "A"
+
 
 def test_is():
     hummingbird = BirdbrainHummingbird("A")
@@ -33,6 +37,7 @@ def test_is():
     assert hummingbird.isMicrobit()
     assert hummingbird.isHummingbird()
     assert not hummingbird.isFinch()
+
 
 def test_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -48,12 +53,14 @@ def test_led_with_alias():
 
     hummingbird.setLED(1, 0)
 
+
 def test_led_no_connection():
     with pytest.raises(BirdbrainException) as e:
         hummingbird = BirdbrainHummingbird('C')
 
         hummingbird.led(1, 100)
     assert e.value.message == "No connection: C"
+
 
 def test_tri_led_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -67,6 +74,7 @@ def test_tri_led_with_alias():
     assert hummingbird.tri_led(1, 0, "0", "0")
     time.sleep(0.15)
 
+
 def test_position_servo_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -74,6 +82,7 @@ def test_position_servo_with_alias():
     time.sleep(0.15)
 
     assert hummingbird.setPositionServo(1, "130")
+
 
 def test_rotation_servo_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -92,6 +101,7 @@ def test_rotation_servo_with_alias():
 
     assert hummingbird.setRotationServo(2, 0)
 
+
 def test_orientation_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -104,6 +114,7 @@ def test_orientation_with_alias():
 
     assert some_position
 
+
 def test_sensor():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -112,6 +123,7 @@ def test_sensor():
 
     assert isinstance(response, float)
 
+
 def test_light_with_alias():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -119,12 +131,13 @@ def test_light_with_alias():
     response = hummingbird.getLight(3)
     response = hummingbird.light("3")
 
-    assert (0 <= response <= 100)
+    assert 0 <= response <= 100
     assert isinstance(response, int)
 
     with pytest.raises(BirdbrainException) as e:
         response = hummingbird.light(4)
     assert e.value.message == "Error: The device is not connected"
+
 
 def test_sound_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -133,20 +146,22 @@ def test_sound_with_alias():
     response = hummingbird.getSound(3)
     response = hummingbird.sound("3")
 
-    assert (0 <= response <= 100)
+    assert 0 <= response <= 100
     assert isinstance(response, int)
 
     with pytest.raises(BirdbrainException) as e:
         response = hummingbird.sound(4)
     assert e.value.message == "Error: The device is not connected"
 
+
 def test_sound_microbit():
     hummingbird = BirdbrainHummingbird("A")
 
     response = hummingbird.sound("micro:bit")
 
-    assert (0 <= response <= 100)
+    assert 0 <= response <= 100
     assert isinstance(response, int)
+
 
 def test_distance_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -155,8 +170,9 @@ def test_distance_with_alias():
     response = hummingbird.getDistance(2)
     response = hummingbird.distance("2")
 
-    assert (0 <= response <= 298)
+    assert 0 <= response <= 298
     assert isinstance(response, int)
+
 
 def test_dial_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -165,8 +181,9 @@ def test_dial_with_alias():
     response = hummingbird.getDial(1)
     response = hummingbird.dial("1")
 
-    assert (0 <= response <= 100)
+    assert 0 <= response <= 100
     assert isinstance(response, int)
+
 
 def test_voltage_with_alias():
     hummingbird = BirdbrainHummingbird("A")
@@ -175,6 +192,7 @@ def test_voltage_with_alias():
     response = hummingbird.getVoltage(1)
 
     assert isinstance(response, float)
+
 
 def test_stop_all():
     hummingbird = BirdbrainHummingbird("A")

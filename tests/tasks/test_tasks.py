@@ -2,13 +2,15 @@ import pytest
 
 from birdbrain_tasks import BirdbrainTasks
 
+
 async def method_1(p):
     for i in range(40):
         print("method_1 running", p, i)
 
         await BirdbrainTasks.yield_task()
 
-    return("method_1_return")
+    return "method_1_return"
+
 
 async def method_2(p):
     for i in range(20):
@@ -16,13 +18,15 @@ async def method_2(p):
 
         await BirdbrainTasks.yield_task()
 
-    return(2)
+    return 2
+
 
 async def method_3():
     for i in range(30):
         print("method_3 running", i)
 
         await BirdbrainTasks.yield_task()
+
 
 def test_tasks_with_wait():
     tasks = BirdbrainTasks()

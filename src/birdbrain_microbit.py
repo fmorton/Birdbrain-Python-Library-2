@@ -4,11 +4,12 @@ from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_microbit_output import BirdbrainMicrobitOutput
 from birdbrain_request import BirdbrainRequest
 
+
 class BirdbrainMicrobit(BirdbrainDevice):
-    def __init__(self, device = 'A', raise_exception_if_no_connection = True):
+    def __init__(self, device='A', raise_exception_if_no_connection=True):
         self.device_object = BirdbrainMicrobit.connect(device, raise_exception_if_no_connection)
 
-        if not self.is_microbit():
+        if not self.device_object.is_microbit():
             raise BirdbrainException("Error: Device " + device + " is not a Microbit")
 
     def display(self, list):
@@ -41,7 +42,7 @@ class BirdbrainMicrobit(BirdbrainDevice):
     def button(self, button):
         return BirdbrainMicrobitInput.button(self.device, button)
 
-    def sound(self, port = None):
+    def sound(self, port=None):
         return BirdbrainMicrobitInput.sound(self.device)
 
     def temperature(self):

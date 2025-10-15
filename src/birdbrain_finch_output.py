@@ -5,6 +5,7 @@ from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
 from birdbrain_utility import BirdbrainUtility
 
+
 class BirdbrainFinchOutput(BirdbrainRequest):
     @classmethod
     def beak(self, device, r_intensity, g_intensity, b_intensity):
@@ -22,28 +23,34 @@ class BirdbrainFinchOutput(BirdbrainRequest):
         return self.tri_led_response(device, port, r_intensity, g_intensity, b_intensity, BirdbrainConstant.VALID_TAIL_PORTS, True)
 
     @classmethod
-    def move(self, device, direction, distance, speed, wait_to_finish_movement = True):
+    def move(self, device, direction, distance, speed, wait_to_finish_movement=True):
         """Move the Finch forward or backward for a given distance at a given speed.
         Direction should be specified as 'F' or 'B'."""
         calc_direction = None
 
-        if direction == BirdbrainConstant.FORWARD: calc_direction = 'Forward'
-        if direction == BirdbrainConstant.BACKWARD: calc_direction = 'Backward'
+        if direction == BirdbrainConstant.FORWARD:
+            calc_direction = 'Forward'
+        if direction == BirdbrainConstant.BACKWARD:
+            calc_direction = 'Backward'
 
         calc_distance = BirdbrainUtility.bounds(distance, -10000, 10000)
         calc_speed = BirdbrainUtility.bounds(speed, 0, 100)
 
-        return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed)
+        return self.__move_and_wait(
+            device, wait_to_finish_movement, 'hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed
+        )
 
     @classmethod
-    def turn(self, device, direction, angle, speed, wait_to_finish_movement = True):
+    def turn(self, device, direction, angle, speed, wait_to_finish_movement=True):
         """Turn the Finch right or left to a given angle at a given speed.
         Direction should be specified as 'R' or 'L'."""
         calc_direction = BirdbrainRequest.calculate_left_or_right(direction)
         calc_angle = BirdbrainUtility.bounds(angle, 0, 360)
         calc_speed = BirdbrainUtility.bounds(speed, 0, 100)
 
-        return self.__move_and_wait(device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed)
+        return self.__move_and_wait(
+            device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed
+        )
 
     @classmethod
     def wait(self, device):
@@ -76,7 +83,7 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         response = BirdbrainRequest.response_status('hummingbird', 'out', 'resetEncoders', device)
 
-        time.sleep(BirdbrainConstant.RESET_ENCODERS_DELAY)  #  finch needs a chance to actually reset
+        time.sleep(BirdbrainConstant.RESET_ENCODERS_DELAY)  # finch needs a chance to actually reset
 
         return response
 
@@ -86,6 +93,7 @@ class BirdbrainFinchOutput(BirdbrainRequest):
 
         time.sleep(BirdbrainConstant.MOVE_START_WAIT_SECONDS)  # hack to give time to start before waiting
 
-        if wait_to_finish_movement: self.wait(device)
+        if wait_to_finish_movement:
+            self.wait(device)
 
         return response

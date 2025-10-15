@@ -2,6 +2,7 @@ from birdbrain_constant import BirdbrainConstant
 from birdbrain_request import BirdbrainRequest
 from birdbrain_utility import BirdbrainUtility
 
+
 class BirdbrainHummingbirdOutput(BirdbrainRequest):
     @classmethod
     def led(self, device, port, intensity):

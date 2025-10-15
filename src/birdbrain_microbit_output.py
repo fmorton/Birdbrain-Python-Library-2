@@ -4,10 +4,12 @@ from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
 from birdbrain_utility import BirdbrainUtility
 
+
 class BirdbrainMicrobitOutput(BirdbrainRequest):
     @classmethod
     def display(self, state, device, list):
-        if len(list) != 25: raise BirdbrainException("Error: display() requires a list of length 25")
+        if len(list) != 25:
+            raise BirdbrainException("Error: display() requires a list of length 25")
 
         return BirdbrainRequest.response_status('hummingbird', 'out', 'symbol', device, state.display_map_as_string(list))
 
@@ -17,7 +19,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
 
     @classmethod
     def point(self, state, device, x, y, value):
-        index = ((x * 5) + y - 6)
+        index = (x * 5) + y - 6
 
         try:
             state.display_map[index] = value
@@ -34,7 +36,8 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         self.clear_display(state, device)
 
         # if no message specified print as a blank
-        if message is None or len(message) == 0: message = ' '
+        if message is None or len(message) == 0:
+            message = ' '
 
         # need to encode space for uri (used to be %20)
         message = message.replace(' ', '+')

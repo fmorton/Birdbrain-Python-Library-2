@@ -1,8 +1,7 @@
 from birdbrain_constant import BirdbrainConstant
-from birdbrain_device import BirdbrainDevice
 from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
-from birdbrain_utility import BirdbrainUtility
+
 
 class BirdbrainFinchInput(BirdbrainRequest):
     @classmethod
@@ -49,8 +48,13 @@ class BirdbrainFinchInput(BirdbrainRequest):
     @classmethod
     def orientation(self, device):
         """Return the orentation of the Finch. Results found in BirdbrainConstant.FINCH_ORIENTATION_RESULTS"""
-        return self.orientation_response(device, "finchOrientation", BirdbrainConstant.FINCH_ORIENTATIONS, 
-            BirdbrainConstant.FINCH_ORIENTATION_RESULTS, BirdbrainConstant.FINCH_ORIENTATION_IN_BETWEEN)
+        return self.orientation_response(
+            device,
+            "finchOrientation",
+            BirdbrainConstant.FINCH_ORIENTATIONS,
+            BirdbrainConstant.FINCH_ORIENTATION_RESULTS,
+            BirdbrainConstant.FINCH_ORIENTATION_IN_BETWEEN,
+        )
 
     # The following methods override those within the Microbit
     # class to return values within the Finch reference frame.
@@ -73,4 +77,3 @@ class BirdbrainFinchInput(BirdbrainRequest):
         """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""
 
         return BirdbrainMicrobitInput.magnetometer(device, "finchMag")
-

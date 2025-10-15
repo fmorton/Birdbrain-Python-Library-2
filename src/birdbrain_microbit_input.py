@@ -1,17 +1,16 @@
-import inspect
-
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_request import BirdbrainRequest
 
+
 class BirdbrainMicrobitInput(BirdbrainRequest):
     @classmethod
-    def acceleration(self, device, sensor = "Accelerometer"):
+    def acceleration(self, device, sensor="Accelerometer"):
         """Gives the acceleration of X,Y,Z in m/sec2."""
 
         return self.xyz_response(device, sensor, "float")
 
     @classmethod
-    def compass(self, device, sensor = 'Compass'):
+    def compass(self, device, sensor='Compass'):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field."""
 
@@ -24,7 +23,7 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         return self.sensor_response(device, sensor, compass_option, sensor_options)
 
     @classmethod
-    def magnetometer(self, device, sensor = "Magnetometer"):
+    def magnetometer(self, device, sensor="Magnetometer"):
         """Return the values of X,Y,Z of a magnetommeter."""
         return self.xyz_response(device, sensor, "int")
 
@@ -42,7 +41,8 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         response = self.response('hummingbird', 'in', "V2sensor", "Sound", device)
 
-        if response == 'micro:bit v2 required': return 0
+        if response == 'micro:bit v2 required':
+            return 0
 
         return int(response)
 
@@ -53,7 +53,8 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
         response = self.response('hummingbird', 'in', "V2sensor", "Temperature", device)
 
-        if response == 'micro:bit v2 required': return 0
+        if response == 'micro:bit v2 required':
+            return 0
 
         return int(response)
 
@@ -66,5 +67,10 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
     @classmethod
     def orientation(self, device):
         """Return the orentation of the Microbit. Results found in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS"""
-        return self.orientation_response(device, "orientation", BirdbrainConstant.HUMMINGBIRD_ORIENTATIONS, 
-            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS, BirdbrainConstant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN)
+        return self.orientation_response(
+            device,
+            "orientation",
+            BirdbrainConstant.HUMMINGBIRD_ORIENTATIONS,
+            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS,
+            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN,
+        )

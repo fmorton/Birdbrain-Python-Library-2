@@ -1,19 +1,18 @@
-from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_microbit import BirdbrainMicrobit
-from birdbrain_microbit_input import BirdbrainMicrobitInput
+
 
 class BirdbrainFinch(BirdbrainMicrobit):
     """The Finch class includes the control of the outputs and inputs present
     in the Finch robot. When creating an instance, specify which robot by the
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
 
-    def __init__(self, device='A', raise_exception_if_no_connection = True):
+    def __init__(self, device='A', raise_exception_if_no_connection=True):
         self.device_object = BirdbrainFinch.connect(device, raise_exception_if_no_connection)
 
-        if not self.is_finch():
+        if not self.device_object.is_finch():
             raise BirdbrainException("Error: Device " + device + " is not a Finch")
 
     def is_moving(self):
@@ -25,10 +24,10 @@ class BirdbrainFinch(BirdbrainMicrobit):
     def tail(self, port, r_intensity, g_intensity, b_intensity):
         return BirdbrainFinchOutput.tail(self.device, port, r_intensity, g_intensity, b_intensity)
 
-    def move(self, direction, distance, speed, wait_to_finish_movement = True):
+    def move(self, direction, distance, speed, wait_to_finish_movement=True):
         return BirdbrainFinchOutput.move(self.device, direction, distance, speed, wait_to_finish_movement)
 
-    def turn(self, direction, angle, speed, wait_to_finish_movement = True):
+    def turn(self, direction, angle, speed, wait_to_finish_movement=True):
         return BirdbrainFinchOutput.turn(self.device, direction, angle, speed, wait_to_finish_movement)
 
     def motors(self, left_speed, right_speed):

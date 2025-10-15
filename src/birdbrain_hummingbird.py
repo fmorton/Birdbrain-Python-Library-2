@@ -1,17 +1,18 @@
+from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird_input import BirdbrainHummingbirdInput
 from birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
 from birdbrain_microbit import BirdbrainMicrobit
-from birdbrain_microbit_input import BirdbrainMicrobitInput
 from birdbrain_request import BirdbrainRequest
+
 
 class BirdbrainHummingbird(BirdbrainMicrobit):
     """Hummingbird Bit Class includes the control of the outputs and inputs
-        present on the Hummingbird Bit."""
+    present on the Hummingbird Bit."""
 
-    def __init__(self, device = 'A', raise_exception_if_no_connection = True):
-        device_object = BirdbrainHummingbird.connect(device, raise_exception_if_no_connection)
+    def __init__(self, device='A', raise_exception_if_no_connection=True):
+        self.device_object = BirdbrainHummingbird.connect(device, raise_exception_if_no_connection)
 
-        if not self.is_hummingbird():
+        if not self.device_object.is_hummingbird():
             raise BirdbrainException("Device " + device + " is not a Hummingbird")
 
     def led(self, port, intensity):

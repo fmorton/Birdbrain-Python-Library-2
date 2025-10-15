@@ -1,11 +1,12 @@
 import asyncio
 
+
 class BirdbrainTasks:
     def __init__(self):
         self.method_list = []
         self.task_list = []
         self.results = {}
-        
+
     def result(self, method_name):
         return self.results[method_name] if method_name in self.results else None
 
@@ -25,9 +26,11 @@ class BirdbrainTasks:
                 except asyncio.exceptions.InvalidStateError:
                     pass
 
-                if not task.done(): running_task_count += 1
+                if not task.done():
+                    running_task_count += 1
 
-            if running_task_count == 0: break
+            if running_task_count == 0:
+                break
 
             await self.yield_task()
 
@@ -38,5 +41,5 @@ class BirdbrainTasks:
         await self.wait()
 
     @classmethod
-    async def yield_task(self, yield_time = 0.0):
+    async def yield_task(self, yield_time=0.0):
         await asyncio.sleep(yield_time)

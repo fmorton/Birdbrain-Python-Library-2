@@ -7,6 +7,7 @@ from birdbrain_microbit import BirdbrainMicrobit
 from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
 
+
 def test_led():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -14,6 +15,7 @@ def test_led():
     time.sleep(0.15)
 
     BirdbrainHummingbirdOutput.led(hummingbird.device, 1, "0")
+
 
 def test_tri_led():
     hummingbird = BirdbrainHummingbird("A")
@@ -23,6 +25,7 @@ def test_tri_led():
 
     BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0)
 
+
 def test_position_servo():
     hummingbird = BirdbrainHummingbird("A")
 
@@ -31,6 +34,7 @@ def test_position_servo():
 
     BirdbrainHummingbirdOutput.position_servo(hummingbird.device, 1, 160)
     time.sleep(0.15)
+
 
 def test_rotation_servo():
     hummingbird = BirdbrainHummingbird("A")

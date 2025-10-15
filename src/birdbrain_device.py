@@ -3,14 +3,15 @@ from birdbrain_exception import BirdbrainException
 from birdbrain_request import BirdbrainRequest
 from birdbrain_state import BirdbrainState
 
+
 class BirdbrainDevice:
-    def __init__(self, device = "A", raise_exception_if_no_connection = True):
+    def __init__(self, device="A", raise_exception_if_no_connection=True):
         self.state = BirdbrainState()
         self.device = BirdbrainDevice.remap_device(device)
         self.connected = False
 
     @classmethod
-    def connect(self, device = "A", raise_exception_if_no_connection = True):
+    def connect(self, device="A", raise_exception_if_no_connection=True):
         device_object = BirdbrainDevice(device)
 
         self.state = device_object.state
@@ -19,7 +20,7 @@ class BirdbrainDevice:
 
         if device is None:
             raise BirdbrainException("Missing device name")
-        if not device in BirdbrainConstant.VALID_DEVICES:
+        if device not in BirdbrainConstant.VALID_DEVICES:
             raise BirdbrainException("Invalid device name: " + device)
 
         self.connected = device_object.connect_device()
@@ -37,13 +38,13 @@ class BirdbrainDevice:
     def __is_device(self, operator):
         response = BirdbrainRequest.response("hummingbird", "in", operator, "static", self.device)
 
-        return (response == 'true')
+        return response == 'true'
 
     def is_microbit(self):
         """Determine if the device is a Microbit"""
 
         # allow hummingbird/finch to be seen as microbit
-        #return self.__is_device("isMicrobit")
+        # return self.__is_device("isMicrobit")
         return True
 
     def is_hummingbird(self):

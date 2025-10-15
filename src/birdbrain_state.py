@@ -13,15 +13,16 @@ class BirdbrainState:
         self.display_map[((x * 5) + y - 6)] = value
 
     def display_map_normalize(self):
-        return(["true" if ((pixel == 1) or (pixel is True)) else "false" for pixel in self.display_map])
+        return ["true" if ((pixel == 1) or (pixel is True)) else "false" for pixel in self.display_map]
 
-    def display_map_as_string(self, list = None):
-        if list is not None: self.set_list(list)
+    def display_map_as_string(self, list=None):
+        if list is not None:
+            self.set_list(list)
 
         return "/".join(self.display_map_normalize())
 
     def set(self, name, value):
-        if value == None:
+        if value is None:
             if name in self.cache:
                 self.cache.pop(name)
         else:
@@ -37,4 +38,4 @@ class BirdbrainState:
 
     @classmethod
     def microbit_empty_display_map(self):
-        return([0] * 25)
+        return [0] * 25

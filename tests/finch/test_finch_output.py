@@ -7,10 +7,12 @@ from birdbrain_finch import BirdbrainFinch
 from birdbrain_finch_output import BirdbrainFinchOutput
 from birdbrain_request import BirdbrainRequest
 
+
 def test_beak():
     assert BirdbrainFinchOutput.beak("B", 10, 50, 50)
     time.sleep(0.15)
     assert BirdbrainFinchOutput.beak("B", 0, 0, 0)
+
 
 def test_tail():
     assert BirdbrainFinchOutput.tail("B", 1, 10, 50, 50)
@@ -26,6 +28,7 @@ def test_tail():
     assert BirdbrainFinchOutput.tail("B", "all", 0, 0, 100)
     time.sleep(0.1)
     assert BirdbrainFinchOutput.tail("B", "all", 0, 0, 0)
+
 
 def test_move():
     assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 4, 5)
@@ -44,6 +47,7 @@ def test_move():
 
     BirdbrainRequest.stop_all("B")
 
+
 def test_turn():
     assert BirdbrainFinchOutput.turn("B", "L", 25, 50)
     assert BirdbrainFinchOutput.turn("B", "R", 25, 50)
@@ -53,6 +57,7 @@ def test_turn():
     with pytest.raises(BirdbrainException):
         assert BirdbrainFinchOutput.turn("B", "BAD", 90, 50)
         assert e.value.message == "Error: Request to device failed"
+
 
 def test_motors():
     assert BirdbrainFinchOutput.motors("B", 25, 0)
@@ -67,6 +72,7 @@ def test_motors():
 
     BirdbrainRequest.stop_all("B")
 
+
 def test_stop():
     assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 99999, 5, False)
     time.sleep(0.2)
@@ -75,6 +81,7 @@ def test_stop():
     assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 99999, 5, False)
     time.sleep(0.2)
     assert BirdbrainFinchOutput.stop("B")
+
 
 def test_reset_encoders():
     assert BirdbrainFinchOutput.reset_encoders("B")
