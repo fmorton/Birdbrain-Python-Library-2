@@ -1,11 +1,9 @@
 from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird import BirdbrainHummingbird
 from birdbrain_microbit import BirdbrainMicrobit
-from birdbrain_state import BirdbrainState
 
 import pytest
 import time
-import random
 
 
 def test_connect_device_name_as_none():

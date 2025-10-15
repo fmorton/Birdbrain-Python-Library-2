@@ -1,5 +1,4 @@
 import pytest
-import time
 
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException

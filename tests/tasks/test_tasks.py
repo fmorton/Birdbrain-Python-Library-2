@@ -1,5 +1,3 @@
-import pytest
-
 from birdbrain_tasks import BirdbrainTasks
 
 

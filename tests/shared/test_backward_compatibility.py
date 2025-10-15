@@ -1,6 +1,5 @@
 from birdbrain_finch import BirdbrainFinch
 from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_microbit import BirdbrainMicrobit
 
 from BirdBrain import Finch, Hummingbird
 

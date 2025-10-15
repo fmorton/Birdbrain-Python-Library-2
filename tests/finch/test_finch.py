@@ -4,7 +4,6 @@ import time
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_finch import BirdbrainFinch
-from birdbrain_finch_input import BirdbrainFinchInput
 from birdbrain_request import BirdbrainRequest
 
 

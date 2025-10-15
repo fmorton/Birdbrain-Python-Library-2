@@ -4,7 +4,6 @@ import time
 from birdbrain_constant import BirdbrainConstant
 from birdbrain_exception import BirdbrainException
 from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_microbit import BirdbrainMicrobit
 
 
 def test_connect_device_name_as_none():
