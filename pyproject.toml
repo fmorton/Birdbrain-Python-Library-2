@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "birdbrain-python-library-2"
-version = "0.9.19"
+version = "0.9.20"
 license = "LGPL-3.0-only"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
 readme = "README.rst"
@@ -30,9 +30,6 @@ include = ["/src", "src/birdbrain_python_library_2"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/birdbrain_python_library_2"]
-
-[tool.hatch.build]
-dev-mode-dirs = ["src"]
 	
 [tool.black]
 line-length = 140
