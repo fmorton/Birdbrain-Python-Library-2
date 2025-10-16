@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "birdbrain-python-library-2"
-version = "0.9.25"
+version = "0.9.26"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
 readme = "README.rst"
 requires-python = ">=3.8"
@@ -45,10 +45,10 @@ include = [
 ]
 
 [tool.hatch.build.targets.sdist]
-packages = ["src/birdbrain_python_library_2"]
+packages = ["src", "src/birdbrain_python_library_2"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/birdbrain_python_library_2"]
+packages = ["src", "src/birdbrain_python_library_2"]
 
 [tool.hatch.envs.types]
 extra-dependencies = [
