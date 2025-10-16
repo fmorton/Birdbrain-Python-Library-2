@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "birdbrain-python-library-2"
-version = "0.9.23"
+version = "0.9.24"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
 readme = "README.rst"
 requires-python = ">=3.8"
@@ -36,6 +36,40 @@ dev = [
     "pytest",
     "black",
     "flake8",
+]
+
+[tool.hatch.build]
+include = [
+    "src/birdbrain_python_library_2/*.py",
+    "README.rst"
+]
+[tool.hatch.build.targets.wheel]
+packages = ["src/birdbrain_python_library_2"]
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/birdbrain_python_library_2 tests}"
+
+[tool.coverage.run]
+source_pkgs = ["birdbrain_python_library_2", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/birdbrain_python_library_2/__about__.py",
+]
+
+[tool.coverage.paths]
+birdbrain_python_library_2 = ["src/birdbrain_python_library_2", "*/birdbrain-python-library-2/src/birdbrain_python_library_2"]
+tests = ["tests", "*/birdbrain-python-library-2/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
 ]
 	
 [tool.black]
