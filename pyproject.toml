@@ -39,18 +39,6 @@ dev = [
     "flake8",
 ]
 
-[tool.hatch.build]
-include = [
-    "src/birdbrain_python_library_2/*.py",
-    "README.rst"
-]
-
-[tool.hatch.build.targets.sdist]
-packages = ["src/birdbrain_python_library_2"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/birdbrain_python_library_2"]
-
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0",
