@@ -45,10 +45,10 @@ include = [
 ]
 
 [tool.hatch.build.targets.sdist]
-packages = ["src", "src/birdbrain_python_library_2"]
+packages = ["src/birdbrain_python_library_2"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src", "src/birdbrain_python_library_2"]
+packages = ["src/birdbrain_python_library_2"]
 
 [tool.hatch.envs.types]
 extra-dependencies = [
