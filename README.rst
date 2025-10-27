@@ -78,24 +78,4 @@ Development
 
 To run all the tests run (hummingbird on 'A' and finch on 'B')::
 
-    cd tests
-		pytest
-
-Note, to combine the coverage data from all the tox environments run:
-
-.. list-table::
-    :widths: 10 90
-    :stub-columns: 1
-
-    - - Windows
-      - ::
-
-            set PYTEST_ADDOPTS=--cov-append
-            tox
-
-    - - Other
-      - ::
-
-            PYTEST_ADDOPTS=--cov-append tox
-
-
+    cd tests; pytest
