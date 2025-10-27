@@ -1,8 +1,8 @@
 import pytest
 
-from birdbrain_exception import BirdbrainException
-from birdbrain_finch import BirdbrainFinch
-from birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain_python_library_2.birdbrain_finch import BirdbrainFinch
+from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
 
 
 def helper_test_acceleration(device):

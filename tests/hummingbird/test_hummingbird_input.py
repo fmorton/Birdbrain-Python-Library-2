@@ -1,8 +1,8 @@
 import pytest
 
-from birdbrain_constant import BirdbrainConstant
-from birdbrain_exception import BirdbrainException
-from birdbrain_hummingbird_input import BirdbrainHummingbirdInput
+from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
+from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain_python_library_2.birdbrain_hummingbird_input import BirdbrainHummingbirdInput
 
 
 def test_acceleration():

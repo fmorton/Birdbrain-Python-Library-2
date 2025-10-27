@@ -26,9 +26,9 @@
 # file. Now they are broken into separate files and published
 # in pypi.org.
 # --------------------------------------------------------------
-from birdbrain_finch import BirdbrainFinch
-from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_microbit import BirdbrainMicrobit
+from birdbrain_python_library_2.birdbrain_finch import BirdbrainFinch
+from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain_python_library_2.birdbrain_microbit import BirdbrainMicrobit
 
 
 class Microbit(BirdbrainMicrobit):

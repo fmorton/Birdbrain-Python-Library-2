@@ -1,8 +1,8 @@
-from birdbrain_device import BirdbrainDevice
-from birdbrain_exception import BirdbrainException
-from birdbrain_microbit_input import BirdbrainMicrobitInput
-from birdbrain_microbit_output import BirdbrainMicrobitOutput
-from birdbrain_request import BirdbrainRequest
+from birdbrain_python_library_2.birdbrain_device import BirdbrainDevice
+from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain_python_library_2.birdbrain_microbit_input import BirdbrainMicrobitInput
+from birdbrain_python_library_2.birdbrain_microbit_output import BirdbrainMicrobitOutput
+from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
 
 
 class BirdbrainMicrobit(BirdbrainDevice):

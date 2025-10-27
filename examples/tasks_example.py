@@ -1,5 +1,5 @@
-from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_tasks import BirdbrainTasks
+from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain_python_library_2.birdbrain_tasks import BirdbrainTasks
 
 import asyncio
 import random

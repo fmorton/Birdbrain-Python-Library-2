@@ -1,9 +1,9 @@
 import pytest
 import time
 
-from birdbrain_constant import BirdbrainConstant
-from birdbrain_exception import BirdbrainException
-from birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
+from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
 
 
 def test_connect_device_name_as_none():

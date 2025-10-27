@@ -1,6 +1,6 @@
-from birdbrain_constant import BirdbrainConstant
-from birdbrain_request import BirdbrainRequest
-from birdbrain_utility import BirdbrainUtility
+from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
+from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
+from birdbrain_python_library_2.birdbrain_utility import BirdbrainUtility
 
 
 class BirdbrainHummingbirdOutput(BirdbrainRequest):

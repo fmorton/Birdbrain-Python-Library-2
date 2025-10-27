@@ -1,7 +1,7 @@
 import time
 
-from birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
+from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain_python_library_2.birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
 
 
 def test_led():

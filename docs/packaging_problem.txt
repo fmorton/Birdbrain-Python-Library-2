@@ -14,7 +14,7 @@ Traceback (most recent call last):
     from BirdBrain import Hummingbird
 ModuleNotFoundError: No module named 'BirdBrain'
 
-"pip list" correctly shows: birdbrain-python-library-2      0.9.28       /Users/fmorton/GitHub/Birdbrain-Python-Library-2
+"pip list" correctly shows: birdbrain-python-library-2      0.9.29       /Users/fmorton/GitHub/Birdbrain-Python-Library-2
 
 You see that the "src" top-level directory is in the sys.path, not the project directory within the 'src' directory.
 

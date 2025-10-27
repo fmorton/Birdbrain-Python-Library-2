@@ -1,9 +1,9 @@
 import time
 import urllib.request
 
-from birdbrain_constant import BirdbrainConstant
-from birdbrain_exception import BirdbrainException
-from birdbrain_utility import BirdbrainUtility
+from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
+from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain_python_library_2.birdbrain_utility import BirdbrainUtility
 
 
 class BirdbrainRequest:
