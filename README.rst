@@ -9,11 +9,8 @@ Overview
 
     * - docs
       - |docs|
-    * - tests
-      - | |github-actions| |requires|
-        | |codecov|
     * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
+      - | |version| |wheel| |supported-versions|
 .. |docs| image:: https://readthedocs.org/projects/BirdBrain-Python-Library-2/badge/?style=flat
     :target: https://BirdBrain-Python-Library-2.readthedocs.io/
     :alt: Documentation Status
@@ -79,9 +76,10 @@ Hummingbird: https://learn.birdbraintechnologies.com/hummingbirdbit/python/libra
 Development
 ===========
 
-To run all the tests run::
+To run all the tests run (hummingbird on 'A' and finch on 'B')::
 
-    tox
+    cd tests
+		pytest
 
 Note, to combine the coverage data from all the tox environments run:
 
