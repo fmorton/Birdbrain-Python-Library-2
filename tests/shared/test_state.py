@@ -1,4 +1,4 @@
-from birdbrain_python_library_2.birdbrain_state import BirdbrainState
+from birdbrain.birdbrain_state import BirdbrainState
 
 
 def test_state():

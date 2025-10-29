@@ -1,7 +1,7 @@
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_finch import BirdbrainFinch
-from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_python_library_2.birdbrain_tasks import BirdbrainTasks
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_finch import BirdbrainFinch
+from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain.birdbrain_tasks import BirdbrainTasks
 
 from BirdBrain import Constant, Finch, Hummingbird, Tasks
 

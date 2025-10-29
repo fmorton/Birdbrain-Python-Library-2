@@ -1,7 +1,7 @@
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
-from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
-from birdbrain_python_library_2.birdbrain_state import BirdbrainState
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_exception import BirdbrainException
+from birdbrain.birdbrain_request import BirdbrainRequest
+from birdbrain.birdbrain_state import BirdbrainState
 
 
 class BirdbrainDevice:

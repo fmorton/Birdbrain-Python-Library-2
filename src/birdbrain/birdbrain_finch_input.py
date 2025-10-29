@@ -1,6 +1,6 @@
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_microbit_input import BirdbrainMicrobitInput
-from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_microbit_input import BirdbrainMicrobitInput
+from birdbrain.birdbrain_request import BirdbrainRequest
 
 
 class BirdbrainFinchInput(BirdbrainRequest):

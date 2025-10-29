@@ -1,7 +1,7 @@
 import pytest
 
-from birdbrain_python_library_2.birdbrain_device import BirdbrainDevice
-from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
+from birdbrain.birdbrain_device import BirdbrainDevice
+from birdbrain.birdbrain_exception import BirdbrainException
 
 
 def test_none_device():

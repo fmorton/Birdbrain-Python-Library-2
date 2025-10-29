@@ -1,9 +1,9 @@
 import time
 
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_finch_input import BirdbrainFinchInput
-from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
-from birdbrain_python_library_2.birdbrain_utility import BirdbrainUtility
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_finch_input import BirdbrainFinchInput
+from birdbrain.birdbrain_request import BirdbrainRequest
+from birdbrain.birdbrain_utility import BirdbrainUtility
 
 
 class BirdbrainFinchOutput(BirdbrainRequest):

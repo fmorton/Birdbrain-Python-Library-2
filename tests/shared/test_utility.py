@@ -1,4 +1,4 @@
-from birdbrain_python_library_2.birdbrain_utility import BirdbrainUtility
+from birdbrain.birdbrain_utility import BirdbrainUtility
 
 
 def test_is_none_or_empty():

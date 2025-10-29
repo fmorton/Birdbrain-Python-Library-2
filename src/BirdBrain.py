@@ -26,11 +26,11 @@
 # file. Now they are broken into separate files and published
 # in pypi.org.
 # --------------------------------------------------------------
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_finch import BirdbrainFinch
-from birdbrain_python_library_2.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain_python_library_2.birdbrain_microbit import BirdbrainMicrobit
-from birdbrain_python_library_2.birdbrain_tasks import BirdbrainTasks
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_finch import BirdbrainFinch
+from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain.birdbrain_microbit import BirdbrainMicrobit
+from birdbrain.birdbrain_tasks import BirdbrainTasks
 
 
 class Constant(BirdbrainConstant):

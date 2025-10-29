@@ -1,10 +1,10 @@
 import pytest
 import time
 
-from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
-from birdbrain_python_library_2.birdbrain_microbit_output import BirdbrainMicrobitOutput
-from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
-from birdbrain_python_library_2.birdbrain_state import BirdbrainState
+from birdbrain.birdbrain_exception import BirdbrainException
+from birdbrain.birdbrain_microbit_output import BirdbrainMicrobitOutput
+from birdbrain.birdbrain_request import BirdbrainRequest
+from birdbrain.birdbrain_state import BirdbrainState
 
 
 def test_display():

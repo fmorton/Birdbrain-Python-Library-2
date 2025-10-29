@@ -1,23 +1,23 @@
 Name                                                                                                              Stmts   Miss  Cover   Missing
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/BirdBrain.py                                                    15      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/__init__.py                           0      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_constant.py                45      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_device.py                  49      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_exception.py                8      2    75%   4, 10
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_finch.py                   57      1    98%   16
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_finch_input.py             39      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_finch_output.py            56      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_hummingbird.py             43      1    98%   16
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_hummingbird_input.py       62      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_hummingbird_output.py      22      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_microbit.py                52      2    96%   12-13
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_microbit_input.py          37      2    95%   45, 57
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_microbit_output.py         34      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_request.py                155     13    92%   25, 34, 67, 70, 102-109, 158, 209
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_state.py                   29      1    97%   7
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_tasks.py                   32      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain_python_library_2/birdbrain_utility.py                 34      1    97%   25
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/__init__.py                           0      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_constant.py                45      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_device.py                  49      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_exception.py                8      2    75%   4, 10
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_finch.py                   57      1    98%   16
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_finch_input.py             39      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_finch_output.py            56      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_hummingbird.py             43      1    98%   16
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_hummingbird_input.py       62      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_hummingbird_output.py      22      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_microbit.py                52      2    96%   12-13
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_microbit_input.py          37      2    95%   45, 57
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_microbit_output.py         34      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_request.py                155     13    92%   25, 34, 67, 70, 102-109, 158, 209
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_state.py                   29      1    97%   7
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_tasks.py                   32      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/birdbrain_utility.py                 34      1    97%   25
 finch/test_finch.py                                                                                                 134      1    99%   62
 finch/test_finch_input.py                                                                                            82      0   100%
 finch/test_finch_output.py                                                                                           63      3    95%   41, 45, 58

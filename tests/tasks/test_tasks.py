@@ -1,4 +1,4 @@
-from birdbrain_python_library_2.birdbrain_tasks import BirdbrainTasks
+from birdbrain.birdbrain_tasks import BirdbrainTasks
 
 
 async def method_1(p):

@@ -1,10 +1,10 @@
 import pytest
 import time
 
-from birdbrain_python_library_2.birdbrain_constant import BirdbrainConstant
-from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
-from birdbrain_python_library_2.birdbrain_finch_output import BirdbrainFinchOutput
-from birdbrain_python_library_2.birdbrain_request import BirdbrainRequest
+from birdbrain.birdbrain_constant import BirdbrainConstant
+from birdbrain.birdbrain_exception import BirdbrainException
+from birdbrain.birdbrain_finch_output import BirdbrainFinchOutput
+from birdbrain.birdbrain_request import BirdbrainRequest
 
 
 def test_beak():

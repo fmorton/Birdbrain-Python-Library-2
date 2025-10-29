@@ -1,7 +1,7 @@
-from birdbrain_python_library_2.birdbrain_exception import BirdbrainException
-from birdbrain_python_library_2.birdbrain_finch_input import BirdbrainFinchInput
-from birdbrain_python_library_2.birdbrain_finch_output import BirdbrainFinchOutput
-from birdbrain_python_library_2.birdbrain_microbit import BirdbrainMicrobit
+from birdbrain.birdbrain_exception import BirdbrainException
+from birdbrain.birdbrain_finch_input import BirdbrainFinchInput
+from birdbrain.birdbrain_finch_output import BirdbrainFinchOutput
+from birdbrain.birdbrain_microbit import BirdbrainMicrobit
 
 
 class BirdbrainFinch(BirdbrainMicrobit):
