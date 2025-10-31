@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "birdbrain-python-library-2"
-version = "0.9.39"
+version = "0.9.40"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
 readme = "README.rst"
 requires-python = ">=3.8"

@@ -1,4 +1,5 @@
 # This file is here for historical reasons and backward compatibility.
+# Must use "from birdbrain" instead of "from BirdBrain" when importing
 
 from birdbrain.constant import Constant
 from birdbrain.finch import Finch

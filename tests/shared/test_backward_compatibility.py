@@ -4,6 +4,9 @@ from birdbrain.hummingbird import Hummingbird
 from birdbrain.tasks import Tasks
 
 
+# package name "BirdBrain" no longer supported...use "birdbrain" instead
+
+
 def test_instantiating_devices_old_way():
     try:
         from BirdBrain import Constant, Finch, Hummingbird, Tasks
