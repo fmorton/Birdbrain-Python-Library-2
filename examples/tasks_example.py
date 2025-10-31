@@ -4,13 +4,15 @@ from birdbrain.tasks import Tasks
 import asyncio
 import random
 
+
 async def random_blinker(hummingbird):
     for i in range(35):
         hummingbird.tri_led(1, random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
 
         await Tasks.yield_task()
 
-    return("random_blinker")  # return is optional
+    return "random_blinker"  # return is optional
+
 
 async def blue_blinker(hummingbird):
     for i in range(35):
