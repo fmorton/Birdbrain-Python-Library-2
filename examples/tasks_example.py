@@ -1,8 +1,8 @@
-from birdbrain.hummingbird import Hummingbird
-from birdbrain.tasks import Tasks
-
 import asyncio
 import random
+
+from birdbrain.hummingbird import Hummingbird
+from birdbrain.tasks import Tasks
 
 
 async def random_blinker(hummingbird):

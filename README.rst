@@ -65,8 +65,19 @@ You can also install the in-development version with::
 
 
 
-Documentation
-=============
+Example
+=======
+
+::
+
+    from birdbrain import Hummingbird
+		
+
+
+Original Documentation
+=============================================
+
+The original documentation from Birdbrain Technolgies can be found at:
 
 Finch: https://learn.birdbraintechnologies.com/finch/python/library/
 
