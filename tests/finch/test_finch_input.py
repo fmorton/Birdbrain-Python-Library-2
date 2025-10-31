@@ -1,94 +1,94 @@
 import pytest
 
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_finch_input import BirdbrainFinchInput
-from birdbrain.birdbrain_finch_output import BirdbrainFinchOutput
-from birdbrain.birdbrain_request import BirdbrainRequest
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.finch_input import FinchInput
+from birdbrain.finch_output import FinchOutput
+from birdbrain.request import Request
 
 
 def test_is_moving():
-    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.FORWARD, 7, 5, False)
-    assert BirdbrainFinchInput.is_moving("B")
+    assert FinchOutput.move("B", Constant.FORWARD, 7, 5, False)
+    assert FinchInput.is_moving("B")
 
-    BirdbrainFinchOutput.wait("B")
+    FinchOutput.wait("B")
 
-    assert BirdbrainFinchOutput.move("B", BirdbrainConstant.BACKWARD, 7, 5, True)
+    assert FinchOutput.move("B", Constant.BACKWARD, 7, 5, True)
 
-    assert BirdbrainRequest.stop_all("B")
+    assert Request.stop_all("B")
 
-    assert not BirdbrainFinchInput.is_moving("B")
+    assert not FinchInput.is_moving("B")
 
 
 def test_light():
-    response = BirdbrainFinchInput.light("B", "L")
+    response = FinchInput.light("B", "L")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    response = BirdbrainFinchInput.light("B", "R")
+    response = FinchInput.light("B", "R")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.light("B", "BAD")
+    with pytest.raises(Exception) as e:
+        FinchInput.light("B", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.light("B", None)
+    with pytest.raises(Exception) as e:
+        FinchInput.light("B", None)
     assert e.value.message == "Error: Request to device failed"
 
 
 def test_distance():
-    response = BirdbrainFinchInput.distance("B")
+    response = FinchInput.distance("B")
 
     assert 0 <= response <= 298
     assert isinstance(response, int)
 
 
 def test_line():
-    response = BirdbrainFinchInput.line("B", "L")
+    response = FinchInput.line("B", "L")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    response = BirdbrainFinchInput.line("B", "R")
+    response = FinchInput.line("B", "R")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.line("B", "BAD")
+    with pytest.raises(Exception) as e:
+        FinchInput.line("B", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.line("B", None)
+    with pytest.raises(Exception) as e:
+        FinchInput.line("B", None)
     assert e.value.message == "Error: Request to device failed"
 
 
 def test_encoder():
-    response = BirdbrainFinchInput.encoder("B", "L")
+    response = FinchInput.encoder("B", "L")
 
     assert -100.0 <= response <= 100.0
     assert isinstance(response, float)
 
-    response = BirdbrainFinchInput.encoder("B", "R")
+    response = FinchInput.encoder("B", "R")
 
     assert -100.0 <= response <= 100.0
     assert isinstance(response, float)
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.encoder("B", "BAD")
+    with pytest.raises(Exception) as e:
+        FinchInput.encoder("B", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainFinchInput.encoder("B", None)
+    with pytest.raises(Exception) as e:
+        FinchInput.encoder("B", None)
     assert e.value.message == "Error: Request to device failed"
 
 
 def test_acceleration():
-    response = BirdbrainFinchInput.acceleration("B")
+    response = FinchInput.acceleration("B")
 
     assert -100.0 <= response[0] <= 100.0
     assert -100.0 <= response[1] <= 100.0
@@ -100,14 +100,14 @@ def test_acceleration():
 
 
 def test_compass():
-    response = BirdbrainFinchInput.compass("B")
+    response = FinchInput.compass("B")
 
     assert 0 <= response <= 359
     assert isinstance(response, int)
 
 
 def test_magnetometer():
-    response = BirdbrainFinchInput.magnetometer("B")
+    response = FinchInput.magnetometer("B")
 
     assert -180.0 <= response[0] <= 180.0
     assert -180.0 <= response[1] <= 180.0
@@ -119,10 +119,10 @@ def test_magnetometer():
 
 
 def test_orientation():
-    response = BirdbrainFinchInput.orientation("B")
+    response = FinchInput.orientation("B")
 
     some_position = False
-    for orientation in BirdbrainConstant.FINCH_ORIENTATION_RESULTS:
+    for orientation in Constant.FINCH_ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position

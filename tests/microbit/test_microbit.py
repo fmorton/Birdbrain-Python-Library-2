@@ -1,31 +1,31 @@
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain.birdbrain_microbit import BirdbrainMicrobit
+from birdbrain.exception import Exception
+from birdbrain.hummingbird import Hummingbird
+from birdbrain.microbit import Microbit
 
 import pytest
 import time
 
 
 def test_connect_device_name_as_none():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainMicrobit(None)
+    with pytest.raises(Exception) as e:
+        Microbit(None)
     assert e.value.message == "Missing device name"
 
 
 def test_connect_bad_device_name():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainMicrobit.connect('D')
+    with pytest.raises(Exception) as e:
+        Microbit.connect('D')
     assert e.value.message == "Invalid device name: D"
 
 
 def test_connect_valid_device_name():
-    microbit = BirdbrainMicrobit.connect("A")
+    microbit = Microbit.connect("A")
 
     assert microbit.device == "A"
 
 
 def test_is():
-    microbit = BirdbrainMicrobit.connect("A")
+    microbit = Microbit.connect("A")
 
     assert microbit.is_connected()
     assert microbit.is_microbit()
@@ -39,7 +39,7 @@ def test_is():
 
 
 def test_display_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.display([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1])
 
@@ -53,15 +53,15 @@ def test_display_with_alias():
 
 
 def test_display_wrong_size():
-    with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainHummingbird("A")
+    with pytest.raises(Exception) as e:
+        hummingbird = Hummingbird("A")
 
         hummingbird.display([0, 1])
     assert e.value.message == "Error: display() requires a list of length 25"
 
 
 def test_point_and_clear_display_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     for i in range(2):
         assert hummingbird.point(2, 2, 1)
@@ -75,7 +75,7 @@ def test_point_and_clear_display_with_alias():
 
 
 def test_point_true_or_false():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.point(3, 3, True)
 
@@ -85,15 +85,15 @@ def test_point_true_or_false():
 
 
 def test_point_out_of_range():
-    with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainHummingbird("A")
+    with pytest.raises(Exception) as e:
+        hummingbird = Hummingbird("A")
 
         assert hummingbird.point(999, 1, 1)
     assert e.value.message == "Error: point out of range"
 
 
 def test_print():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     hummingbird.print("A")
 
@@ -101,7 +101,7 @@ def test_print():
 
 
 def test_play_note_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     hummingbird.play_note(75, 0.5)
 
@@ -115,7 +115,7 @@ def test_play_note_with_alias():
 
 
 def test_stop_all():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     hummingbird.stop_all()
     hummingbird.stopAll()

@@ -1,8 +1,8 @@
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_request import BirdbrainRequest
+from birdbrain.constant import Constant
+from birdbrain.request import Request
 
 
-class BirdbrainMicrobitInput(BirdbrainRequest):
+class MicrobitInput(Request):
     @classmethod
     def acceleration(self, device, sensor="Accelerometer"):
         """Gives the acceleration of X,Y,Z in m/sec2."""
@@ -15,8 +15,8 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
         magnetic field."""
 
         sensor_options = {}
-        sensor_options['min_response'] = BirdbrainConstant.DEFAULT_DEGREES_MIN_RESPONSE
-        sensor_options['max_response'] = BirdbrainConstant.DEFAULT_DEGREES_MAX_RESPONSE
+        sensor_options['min_response'] = Constant.DEFAULT_DEGREES_MIN_RESPONSE
+        sensor_options['max_response'] = Constant.DEFAULT_DEGREES_MAX_RESPONSE
 
         compass_option = None if sensor == 'Compass' else 'static'
 
@@ -66,11 +66,11 @@ class BirdbrainMicrobitInput(BirdbrainRequest):
 
     @classmethod
     def orientation(self, device):
-        """Return the orentation of the Microbit. Results found in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS"""
+        """Return the orentation of the Microbit. Results found in Constant.HUMMINGBIRD_ORIENTATION_RESULTS"""
         return self.orientation_response(
             device,
             "orientation",
-            BirdbrainConstant.HUMMINGBIRD_ORIENTATIONS,
-            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS,
-            BirdbrainConstant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN,
+            Constant.HUMMINGBIRD_ORIENTATIONS,
+            Constant.HUMMINGBIRD_ORIENTATION_RESULTS,
+            Constant.HUMMINGBIRD_ORIENTATION_IN_BETWEEN,
         )

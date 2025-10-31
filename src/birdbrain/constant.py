@@ -1,4 +1,4 @@
-class BirdbrainConstant:
+class Constant:
     BIRDBRAIN_TEST = False
 
     BACKWARD = 'B'

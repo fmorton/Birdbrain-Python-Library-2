@@ -26,28 +26,28 @@
 # file. Now they are broken into separate files and published
 # in pypi.org.
 # --------------------------------------------------------------
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_finch import BirdbrainFinch
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain.birdbrain_microbit import BirdbrainMicrobit
-from birdbrain.birdbrain_tasks import BirdbrainTasks
+from birdbrain.constant import Constant
+from birdbrain.finch import Finch
+from birdbrain.hummingbird import Hummingbird
+from birdbrain.microbit import Microbit
+from birdbrain.tasks import Tasks
 
 
-class Constant(BirdbrainConstant):
+class Constant(Constant):
     pass
 
 
-class Microbit(BirdbrainMicrobit):
+class Microbit(Microbit):
     pass
 
 
-class Hummingbird(BirdbrainHummingbird):
+class Hummingbird(Hummingbird):
     pass
 
 
-class Finch(BirdbrainFinch):
+class Finch(Finch):
     pass
 
 
-class Tasks(BirdbrainTasks):
+class Tasks(Tasks):
     pass

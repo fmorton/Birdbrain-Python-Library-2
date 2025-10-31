@@ -1,74 +1,74 @@
 import pytest
 
-from birdbrain.birdbrain_device import BirdbrainDevice
-from birdbrain.birdbrain_exception import BirdbrainException
+from birdbrain.device import Device
+from birdbrain.exception import Exception
 
 
 def test_none_device():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainDevice.connect(None)
+    with pytest.raises(Exception) as e:
+        Device.connect(None)
     assert e.value.message == "Missing device name"
 
 
 def test_bad_device():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainDevice.connect("Z")
+    with pytest.raises(Exception) as e:
+        Device.connect("Z")
     assert e.value.message == "Invalid device name: Z"
 
 
 def test_stop_all():
-    hummingbird = BirdbrainDevice.connect()
+    hummingbird = Device.connect()
 
     hummingbird.stop_all()
 
 
 def test_default_connect():
-    hummingbird = BirdbrainDevice.connect()
+    hummingbird = Device.connect()
 
     assert hummingbird.connected
     assert hummingbird.device == 'A'
 
 
 def test_connect():
-    hummingbird = BirdbrainDevice.connect("A")
+    hummingbird = Device.connect("A")
 
     assert hummingbird.connected
     assert hummingbird.device == 'A'
 
 
 def test_connect_to_disconnected_device():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainDevice.connect("C", True)
+    with pytest.raises(Exception) as e:
+        Device.connect("C", True)
     assert e.value.message == "No connection: C"
 
 
 def test_connect_to_disconnected_device_no_exception():
-    hummingbird = BirdbrainDevice.connect("C", False)
+    hummingbird = Device.connect("C", False)
 
     assert not hummingbird.connected
     assert hummingbird.device == 'C'
 
 
 def test_connect_to_disconnected_device_with_exception():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainDevice.connect("C", True)
+    with pytest.raises(Exception) as e:
+        Device.connect("C", True)
     assert e.value.message == "No connection: C"
 
 
 def test_is_hummingbird():
-    hummingbird = BirdbrainDevice.connect("A")
+    hummingbird = Device.connect("A")
 
     assert hummingbird.is_hummingbird
 
 
 def test_is_finch():
-    hummingbird = BirdbrainDevice.connect("A")
+    hummingbird = Device.connect("A")
 
     assert not hummingbird.is_finch()
 
 
 def test_cache():
-    hummingbird = BirdbrainDevice.connect("A")
+    hummingbird = Device.connect("A")
 
     assert hummingbird.get_cache("something_name") is None
 

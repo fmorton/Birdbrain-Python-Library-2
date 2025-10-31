@@ -1,15 +1,15 @@
 import time
 import urllib.request
 
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_utility import BirdbrainUtility
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.utility import Utility
 
 
-class BirdbrainRequest:
+class Request:
     @classmethod
     def uri(self, *args):
-        return "http://127.0.0.1:30061/" + BirdbrainUtility.flatten_string(args)
+        return "http://127.0.0.1:30061/" + Utility.flatten_string(args)
 
     @classmethod
     def is_not_connected_response(self, response):
@@ -21,20 +21,20 @@ class BirdbrainRequest:
             return False
 
         try:
-            if BirdbrainConstant.BIRDBRAIN_TEST:
+            if Constant.BIRDBRAIN_TEST:
                 print("Test: URI", self.uri(*args))
 
             response_request = urllib.request.urlopen(self.uri(*args))
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
-            raise (BirdbrainException("Error: Request to device failed"))
+            raise (Exception("Error: Request to device failed"))
 
         response = response_request.read().decode('utf-8').lower()
 
-        if BirdbrainConstant.BIRDBRAIN_TEST:
+        if Constant.BIRDBRAIN_TEST:
             print("Test: response", response)
 
         if self.is_not_connected_response(response):
-            raise (BirdbrainException("Error: The device is not connected"))
+            raise (Exception("Error: The device is not connected"))
 
         time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
@@ -42,13 +42,13 @@ class BirdbrainRequest:
 
     @classmethod
     def response_status(self, *args):
-        return BirdbrainRequest.request_status(BirdbrainRequest.response(args))
+        return Request.request_status(Request.response(args))
 
     @classmethod
     def is_connected(self, device):
         try:
             self.response('hummingbird', 'in', 'orientation', 'Shake', device)
-        except BirdbrainException:
+        except Exception:
             return False
 
         return True
@@ -63,7 +63,7 @@ class BirdbrainRequest:
 
     @classmethod
     def request_status(self, status):
-        if BirdbrainConstant.BIRDBRAIN_TEST:
+        if Constant.BIRDBRAIN_TEST:
             print("Test: request status is", status)
 
         if status is None:
@@ -114,7 +114,7 @@ class BirdbrainRequest:
 
     @classmethod
     def calculate_intensity(self, intensity):
-        return int(int(BirdbrainUtility.bounds(intensity, 0, 100)) * 255 / 100)
+        return int(int(Utility.bounds(intensity, 0, 100)) * 255 / 100)
 
     @classmethod
     def calculate_speed(self, speed):
@@ -131,9 +131,9 @@ class BirdbrainRequest:
 
     @classmethod
     def calculate_left_or_right(self, direction):
-        if direction == BirdbrainConstant.LEFT:
+        if direction == Constant.LEFT:
             return 'Left'
-        if direction == BirdbrainConstant.RIGHT:
+        if direction == Constant.RIGHT:
             return 'Right'
 
         return 'None'
@@ -141,7 +141,7 @@ class BirdbrainRequest:
     @classmethod
     def validate(self, validate, valid_range, validate_message):
         if not str(validate) in valid_range:
-            raise BirdbrainException(validate_message)
+            raise Exception(validate_message)
 
         return True
 
@@ -150,26 +150,26 @@ class BirdbrainRequest:
         if allow_all and str(port) == 'all':
             return True
 
-        return BirdbrainRequest.validate(port, valid_range, f"Port {str(port)} out of range.")
+        return Request.validate(port, valid_range, f"Port {str(port)} out of range.")
 
     @classmethod
     def sensor_response(self, device, sensor, other=None, options={}):
         if other is False:
             return False  # for invalid directions
 
-        factor = options["factor"] if "factor" in options else BirdbrainConstant.DEFAULT_FACTOR
-        min_response = options["min_response"] if "min_response" in options else BirdbrainConstant.DEFAULT_UNLIMITED_MIN_RESPONSE
-        max_response = options["max_response"] if "max_response" in options else BirdbrainConstant.DEFAULT_UNLIMITED_MAX_RESPONSE
-        type_method = options["type_method"] if "type_method" in options else BirdbrainConstant.DEFAULT_TYPE_METHOD
+        factor = options["factor"] if "factor" in options else Constant.DEFAULT_FACTOR
+        min_response = options["min_response"] if "min_response" in options else Constant.DEFAULT_UNLIMITED_MIN_RESPONSE
+        max_response = options["max_response"] if "max_response" in options else Constant.DEFAULT_UNLIMITED_MAX_RESPONSE
+        type_method = options["type_method"] if "type_method" in options else Constant.DEFAULT_TYPE_METHOD
 
         request = ['hummingbird', 'in', sensor]
         if other is not None:
             request.append(other)
         request.append(device)
 
-        response = float(BirdbrainRequest.response(request)) * factor
+        response = float(Request.response(request)) * factor
 
-        response = round(BirdbrainUtility.decimal_bounds(response, min_response, max_response), 3)
+        response = round(Utility.decimal_bounds(response, min_response, max_response), 3)
 
         if type_method == 'int':
             return int(response)
@@ -178,9 +178,9 @@ class BirdbrainRequest:
 
     @classmethod
     def xyz_response(self, device, sensor, type_method='int'):
-        x = round(float(BirdbrainRequest.response('hummingbird', 'in', sensor, 'X', device)), 3)
-        y = round(float(BirdbrainRequest.response('hummingbird', 'in', sensor, 'Y', device)), 3)
-        z = round(float(BirdbrainRequest.response('hummingbird', 'in', sensor, 'Z', device)), 3)
+        x = round(float(Request.response('hummingbird', 'in', sensor, 'X', device)), 3)
+        y = round(float(Request.response('hummingbird', 'in', sensor, 'Y', device)), 3)
+        z = round(float(Request.response('hummingbird', 'in', sensor, 'Z', device)), 3)
 
         if type_method == 'int':
             return [int(x), int(y), int(z)]
@@ -192,11 +192,11 @@ class BirdbrainRequest:
         """Set TriLED  of a certain port requested to a valid intensity."""
         self.validate_port(port, valid_range, allow_all)
 
-        calc_r = BirdbrainRequest.calculate_intensity(r_intensity)
-        calc_g = BirdbrainRequest.calculate_intensity(g_intensity)
-        calc_b = BirdbrainRequest.calculate_intensity(b_intensity)
+        calc_r = Request.calculate_intensity(r_intensity)
+        calc_g = Request.calculate_intensity(g_intensity)
+        calc_b = Request.calculate_intensity(b_intensity)
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'triled', port, calc_r, calc_g, calc_b, device)
+        return Request.response_status('hummingbird', 'out', 'triled', port, calc_r, calc_g, calc_b, device)
 
     @classmethod
     def orientation_response(self, device, sensor, orientations, orientation_results, orientation_in_between):

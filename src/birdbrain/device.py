@@ -1,32 +1,32 @@
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_request import BirdbrainRequest
-from birdbrain.birdbrain_state import BirdbrainState
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.request import Request
+from birdbrain.state import State
 
 
-class BirdbrainDevice:
+class Device:
     def __init__(self, device="A", raise_exception_if_no_connection=True):
-        self.state = BirdbrainState()
-        self.device = BirdbrainDevice.remap_device(device)
+        self.state = State()
+        self.device = Device.remap_device(device)
         self.connected = False
 
     @classmethod
     def connect(self, device="A", raise_exception_if_no_connection=True):
-        device_object = BirdbrainDevice(device)
+        device_object = Device(device)
 
         self.state = device_object.state
         self.device = device_object.device
         self.connected = device_object.connected
 
         if device is None:
-            raise BirdbrainException("Missing device name")
-        if device not in BirdbrainConstant.VALID_DEVICES:
-            raise BirdbrainException("Invalid device name: " + device)
+            raise Exception("Missing device name")
+        if device not in Constant.VALID_DEVICES:
+            raise Exception("Invalid device name: " + device)
 
         self.connected = device_object.connect_device()
 
         if raise_exception_if_no_connection and not device_object.connected:
-            raise BirdbrainException("No connection: " + device)
+            raise Exception("No connection: " + device)
 
         return device_object
 
@@ -36,7 +36,7 @@ class BirdbrainDevice:
         return self.connected
 
     def __is_device(self, operator):
-        response = BirdbrainRequest.response("hummingbird", "in", operator, "static", self.device)
+        response = Request.response("hummingbird", "in", operator, "static", self.device)
 
         return response == 'true'
 
@@ -60,12 +60,12 @@ class BirdbrainDevice:
         return device
 
     def connect_device(self):
-        self.connected = BirdbrainRequest.is_connected(self.device)
+        self.connected = Request.is_connected(self.device)
 
         return self.connected
 
     def stop_all(self):
-        BirdbrainRequest.stop_all(self.device)
+        Request.stop_all(self.device)
 
     def set_cache(self, name, value):
         return self.state.set(name, value)

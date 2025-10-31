@@ -1,4 +1,4 @@
-class BirdbrainUtility:
+class Utility:
     @classmethod
     def is_none_or_empty(self, s):
         if s is None or s == "":

@@ -1,5 +1,5 @@
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain.birdbrain_tasks import BirdbrainTasks
+from birdbrain.hummingbird import Hummingbird
+from birdbrain.tasks import Tasks
 
 import asyncio
 import random
@@ -8,7 +8,7 @@ async def random_blinker(hummingbird):
     for i in range(35):
         hummingbird.tri_led(1, random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
 
-        await BirdbrainTasks.yield_task()
+        await Tasks.yield_task()
 
     return("random_blinker")  # return is optional
 
@@ -16,12 +16,12 @@ async def blue_blinker(hummingbird):
     for i in range(35):
         hummingbird.tri_led(1, 0, 0, 100)
 
-        await BirdbrainTasks.yield_task()
+        await Tasks.yield_task()
 
 
-hummingbird = BirdbrainHummingbird('A')
+hummingbird = Hummingbird('A')
 
-tasks = BirdbrainTasks()
+tasks = Tasks()
 
 tasks.create_task(random_blinker(hummingbird))
 tasks.create_task(blue_blinker(hummingbird))

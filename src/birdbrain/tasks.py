@@ -1,7 +1,7 @@
 import asyncio
 
 
-class BirdbrainTasks:
+class Tasks:
     def __init__(self):
         self.method_list = []
         self.task_list = []

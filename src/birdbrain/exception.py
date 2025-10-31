@@ -1,4 +1,4 @@
-class BirdbrainException(Exception):
+class Exception(Exception):
     def __init__(self, message, birdbrain_device=None):
         if birdbrain_device is not None:
             birdbrain_device.stop_all()

@@ -1,44 +1,44 @@
 import time
 
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
-from birdbrain.birdbrain_hummingbird_output import BirdbrainHummingbirdOutput
+from birdbrain.hummingbird import Hummingbird
+from birdbrain.hummingbird_output import HummingbirdOutput
 
 
 def test_led():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
-    BirdbrainHummingbirdOutput.led(hummingbird.device, 1, 50)
+    HummingbirdOutput.led(hummingbird.device, 1, 50)
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.led(hummingbird.device, 1, "0")
+    HummingbirdOutput.led(hummingbird.device, 1, "0")
 
 
 def test_tri_led():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
-    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 50, "50", 0)
+    HummingbirdOutput.tri_led(hummingbird.device, 1, 50, "50", 0)
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0)
+    HummingbirdOutput.tri_led(hummingbird.device, 1, 0, 0, 0)
 
 
 def test_position_servo():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
-    BirdbrainHummingbirdOutput.position_servo(hummingbird.device, 1, 20)
+    HummingbirdOutput.position_servo(hummingbird.device, 1, 20)
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.position_servo(hummingbird.device, 1, 160)
+    HummingbirdOutput.position_servo(hummingbird.device, 1, 160)
     time.sleep(0.15)
 
 
 def test_rotation_servo():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
-    BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, 2, 25)
+    HummingbirdOutput.rotation_servo(hummingbird.device, 2, 25)
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, "2", "-25")
+    HummingbirdOutput.rotation_servo(hummingbird.device, "2", "-25")
     time.sleep(0.15)
 
-    BirdbrainHummingbirdOutput.rotation_servo(hummingbird.device, 2, 0)
+    HummingbirdOutput.rotation_servo(hummingbird.device, 2, 0)

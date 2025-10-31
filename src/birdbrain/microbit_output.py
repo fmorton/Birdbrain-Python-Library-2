@@ -1,21 +1,21 @@
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_request import BirdbrainRequest
-from birdbrain.birdbrain_state import BirdbrainState
-from birdbrain.birdbrain_utility import BirdbrainUtility
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.request import Request
+from birdbrain.state import State
+from birdbrain.utility import Utility
 
 
-class BirdbrainMicrobitOutput(BirdbrainRequest):
+class MicrobitOutput(Request):
     @classmethod
     def display(self, state, device, list):
         if len(list) != 25:
-            raise BirdbrainException("Error: display() requires a list of length 25")
+            raise Exception("Error: display() requires a list of length 25")
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'symbol', device, state.display_map_as_string(list))
+        return Request.response_status('hummingbird', 'out', 'symbol', device, state.display_map_as_string(list))
 
     @classmethod
     def clear_display(self, state, device):
-        return self.display(state, device, BirdbrainState.microbit_empty_display_map())
+        return self.display(state, device, State.microbit_empty_display_map())
 
     @classmethod
     def point(self, state, device, x, y, value):
@@ -24,7 +24,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         try:
             state.display_map[index] = value
         except IndexError:
-            raise BirdbrainException("Error: point out of range")
+            raise Exception("Error: point out of range")
 
         return self.display(state, device, state.display_map)
 
@@ -42,7 +42,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         # need to encode space for uri (used to be %20)
         message = message.replace(' ', '+')
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'print', message, device)
+        return Request.response_status('hummingbird', 'out', 'print', message, device)
 
     @classmethod
     def play_note(self, device, note, beats):
@@ -50,7 +50,7 @@ class BirdbrainMicrobitOutput(BirdbrainRequest):
         note number and should be specified as an integer from 32 to 135. Beats can be
         any number from 0 to 16. One beat corresponds to one second."""
 
-        note = BirdbrainUtility.bounds(note, 32, 135)
-        beats = int(BirdbrainUtility.decimal_bounds(beats, 0, 16) * BirdbrainConstant.BEATS_TEMPO_FACTOR)
+        note = Utility.bounds(note, 32, 135)
+        beats = int(Utility.decimal_bounds(beats, 0, 16) * Constant.BEATS_TEMPO_FACTOR)
 
-        return BirdbrainRequest.response_status('hummingbird', 'out', 'playnote', note, beats, device)
+        return Request.response_status('hummingbird', 'out', 'playnote', note, beats, device)

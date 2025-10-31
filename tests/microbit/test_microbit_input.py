@@ -1,13 +1,13 @@
 import pytest
 
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_microbit_input import BirdbrainMicrobitInput
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.microbit_input import MicrobitInput
 
 
 def test_acceleration():
-    response = BirdbrainMicrobitInput.acceleration("A", "Accelerometer")
-    response = BirdbrainMicrobitInput.acceleration("A")
+    response = MicrobitInput.acceleration("A", "Accelerometer")
+    response = MicrobitInput.acceleration("A")
 
     assert -100.0 <= response[0] <= 100.0
     assert -100.0 <= response[1] <= 100.0
@@ -19,15 +19,15 @@ def test_acceleration():
 
 
 def test_compass():
-    response = BirdbrainMicrobitInput.compass("A", "Compass")
-    response = BirdbrainMicrobitInput.compass("A")
+    response = MicrobitInput.compass("A", "Compass")
+    response = MicrobitInput.compass("A")
 
     assert 0 <= response <= 359
     assert isinstance(response, int)
 
 
 def test_magnetometer():
-    response = BirdbrainMicrobitInput.magnetometer("A")
+    response = MicrobitInput.magnetometer("A")
 
     assert -180.0 <= response[0] <= 180.0
     assert -180.0 <= response[1] <= 180.0
@@ -39,42 +39,42 @@ def test_magnetometer():
 
 
 def test_button():
-    assert not BirdbrainMicrobitInput.button("A", "A")
-    assert not BirdbrainMicrobitInput.button("A", "B")
-    assert not BirdbrainMicrobitInput.button("A", "LOGO")
-    assert not BirdbrainMicrobitInput.button("A", "Logo")
-    assert not BirdbrainMicrobitInput.button("A", "logo")
+    assert not MicrobitInput.button("A", "A")
+    assert not MicrobitInput.button("A", "B")
+    assert not MicrobitInput.button("A", "LOGO")
+    assert not MicrobitInput.button("A", "Logo")
+    assert not MicrobitInput.button("A", "logo")
 
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainMicrobitInput.button("A", "BAD")
+    with pytest.raises(Exception) as e:
+        MicrobitInput.button("A", "BAD")
     assert e.value.message == "Error: Request to device failed"
 
 
 def test_sound():
-    response = BirdbrainMicrobitInput.sound("A")
+    response = MicrobitInput.sound("A")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
 
 def test_temperature():
-    response = BirdbrainMicrobitInput.temperature("A")
+    response = MicrobitInput.temperature("A")
 
     assert 0 <= response <= 50
     assert isinstance(response, int)
 
 
 def test_is_shaking():
-    response = BirdbrainMicrobitInput.is_shaking("A")
+    response = MicrobitInput.is_shaking("A")
 
     assert not response
 
 
 def test_orientation():
-    response = BirdbrainMicrobitInput.orientation("A")
+    response = MicrobitInput.orientation("A")
 
     some_position = False
-    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+    for orientation in Constant.HUMMINGBIRD_ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position

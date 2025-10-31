@@ -1,8 +1,8 @@
-from birdbrain.birdbrain_state import BirdbrainState
+from birdbrain.state import State
 
 
 def test_state():
-    state = BirdbrainState()
+    state = State()
 
     for pixel in state.display_map:
         assert pixel == 0
@@ -32,7 +32,7 @@ def test_state():
 
 
 def test_display_map_as_string_with_list():
-    state = BirdbrainState()
+    state = State()
 
     list = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
 
@@ -40,7 +40,7 @@ def test_display_map_as_string_with_list():
 
 
 def test_state_using_true_and_false():
-    state = BirdbrainState()
+    state = State()
 
     state.set_pixel(1, 1, False)
     state.set_pixel(4, 4, True)
@@ -52,7 +52,7 @@ def test_state_using_true_and_false():
 
 
 def test_cache():
-    state = BirdbrainState()
+    state = State()
 
     assert state.get("something_name") is None
 

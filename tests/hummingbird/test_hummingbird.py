@@ -1,31 +1,31 @@
 import pytest
 import time
 
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.hummingbird import Hummingbird
 
 
 def test_connect_device_name_as_none():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainHummingbird(None)
+    with pytest.raises(Exception) as e:
+        Hummingbird(None)
     assert e.value.message == "Missing device name"
 
 
 def test_connect_bad_device_name():
-    with pytest.raises(BirdbrainException) as e:
-        BirdbrainHummingbird('D')
+    with pytest.raises(Exception) as e:
+        Hummingbird('D')
     assert e.value.message == "Invalid device name: D"
 
 
 def test_connect_valid_device_name():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.device == "A"
 
 
 def test_is():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.is_connected()
     assert hummingbird.is_microbit()
@@ -39,7 +39,7 @@ def test_is():
 
 
 def test_led_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.led(1, 100)
     time.sleep(0.15)
@@ -54,15 +54,15 @@ def test_led_with_alias():
 
 
 def test_led_no_connection():
-    with pytest.raises(BirdbrainException) as e:
-        hummingbird = BirdbrainHummingbird('C')
+    with pytest.raises(Exception) as e:
+        hummingbird = Hummingbird('C')
 
         hummingbird.led(1, 100)
     assert e.value.message == "No connection: C"
 
 
 def test_tri_led_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.tri_led(1, 50, "50", 0)
     time.sleep(0.15)
@@ -75,7 +75,7 @@ def test_tri_led_with_alias():
 
 
 def test_position_servo_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.position_servo(1, 50)
     time.sleep(0.15)
@@ -84,7 +84,7 @@ def test_position_servo_with_alias():
 
 
 def test_rotation_servo_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     assert hummingbird.rotation_servo(2, 50)
     time.sleep(0.15)
@@ -102,20 +102,20 @@ def test_rotation_servo_with_alias():
 
 
 def test_orientation_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.orientation()
     response = hummingbird.getOrientation()
 
     some_position = False
-    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+    for orientation in Constant.HUMMINGBIRD_ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position
 
 
 def test_sensor():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.sensor(1)
     response = hummingbird.getSensor(1)
@@ -124,7 +124,7 @@ def test_sensor():
 
 
 def test_light_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.light(3)
     response = hummingbird.getLight(3)
@@ -133,13 +133,13 @@ def test_light_with_alias():
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(Exception) as e:
         response = hummingbird.light(4)
     assert e.value.message == "Error: The device is not connected"
 
 
 def test_sound_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.sound(3)
     response = hummingbird.getSound(3)
@@ -148,13 +148,13 @@ def test_sound_with_alias():
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(Exception) as e:
         response = hummingbird.sound(4)
     assert e.value.message == "Error: The device is not connected"
 
 
 def test_sound_microbit():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.sound("micro:bit")
 
@@ -163,7 +163,7 @@ def test_sound_microbit():
 
 
 def test_distance_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.distance(2)
     response = hummingbird.getDistance(2)
@@ -174,7 +174,7 @@ def test_distance_with_alias():
 
 
 def test_dial_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.dial(1)
     response = hummingbird.getDial(1)
@@ -185,7 +185,7 @@ def test_dial_with_alias():
 
 
 def test_voltage_with_alias():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     response = hummingbird.voltage(1)
     response = hummingbird.getVoltage(1)
@@ -194,7 +194,7 @@ def test_voltage_with_alias():
 
 
 def test_stop_all():
-    hummingbird = BirdbrainHummingbird("A")
+    hummingbird = Hummingbird("A")
 
     hummingbird.stop_all()
     hummingbird.stopAll()

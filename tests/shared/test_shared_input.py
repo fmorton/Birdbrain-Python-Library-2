@@ -1,8 +1,8 @@
 import pytest
 
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_finch import BirdbrainFinch
-from birdbrain.birdbrain_hummingbird import BirdbrainHummingbird
+from birdbrain.exception import Exception
+from birdbrain.finch import Finch
+from birdbrain.hummingbird import Hummingbird
 
 
 def helper_test_acceleration(device):
@@ -46,7 +46,7 @@ def helper_test_button(device):
     assert not device.button("Logo")
     assert not device.getButton("logo")
 
-    with pytest.raises(BirdbrainException) as e:
+    with pytest.raises(Exception) as e:
         device.button("BAD")
     assert e.value.message == "Error: Request to device failed"
 
@@ -83,5 +83,5 @@ def helper_test_shared(device):
 
 
 def test_shared():
-    helper_test_shared(BirdbrainHummingbird("A"))
-    helper_test_shared(BirdbrainFinch("B"))
+    helper_test_shared(Hummingbird("A"))
+    helper_test_shared(Finch("B"))

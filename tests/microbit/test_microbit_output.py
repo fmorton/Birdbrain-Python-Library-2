@@ -1,83 +1,83 @@
 import pytest
 import time
 
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_microbit_output import BirdbrainMicrobitOutput
-from birdbrain.birdbrain_request import BirdbrainRequest
-from birdbrain.birdbrain_state import BirdbrainState
+from birdbrain.exception import Exception
+from birdbrain.microbit_output import MicrobitOutput
+from birdbrain.request import Request
+from birdbrain.state import State
 
 
 def test_display():
-    state = BirdbrainState()
+    state = State()
 
-    BirdbrainMicrobitOutput.display(state, "A", [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0])
+    MicrobitOutput.display(state, "A", [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0])
 
     time.sleep(0.15)
 
-    BirdbrainRequest.stop_all("A")
+    Request.stop_all("A")
 
 
 def test_display_wrong_size():
-    with pytest.raises(BirdbrainException) as e:
-        state = BirdbrainState()
+    with pytest.raises(Exception) as e:
+        state = State()
 
         list = [0, 1]
 
-        BirdbrainMicrobitOutput.display(state, "A", list)
+        MicrobitOutput.display(state, "A", list)
     assert e.value.message == "Error: display() requires a list of length 25"
 
 
 def test_point_and_clear_display():
-    state = BirdbrainState()
+    state = State()
 
     for i in range(2):
-        assert BirdbrainMicrobitOutput.point(state, "A", 1, 1, 1)
-        assert BirdbrainMicrobitOutput.point(state, "A", 1, 5, 1)
-        assert BirdbrainMicrobitOutput.point(state, "A", 5, 1, 1)
-        assert BirdbrainMicrobitOutput.point(state, "A", 5, 5, 1)
+        assert MicrobitOutput.point(state, "A", 1, 1, 1)
+        assert MicrobitOutput.point(state, "A", 1, 5, 1)
+        assert MicrobitOutput.point(state, "A", 5, 1, 1)
+        assert MicrobitOutput.point(state, "A", 5, 5, 1)
 
         time.sleep(0.15)
 
-        BirdbrainMicrobitOutput.clear_display(state, "A")
+        MicrobitOutput.clear_display(state, "A")
 
 
 def test_point_true_or_false():
-    state = BirdbrainState()
+    state = State()
 
-    assert BirdbrainMicrobitOutput.point(state, "A", 3, 3, True)
+    assert MicrobitOutput.point(state, "A", 3, 3, True)
 
     time.sleep(0.15)
 
-    assert BirdbrainMicrobitOutput.point(state, "A", 3, 3, False)
+    assert MicrobitOutput.point(state, "A", 3, 3, False)
 
 
 def test_point_out_of_range():
-    with pytest.raises(BirdbrainException) as e:
-        state = BirdbrainState()
+    with pytest.raises(Exception) as e:
+        state = State()
 
-        assert BirdbrainMicrobitOutput.point(state, "A", 999, 1, 1)
+        assert MicrobitOutput.point(state, "A", 999, 1, 1)
     assert e.value.message == "Error: point out of range"
 
 
 def test_print():
-    state = BirdbrainState()
+    state = State()
 
-    assert BirdbrainMicrobitOutput.print(state, "A", "B")
+    assert MicrobitOutput.print(state, "A", "B")
     time.sleep(1)
 
-    assert BirdbrainMicrobitOutput.print(state, "A", " ")
+    assert MicrobitOutput.print(state, "A", " ")
     time.sleep(1)
 
 
 def test_print_nothing():
-    state = BirdbrainState()
+    state = State()
 
-    assert BirdbrainMicrobitOutput.print(state, "A", "")
+    assert MicrobitOutput.print(state, "A", "")
     time.sleep(1)
 
-    assert BirdbrainMicrobitOutput.print(state, "A", None)
+    assert MicrobitOutput.print(state, "A", None)
     time.sleep(1)
 
 
 def test_play_note():
-    assert BirdbrainMicrobitOutput.play_note("A", 50, 0.25)
+    assert MicrobitOutput.play_note("A", 50, 0.25)

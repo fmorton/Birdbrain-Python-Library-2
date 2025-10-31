@@ -1,10 +1,10 @@
-class BirdbrainState:
+class State:
     def __init__(self):
         self.cache = {}
-        self.display_map = BirdbrainState.microbit_empty_display_map()
+        self.display_map = State.microbit_empty_display_map()
 
     def display_map_clear(self):
-        self.display_map = BirdbrainState.microbit_empty_display_map
+        self.display_map = State.microbit_empty_display_map
 
     def set_list(self, list):
         self.display_map = list

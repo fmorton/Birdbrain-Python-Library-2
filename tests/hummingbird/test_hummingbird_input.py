@@ -1,12 +1,12 @@
 import pytest
 
-from birdbrain.birdbrain_constant import BirdbrainConstant
-from birdbrain.birdbrain_exception import BirdbrainException
-from birdbrain.birdbrain_hummingbird_input import BirdbrainHummingbirdInput
+from birdbrain.constant import Constant
+from birdbrain.exception import Exception
+from birdbrain.hummingbird_input import HummingbirdInput
 
 
 def test_acceleration():
-    response = BirdbrainHummingbirdInput.acceleration("A")
+    response = HummingbirdInput.acceleration("A")
 
     assert -100.0 <= response[0] <= 100.0
     assert -100.0 <= response[1] <= 100.0
@@ -18,14 +18,14 @@ def test_acceleration():
 
 
 def test_compass():
-    response = BirdbrainHummingbirdInput.compass("A")
+    response = HummingbirdInput.compass("A")
 
     assert 0 <= response <= 359
     assert isinstance(response, int)
 
 
 def test_magnetometer():
-    response = BirdbrainHummingbirdInput.magnetometer("A")
+    response = HummingbirdInput.magnetometer("A")
 
     assert -180.0 <= response[0] <= 180.0
     assert -180.0 <= response[1] <= 180.0
@@ -37,60 +37,60 @@ def test_magnetometer():
 
 
 def test_orientation():
-    response = BirdbrainHummingbirdInput.orientation("A")
+    response = HummingbirdInput.orientation("A")
 
     some_position = False
-    for orientation in BirdbrainConstant.HUMMINGBIRD_ORIENTATION_RESULTS:
+    for orientation in Constant.HUMMINGBIRD_ORIENTATION_RESULTS:
         some_position = some_position or (orientation == response)
 
     assert some_position
 
 
 def test_sensor():
-    response = BirdbrainHummingbirdInput.sensor("A", 1)
+    response = HummingbirdInput.sensor("A", 1)
 
     assert isinstance(response, float)
 
 
 def test_light():
-    response = BirdbrainHummingbirdInput.light("A", 1)
+    response = HummingbirdInput.light("A", 1)
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
 
 def test_sound():
-    response = BirdbrainHummingbirdInput.sound("A", 1)
+    response = HummingbirdInput.sound("A", 1)
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
-    with pytest.raises(BirdbrainException) as e:
-        response = BirdbrainHummingbirdInput.sound("A", 4)
+    with pytest.raises(Exception) as e:
+        response = HummingbirdInput.sound("A", 4)
     assert e.value.message == "Error: The device is not connected"
 
 
 def test_sound_microbit():
-    response = BirdbrainHummingbirdInput.sound("A", "micro:bit")
+    response = HummingbirdInput.sound("A", "micro:bit")
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
 
 def test_distance():
-    response = BirdbrainHummingbirdInput.distance("A", 2)
+    response = HummingbirdInput.distance("A", 2)
 
     assert 0 <= response <= 298
     assert isinstance(response, int)
 
 
 def test_dial():
-    response = BirdbrainHummingbirdInput.dial("A", 1)
+    response = HummingbirdInput.dial("A", 1)
 
     assert 0 <= response <= 100
     assert isinstance(response, int)
 
 
 def test_voltage():
-    response = BirdbrainHummingbirdInput.voltage("A", 1)
+    response = HummingbirdInput.voltage("A", 1)
 
     assert 0.0 <= response <= 3.3
     assert isinstance(response, float)
