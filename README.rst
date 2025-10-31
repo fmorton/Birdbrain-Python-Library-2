@@ -65,13 +65,46 @@ You can also install the in-development version with::
 
 
 
-Example
-=======
+Hummingbird Example
+===================
 
-::
+.. code-block:: python
 
-    from birdbrain import Hummingbird
-		
+  from birdbrain import Hummingbird
+  from time import sleep
+
+  hummingbird = Hummingbird('A')
+
+  for i in range(0, 10):
+    hummingbird.led(1, 100)
+    sleep(0.1)::
+
+    hummingbird.led(1, 0)
+    sleep(0.1)
+
+    hummingbird.stop_all()
+
+
+
+Finch Example
+===================
+
+.. code-block:: python
+
+  from birdbrain import Finch
+  from time import sleep
+
+  finch = Finch('A')
+
+  for i in range(0, 10):
+    finch.beak(100, 100, 100)
+    sleep(0.1)
+
+    finch.beak(0, 0, 0)
+    sleep(0.1)
+
+  finch.stop_all()
+
 
 
 Original Documentation
