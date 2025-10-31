@@ -117,9 +117,9 @@ Finch: https://learn.birdbraintechnologies.com/finch/python/library/
 Hummingbird: https://learn.birdbraintechnologies.com/hummingbirdbit/python/library/
 
 
-Development
-===========
+Testing
+=======
 
 To run all the tests run (hummingbird on 'A' and finch on 'B')::
 
-    cd tests; pytest
+    pytest
