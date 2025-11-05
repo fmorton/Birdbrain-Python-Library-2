@@ -11,7 +11,7 @@ Name                                                                            
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/hummingbird_input.py       62      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/hummingbird_output.py      22      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit.py                50      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit_input.py          37      2    95%   45, 57
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit_input.py          37      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit_output.py         34      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/request.py                155     13    92%   25, 34, 67, 70, 102-109, 158, 209
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/state.py                   29      0   100%
@@ -24,7 +24,7 @@ hummingbird/test_hummingbird.py                                                 
 hummingbird/test_hummingbird_input.py                                                     60      0   100%
 hummingbird/test_hummingbird_output.py                                                    26      0   100%
 microbit/test_microbit.py                                                                 72      0   100%
-microbit/test_microbit_input.py                                                           52      0   100%
+microbit/test_microbit_input.py                                                           61      0   100%
 microbit/test_microbit_output.py                                                          50      0   100%
 shared/test_backward_compatibility.py                                                     15      0   100%
 shared/test_device.py                                                                     55      0   100%
@@ -35,4 +35,4 @@ shared/test_state.py                                                            
 shared/test_utility.py                                                                    67      0   100%
 tasks/test_tasks.py                                                                       26      0   100%
 --------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                   1775     18    99%
+TOTAL                                                                                   1784     16    99%

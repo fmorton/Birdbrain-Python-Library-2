@@ -35,6 +35,7 @@ Source = "https://github.com/fmorton/birdbrain-python-library-2"
 [project.optional-dependencies]
 dev = [
     "pytest",
+		"pytest-mock",
     "black",
     "flake8",
 ]

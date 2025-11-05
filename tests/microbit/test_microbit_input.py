@@ -3,6 +3,7 @@ import pytest
 from birdbrain.constant import Constant
 from birdbrain.exception import Exception
 from birdbrain.microbit_input import MicrobitInput
+from birdbrain.request import Request
 
 
 def test_acceleration():
@@ -78,3 +79,17 @@ def test_orientation():
         some_position = some_position or (orientation == response)
 
     assert some_position
+
+def test_v2_required_temperature(mocker):
+    mocker.patch.object(Request, "response", return_value="micro:bit v2 required")
+
+    response = MicrobitInput.temperature("A")
+
+    assert response == 0
+
+def test_v2_required_sound(mocker):
+    mocker.patch.object(Request, "response", return_value="micro:bit v2 required")
+
+    response = MicrobitInput.sound("A")
+
+    assert response == 0
