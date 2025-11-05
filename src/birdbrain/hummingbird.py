@@ -13,7 +13,7 @@ class Hummingbird(Microbit):
         self.device_object = Hummingbird.connect(device, raise_exception_if_no_connection)
 
         if not self.device_object.is_hummingbird():
-            raise Exception("Device " + device + " is not a Hummingbird")
+            raise Exception("Error: Device " + device + " is not a Hummingbird")
 
     def led(self, port, intensity):
         return HummingbirdOutput.led(self.device, port, intensity)

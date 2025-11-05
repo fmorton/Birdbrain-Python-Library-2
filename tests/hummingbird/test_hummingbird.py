@@ -3,6 +3,7 @@ import time
 
 from birdbrain.constant import Constant
 from birdbrain.exception import Exception
+from birdbrain.finch import Finch
 from birdbrain.hummingbird import Hummingbird
 
 
@@ -36,6 +37,10 @@ def test_is():
     assert hummingbird.isMicrobit()
     assert hummingbird.isHummingbird()
     assert not hummingbird.isFinch()
+
+    with pytest.raises(Exception) as e:
+        finch = Finch('A')
+    assert e.value.message == "Error: Device A is not a Finch"
 
 
 def test_led_with_alias():
