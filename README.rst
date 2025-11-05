@@ -153,6 +153,6 @@ Hummingbird: https://learn.birdbraintechnologies.com/hummingbirdbit/python/libra
 Testing
 =======
 
-To run all the tests run (hummingbird on 'A' and finch on 'B')::
+To run all the tests run (hummingbird (with micro:bit v2) on 'A' and finch on 'B')::
 
     pytest
