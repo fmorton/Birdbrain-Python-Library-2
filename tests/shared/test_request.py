@@ -121,3 +121,9 @@ def test_debugging():
 
 def test_sensor_response():
     assert Request.sensor_response(None, None, False) is False
+
+
+def test_orientation_response(mocker):
+    mocker.patch.object(Request, "response", return_value="false")
+
+    assert Request.orientation_response(None, None, "unknown", [], "in between") == "in between"
