@@ -2,6 +2,7 @@ from birdbrain.constant import Constant
 from birdbrain.exception import Exception
 from birdbrain.request import Request
 from birdbrain.state import State
+from time import sleep
 
 
 class Device:
@@ -72,6 +73,9 @@ class Device:
 
     def get_cache(self, name):
         return self.state.get(name)
+
+    def sleep(self, seconds):
+        sleep(seconds)
 
     isConnectionValid = is_connected
     isFinch = is_finch

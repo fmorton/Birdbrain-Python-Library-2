@@ -1,9 +1,8 @@
 Name                                                                                   Stmts   Miss  Cover   Missing
 --------------------------------------------------------------------------------------------------------------------
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/BirdBrain.py                         15      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/__init__.py                 0      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/__init__.py                 6      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/constant.py                45      0   100%
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/device.py                  49      0   100%
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/device.py                  52      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/exception.py                8      2    75%   4, 10
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/finch.py                   57      1    98%   16
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/finch_input.py             39      0   100%
@@ -28,11 +27,11 @@ microbit/test_microbit.py                                                       
 microbit/test_microbit_input.py                                                           52      0   100%
 microbit/test_microbit_output.py                                                          50      0   100%
 shared/test_backward_compatibility.py                                                     15      0   100%
-shared/test_device.py                                                                     50      0   100%
+shared/test_device.py                                                                     55      0   100%
 shared/test_request.py                                                                    65      0   100%
 shared/test_shared_input.py                                                               59      0   100%
 shared/test_state.py                                                                      40      0   100%
 shared/test_utility.py                                                                    30      0   100%
 tasks/test_tasks.py                                                                       26      0   100%
 --------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                   1718     28    98%
+TOTAL                                                                                   1717     28    98%
