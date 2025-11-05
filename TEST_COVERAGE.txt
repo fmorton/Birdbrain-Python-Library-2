@@ -14,7 +14,7 @@ Name                                                                            
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit_input.py          37      2    95%   45, 57
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/microbit_output.py         34      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/request.py                155     13    92%   25, 34, 67, 70, 102-109, 158, 209
-/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/state.py                   29      1    97%   7
+/Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/state.py                   29      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/tasks.py                   32      0   100%
 /Users/fmorton/GitHub/Birdbrain-Python-Library-2/src/birdbrain/utility.py                 34      0   100%
 finch/test_finch.py                                                                      134      0   100%
@@ -30,8 +30,8 @@ shared/test_backward_compatibility.py                                           
 shared/test_device.py                                                                     55      0   100%
 shared/test_request.py                                                                    65      0   100%
 shared/test_shared_input.py                                                               59      0   100%
-shared/test_state.py                                                                      40      0   100%
+shared/test_state.py                                                                      46      0   100%
 shared/test_utility.py                                                                    67      0   100%
 tasks/test_tasks.py                                                                       26      0   100%
 --------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                   1753     25    99%
+TOTAL                                                                                   1759     24    99%
