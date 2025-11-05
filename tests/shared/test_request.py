@@ -48,6 +48,7 @@ def test_response_no_connection():
 
 def test_request_status():
     assert Request.request_status("all stopped")
+    assert Request.request_status(None) is None
 
 
 def test_stop_all():
@@ -105,3 +106,18 @@ def test_validate_port():
         Request.validate_port(-1, Constant.VALID_LED_PORTS)
     with pytest.raises(Exception):
         Request.validate_port("4", Constant.VALID_LED_PORTS)
+
+
+def test_debugging():
+    Constant.BIRDBRAIN_TEST = True
+
+    assert Request.response("hummingbird", "in", "orientation", "Shake", "A")
+    assert Request.request_status("false") is False
+    assert Request.request_status("not connected") is False
+    assert Request.request_status("invalid orientation") is False
+    assert Request.request_status("invalid port") is False
+    assert Request.request_status("nonsense") is None
+
+
+def test_sensor_response():
+    assert Request.sensor_response(None, None, False) is False
