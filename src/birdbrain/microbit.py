@@ -9,9 +9,6 @@ class Microbit(Device):
     def __init__(self, device='A', raise_exception_if_no_connection=True):
         self.device_object = Microbit.connect(device, raise_exception_if_no_connection)
 
-        if not self.device_object.is_microbit():
-            raise Exception("Error: Device " + device + " is not a Microbit")
-
     def display(self, list):
         return MicrobitOutput.display(self.state, self.device, list)
 
