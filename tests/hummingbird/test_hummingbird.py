@@ -56,8 +56,6 @@ def test_led_with_alias():
 def test_led_no_connection():
     with pytest.raises(Exception) as e:
         hummingbird = Hummingbird('C')
-
-        hummingbird.led(1, 100)
     assert e.value.message == "No connection: C"
 
 

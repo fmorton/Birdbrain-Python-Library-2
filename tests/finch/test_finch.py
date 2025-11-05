@@ -59,12 +59,14 @@ def test_move_with_alias():
         finch = Finch("B")
 
         assert finch.move(None, 4, 20)
-        assert e.value.message == "Error: Request to device failed"
+
+    assert e.value.message == "Error: Request to device failed"
 
     with pytest.raises(Exception) as e:
         finch = Finch("B")
 
         assert finch.move("BAD", 4, 20)
+
     assert e.value.message == "Error: Request to device failed"
 
 
