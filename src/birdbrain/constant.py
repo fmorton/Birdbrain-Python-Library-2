@@ -1,5 +1,6 @@
 from pynput import keyboard
 
+
 class Constant:
     BIRDBRAIN_TEST = False
 
@@ -102,9 +103,9 @@ class Constant:
     KEY_MEDIA_VOLUME_UP = keyboard.Key.media_volume_up
     KEY_MEDIA_PREVIOUS = keyboard.Key.media_previous
     KEY_MEDIA_NEXT = keyboard.Key.media_next
-    #KEY_INSERT = keyboard.Key.insert
-    #KEY_MENU = keyboard.Key.menu
-    #KEY_NUM_LOCK = keyboard.Key.num_lock
-    #KEY_PAUSE = keyboard.Key.pause
-    #KEY_PRINT_SCREEN = keyboard.Key.print_screen
-    #KEY_SCROLL_LOCK = keyboard.Key.scroll_lock
+    # KEY_INSERT = keyboard.Key.insert
+    # KEY_MENU = keyboard.Key.menu
+    # KEY_NUM_LOCK = keyboard.Key.num_lock
+    # KEY_PAUSE = keyboard.Key.pause
+    # KEY_PRINT_SCREEN = keyboard.Key.print_screen
+    # KEY_SCROLL_LOCK = keyboard.Key.scroll_lock
