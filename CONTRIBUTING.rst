@@ -8,7 +8,7 @@ little bit helps, and credit will always be given.
 Bug reports
 ===========
 
-When `reporting a bug <https://github.com/fmorton/BirdBrain-Python-Library-2/issues>`_ please include:
+When `reporting a bug <https://github.com/fmorton/robot-birdbrain/issues>`_ please include:
 
     * Your operating system name and version.
     * Any details about your local setup that might be helpful in troubleshooting.
@@ -17,14 +17,14 @@ When `reporting a bug <https://github.com/fmorton/BirdBrain-Python-Library-2/iss
 Documentation improvements
 ==========================
 
-BirdBrain-Python-Library-2 could always use more documentation, whether as part of the
-official BirdBrain-Python-Library-2 docs, in docstrings, or even on the web in blog posts,
+robot-birdbrain could always use more documentation, whether as part of the
+official robot-birdbrain docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Feature requests and feedback
 =============================
 
-The best way to send feedback is to file an issue at https://github.com/fmorton/BirdBrain-Python-Library-2/issues.
+The best way to send feedback is to file an issue at https://github.com/fmorton/robot-birdbrain/issues.
 
 If you are proposing a feature:
 
@@ -35,13 +35,13 @@ If you are proposing a feature:
 Development
 ===========
 
-To set up `BirdBrain-Python-Library-2` for local development:
+To set up `robot-birdbrain` for local development:
 
-1. Fork `BirdBrain-Python-Library-2 <https://github.com/fmorton/BirdBrain-Python-Library-2>`_
+1. Fork `robot-birdbrain <https://github.com/fmorton/robot-birdbrain>`_
    (look for the "Fork" button).
 2. Clone your fork locally::
 
-    git clone git@github.com:YOURGITHUBNAME/BirdBrain-Python-Library-2.git
+    git clone git@github.com:YOURGITHUBNAME/robot-birdbrain.git
 
 3. Create a branch for local development::
 

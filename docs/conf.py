@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'BirdBrain-Python-Library-2'
+project = 'robot-birdbrain'
 copyright = '2025, See AUTHORS.txt'
 author = 'See AUTHORS.txt'
 

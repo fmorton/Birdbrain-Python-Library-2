@@ -11,37 +11,37 @@ Overview
       - |docs|
     * - package
       - | |version| |wheel| |supported-versions|
-.. |docs| image:: https://readthedocs.org/projects/BirdBrain-Python-Library-2/badge/?style=flat
-    :target: https://BirdBrain-Python-Library-2.readthedocs.io/
+.. |docs| image:: https://readthedocs.org/projects/robot-birdbrain/badge/?style=flat
+    :target: https://robot-birdbrain.readthedocs.io/
     :alt: Documentation Status
 
-.. |github-actions| image:: https://github.com/fmorton/BirdBrain-Python-Library-2/actions/workflows/github-actions.yml/badge.svg
+.. |github-actions| image:: https://github.com/fmorton/robot-birdbrain/actions/workflows/github-actions.yml/badge.svg
     :alt: GitHub Actions Build Status
-    :target: https://github.com/fmorton/BirdBrain-Python-Library-2/actions
+    :target: https://github.com/fmorton/robot-birdbrain/actions
 
-.. |requires| image:: https://requires.io/github/fmorton/BirdBrain-Python-Library-2/requirements.svg?branch=main
+.. |requires| image:: https://requires.io/github/fmorton/robot-birdbrain/requirements.svg?branch=main
     :alt: Requirements Status
-    :target: https://requires.io/github/fmorton/BirdBrain-Python-Library-2/requirements/?branch=main
+    :target: https://requires.io/github/fmorton/robot-birdbrain/requirements/?branch=main
 
-.. |codecov| image:: https://codecov.io/gh/fmorton/BirdBrain-Python-Library-2/branch/main/graphs/badge.svg?branch=main
+.. |codecov| image:: https://codecov.io/gh/fmorton/robot-birdbrain/branch/main/graphs/badge.svg?branch=main
     :alt: Coverage Status
-    :target: https://codecov.io/github/fmorton/BirdBrain-Python-Library-2
+    :target: https://codecov.io/github/fmorton/robot-birdbrain
 
-.. |version| image:: https://img.shields.io/pypi/v/birdbrain-python-library-2.svg
+.. |version| image:: https://img.shields.io/pypi/v/robot-birdbrain.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.org/project/birdbrain-python-library-2
+    :target: https://pypi.org/project/robot-birdbrain
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/birdbrain-python-library-2.svg
+.. |wheel| image:: https://img.shields.io/pypi/wheel/robot-birdbrain.svg
     :alt: PyPI Wheel
-    :target: https://pypi.org/project/birdbrain-python-library-2
+    :target: https://pypi.org/project/robot-birdbrain
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/birdbrain-python-library-2.svg
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/robot-birdbrain.svg
     :alt: Supported versions
-    :target: https://pypi.org/project/birdbrain-python-library-2
+    :target: https://pypi.org/project/robot-birdbrain
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/birdbrain-python-library-2.svg
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/robot-birdbrain.svg
     :alt: Supported implementations
-    :target: https://pypi.org/project/birdbrain-python-library-2
+    :target: https://pypi.org/project/robot-birdbrain
 
 
 .. end-badges
@@ -57,11 +57,11 @@ Installation
 
 ::
 
-    pip install birdbrain-python-library-2
+    pip install robot-birdbrain
 
 You can also install the in-development version with::
 
-    pip install https://github.com/fmorton/BirdBrain-Python-Library-2/archive/main.zip
+    pip install https://github.com/fmorton/robot-birdbrain/archive/main.zip
 
 
 

@@ -1,9 +1,9 @@
-.. BirdBrain-Python-Library-2 documentation master file, created by
+.. robot-birdbrain documentation master file, created by
    sphinx-quickstart on Mon Oct 27 14:53:02 2025.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-BirdBrain-Python-Library-2 documentation
+robot-birdbrain documentation
 ========================================
 
 Add your content using ``reStructuredText`` syntax. See the
