@@ -1,9 +1,9 @@
 import time
 
-from birdbrain.constant import Constant
-from birdbrain.finch_input import FinchInput
-from birdbrain.request import Request
-from birdbrain.utility import Utility
+from robot.constant import Constant
+from robot.finch_input import FinchInput
+from robot.request import Request
+from robot.utility import Utility
 
 
 class FinchOutput(Request):

@@ -1,7 +1,7 @@
 import pytest
 
-from birdbrain.exception import Exception
-from birdbrain.hummingbird import Hummingbird
+from robot.exception import Exception
+from robot.hummingbird import Hummingbird
 
 def test_exception():
     exception = Exception("MESSAGE")

@@ -1,6 +1,6 @@
-from birdbrain.exception import Exception
-from birdbrain.hummingbird import Hummingbird
-from birdbrain.microbit import Microbit
+from robot.exception import Exception
+from robot.hummingbird import Hummingbird
+from robot.microbit import Microbit
 
 import pytest
 import time

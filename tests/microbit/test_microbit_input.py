@@ -1,9 +1,9 @@
 import pytest
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.microbit_input import MicrobitInput
-from birdbrain.request import Request
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.microbit_input import MicrobitInput
+from robot.request import Request
 
 
 def test_acceleration():

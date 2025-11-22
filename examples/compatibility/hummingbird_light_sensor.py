@@ -1,7 +1,7 @@
 # Note: For simplicity, we focused only on if-else statements. Some challenges
 # could be completed with if statements that don't have an else.
 
-from birdbrain import Hummingbird
+from robot.hummingbird import Hummingbird
 from time import sleep
 
 bird = Hummingbird('A')  # Declare Hummingbird object

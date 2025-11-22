@@ -1,8 +1,8 @@
-from birdbrain.exception import Exception
-from birdbrain.hummingbird_input import HummingbirdInput
-from birdbrain.hummingbird_output import HummingbirdOutput
-from birdbrain.microbit import Microbit
-from birdbrain.request import Request
+from robot.exception import Exception
+from robot.hummingbird_input import HummingbirdInput
+from robot.hummingbird_output import HummingbirdOutput
+from robot.microbit import Microbit
+from robot.request import Request
 
 
 class Hummingbird(Microbit):

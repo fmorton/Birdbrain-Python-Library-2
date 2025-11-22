@@ -1,4 +1,4 @@
-from birdbrain import Hummingbird, Microbit
+from robot.hummingbird import Hummingbird, Microbit
 from time import sleep
 
 bird1 = Hummingbird('A')  # Declare Hummingbird object

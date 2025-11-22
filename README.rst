@@ -70,7 +70,7 @@ Hummingbird Example
 
 .. code-block:: python
 
-  from birdbrain import Hummingbird
+  from robot.hummingbird import Hummingbird
   from time import sleep
 
   hummingbird = Hummingbird('A')
@@ -91,7 +91,7 @@ Finch Example
 
 .. code-block:: python
 
-  from birdbrain import Finch
+  from robot.finch import Finch
   from time import sleep
 
   finch = Finch('A')
@@ -112,8 +112,8 @@ Tasks Example
 
 .. code-block:: python
 
-  from birdbrain import Hummingbird
-  from birdbrain import Tasks
+  from robot.hummingbird import Hummingbird
+  from robot.tasks import Tasks
 
   async def task_1(bird):
     while True:

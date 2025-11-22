@@ -1,8 +1,8 @@
 import pytest
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.hummingbird_input import HummingbirdInput
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.hummingbird_input import HummingbirdInput
 
 
 def test_acceleration():

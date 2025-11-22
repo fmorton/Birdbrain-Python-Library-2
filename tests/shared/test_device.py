@@ -1,8 +1,8 @@
 import pytest
 import random
 
-from birdbrain.device import Device
-from birdbrain.exception import Exception
+from robot.device import Device
+from robot.exception import Exception
 from time import sleep
 
 def test_none_device():

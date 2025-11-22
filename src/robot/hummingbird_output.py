@@ -1,6 +1,6 @@
-from birdbrain.constant import Constant
-from birdbrain.request import Request
-from birdbrain.utility import Utility
+from robot.constant import Constant
+from robot.request import Request
+from robot.utility import Utility
 
 
 class HummingbirdOutput(Request):

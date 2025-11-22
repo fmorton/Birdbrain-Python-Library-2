@@ -1,10 +1,10 @@
 import pytest
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.finch_input import FinchInput
-from birdbrain.finch_output import FinchOutput
-from birdbrain.request import Request
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.finch_input import FinchInput
+from robot.finch_output import FinchOutput
+from robot.request import Request
 
 
 def test_is_moving():

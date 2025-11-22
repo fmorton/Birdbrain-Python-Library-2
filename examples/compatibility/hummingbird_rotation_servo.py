@@ -1,4 +1,4 @@
-from birdbrain import Hummingbird
+from robot.hummingbird import Hummingbird
 from time import sleep
 import random  # import random number generator
 

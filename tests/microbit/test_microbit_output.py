@@ -1,10 +1,10 @@
 import pytest
 import time
 
-from birdbrain.exception import Exception
-from birdbrain.microbit_output import MicrobitOutput
-from birdbrain.request import Request
-from birdbrain.state import State
+from robot.exception import Exception
+from robot.microbit_output import MicrobitOutput
+from robot.request import Request
+from robot.state import State
 
 
 def test_display():

@@ -1,11 +1,11 @@
 import pytest
 import time
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.finch import Finch
-from birdbrain.hummingbird import Hummingbird
-from birdbrain.request import Request
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.finch import Finch
+from robot.hummingbird import Hummingbird
+from robot.request import Request
 
 
 def test_is():

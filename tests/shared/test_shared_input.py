@@ -1,8 +1,8 @@
 import pytest
 
-from birdbrain.exception import Exception
-from birdbrain.finch import Finch
-from birdbrain.hummingbird import Hummingbird
+from robot.exception import Exception
+from robot.finch import Finch
+from robot.hummingbird import Hummingbird
 
 
 def helper_test_acceleration(device):

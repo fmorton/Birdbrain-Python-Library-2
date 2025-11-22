@@ -1,4 +1,4 @@
-from birdbrain import Finch
+from robot.finch import Finch
 from time import sleep
 
 finch = Finch('A')

@@ -1,8 +1,8 @@
-from birdbrain.device import Device
-from birdbrain.exception import Exception
-from birdbrain.microbit_input import MicrobitInput
-from birdbrain.microbit_output import MicrobitOutput
-from birdbrain.request import Request
+from robot.device import Device
+from robot.exception import Exception
+from robot.microbit_input import MicrobitInput
+from robot.microbit_output import MicrobitOutput
+from robot.request import Request
 
 
 class Microbit(Device):

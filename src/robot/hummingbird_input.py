@@ -1,6 +1,6 @@
-from birdbrain.constant import Constant
-from birdbrain.microbit_input import MicrobitInput
-from birdbrain.request import Request
+from robot.constant import Constant
+from robot.microbit_input import MicrobitInput
+from robot.request import Request
 
 
 class HummingbirdInput(Request):

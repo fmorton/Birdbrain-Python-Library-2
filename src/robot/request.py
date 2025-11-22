@@ -1,9 +1,9 @@
 import time
 import urllib.request
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.utility import Utility
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.utility import Utility
 
 
 class Request:

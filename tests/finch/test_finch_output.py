@@ -1,10 +1,10 @@
 import pytest
 import time
 
-from birdbrain.constant import Constant
-from birdbrain.exception import Exception
-from birdbrain.finch_output import FinchOutput
-from birdbrain.request import Request
+from robot.constant import Constant
+from robot.exception import Exception
+from robot.finch_output import FinchOutput
+from robot.request import Request
 
 
 def test_beak():
