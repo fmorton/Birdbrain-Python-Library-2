@@ -107,8 +107,8 @@ Finch Example
 
 
 
-Tasks Example
-=============
+Tasks Example (requires the robot-tasks package)
+================================================
 
 .. code-block:: python
 
