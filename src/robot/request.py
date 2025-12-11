@@ -188,7 +188,7 @@ class Request:
             return [float(x), float(y), float(z)]
 
     @classmethod
-    def tri_led_response(self, device, port, r_intensity, g_intensity, b_intensity, valid_range, allow_all=False):
+    def tri_led_response(self, device, port, valid_range, allow_all, r_intensity, g_intensity, b_intensity):
         """Set TriLED  of a certain port requested to a valid intensity."""
         self.validate_port(port, valid_range, allow_all)
 
