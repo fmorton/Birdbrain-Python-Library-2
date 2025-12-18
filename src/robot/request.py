@@ -16,6 +16,22 @@ class Request:
         return response.lower() == "not connected"
 
     @classmethod
+    def extracted_device(*args):
+        device = args[-1]
+        print("DEBUG: before device????????", device, device.__class__.__name__)
+        if (isinstance(device, list)) or (isinstance(device, tuple)):
+            device = device[-1]
+            print("DEBUG: after 1 device????????", device, device.__class__.__name__)
+        if (isinstance(device, list)) or (isinstance(device, tuple)):
+            device = device[-1]
+            print("DEBUG: after 2 device????????", device, device.__class__.__name__)
+
+        if device not in Constant.VALID_DEVICES:
+            raise Exception("Unable to extract device name", device)
+
+        return device
+
+    @classmethod
     def response(self, *args):
         if "false" in args:
             return False
@@ -36,7 +52,19 @@ class Request:
         if self.is_not_connected_response(response):
             raise (Exception("Error: The device is not connected"))
 
+        print("DEBUG: way down in response is response===============================", response)
         time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
+
+        if response == '200':
+            print("DEBUG: windows check goes here")
+            device = self.extracted_device(args)
+            print("DEBUG: device to use is",device)
+            if self.is_connected(device):
+                print("DEBUG: is connected so all is ok")
+                response = 'true'
+            else:
+                print("DEBUG: is not connected so raise exception")
+                raise (Exception("Error: The device is not connected"))
 
         return response
 
@@ -59,10 +87,12 @@ class Request:
 
     @classmethod
     def stop_all(self, device):
+        print("DEBUG: stop all response is", self.response('hummingbird', 'out', 'stopall', device))
         return self.request_status(self.response('hummingbird', 'out', 'stopall', device))
 
     @classmethod
     def request_status(self, status):
+        print("DEBUG: request_status called with ",status)
         if Constant.BIRDBRAIN_TEST:
             print("Test: request status is", status)
 

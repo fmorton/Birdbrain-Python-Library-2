@@ -53,6 +53,7 @@ def test_request_status():
 
 def test_stop_all():
     response = Request.stop_all("A")
+    print("DEBUG: response in test_stop_all",response)
 
     assert response
 
