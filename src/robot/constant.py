@@ -30,7 +30,7 @@ class Constant:
     RESET_ENCODERS_DELAY = 0.2
     RIGHT = 'R'
     VALID_BEAK_PORTS = '1'
-    VALID_BUTTONS = 'ABLogo'
+    VALID_BUTTONS = ('A', 'B', 'Logo')
     VALID_DEVICES = 'ABC'
     VALID_LED_PORTS = '123'
     VALID_MOVE_DIRECTION = 'FB'

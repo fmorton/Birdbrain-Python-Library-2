@@ -50,6 +50,7 @@ def test_state_using_true_and_false():
     assert s[0] == "false"
     assert s[18] == "true"
 
+
 def test_display_map_clear():
     state = State()
 
@@ -58,6 +59,7 @@ def test_display_map_clear():
 
     state.display_map_clear()
     assert state.display_map[18] == 0
+
 
 def test_cache():
     state = State()

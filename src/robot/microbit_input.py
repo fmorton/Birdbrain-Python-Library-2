@@ -1,4 +1,5 @@
 from robot.constant import Constant
+from robot.exception import Exception
 from robot.request import Request
 
 
@@ -31,8 +32,12 @@ class MicrobitInput(Request):
     def button(self, device, button):
         """Return the status of the button asked. Specify button 'A', 'B', or
         'Logo'. Logo available for V2 micro:bit only."""
-        print("\n\n\nDEBUG: testing the button")
-        return self.request_status(self.response('hummingbird', 'in', 'button', button.capitalize(), device))
+        button = button.capitalize()
+
+        if button not in Constant.VALID_BUTTONS:
+            raise Exception("Invalid button: " + button)
+
+        return self.request_status(self.response('hummingbird', 'in', 'button', button, device))
 
     @classmethod
     def sound(self, device):

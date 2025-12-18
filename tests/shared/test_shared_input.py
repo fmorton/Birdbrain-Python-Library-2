@@ -46,10 +46,9 @@ def helper_test_button(device):
     assert not device.button("Logo")
     assert not device.getButton("logo")
 
-    print("\n\nDEBUG: check the BAD button")
     with pytest.raises(Exception) as e:
         device.button("BAD")
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Invalid button: Bad"
 
 
 def helper_test_sound(device):

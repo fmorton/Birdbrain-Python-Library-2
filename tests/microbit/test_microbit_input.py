@@ -48,7 +48,7 @@ def test_button():
 
     with pytest.raises(Exception) as e:
         MicrobitInput.button("A", "BAD")
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Invalid button: Bad"
 
 
 def test_sound():
@@ -80,12 +80,14 @@ def test_orientation():
 
     assert some_position
 
+
 def test_v2_required_temperature(mocker):
     mocker.patch.object(Request, "response", return_value="micro:bit v2 required")
 
     response = MicrobitInput.temperature("A")
 
     assert response == 0
+
 
 def test_v2_required_sound(mocker):
     mocker.patch.object(Request, "response", return_value="micro:bit v2 required")

@@ -41,6 +41,7 @@ def test_bounds():
     assert Utility.bounds(str(999999), str(-100), str(100)) == 100
     assert Utility.bounds(str(-999999), str(-100), str(100)) == -100
 
+
 def test_decimal_bounds():
     assert Utility.decimal_bounds(10, 0, 100) == 10
     assert Utility.decimal_bounds(10, -100, 100) == 10
@@ -74,6 +75,7 @@ def test_decimal_bounds():
     assert Utility.decimal_bounds(str(-101), str(-100), str(100)) == -100
     assert Utility.decimal_bounds(str(999999), str(-100), str(100)) == 100
     assert Utility.decimal_bounds(str(-999999), str(-100), str(100)) == -100
+
 
 def test_flatten():
     flattened = Utility.flatten_string(["something", "1", ["A", "B"], "2", "else", 99, [99]])

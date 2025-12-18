@@ -5,6 +5,7 @@ from robot.device import Device
 from robot.exception import Exception
 from time import sleep
 
+
 def test_none_device():
     with pytest.raises(Exception) as e:
         Device.connect(None)
@@ -85,6 +86,7 @@ def test_cache():
     assert hummingbird.get_cache("something_name") is None
 
     assert hummingbird.set_cache("set_not_in_the_cache", None) is None
+
 
 def test_sleep():
     hummingbird = Device.connect('A')

@@ -18,13 +18,13 @@ class Request:
     @classmethod
     def extracted_device(*args):
         device = args[-1]
-        print("DEBUG: before device????????",device,device.__class__.__name__)
+        print("DEBUG: before device????????", device, device.__class__.__name__)
         if (isinstance(device, list)) or (isinstance(device, tuple)):
             device = device[-1]
-            print("DEBUG: after 1 device????????",device,device.__class__.__name__)
+            print("DEBUG: after 1 device????????", device, device.__class__.__name__)
         if (isinstance(device, list)) or (isinstance(device, tuple)):
             device = device[-1]
-            print("DEBUG: after 2 device????????",device,device.__class__.__name__)
+            print("DEBUG: after 2 device????????", device, device.__class__.__name__)
 
         if device not in Constant.VALID_DEVICES:
             raise Exception("Unable to extract device name", device)
@@ -45,7 +45,7 @@ class Request:
             raise (Exception("Error: Request to device failed"))
 
         response = response_request.read().decode('utf-8').lower()
-        print("DEBUG: response in response is",response)
+        print("DEBUG: response in response is", response)
         if Constant.BIRDBRAIN_TEST:
             print("Test: response", response)
 
@@ -61,7 +61,7 @@ class Request:
 
         time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
-        print("DEBUG: response right before returning is",response)
+        print("DEBUG: response right before returning is", response)
         return response
 
     @classmethod
@@ -84,12 +84,12 @@ class Request:
     @classmethod
     def stop_all(self, device):
         print("DEBUG: calling stop_all")
-        print("DEBUG: checking if connected",Request.is_connected(device))
+        print("DEBUG: checking if connected", Request.is_connected(device))
         return self.request_status(self.response('hummingbird', 'out', 'stopall', device))
 
     @classmethod
     def request_status(self, status):
-        print("DEBUG: STATUS TEXT IS",status)
+        print("DEBUG: STATUS TEXT IS", status)
         if Constant.BIRDBRAIN_TEST:
             print("Test: request status is", status)
 
