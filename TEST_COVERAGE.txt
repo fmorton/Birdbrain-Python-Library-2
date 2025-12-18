@@ -1,6 +1,6 @@
 Name                                                                    Stmts   Miss  Cover   Missing
 -----------------------------------------------------------------------------------------------------
-/Users/fmorton/GitHub/robot-birdbrain/src/robot/constant.py                45      0   100%
+/Users/fmorton/GitHub/robot-birdbrain/src/robot/constant.py                53      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/device.py                  52      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/exception.py                8      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/finch.py                   57      0   100%
@@ -10,9 +10,9 @@ Name                                                                    Stmts   
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/hummingbird_input.py       62      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/hummingbird_output.py      22      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit.py                50      0   100%
-/Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_input.py          37      0   100%
+/Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_input.py          41      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_output.py         34      0   100%
-/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                155      0   100%
+/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                170     12    93%   20-29, 56-60
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/state.py                   29      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/utility.py                 34      0   100%
 finch/test_finch.py                                                       138      0   100%
@@ -31,4 +31,4 @@ shared/test_shared_input.py                                                59   
 shared/test_state.py                                                       46      0   100%
 shared/test_utility.py                                                     67      0   100%
 -----------------------------------------------------------------------------------------------------
-TOTAL                                                                    1719      0   100%
+TOTAL                                                                    1746     12    99%
