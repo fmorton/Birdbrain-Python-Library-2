@@ -59,6 +59,7 @@ def test_stop_all():
 
 def test_disconnect():
     with pytest.raises(Exception) as e:
+        print("\nDEBUG: calling stop all in disconnect")
         Request.stop_all("C")
 
     assert e.value.message == "Error: The device is not connected"

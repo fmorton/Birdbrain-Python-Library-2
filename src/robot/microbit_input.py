@@ -31,7 +31,7 @@ class MicrobitInput(Request):
     def button(self, device, button):
         """Return the status of the button asked. Specify button 'A', 'B', or
         'Logo'. Logo available for V2 micro:bit only."""
-
+        print("\n\n\nDEBUG: testing the button")
         return self.request_status(self.response('hummingbird', 'in', 'button', button.capitalize(), device))
 
     @classmethod
