@@ -1,3 +1,4 @@
+import inspect
 import time
 import urllib.request
 
@@ -16,23 +17,23 @@ class Request:
         return response.lower() == "not connected"
 
     @classmethod
-    def extracted_device_from_tuple_or_list(self, device):
-        if (isinstance(device, list)) or (isinstance(device, tuple)):
-            device = device[-1]
-        if (isinstance(device, list)) or (isinstance(device, tuple)):
-            device = device[-1]
+    def extracted_device_from_tuple_or_list(self, args):
+        while (isinstance(args[-1], list)) or (isinstance(args[-1], tuple)):
+            args = args[-1]
+
+        device = args[-1]
+
+        if device.startswith("true") or device.startswith("false"):
+            device = args[-2]
 
         return device
 
     @classmethod
-    def extracted_device(*args):
-        device = Request.extracted_device_from_tuple_or_list(args[-1])
-
-        if device.startswith("true") or device.startswith("false"):
-            device = Request.extracted_device_from_tuple_or_list(args[-2])
+    def extracted_device(self, *args):
+        device = Request.extracted_device_from_tuple_or_list(args)
 
         if device not in Constant.VALID_DEVICES:
-            raise Exception("Unable to extract device name", device)
+            raise Exception("Unable to extract device name: " + device)
 
         return device
 
@@ -66,10 +67,16 @@ class Request:
         # hack for windows support
         if response == '200':
             device = self.extracted_device(args)
-            if self.is_connected(device):
+
+            caller = inspect.getouterframes(inspect.currentframe(), 2)[1].function
+
+            if caller == 'is_connected':
                 response = 'true'
             else:
-                raise (Exception("Error: The device is not connected"))
+                if self.is_connected(device):
+                    response = 'true'
+                else:
+                    raise (Exception("Error: The device is not connected"))
 
         return response
 
