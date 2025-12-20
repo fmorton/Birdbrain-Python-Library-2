@@ -37,10 +37,7 @@ class Request:
         return device
 
     @classmethod
-    def response(self, *args):
-        if "false" in args:
-            return False
-
+    def response_from_uri(self, args):
         try:
             if Constant.BIRDBRAIN_TEST:
                 print("Test: URI", self.uri(*args))
@@ -49,7 +46,14 @@ class Request:
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
             raise (Exception("Error: Request to device failed"))
 
-        response = response_request.read().decode('utf-8').lower()
+        return response_request.read().decode('utf-8').lower()
+
+    @classmethod
+    def response(self, *args):
+        if "false" in args:
+            return False
+
+        response = Request.response_from_uri(args)
 
         if Constant.BIRDBRAIN_TEST:
             print("Test: response", response)
