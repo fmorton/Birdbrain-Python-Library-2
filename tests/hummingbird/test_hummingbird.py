@@ -138,7 +138,7 @@ def test_light_with_alias():
 
     with pytest.raises(Exception) as e:
         response = hummingbird.light(4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Light port 4 out of range"
 
 
 def test_sound_with_alias():
@@ -153,7 +153,7 @@ def test_sound_with_alias():
 
     with pytest.raises(Exception) as e:
         response = hummingbird.sound(4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Sound port 4 out of range"
 
 
 def test_sound_microbit():

@@ -1,6 +1,7 @@
 import pytest
 
 from robot.hummingbird import Hummingbird
+from robot.hummingbird_input import HummingbirdInput
 from robot.microbit_output import MicrobitOutput
 from robot.request import Request
 from robot.state import State
@@ -19,12 +20,12 @@ def test_windows_support(mocker):
 
     with pytest.raises(Exception) as e:
         response = hummingbird.light(4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Light port 4 out of range"
 
     with pytest.raises(Exception) as e:
         response = hummingbird.sound(4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Sound port 4 out of range"
 
     with pytest.raises(Exception) as e:
         response = HummingbirdInput.sound("A", 4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Sound port 4 out of range"

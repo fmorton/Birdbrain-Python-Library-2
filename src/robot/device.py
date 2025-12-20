@@ -1,8 +1,9 @@
+from time import sleep
+
 from robot.constant import Constant
 from robot.exception import Exception
 from robot.request import Request
 from robot.state import State
-from time import sleep
 
 
 class Device:

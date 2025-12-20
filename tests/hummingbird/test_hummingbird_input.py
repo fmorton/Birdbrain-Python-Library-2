@@ -65,7 +65,7 @@ def test_sound():
 
     with pytest.raises(Exception) as e:
         response = HummingbirdInput.sound("A", 4)
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "Sound port 4 out of range"
 
 
 def test_sound_microbit():
