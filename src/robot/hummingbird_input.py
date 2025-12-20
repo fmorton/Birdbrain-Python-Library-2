@@ -33,6 +33,7 @@ class HummingbirdInput(Request):
     @classmethod
     def sensor(self, device, port):
         """Read the value of the sensor attached to a certain port."""
+        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['min_response'] = Constant.DEFAULT_UNLIMITED_MIN_RESPONSE
@@ -44,6 +45,7 @@ class HummingbirdInput(Request):
     @classmethod
     def light(self, device, port):
         """Read the value of the light sensor attached to a certain port."""
+        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.LIGHT_FACTOR
@@ -60,6 +62,8 @@ class HummingbirdInput(Request):
 
         if port == "microbit" or port == "micro:bit":
             return MicrobitInput.sound(device)
+        else:
+            self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.SOUND_FACTOR
@@ -71,6 +75,7 @@ class HummingbirdInput(Request):
     @classmethod
     def distance(self, device, port):
         """Read the value of the distance sensor attached to a certain port."""
+        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.DISTANCE_FACTOR
@@ -82,6 +87,7 @@ class HummingbirdInput(Request):
     @classmethod
     def dial(self, device, port):
         """Read the value of the dial attached to a certain port."""
+        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.DIAL_FACTOR
@@ -93,6 +99,7 @@ class HummingbirdInput(Request):
     @classmethod
     def voltage(self, device, port):
         """Read the value of  the dial attached to a certain port."""
+        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.VOLTAGE_FACTOR

@@ -10,7 +10,7 @@ class FinchOutput(Request):
     @classmethod
     def beak(self, device, r_intensity, g_intensity, b_intensity):
         """Set beak to a valid intensity. Each intensity should be an integer from 0 to 100."""
-        return self.tri_led_response(device, 1, Constant.VALID_BEAK_PORTS, False, r_intensity, g_intensity, b_intensity)
+        return self.tri_led_response(device, 1, False, r_intensity, g_intensity, b_intensity)
 
     @classmethod
     def tail(self, device, port, r_intensity, g_intensity, b_intensity):
@@ -18,9 +18,11 @@ class FinchOutput(Request):
         Each intensity should be an integer from 0 to 100."""
 
         if not port == "all":
+            self.validate_port(port, Constant.VALID_TAIL_PORTS)
+
             port = int(port) + 1  # tail starts counting at 2
 
-        return self.tri_led_response(device, port, Constant.VALID_TAIL_PORTS, True, r_intensity, g_intensity, b_intensity)
+        return self.tri_led_response(device, port, True, r_intensity, g_intensity, b_intensity)
 
     @classmethod
     def move(self, device, direction, distance, speed, wait_to_finish_movement=True):

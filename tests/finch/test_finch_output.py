@@ -28,6 +28,10 @@ def test_tail():
     time.sleep(0.1)
     assert FinchOutput.tail("B", "all", 0, 0, 0)
 
+    with pytest.raises(Exception) as e:
+        assert FinchOutput.tail("B", 5, 10, 50, 50)
+    assert e.value.message == "Tail port 5 out of range"
+
 
 def test_move():
     assert FinchOutput.move("B", Constant.FORWARD, 4, 5)

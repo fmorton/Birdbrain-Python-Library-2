@@ -68,9 +68,7 @@ class Request:
         if response == '200':
             device = self.extracted_device(args)
 
-            caller = inspect.getouterframes(inspect.currentframe(), 2)[1].function
-
-            if caller == 'is_connected':
+            if Utility.caller(2) == 'is_connected':
                 response = 'true'
             else:
                 if self.is_connected(device):
@@ -190,7 +188,7 @@ class Request:
         if allow_all and str(port) == 'all':
             return True
 
-        return Request.validate(port, valid_range, f"Port {str(port)} out of range.")
+        return Request.validate(port, valid_range, f"{Utility.caller().capitalize()} port {str(port)} out of range")
 
     @classmethod
     def sensor_response(self, device, sensor, other=None, options={}):
@@ -228,10 +226,8 @@ class Request:
             return [float(x), float(y), float(z)]
 
     @classmethod
-    def tri_led_response(self, device, port, valid_range, allow_all, r_intensity, g_intensity, b_intensity):
+    def tri_led_response(self, device, port, allow_all, r_intensity, g_intensity, b_intensity):
         """Set TriLED  of a certain port requested to a valid intensity."""
-        self.validate_port(port, valid_range, allow_all)
-
         calc_r = Request.calculate_intensity(r_intensity)
         calc_g = Request.calculate_intensity(g_intensity)
         calc_b = Request.calculate_intensity(b_intensity)
