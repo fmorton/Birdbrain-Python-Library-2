@@ -16,12 +16,20 @@ class Request:
         return response.lower() == "not connected"
 
     @classmethod
+    def extracted_device_from_tuple_or_list(self, device):
+        if (isinstance(device, list)) or (isinstance(device, tuple)):
+            device = device[-1]
+        if (isinstance(device, list)) or (isinstance(device, tuple)):
+            device = device[-1]
+
+        return device
+
+    @classmethod
     def extracted_device(*args):
-        device = args[-1]
-        if (isinstance(device, list)) or (isinstance(device, tuple)):
-            device = device[-1]
-        if (isinstance(device, list)) or (isinstance(device, tuple)):
-            device = device[-1]
+        device = Request.extracted_device_from_tuple_or_list(args[-1])
+
+        if device.startswith("true") or device.startswith("false"):
+            device = Request.extracted_device_from_tuple_or_list(args[-2])
 
         if device not in Constant.VALID_DEVICES:
             raise Exception("Unable to extract device name", device)

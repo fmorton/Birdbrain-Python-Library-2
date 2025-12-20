@@ -127,3 +127,14 @@ def test_orientation_response(mocker):
     mocker.patch.object(Request, "response", return_value="false")
 
     assert Request.orientation_response(None, None, "unknown", [], "in between") == "in between"
+
+
+def test_extracted_device():
+    assert Request.extracted_device('hummingbird', 'in', 'orientation', 'Shake', 'A') == 'A'
+    assert Request.extracted_device(['hummingbird', 'in', 'orientation', 'Shake', 'A']) == 'A'
+    assert Request.extracted_device(('hummingbird', 'in', 'orientation', 'Shake', 'A')) == 'A'
+    assert Request.extracted_device([('hummingbird', 'in', 'orientation', 'Shake', 'A')]) == 'A'
+    assert Request.extracted_device((['hummingbird', 'in', 'orientation', 'Shake', 'A'])) == 'A'
+
+    assert Request.extracted_device('hummingbird', 'out', 'symbol', 'C', 'true/false/true/false') == 'C'
+    assert Request.extracted_device('hummingbird', 'out', 'symbol', 'C', 'false/true/false/true') == 'C'
