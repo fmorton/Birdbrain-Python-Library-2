@@ -42,11 +42,11 @@ def test_move():
 
     with pytest.raises(Exception) as e:
         assert FinchOutput.move("B", "BAD", 4, 5)
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Move Direction: BAD"
 
     with pytest.raises(Exception) as e:
         assert FinchOutput.move("B", None, 4, 5)
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Move Direction: None"
 
     Request.stop_all("B")
 
@@ -59,7 +59,7 @@ def test_turn():
 
     with pytest.raises(Exception) as e:
         assert FinchOutput.turn("B", "BAD", 90, 50)
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Turn Direction: BAD"
 
 
 def test_motors():

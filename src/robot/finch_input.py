@@ -38,6 +38,8 @@ class FinchInput(Request):
         """Read the value of the right or left encoder ('R' or 'L').
         Values are returned in rotations."""
 
+        Request.validate(side, Constant.VALID_SIDE, "Bad Encoder Side: " + str(side))
+
         sensor_options = {}
         sensor_options['min_response'] = float(Constant.DEFAULT_UNLIMITED_MIN_RESPONSE)
         sensor_options['max_response'] = float(Constant.DEFAULT_UNLIMITED_MAX_RESPONSE)

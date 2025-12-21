@@ -65,14 +65,14 @@ def test_move_with_alias():
 
         assert finch.move(None, 4, 20)
 
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Move Direction: None"
 
     with pytest.raises(Exception) as e:
         finch = Finch("B")
 
         assert finch.move("BAD", 4, 20)
 
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Move Direction: BAD"
 
 
 def test_is_moving():
@@ -187,7 +187,7 @@ def test_encoder_with_alias():
 
     with pytest.raises(Exception) as e:
         finch.encoder("BAD")
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Encoder Side: BAD"
 
 
 def test_orientation_with_alias():

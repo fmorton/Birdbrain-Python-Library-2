@@ -80,11 +80,11 @@ def test_encoder():
 
     with pytest.raises(Exception) as e:
         FinchInput.encoder("B", "BAD")
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Encoder Side: BAD"
 
     with pytest.raises(Exception) as e:
         FinchInput.encoder("B", None)
-    assert e.value.message == "Error: Request to device failed"
+    assert e.value.message == "Bad Encoder Side: None"
 
 
 def test_acceleration():

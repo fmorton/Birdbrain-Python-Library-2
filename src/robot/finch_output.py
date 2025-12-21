@@ -30,6 +30,8 @@ class FinchOutput(Request):
         Direction should be specified as 'F' or 'B'."""
         calc_direction = None
 
+        Request.validate(direction, Constant.VALID_MOVE_DIRECTION, "Bad Move Direction: " + str(direction))
+
         if direction == Constant.FORWARD:
             calc_direction = 'Forward'
         if direction == Constant.BACKWARD:
@@ -49,6 +51,8 @@ class FinchOutput(Request):
         calc_direction = Request.calculate_left_or_right(direction)
         calc_angle = Utility.bounds(angle, 0, 360)
         calc_speed = Utility.bounds(speed, 0, 100)
+
+        Request.validate(direction, Constant.VALID_TURN_DIRECTION, "Bad Turn Direction: " + str(direction))
 
         return self.__move_and_wait(
             device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed
