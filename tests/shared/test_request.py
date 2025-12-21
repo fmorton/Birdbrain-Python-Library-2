@@ -138,3 +138,5 @@ def test_extracted_device():
 
     assert Request.extracted_device('hummingbird', 'out', 'symbol', 'C', 'true/false/true/false') == 'C'
     assert Request.extracted_device('hummingbird', 'out', 'symbol', 'C', 'false/true/false/true') == 'C'
+
+    assert Request.extracted_device('hummingbird', 'out', 'move', 'B', 'Forward', 7, 5) == 'B'

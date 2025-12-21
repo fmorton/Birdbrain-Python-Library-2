@@ -1,5 +1,7 @@
 import pytest
 
+from robot.constant import Constant
+from robot.finch_output import FinchOutput
 from robot.hummingbird import Hummingbird
 from robot.hummingbird_input import HummingbirdInput
 from robot.microbit_output import MicrobitOutput
@@ -29,3 +31,5 @@ def test_windows_support(mocker):
     with pytest.raises(Exception) as e:
         response = HummingbirdInput.sound("A", 4)
     assert e.value.message == "Sound port 4 out of range"
+
+    assert FinchOutput.move("B", Constant.FORWARD, 7, 5, False)

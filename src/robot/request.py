@@ -20,12 +20,14 @@ class Request:
         while (isinstance(args[-1], list)) or (isinstance(args[-1], tuple)):
             args = args[-1]
 
-        device = args[-1]
+        for device in reversed(args):
+            device = str(device)
 
-        if device.startswith("true") or device.startswith("false"):
-            device = args[-2]
+            if len(device) == 1:
+                if device in Constant.VALID_DEVICES:
+                    return device
 
-        return device
+        return ''
 
     @classmethod
     def extracted_device(self, *args):
