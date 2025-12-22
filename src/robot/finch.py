@@ -37,7 +37,7 @@ class Finch(Microbit):
     def motors(self, left_speed, right_speed):
         return FinchOutput.motors(self.device, left_speed, right_speed)
 
-    def wait(self, device):
+    def wait(self):
         return FinchOutput.wait(self.device)
 
     def stop(self):

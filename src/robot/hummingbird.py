@@ -37,7 +37,7 @@ class Hummingbird(Microbit):
     def light(self, port):
         return HummingbirdInput.light(self.device, port)
 
-    def sound(self, port):
+    def sound(self, port=None):
         return HummingbirdInput.sound(self.device, port)
 
     def distance(self, port):

@@ -81,7 +81,7 @@ def test_is_moving():
     assert finch.move(Constant.FORWARD, 7, 5, False)
     assert finch.is_moving()
 
-    assert finch.wait("B")
+    assert finch.wait()
 
     assert finch.move(Constant.BACKWARD, 7, 5, True)
 
