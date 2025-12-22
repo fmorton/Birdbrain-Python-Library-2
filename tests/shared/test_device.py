@@ -1,11 +1,9 @@
 # pylint: disable=redefined-builtin
 
 import pytest
-import random
 
 from robot.device import Device
 from robot.exception import Exception
-from time import sleep
 
 
 def test_none_device():

@@ -1,7 +1,8 @@
 # pylint: disable=redefined-builtin
 
+from time import sleep
+
 import pytest
-import time
 
 from robot.constant import Constant
 from robot.exception import Exception
@@ -41,7 +42,7 @@ def test_is():
     assert not hummingbird.isFinch()
 
     with pytest.raises(Exception) as e:
-        finch = Finch('A')
+        Finch('A')
     assert e.value.message == "Error: Device A is not a Finch"
 
 
@@ -49,20 +50,20 @@ def test_led_with_alias():
     hummingbird = Hummingbird("A")
 
     assert hummingbird.led(1, 100)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.led(1, 0)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.led(1, 50)
-    time.sleep(0.15)
+    sleep(0.15)
 
     hummingbird.setLED(1, 0)
 
 
 def test_led_no_connection():
     with pytest.raises(Exception) as e:
-        hummingbird = Hummingbird('C')
+        Hummingbird('C')
     assert e.value.message == "No connection: C"
 
 
@@ -70,20 +71,20 @@ def test_tri_led_with_alias():
     hummingbird = Hummingbird("A")
 
     assert hummingbird.tri_led(1, 50, "50", 0)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setTriLED(1, 100, "0", "0")
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.tri_led(1, 0, "0", "0")
-    time.sleep(0.15)
+    sleep(0.15)
 
 
 def test_position_servo_with_alias():
     hummingbird = Hummingbird("A")
 
     assert hummingbird.position_servo(1, 50)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setPositionServo(1, "130")
 
@@ -92,16 +93,16 @@ def test_rotation_servo_with_alias():
     hummingbird = Hummingbird("A")
 
     assert hummingbird.rotation_servo(2, 50)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setRotationServo(2, "-50")
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.rotation_servo(2, 100)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setRotationServo(2, -100)
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setRotationServo(2, 0)
 

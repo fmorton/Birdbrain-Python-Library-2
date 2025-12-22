@@ -1,7 +1,8 @@
 # pylint: disable=redefined-builtin
 
+from time import sleep
+
 import pytest
-import time
 
 from robot.exception import Exception
 from robot.microbit_output import MicrobitOutput
@@ -14,7 +15,7 @@ def test_display():
 
     MicrobitOutput.display(state, "A", [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0])
 
-    time.sleep(0.15)
+    sleep(0.15)
 
     Request.stop_all("A")
 
@@ -32,13 +33,13 @@ def test_display_wrong_size():
 def test_point_and_clear_display():
     state = State()
 
-    for i in range(2):
+    for _ in range(2):
         assert MicrobitOutput.point(state, "A", 1, 1, 1)
         assert MicrobitOutput.point(state, "A", 1, 5, 1)
         assert MicrobitOutput.point(state, "A", 5, 1, 1)
         assert MicrobitOutput.point(state, "A", 5, 5, 1)
 
-        time.sleep(0.15)
+        sleep(0.15)
 
         MicrobitOutput.clear_display(state, "A")
 
@@ -48,7 +49,7 @@ def test_point_true_or_false():
 
     assert MicrobitOutput.point(state, "A", 3, 3, True)
 
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert MicrobitOutput.point(state, "A", 3, 3, False)
 
@@ -65,20 +66,20 @@ def test_print():
     state = State()
 
     assert MicrobitOutput.print(state, "A", "B")
-    time.sleep(1)
+    sleep(1)
 
     assert MicrobitOutput.print(state, "A", " ")
-    time.sleep(1)
+    sleep(1)
 
 
 def test_print_nothing():
     state = State()
 
     assert MicrobitOutput.print(state, "A", "")
-    time.sleep(1)
+    sleep(1)
 
     assert MicrobitOutput.print(state, "A", None)
-    time.sleep(1)
+    sleep(1)
 
 
 def test_play_note():

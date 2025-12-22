@@ -1,5 +1,6 @@
 # pylint: disable=redefined-builtin
 
+
 class Exception(Exception):
     def __init__(self, message, device=None):
         if device is not None:

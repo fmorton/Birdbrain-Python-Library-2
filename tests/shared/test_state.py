@@ -34,9 +34,9 @@ def test_state():
 def test_display_map_as_string_with_list():
     state = State()
 
-    list = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    state_list = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
 
-    assert state.display_map_as_string(list)[0:11] == "false/true/"
+    assert state.display_map_as_string(state_list)[0:11] == "false/true/"
 
 
 def test_state_using_true_and_false():

@@ -1,4 +1,4 @@
-import time
+from time import sleep, time
 
 from robot.constant import Constant
 from robot.finch_input import FinchInput
@@ -60,10 +60,10 @@ class FinchOutput(Request):
 
     @classmethod
     def wait(cls, device):
-        timeout_time = time.time() + Constant.MOVE_TIMEOUT_SECONDS
+        timeout_time = time() + Constant.MOVE_TIMEOUT_SECONDS
 
-        while (timeout_time > time.time()) and (FinchInput.is_moving(device)):
-            time.sleep(Constant.MOVE_CHECK_MOVING_DELAY)
+        while (timeout_time > time()) and (FinchInput.is_moving(device)):
+            sleep(Constant.MOVE_CHECK_MOVING_DELAY)
 
         return True
 
@@ -89,7 +89,7 @@ class FinchOutput(Request):
 
         response = Request.response_status('hummingbird', 'out', 'resetEncoders', device)
 
-        time.sleep(Constant.RESET_ENCODERS_DELAY)  # finch needs a chance to actually reset
+        sleep(Constant.RESET_ENCODERS_DELAY)  # finch needs a chance to actually reset
 
         return response
 
@@ -97,7 +97,7 @@ class FinchOutput(Request):
     def __move_and_wait(cls, device, wait_to_finish_movement, *args):
         response = Request.response_status(*args)
 
-        time.sleep(Constant.MOVE_START_WAIT_SECONDS)  # hack to give time to start before waiting
+        sleep(Constant.MOVE_START_WAIT_SECONDS)  # hack to give time to start before waiting
 
         if wait_to_finish_movement:
             cls.wait(device)

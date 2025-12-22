@@ -1,7 +1,5 @@
 # pylint: disable=redefined-builtin
 
-import pytest
-
 from robot.exception import Exception
 from robot.hummingbird import Hummingbird
 

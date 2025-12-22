@@ -1,7 +1,8 @@
 # pylint: disable=redefined-builtin
 
+from time import sleep
+
 import pytest
-import time
 
 from robot.exception import Exception
 from robot.hummingbird import Hummingbird
@@ -45,11 +46,11 @@ def test_display_with_alias():
 
     assert hummingbird.display([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1])
 
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.setDisplay([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0])
 
-    time.sleep(0.15)
+    sleep(0.15)
 
     hummingbird.stop_all()
 
@@ -65,13 +66,13 @@ def test_display_wrong_size():
 def test_point_and_clear_display_with_alias():
     hummingbird = Hummingbird("A")
 
-    for i in range(2):
+    for _ in range(2):
         assert hummingbird.point(2, 2, 1)
         assert hummingbird.point(2, 4, 1)
         assert hummingbird.point(4, 2, 1)
         assert hummingbird.setPoint(4, 4, 1)
 
-        time.sleep(0.15)
+        sleep(0.15)
 
         hummingbird.clear_display()
 
@@ -81,7 +82,7 @@ def test_point_true_or_false():
 
     assert hummingbird.point(3, 3, True)
 
-    time.sleep(0.15)
+    sleep(0.15)
 
     assert hummingbird.point(3, 3, False)
 
@@ -99,7 +100,7 @@ def test_print():
 
     hummingbird.print("A")
 
-    time.sleep(1)
+    sleep(1)
 
 
 def test_play_note_with_alias():
@@ -107,11 +108,11 @@ def test_play_note_with_alias():
 
     hummingbird.play_note(75, 0.5)
 
-    time.sleep(0.25)
+    sleep(0.25)
 
     hummingbird.playNote(40, 0.5)
 
-    time.sleep(0.25)
+    sleep(0.25)
 
     hummingbird.beep()
 

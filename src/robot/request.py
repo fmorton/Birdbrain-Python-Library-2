@@ -1,7 +1,7 @@
 # pylint: disable=redefined-builtin,consider-using-with,too-many-public-methods,too-many-return-statements,too-many-branches,dangerous-default-value
 
 
-import time
+from time import sleep
 import urllib.request
 
 from robot.constant import Constant
@@ -66,7 +66,7 @@ class Request:
         if cls.is_not_connected_response(response):
             raise Exception("Error: The device is not connected")
 
-        time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
+        sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
         # hack for windows support
         if response == '200':

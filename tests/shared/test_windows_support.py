@@ -24,15 +24,15 @@ def test_windows_support(mocker):
     hummingbird = Hummingbird('A')
 
     with pytest.raises(Exception) as e:
-        response = hummingbird.light(4)
+        hummingbird.light(4)
     assert e.value.message == "Light port 4 out of range"
 
     with pytest.raises(Exception) as e:
-        response = hummingbird.sound(4)
+        hummingbird.sound(4)
     assert e.value.message == "Sound port 4 out of range"
 
     with pytest.raises(Exception) as e:
-        response = HummingbirdInput.sound("A", 4)
+        HummingbirdInput.sound("A", 4)
     assert e.value.message == "Sound port 4 out of range"
 
     assert FinchOutput.move("B", Constant.FORWARD, 7, 5, False)

@@ -1,7 +1,8 @@
 # pylint: disable=redefined-builtin
 
+from time import sleep, time
+
 import pytest
-import time
 
 from robot.constant import Constant
 from robot.exception import Exception
@@ -24,7 +25,7 @@ def test_is():
     assert finch.isFinch()
 
     with pytest.raises(Exception) as e:
-        hummingbird = Hummingbird('B')
+        Hummingbird('B')
     assert e.value.message == "Error: Device B is not a Hummingbird"
 
 
@@ -32,7 +33,7 @@ def test_beak_with_alias():
     finch = Finch('B')
 
     finch.beak(100, 50, 50)
-    time.sleep(0.15)
+    sleep(0.15)
     finch.setBeak(0, 0, 0)
 
 
@@ -40,17 +41,17 @@ def test_tail_with_alias():
     finch = Finch("B")
 
     assert finch.tail(1, 10, 0, 50)
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.tail(1, "50", 0, "0")
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.tail("2", "50", 0, "0")
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.tail(3, "50", 0, "0")
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.tail(4, "50", 0, "0")
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.tail("all", 100, 0, 100)
-    time.sleep(0.1)
+    sleep(0.1)
     assert finch.setTail("all", 0, 0, 0)
 
 
@@ -89,7 +90,7 @@ def test_is_moving():
 
     finch.stop_all()
 
-    time.sleep(1)
+    sleep(1)
 
     assert not finch.is_moving()
 
@@ -107,14 +108,14 @@ def test_motors_with_alias():
     finch = Finch("B")
 
     assert finch.motors(25, 0)
-    time.sleep(0.2)
+    sleep(0.2)
     assert finch.motors(-25, 0)
-    time.sleep(0.2)
+    sleep(0.2)
 
     assert finch.motors(0, -25)
-    time.sleep(0.2)
+    sleep(0.2)
     assert finch.motors("0", "25")
-    time.sleep(0.2)
+    sleep(0.2)
 
     Request.stop_all("B")
 
@@ -125,11 +126,11 @@ def test_stop():
     finch = Finch("B")
 
     assert finch.move(Constant.FORWARD, 99999, 5, False)
-    time.sleep(0.2)
+    sleep(0.2)
     assert finch.stop()
 
     assert finch.move(Constant.BACKWARD, 99999, 5, False)
-    time.sleep(0.2)
+    sleep(0.2)
     assert finch.stop()
 
 
