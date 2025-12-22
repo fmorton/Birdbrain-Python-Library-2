@@ -1,5 +1,3 @@
-# pylint: disable=redefined-builtin
-
 import pytest
 
 from robot.device import Device

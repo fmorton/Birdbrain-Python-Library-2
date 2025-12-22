@@ -1,4 +1,4 @@
-# pylint: disable=redefined-builtin, duplicate-code
+# pylint: disable=duplicate-code
 
 import pytest
 

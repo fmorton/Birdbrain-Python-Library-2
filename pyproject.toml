@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "robot-birdbrain"
-version = "0.13.0"
+version = "0.14.0"
 description = "Rewritten Python Library for Birdbrain Technologies Hummingbird Bit and Finch 2."
 readme = "README.rst"
 requires-python = ">=3.9"
@@ -32,7 +32,14 @@ Issues = "https://github.com/fmorton/robot-birdbrain/issues"
 Source = "https://github.com/fmorton/robot-birdbrain"
 
 [project.optional-dependencies]
+test = [
+    "pytest>=8.3",
+    "pytest-cov",
+		"pytest-mock",
+		"flake8-pyproject",
+]
 dev = [
+	"pylint",
 	"pytest",
 	"pytest-mock",
 	"black",
@@ -43,7 +50,7 @@ dev = [
 packages = ["src/robot"]
 
 [tool.black]
-line-length = 140
+line-length = 132
 target-version = ["py37"]
 skip-string-normalization = true
 
@@ -60,4 +67,12 @@ disable = [
 	"too-few-public-methods",
 	"too-many-arguments",
 	"too-many-positional-arguments"
+]
+
+[tool.flake8]
+max-line-length = 132
+exclude = [
+    ".git",
+    "__pycache__",
+    ".venv"
 ]

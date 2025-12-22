@@ -1,5 +1,3 @@
-# pylint: disable=redefined-builtin
-
 from time import sleep
 
 from robot.constant import Constant

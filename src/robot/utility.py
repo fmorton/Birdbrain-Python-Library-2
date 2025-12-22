@@ -36,7 +36,6 @@ class Utility:
         if isinstance(original_list[0], list):
             original_list = original_list[0]
 
-        ###DEBUG: original_list = [item for item in original_list]
         original_list = list(original_list)
 
         s = ""

@@ -1,4 +1,4 @@
-# pylint: disable=redefined-builtin,consider-using-with,too-many-public-methods,too-many-return-statements,too-many-branches,dangerous-default-value
+# pylint: disable=consider-using-with,too-many-public-methods,too-many-return-statements,too-many-branches,dangerous-default-value
 
 
 from time import sleep

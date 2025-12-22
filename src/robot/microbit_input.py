@@ -1,4 +1,4 @@
-# pylint: disable=redefined-builtin,unused-argument
+# pylint: disable=unused-argument
 
 from robot.constant import Constant
 from robot.exception import Exception

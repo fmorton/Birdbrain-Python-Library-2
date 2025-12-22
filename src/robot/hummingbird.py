@@ -1,5 +1,3 @@
-# pylint: disable=redefined-builtin
-
 from robot.exception import Exception
 from robot.hummingbird_input import HummingbirdInput
 from robot.hummingbird_output import HummingbirdOutput
