@@ -1,3 +1,5 @@
+# pylint: disable=redefined-builtin
+
 from robot.exception import Exception
 from robot.finch_input import FinchInput
 from robot.finch_output import FinchOutput

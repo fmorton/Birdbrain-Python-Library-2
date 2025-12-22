@@ -1,3 +1,5 @@
+# pylint: disable=redefined-builtin
+
 from robot.constant import Constant
 from robot.exception import Exception
 from robot.request import Request

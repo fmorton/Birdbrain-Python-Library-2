@@ -60,10 +60,10 @@ class HummingbirdInput(Request):
 
         port = str(port).lower()
 
-        if port == "microbit" or port == "micro:bit":
+        if port in ('microbit', 'micro:bit'):
             return MicrobitInput.sound(device)
-        else:
-            cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
+
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.SOUND_FACTOR
