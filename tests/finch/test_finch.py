@@ -1,6 +1,6 @@
 # pylint: disable=redefined-builtin
 
-from time import sleep, time
+from time import sleep
 
 import pytest
 
