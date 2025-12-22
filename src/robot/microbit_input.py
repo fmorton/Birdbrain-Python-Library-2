@@ -40,7 +40,7 @@ class MicrobitInput(Request):
         return cls.request_status(cls.response('hummingbird', 'in', 'button', button, device))
 
     @classmethod
-    def sound(cls, device):
+    def sound(cls, device, port=None):
         """Return the current sound level as an integer between 1 and 100.
         Available for V2 micro:bit only."""
 

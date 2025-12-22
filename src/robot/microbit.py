@@ -1,5 +1,4 @@
 from robot.device import Device
-from robot.exception import Exception
 from robot.microbit_input import MicrobitInput
 from robot.microbit_output import MicrobitOutput
 from robot.request import Request
@@ -11,8 +10,8 @@ class Microbit(Device):
 
         self.connected = self.connect(raise_exception_if_no_connection)
 
-    def display(self, list):
-        return MicrobitOutput.display(self.state, self.device, list)
+    def display(self, device_list):
+        return MicrobitOutput.display(self.state, self.device, device_list)
 
     def clear_display(self):
         return MicrobitOutput.clear_display(self.state, self.device)
@@ -42,7 +41,7 @@ class Microbit(Device):
         return MicrobitInput.button(self.device, button)
 
     def sound(self, port=None):
-        return MicrobitInput.sound(self.device)
+        return MicrobitInput.sound(self.device, port)
 
     def temperature(self):
         return MicrobitInput.temperature(self.device)

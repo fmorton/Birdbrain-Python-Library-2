@@ -16,7 +16,7 @@ class State:
         return ["true" if ((pixel == 1) or (pixel is True)) else "false" for pixel in self.display_map]
 
     def display_map_as_string(self, state_list=None):
-        if list is not None:
+        if state_list is not None:
             self.set_list(state_list)
 
         return "/".join(self.display_map_normalize())
