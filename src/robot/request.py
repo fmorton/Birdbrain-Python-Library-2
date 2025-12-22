@@ -19,7 +19,7 @@ class Request:
         return response.lower() == "not connected"
 
     @classmethod
-    def extracted_device_from_tuple_or_list(cls, args):
+    def extracted_device(cls, *args):
         while isinstance(args[-1], (list, tuple)):
             args = args[-1]
 
@@ -30,16 +30,7 @@ class Request:
                 if device in Constant.VALID_DEVICES:
                     return device
 
-        return ''
-
-    @classmethod
-    def extracted_device(cls, *args):
-        device = Request.extracted_device_from_tuple_or_list(args)
-
-        if device not in Constant.VALID_DEVICES:
-            raise Exception("Unable to extract device name: " + device)
-
-        return device
+        raise Exception("Unable to extract device name: " + str(args))
 
     @classmethod
     def response_from_uri(cls, args):

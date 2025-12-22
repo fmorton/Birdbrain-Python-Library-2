@@ -140,3 +140,9 @@ def test_extracted_device():
     assert Request.extracted_device('hummingbird', 'out', 'symbol', 'C', 'false/true/false/true') == 'C'
 
     assert Request.extracted_device('hummingbird', 'out', 'move', 'B', 'Forward', 7, 5) == 'B'
+
+def test_extracted_device_with_no_match():
+    with pytest.raises(Exception) as e:
+        Request.extracted_device((['hummingbird', 'in', 'BAD']))
+
+    assert str(e.value) == "Unable to extract device name: ['hummingbird', 'in', 'BAD']"
