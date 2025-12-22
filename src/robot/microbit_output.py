@@ -25,8 +25,8 @@ class MicrobitOutput(Request):
 
         try:
             state.display_map[index] = value
-        except IndexError:
-            raise Exception("Error: point out of range")
+        except IndexError as e:
+            raise Exception("Error: point out of range") from e
 
         return cls.display(state, device, state.display_map)
 
