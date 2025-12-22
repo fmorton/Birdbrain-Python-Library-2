@@ -8,31 +8,31 @@ from time import sleep
 
 def test_none_device():
     with pytest.raises(Exception) as e:
-        Device.connect(None)
+        Device(None).connect()
     assert e.value.message == "Missing device name"
 
 
 def test_bad_device():
     with pytest.raises(Exception) as e:
-        Device.connect("Z")
+        Device("Z").connect()
     assert e.value.message == "Invalid device name: Z"
 
 
 def test_stop_all():
-    hummingbird = Device.connect()
+    hummingbird = Device().connect()
 
     hummingbird.stop_all()
 
 
 def test_default_connect():
-    hummingbird = Device.connect()
+    hummingbird = Device().connect()
 
     assert hummingbird.connected
     assert hummingbird.device == 'A'
 
 
 def test_connect():
-    hummingbird = Device.connect("A")
+    hummingbird = Device("A").connect()
 
     assert hummingbird.connected
     assert hummingbird.device == 'A'
@@ -40,12 +40,12 @@ def test_connect():
 
 def test_connect_to_disconnected_device():
     with pytest.raises(Exception) as e:
-        Device.connect("C", True)
+        Device("C").connect(True)
     assert e.value.message == "No connection: C"
 
 
 def test_connect_to_disconnected_device_no_exception():
-    hummingbird = Device.connect("C", False)
+    hummingbird = Device("C").connect(False)
 
     assert not hummingbird.connected
     assert hummingbird.device == 'C'
@@ -53,24 +53,24 @@ def test_connect_to_disconnected_device_no_exception():
 
 def test_connect_to_disconnected_device_with_exception():
     with pytest.raises(Exception) as e:
-        Device.connect("C", True)
+        Device("C").connect(True)
     assert e.value.message == "No connection: C"
 
 
 def test_is_hummingbird():
-    hummingbird = Device.connect("A")
+    hummingbird = Device("A").connect()
 
     assert hummingbird.is_hummingbird
 
 
 def test_is_finch():
-    hummingbird = Device.connect("A")
+    hummingbird = Device("A").connect()
 
     assert not hummingbird.is_finch()
 
 
 def test_cache():
-    hummingbird = Device.connect("A")
+    hummingbird = Device("A").connect()
 
     assert hummingbird.get_cache("something_name") is None
 
@@ -89,6 +89,6 @@ def test_cache():
 
 
 def test_sleep():
-    hummingbird = Device.connect('A')
+    hummingbird = Device("A").connect()
 
     hummingbird.sleep(0.1)

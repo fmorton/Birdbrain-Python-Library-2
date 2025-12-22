@@ -9,7 +9,7 @@ from robot.request import Request
 
 
 def test_is():
-    finch = Finch.connect("B")
+    finch = Finch("B")
 
     assert finch.is_connected()
     assert finch.is_microbit()

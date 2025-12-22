@@ -4,10 +4,6 @@ import inspect
 class Utility:
     @classmethod
     def caller(self, index=2):
-        # print("DEBUG: inspect 0", inspect.getouterframes(inspect.currentframe(), 2)[0].function)
-        # print("DEBUG: inspect 1", inspect.getouterframes(inspect.currentframe(), 2)[1].function)
-        # print("DEBUG: inspect 2", inspect.getouterframes(inspect.currentframe(), 2)[2].function)
-        # print("DEBUG: inspect 3", inspect.getouterframes(inspect.currentframe(), 2)[3].function)
         return inspect.getouterframes(inspect.currentframe(), 2)[index].function
 
     @classmethod

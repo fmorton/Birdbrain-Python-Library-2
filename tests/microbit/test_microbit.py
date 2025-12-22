@@ -14,18 +14,18 @@ def test_connect_device_name_as_none():
 
 def test_connect_bad_device_name():
     with pytest.raises(Exception) as e:
-        Microbit.connect('D')
+        Microbit("D").connect()
     assert e.value.message == "Invalid device name: D"
 
 
 def test_connect_valid_device_name():
-    microbit = Microbit.connect("A")
+    microbit = Microbit("A").connect()
 
     assert microbit.device == "A"
 
 
 def test_is():
-    microbit = Microbit.connect("A")
+    microbit = Microbit("A").connect()
 
     assert microbit.is_connected()
     assert microbit.is_microbit()

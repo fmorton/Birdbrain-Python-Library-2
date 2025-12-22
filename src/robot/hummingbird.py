@@ -10,9 +10,11 @@ class Hummingbird(Microbit):
     present on the Hummingbird Bit."""
 
     def __init__(self, device='A', raise_exception_if_no_connection=True):
-        self.device_object = Hummingbird.connect(device, raise_exception_if_no_connection)
+        super().__init__(device, raise_exception_if_no_connection)
 
-        if not self.device_object.is_hummingbird():
+        self.connected = self.connect(raise_exception_if_no_connection)
+
+        if not self.is_hummingbird():
             raise Exception("Error: Device " + device + " is not a Hummingbird")
 
     def led(self, port, intensity):

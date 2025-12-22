@@ -10,9 +10,11 @@ class Finch(Microbit):
     device letter used in the BlueBirdConnector device list (A, B, or C)."""
 
     def __init__(self, device='A', raise_exception_if_no_connection=True):
-        self.device_object = Finch.connect(device, raise_exception_if_no_connection)
+        super().__init__(device, raise_exception_if_no_connection)
 
-        if not self.device_object.is_finch():
+        self.connected = self.connect(raise_exception_if_no_connection)
+
+        if not self.is_finch():
             raise Exception("Error: Device " + device + " is not a Finch")
 
     def is_moving(self):

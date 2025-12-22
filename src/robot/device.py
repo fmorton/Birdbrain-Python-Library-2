@@ -9,28 +9,21 @@ from robot.state import State
 class Device:
     def __init__(self, device="A", raise_exception_if_no_connection=True):
         self.state = State()
-        self.device = Device.remap_device(device)
+        self.device = self.remap_device(device)
         self.connected = False
-
-    @classmethod
-    def connect(self, device="A", raise_exception_if_no_connection=True):
-        device_object = Device(device)
-
-        self.state = device_object.state
-        self.device = device_object.device
-        self.connected = device_object.connected
 
         if device is None:
             raise Exception("Missing device name")
         if device not in Constant.VALID_DEVICES:
             raise Exception("Invalid device name: " + device)
 
-        self.connected = device_object.connect_device()
+    def connect(self, raise_exception_if_no_connection=True):
+        self.connect_device()
 
-        if raise_exception_if_no_connection and not device_object.connected:
-            raise Exception("No connection: " + device)
+        if raise_exception_if_no_connection and not self.connected:
+            raise Exception("No connection: " + self.device)
 
-        return device_object
+        return self
 
     def is_connected(self):
         """Determine if the device is connected"""
@@ -58,7 +51,7 @@ class Device:
 
         return self.__is_device("isFinch")
 
-    def remap_device(device):
+    def remap_device(self, device):
         return device
 
     def connect_device(self):
