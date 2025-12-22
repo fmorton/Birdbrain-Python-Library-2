@@ -33,10 +33,10 @@ Source = "https://github.com/fmorton/robot-birdbrain"
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
-		"pytest-mock",
-    "black",
-    "flake8",
+	"pytest",
+	"pytest-mock",
+	"black",
+	"flake8",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -50,5 +50,14 @@ skip-string-normalization = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
-[FORMAT]
-max-line-length=50
+[tool.pylint.messages_control]
+disable = [
+	"line-too-long",
+	"missing-class-docstring",
+	"missing-function-docstring",
+	"missing-module-docstring",
+	"redefined-builtin",
+	"too-few-public-methods",
+	"too-many-arguments",
+	"too-many-positional-arguments"
+]
