@@ -49,3 +49,6 @@ skip-string-normalization = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[FORMAT]
+max-line-length=50

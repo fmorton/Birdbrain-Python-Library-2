@@ -8,15 +8,15 @@ from robot.utility import Utility
 
 class Request:
     @classmethod
-    def uri(self, *args):
+    def uri(cls, *args):
         return "http://127.0.0.1:30061/" + Utility.flatten_string(args)
 
     @classmethod
-    def is_not_connected_response(self, response):
+    def is_not_connected_response(cls, response):
         return response.lower() == "not connected"
 
     @classmethod
-    def extracted_device_from_tuple_or_list(self, args):
+    def extracted_device_from_tuple_or_list(cls, args):
         while (isinstance(args[-1], list)) or (isinstance(args[-1], tuple)):
             args = args[-1]
 
@@ -30,7 +30,7 @@ class Request:
         return ''
 
     @classmethod
-    def extracted_device(self, *args):
+    def extracted_device(cls, *args):
         device = Request.extracted_device_from_tuple_or_list(args)
 
         if device not in Constant.VALID_DEVICES:
@@ -39,19 +39,19 @@ class Request:
         return device
 
     @classmethod
-    def response_from_uri(self, args):
+    def response_from_uri(cls, args):
         try:
             if Constant.BIRDBRAIN_TEST:
-                print("Test: URI", self.uri(*args))
+                print("Test: URI", cls.uri(*args))
 
-            response_request = urllib.request.urlopen(self.uri(*args))
+            response_request = urllib.request.urlopen(cls.uri(*args))
         except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
             raise (Exception("Error: Request to device failed"))
 
         return response_request.read().decode('utf-8').lower()
 
     @classmethod
-    def response(self, *args):
+    def response(cls, *args):
         if "false" in args:
             return False
 
@@ -60,19 +60,19 @@ class Request:
         if Constant.BIRDBRAIN_TEST:
             print("Test: response", response)
 
-        if self.is_not_connected_response(response):
+        if cls.is_not_connected_response(response):
             raise (Exception("Error: The device is not connected"))
 
         time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
         # hack for windows support
         if response == '200':
-            device = self.extracted_device(args)
+            device = cls.extracted_device(args)
 
             if Utility.caller(2) == 'is_connected':
                 response = 'true'
             else:
-                if self.is_connected(device):
+                if cls.is_connected(device):
                     response = 'true'
                 else:
                     raise (Exception("Error: The device is not connected"))
@@ -80,28 +80,28 @@ class Request:
         return response
 
     @classmethod
-    def response_status(self, *args):
+    def response_status(cls, *args):
         return Request.request_status(Request.response(args))
 
     @classmethod
-    def is_connected(self, device):
+    def is_connected(cls, device):
         try:
-            self.response('hummingbird', 'in', 'orientation', 'Shake', device)
+            cls.response('hummingbird', 'in', 'orientation', 'Shake', device)
         except Exception:
             return False
 
         return True
 
     @classmethod
-    def is_not_connected(self, device):
-        return not self.is_connected(device)
+    def is_not_connected(cls, device):
+        return not cls.is_connected(device)
 
     @classmethod
-    def stop_all(self, device):
-        return self.request_status(self.response('hummingbird', 'out', 'stopall', device))
+    def stop_all(cls, device):
+        return cls.request_status(cls.response('hummingbird', 'out', 'stopall', device))
 
     @classmethod
-    def request_status(self, status):
+    def request_status(cls, status):
         if Constant.BIRDBRAIN_TEST:
             print("Test: request status is", status)
 
@@ -148,15 +148,15 @@ class Request:
         return None
 
     @classmethod
-    def calculate_angle(self, intensity):
+    def calculate_angle(cls, intensity):
         return int(int(intensity) * 255 / 180)
 
     @classmethod
-    def calculate_intensity(self, intensity):
+    def calculate_intensity(cls, intensity):
         return int(int(Utility.bounds(intensity, 0, 100)) * 255 / 100)
 
     @classmethod
-    def calculate_speed(self, speed):
+    def calculate_speed(cls, speed):
         if int(speed) in range(-10, 10):
             return 255
 
@@ -169,7 +169,7 @@ class Request:
             return int((int(speed) / 100 * 25) + 121)
 
     @classmethod
-    def calculate_left_or_right(self, direction):
+    def calculate_left_or_right(cls, direction):
         if direction == Constant.LEFT:
             return 'Left'
         if direction == Constant.RIGHT:
@@ -178,21 +178,21 @@ class Request:
         return 'None'
 
     @classmethod
-    def validate(self, validate, valid_range, validate_message):
+    def validate(cls, validate, valid_range, validate_message):
         if not str(validate) in valid_range:
             raise Exception(validate_message)
 
         return True
 
     @classmethod
-    def validate_port(self, port, valid_range, allow_all=False):
+    def validate_port(cls, port, valid_range, allow_all=False):
         if allow_all and str(port) == 'all':
             return True
 
         return Request.validate(port, valid_range, f"{Utility.caller().capitalize()} port {str(port)} out of range")
 
     @classmethod
-    def sensor_response(self, device, sensor, other=None, options={}):
+    def sensor_response(cls, device, sensor, other=None, options={}):
         if other is False:
             return False  # for invalid directions
 
@@ -216,7 +216,7 @@ class Request:
         return response
 
     @classmethod
-    def xyz_response(self, device, sensor, type_method='int'):
+    def xyz_response(cls, device, sensor, type_method='int'):
         x = round(float(Request.response('hummingbird', 'in', sensor, 'X', device)), 3)
         y = round(float(Request.response('hummingbird', 'in', sensor, 'Y', device)), 3)
         z = round(float(Request.response('hummingbird', 'in', sensor, 'Z', device)), 3)
@@ -227,7 +227,7 @@ class Request:
             return [float(x), float(y), float(z)]
 
     @classmethod
-    def tri_led_response(self, device, port, allow_all, r_intensity, g_intensity, b_intensity):
+    def tri_led_response(cls, device, port, allow_all, r_intensity, g_intensity, b_intensity):
         """Set TriLED  of a certain port requested to a valid intensity."""
         calc_r = Request.calculate_intensity(r_intensity)
         calc_g = Request.calculate_intensity(g_intensity)
@@ -236,9 +236,9 @@ class Request:
         return Request.response_status('hummingbird', 'out', 'triled', port, calc_r, calc_g, calc_b, device)
 
     @classmethod
-    def orientation_response(self, device, sensor, orientations, orientation_results, orientation_in_between):
+    def orientation_response(cls, device, sensor, orientations, orientation_results, orientation_in_between):
         for index, target_orientation in enumerate(orientations):
-            response = self.response("hummingbird", "in", sensor, target_orientation, device)
+            response = cls.response("hummingbird", "in", sensor, target_orientation, device)
 
             if response == "true":
                 return orientation_results[index]

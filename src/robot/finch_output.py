@@ -8,24 +8,24 @@ from robot.utility import Utility
 
 class FinchOutput(Request):
     @classmethod
-    def beak(self, device, r_intensity, g_intensity, b_intensity):
+    def beak(cls, device, r_intensity, g_intensity, b_intensity):
         """Set beak to a valid intensity. Each intensity should be an integer from 0 to 100."""
-        return self.tri_led_response(device, 1, False, r_intensity, g_intensity, b_intensity)
+        return cls.tri_led_response(device, 1, False, r_intensity, g_intensity, b_intensity)
 
     @classmethod
-    def tail(self, device, port, r_intensity, g_intensity, b_intensity):
+    def tail(cls, device, port, r_intensity, g_intensity, b_intensity):
         """Set tail to a valid intensity. Port can be specified as 1, 2, 3, 4, or all.
         Each intensity should be an integer from 0 to 100."""
 
         if not port == "all":
-            self.validate_port(port, Constant.VALID_TAIL_PORTS)
+            cls.validate_port(port, Constant.VALID_TAIL_PORTS)
 
             port = int(port) + 1  # tail starts counting at 2
 
-        return self.tri_led_response(device, port, True, r_intensity, g_intensity, b_intensity)
+        return cls.tri_led_response(device, port, True, r_intensity, g_intensity, b_intensity)
 
     @classmethod
-    def move(self, device, direction, distance, speed, wait_to_finish_movement=True):
+    def move(cls, device, direction, distance, speed, wait_to_finish_movement=True):
         """Move the Finch forward or backward for a given distance at a given speed.
         Direction should be specified as 'F' or 'B'."""
         calc_direction = None
@@ -40,12 +40,12 @@ class FinchOutput(Request):
         calc_distance = Utility.bounds(distance, -10000, 10000)
         calc_speed = Utility.bounds(speed, 0, 100)
 
-        return self.__move_and_wait(
+        return cls.__move_and_wait(
             device, wait_to_finish_movement, 'hummingbird', 'out', 'move', device, calc_direction, calc_distance, calc_speed
         )
 
     @classmethod
-    def turn(self, device, direction, angle, speed, wait_to_finish_movement=True):
+    def turn(cls, device, direction, angle, speed, wait_to_finish_movement=True):
         """Turn the Finch right or left to a given angle at a given speed.
         Direction should be specified as 'R' or 'L'."""
         calc_direction = Request.calculate_left_or_right(direction)
@@ -54,12 +54,12 @@ class FinchOutput(Request):
 
         Request.validate(direction, Constant.VALID_TURN_DIRECTION, "Bad Turn Direction: " + str(direction))
 
-        return self.__move_and_wait(
+        return cls.__move_and_wait(
             device, wait_to_finish_movement, 'hummingbird', 'out', 'turn', device, calc_direction, calc_angle, calc_speed
         )
 
     @classmethod
-    def wait(self, device):
+    def wait(cls, device):
         timeout_time = time.time() + Constant.MOVE_TIMEOUT_SECONDS
 
         while (timeout_time > time.time()) and (FinchInput.is_moving(device)):
@@ -68,7 +68,7 @@ class FinchOutput(Request):
         return True
 
     @classmethod
-    def motors(self, device, left_speed, right_speed):
+    def motors(cls, device, left_speed, right_speed):
         """Set the speed of each motor individually. Speed should be in
         the range of -100 to 100."""
 
@@ -78,13 +78,13 @@ class FinchOutput(Request):
         return Request.response_status('hummingbird', 'out', 'wheels', device, left_speed, right_speed)
 
     @classmethod
-    def stop(self, device):
+    def stop(cls, device):
         """Stop the Finch motors."""
 
         return Request.response_status('hummingbird', 'out', 'stopFinch', device)
 
     @classmethod
-    def reset_encoders(self, device):
+    def reset_encoders(cls, device):
         """Reset both encoder values to 0."""
 
         response = Request.response_status('hummingbird', 'out', 'resetEncoders', device)
@@ -94,12 +94,12 @@ class FinchOutput(Request):
         return response
 
     @classmethod
-    def __move_and_wait(self, device, wait_to_finish_movement, *args):
+    def __move_and_wait(cls, device, wait_to_finish_movement, *args):
         response = Request.response_status(*args)
 
         time.sleep(Constant.MOVE_START_WAIT_SECONDS)  # hack to give time to start before waiting
 
         if wait_to_finish_movement:
-            self.wait(device)
+            cls.wait(device)
 
         return response

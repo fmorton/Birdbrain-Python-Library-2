@@ -5,13 +5,13 @@ from robot.request import Request
 
 class MicrobitInput(Request):
     @classmethod
-    def acceleration(self, device, sensor="Accelerometer"):
+    def acceleration(cls, device, sensor="Accelerometer"):
         """Gives the acceleration of X,Y,Z in m/sec2."""
 
-        return self.xyz_response(device, sensor, "float")
+        return cls.xyz_response(device, sensor, "float")
 
     @classmethod
-    def compass(self, device, sensor='Compass'):
+    def compass(cls, device, sensor='Compass'):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field."""
 
@@ -21,15 +21,15 @@ class MicrobitInput(Request):
 
         compass_option = None if sensor == 'Compass' else 'static'
 
-        return self.sensor_response(device, sensor, compass_option, sensor_options)
+        return cls.sensor_response(device, sensor, compass_option, sensor_options)
 
     @classmethod
-    def magnetometer(self, device, sensor="Magnetometer"):
+    def magnetometer(cls, device, sensor="Magnetometer"):
         """Return the values of X,Y,Z of a magnetommeter."""
-        return self.xyz_response(device, sensor, "int")
+        return cls.xyz_response(device, sensor, "int")
 
     @classmethod
-    def button(self, device, button):
+    def button(cls, device, button):
         """Return the status of the button asked. Specify button 'A', 'B', or
         'Logo'. Logo available for V2 micro:bit only."""
         button = button.capitalize()
@@ -37,14 +37,14 @@ class MicrobitInput(Request):
         if button not in Constant.VALID_BUTTONS:
             raise Exception("Invalid button: " + button)
 
-        return self.request_status(self.response('hummingbird', 'in', 'button', button, device))
+        return cls.request_status(cls.response('hummingbird', 'in', 'button', button, device))
 
     @classmethod
-    def sound(self, device):
+    def sound(cls, device):
         """Return the current sound level as an integer between 1 and 100.
         Available for V2 micro:bit only."""
 
-        response = self.response('hummingbird', 'in', "V2sensor", "Sound", device)
+        response = cls.response('hummingbird', 'in', "V2sensor", "Sound", device)
 
         if response == 'micro:bit v2 required':
             return 0
@@ -52,11 +52,11 @@ class MicrobitInput(Request):
         return int(response)
 
     @classmethod
-    def temperature(self, device):
+    def temperature(cls, device):
         """Return the current temperature as an integer in degrees Celcius.
         Available for V2 micro:bit only."""
 
-        response = self.response('hummingbird', 'in', "V2sensor", "Temperature", device)
+        response = cls.response('hummingbird', 'in', "V2sensor", "Temperature", device)
 
         if response == 'micro:bit v2 required':
             return 0
@@ -64,15 +64,15 @@ class MicrobitInput(Request):
         return int(response)
 
     @classmethod
-    def is_shaking(self, device):
+    def is_shaking(cls, device):
         """Return true if the device is shaking, false otherwise."""
 
-        return self.request_status(self.response('hummingbird', 'in', 'orientation', 'Shake', device))
+        return cls.request_status(cls.response('hummingbird', 'in', 'orientation', 'Shake', device))
 
     @classmethod
-    def orientation(self, device):
+    def orientation(cls, device):
         """Return the orentation of the Microbit. Results found in Constant.HUMMINGBIRD_ORIENTATION_RESULTS"""
-        return self.orientation_response(
+        return cls.orientation_response(
             device,
             "orientation",
             Constant.HUMMINGBIRD_ORIENTATIONS,

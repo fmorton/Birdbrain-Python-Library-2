@@ -5,57 +5,57 @@ from robot.request import Request
 
 class HummingbirdInput(Request):
     @classmethod
-    def acceleration(self, device):
+    def acceleration(cls, device):
         """Gives the acceleration of X,Y,Z in m/sec2, relative
         to the Finch's position."""
 
         return MicrobitInput.acceleration(device)
 
     @classmethod
-    def compass(self, device):
+    def compass(cls, device):
         """Returns values 0-359 indicating the orentation of the Earth's
         magnetic field, relative to the Finch's position."""
 
         return MicrobitInput.compass(device)
 
     @classmethod
-    def magnetometer(self, device):
+    def magnetometer(cls, device):
         """Return the values of X,Y,Z of a magnetommeter, relative to the Finch's position."""
 
         return MicrobitInput.magnetometer(device)
 
     @classmethod
-    def orientation(self, device):
+    def orientation(cls, device):
         """Return the orentation of the Hummingbird. Results found in Constant.HUMMINGBIRD_ORIENTATION_RESULTS"""
 
         return MicrobitInput.orientation(device)
 
     @classmethod
-    def sensor(self, device, port):
+    def sensor(cls, device, port):
         """Read the value of the sensor attached to a certain port."""
-        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['min_response'] = Constant.DEFAULT_UNLIMITED_MIN_RESPONSE
         sensor_options['max_response'] = Constant.DEFAULT_UNLIMITED_MAX_RESPONSE
         sensor_options['type_method'] = 'float'
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)
 
     @classmethod
-    def light(self, device, port):
+    def light(cls, device, port):
         """Read the value of the light sensor attached to a certain port."""
-        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.LIGHT_FACTOR
         sensor_options['min_response'] = Constant.DEFAULT_MIN_RESPONSE
         sensor_options['max_response'] = Constant.DEFAULT_MAX_RESPONSE
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)
 
     @classmethod
-    def sound(self, device, port):
+    def sound(cls, device, port):
         """Read the value of the sound sensor attached to a certain port."""
 
         port = str(port).lower()
@@ -63,43 +63,43 @@ class HummingbirdInput(Request):
         if port == "microbit" or port == "micro:bit":
             return MicrobitInput.sound(device)
         else:
-            self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+            cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.SOUND_FACTOR
         sensor_options['min_response'] = Constant.DEFAULT_MIN_RESPONSE
         sensor_options['max_response'] = Constant.DEFAULT_MAX_RESPONSE
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)
 
     @classmethod
-    def distance(self, device, port):
+    def distance(cls, device, port):
         """Read the value of the distance sensor attached to a certain port."""
-        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.DISTANCE_FACTOR
         sensor_options['min_response'] = Constant.DEFAULT_MIN_RESPONSE
         sensor_options['max_response'] = Constant.DEFAULT_UNLIMITED_MAX_RESPONSE
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)
 
     @classmethod
-    def dial(self, device, port):
+    def dial(cls, device, port):
         """Read the value of the dial attached to a certain port."""
-        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.DIAL_FACTOR
         sensor_options['min_response'] = Constant.DEFAULT_MIN_RESPONSE
         sensor_options['max_response'] = Constant.DEFAULT_MAX_RESPONSE
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)
 
     @classmethod
-    def voltage(self, device, port):
+    def voltage(cls, device, port):
         """Read the value of  the dial attached to a certain port."""
-        self.validate_port(port, Constant.VALID_SENSOR_PORTS)
+        cls.validate_port(port, Constant.VALID_SENSOR_PORTS)
 
         sensor_options = {}
         sensor_options['factor'] = Constant.VOLTAGE_FACTOR
@@ -107,4 +107,4 @@ class HummingbirdInput(Request):
         sensor_options['max_response'] = Constant.VOLTAGE_MAX
         sensor_options['type_method'] = 'float'
 
-        return self.sensor_response(device, 'sensor', port, sensor_options)
+        return cls.sensor_response(device, 'sensor', port, sensor_options)

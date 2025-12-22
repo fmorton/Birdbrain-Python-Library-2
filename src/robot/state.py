@@ -36,6 +36,6 @@ class State:
         else:
             return None
 
-    @classmethod
-    def microbit_empty_display_map(self):
+    @staticmethod
+    def microbit_empty_display_map():
         return [0] * 25

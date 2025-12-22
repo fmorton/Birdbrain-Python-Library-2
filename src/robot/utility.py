@@ -2,19 +2,19 @@ import inspect
 
 
 class Utility:
-    @classmethod
-    def caller(self, index=2):
+    @staticmethod
+    def caller(index=2):
         return inspect.getouterframes(inspect.currentframe(), 2)[index].function
 
-    @classmethod
-    def is_none_or_empty(self, s):
+    @staticmethod
+    def is_none_or_empty(s):
         if s is None or s == "":
             return True
         else:
             return False
 
-    @classmethod
-    def bounds(self, input, input_min, input_max, pass_through_input=None):
+    @staticmethod
+    def bounds(input, input_min, input_max, pass_through_input=None):
         # if pass_through_input is not None and (input == pass_through_input): return int(input)
 
         if int(input) < int(input_min):
@@ -24,8 +24,8 @@ class Utility:
 
         return int(input)
 
-    @classmethod
-    def decimal_bounds(self, input, input_min, input_max, pass_through_input=None):
+    @staticmethod
+    def decimal_bounds(input, input_min, input_max, pass_through_input=None):
         # if pass_through_input is not None and (input == pass_through_input): return int(input)
 
         if float(input) < float(input_min):
@@ -35,8 +35,8 @@ class Utility:
 
         return float(input)
 
-    @classmethod
-    def flatten_string(self, original_list, divider="/"):
+    @staticmethod
+    def flatten_string(original_list, divider="/"):
         if isinstance(original_list[0], list):
             original_list = original_list[0]
 
