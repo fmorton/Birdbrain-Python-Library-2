@@ -24,12 +24,12 @@ hummingbird/test_hummingbird_output.py                                     33   
 microbit/test_microbit.py                                                  72      0   100%
 microbit/test_microbit_input.py                                            61      0   100%
 microbit/test_microbit_output.py                                           50      0   100%
-shared/test_device.py                                                      55      0   100%
-shared/test_exception.py                                                   10      0   100%
+shared/test_device.py                                                      53      0   100%
+shared/test_exception.py                                                    9      0   100%
 shared/test_request.py                                                     88      0   100%
 shared/test_shared_input.py                                                59      0   100%
 shared/test_state.py                                                       46      0   100%
 shared/test_utility.py                                                     67      0   100%
 shared/test_windows_support.py                                             41      0   100%
 -----------------------------------------------------------------------------------------------------
-TOTAL                                                                    1829      4    99%
+TOTAL                                                                    1826      4    99%
