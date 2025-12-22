@@ -1,9 +1,11 @@
-from robot.exception import Exception
-from robot.hummingbird import Hummingbird
-from robot.microbit import Microbit
+# pylint: disable=redefined-builtin
 
 import pytest
 import time
+
+from robot.exception import Exception
+from robot.hummingbird import Hummingbird
+from robot.microbit import Microbit
 
 
 def test_connect_device_name_as_none():

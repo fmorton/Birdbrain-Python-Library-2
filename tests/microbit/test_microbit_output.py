@@ -1,3 +1,5 @@
+# pylint: disable=redefined-builtin
+
 import pytest
 import time
 
