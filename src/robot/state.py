@@ -6,8 +6,8 @@ class State:
     def display_map_clear(self):
         self.display_map = State.microbit_empty_display_map()
 
-    def set_list(self, list):
-        self.display_map = list
+    def set_list(self, state_list):
+        self.display_map = state_list
 
     def set_pixel(self, x, y, value):
         self.display_map[((x * 5) + y - 6)] = value
@@ -15,9 +15,9 @@ class State:
     def display_map_normalize(self):
         return ["true" if ((pixel == 1) or (pixel is True)) else "false" for pixel in self.display_map]
 
-    def display_map_as_string(self, list=None):
+    def display_map_as_string(self, state_list=None):
         if list is not None:
-            self.set_list(list)
+            self.set_list(state_list)
 
         return "/".join(self.display_map_normalize())
 
@@ -33,8 +33,8 @@ class State:
     def get(self, name):
         if name in self.cache:
             return self.cache[name]
-        else:
-            return None
+
+        return None
 
     @staticmethod
     def microbit_empty_display_map():
