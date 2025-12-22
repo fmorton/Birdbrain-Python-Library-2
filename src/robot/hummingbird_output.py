@@ -18,7 +18,7 @@ class HummingbirdOutput(Request):
         """Set TriLED  of a certain port requested to a valid intensity."""
         cls.validate_port(port, Constant.VALID_TRI_LED_PORTS)
 
-        return cls.tri_led_response(device, port, False, r_intensity, g_intensity, b_intensity)
+        return cls.tri_led_response(device, port, r_intensity, g_intensity, b_intensity)
 
     @classmethod
     def position_servo(cls, device, port, angle):

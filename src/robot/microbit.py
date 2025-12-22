@@ -6,7 +6,7 @@ from robot.request import Request
 
 class Microbit(Device):
     def __init__(self, device='A', raise_exception_if_no_connection=True):
-        super().__init__(device, raise_exception_if_no_connection)
+        super().__init__(device)
 
         self.connected = self.connect(raise_exception_if_no_connection)
 

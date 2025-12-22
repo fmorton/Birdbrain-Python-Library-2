@@ -1,3 +1,6 @@
+# pylint: disable=redefined-builtin,consider-using-with,too-many-public-methods,too-many-return-statements,too-many-branches,dangerous-default-value
+
+
 import time
 import urllib.request
 
@@ -17,7 +20,7 @@ class Request:
 
     @classmethod
     def extracted_device_from_tuple_or_list(cls, args):
-        while (isinstance(args[-1], list)) or (isinstance(args[-1], tuple)):
+        while isinstance(args[-1], (list, tuple)):
             args = args[-1]
 
         for device in reversed(args):
@@ -40,13 +43,13 @@ class Request:
 
     @classmethod
     def response_from_uri(cls, args):
-        try:
-            if Constant.BIRDBRAIN_TEST:
-                print("Test: URI", cls.uri(*args))
+        if Constant.BIRDBRAIN_TEST:
+            print("Test: URI", cls.uri(*args))
 
+        try:
             response_request = urllib.request.urlopen(cls.uri(*args))
-        except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError):
-            raise (Exception("Error: Request to device failed"))
+        except (ConnectionError, urllib.error.URLError, urllib.error.HTTPError) as e:
+            raise Exception("Error: Request to device failed") from e
 
         return response_request.read().decode('utf-8').lower()
 
@@ -61,7 +64,7 @@ class Request:
             print("Test: response", response)
 
         if cls.is_not_connected_response(response):
-            raise (Exception("Error: The device is not connected"))
+            raise Exception("Error: The device is not connected")
 
         time.sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
@@ -75,7 +78,7 @@ class Request:
                 if cls.is_connected(device):
                     response = 'true'
                 else:
-                    raise (Exception("Error: The device is not connected"))
+                    raise Exception("Error: The device is not connected")
 
         return response
 
@@ -165,8 +168,8 @@ class Request:
 
         if int(speed) < 0:
             return int(119 - (-int(speed) / 100 * 45))
-        else:
-            return int((int(speed) / 100 * 25) + 121)
+
+        return int((int(speed) / 100 * 25) + 121)
 
     @classmethod
     def calculate_left_or_right(cls, direction):
@@ -223,11 +226,11 @@ class Request:
 
         if type_method == 'int':
             return [int(x), int(y), int(z)]
-        else:
-            return [float(x), float(y), float(z)]
+
+        return [float(x), float(y), float(z)]
 
     @classmethod
-    def tri_led_response(cls, device, port, allow_all, r_intensity, g_intensity, b_intensity):
+    def tri_led_response(cls, device, port, r_intensity, g_intensity, b_intensity):
         """Set TriLED  of a certain port requested to a valid intensity."""
         calc_r = Request.calculate_intensity(r_intensity)
         calc_g = Request.calculate_intensity(g_intensity)

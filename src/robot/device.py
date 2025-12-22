@@ -1,3 +1,5 @@
+# pylint: disable=redefined-builtin
+
 from time import sleep
 
 from robot.constant import Constant
@@ -7,7 +9,7 @@ from robot.state import State
 
 
 class Device:
-    def __init__(self, device="A", raise_exception_if_no_connection=True):
+    def __init__(self, device="A"):
         self.state = State()
         self.device = self.remap_device(device)
         self.connected = False
