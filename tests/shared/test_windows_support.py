@@ -58,11 +58,13 @@ def test_windows_support_finch():
     assert e.value.message == "Bad Encoder Side: BAD"
 
 
-def test_windows_support_not_connected(mocker):
+def test_windows_support_lost_connected(mocker):
+    hummingbird = Hummingbird("A")
+
     mocker.patch.object(Request, "response_from_uri", return_value="200")
+    mocker.patch.object(Request, "is_not_connected_response", return_value=False)
     mocker.patch.object(Request, "is_connected", return_value=False)
 
     with pytest.raises(Exception) as e:
-        hummingbird = Hummingbird("A")
-
-    assert str(e.value) == 'No connection: A'
+        hummingbird.led(1, 50)
+    assert str(e.value) == 'Lost connection: A'

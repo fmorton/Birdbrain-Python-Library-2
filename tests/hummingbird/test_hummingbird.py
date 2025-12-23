@@ -6,6 +6,7 @@ from robot.constant import Constant
 from robot.exception import Exception
 from robot.finch import Finch
 from robot.hummingbird import Hummingbird
+from robot.request import Request
 
 
 def test_connect_device_name_as_none():
@@ -202,3 +203,14 @@ def test_stop_all():
 
     hummingbird.stop_all()
     hummingbird.stopAll()
+
+
+def test_lost_connected(mocker):
+    hummingbird = Hummingbird("A")
+
+    mocker.patch.object(Request, "is_not_connected_response", return_value=True)
+    mocker.patch.object(Request, "is_connected", return_value=False)
+
+    with pytest.raises(Exception) as e:
+        hummingbird.led(1, 50)
+    assert str(e.value) == 'Lost connection: A'

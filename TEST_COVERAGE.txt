@@ -12,13 +12,13 @@ Name                                                                    Stmts   
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit.py                50      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_input.py          41      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_output.py         34      0   100%
-/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                174      2    99%   72, 184
+/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                174      1    99%   183
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/state.py                   29      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/utility.py                 38      0   100%
 finch/test_finch.py                                                       138      0   100%
 finch/test_finch_input.py                                                  82      0   100%
 finch/test_finch_output.py                                                 66      0   100%
-hummingbird/test_hummingbird.py                                           128      0   100%
+hummingbird/test_hummingbird.py                                           136      0   100%
 hummingbird/test_hummingbird_input.py                                      60      0   100%
 hummingbird/test_hummingbird_output.py                                     33      0   100%
 microbit/test_microbit.py                                                  72      0   100%
@@ -30,6 +30,6 @@ shared/test_request.py                                                     92   
 shared/test_shared_input.py                                                59      0   100%
 shared/test_state.py                                                       46      0   100%
 shared/test_utility.py                                                     67      0   100%
-shared/test_windows_support.py                                             41      0   100%
+shared/test_windows_support.py                                             49      0   100%
 -----------------------------------------------------------------------------------------------------
-TOTAL                                                                    1824      2    99%
+TOTAL                                                                    1840      1    99%

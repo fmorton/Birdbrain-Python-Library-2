@@ -55,21 +55,20 @@ class Request:
             print("Test: response", response)
 
         if cls.is_not_connected_response(response):
-            raise Exception("Error: The device is not connected")
+            raise Exception("Lost connection: " + cls.extracted_device(args))
 
         sleep(0.01)  # hack to prevent http requests from overloading the BlueBird Connector
 
         # hack for windows support
         if response == '200':
-            device = cls.extracted_device(args)
-
             if Utility.caller(2) == 'is_connected':
                 response = 'true'
             else:
+                device = cls.extracted_device(args)
                 if cls.is_connected(device):
                     response = 'true'
                 else:
-                    raise Exception("Error: The device is not connected")
+                    raise Exception("Lost connection: " + device)
 
         return response
 
