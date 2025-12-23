@@ -43,7 +43,7 @@ def test_response_no_connection():
     with pytest.raises(Exception) as e:
         Request.response("hummingbird", "in", "orientation", "Shake", "C")
 
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "The device is not connected: C"
 
 
 def test_request_status():
@@ -61,7 +61,7 @@ def test_disconnect():
     with pytest.raises(Exception) as e:
         Request.stop_all("C")
 
-    assert e.value.message == "Error: The device is not connected"
+    assert e.value.message == "The device is not connected: C"
 
 
 def test_xyz_response_no_connection():
@@ -106,6 +106,8 @@ def test_validate_port():
         Request.validate_port(-1, Constant.VALID_LED_PORTS)
     with pytest.raises(Exception):
         Request.validate_port("4", Constant.VALID_LED_PORTS)
+
+    assert Request.validate_port("all", None, True)
 
 
 def test_debugging():

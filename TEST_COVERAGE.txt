@@ -12,7 +12,7 @@ Name                                                                    Stmts   
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit.py                50      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_input.py          41      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/microbit_output.py         34      0   100%
-/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                174      1    99%   183
+/Users/fmorton/GitHub/robot-birdbrain/src/robot/request.py                174      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/state.py                   29      0   100%
 /Users/fmorton/GitHub/robot-birdbrain/src/robot/utility.py                 38      0   100%
 finch/test_finch.py                                                       138      0   100%
@@ -26,10 +26,10 @@ microbit/test_microbit_input.py                                            61   
 microbit/test_microbit_output.py                                           50      0   100%
 shared/test_device.py                                                      53      0   100%
 shared/test_exception.py                                                    9      0   100%
-shared/test_request.py                                                     92      0   100%
+shared/test_request.py                                                     93      0   100%
 shared/test_shared_input.py                                                59      0   100%
 shared/test_state.py                                                       46      0   100%
 shared/test_utility.py                                                     67      0   100%
 shared/test_windows_support.py                                             49      0   100%
 -----------------------------------------------------------------------------------------------------
-TOTAL                                                                    1840      1    99%
+TOTAL                                                                    1841      0   100%

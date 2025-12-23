@@ -213,4 +213,4 @@ def test_lost_connected(mocker):
 
     with pytest.raises(Exception) as e:
         hummingbird.led(1, 50)
-    assert str(e.value) == 'Lost connection: A'
+    assert str(e.value) == 'The device is not connected: A'
